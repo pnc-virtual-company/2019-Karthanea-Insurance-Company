@@ -9,6 +9,13 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+  <!-- include dataTable link -->
+  <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
+  <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
+  <script src="{{asset('js/jquery.dataTypes.min.js')}}"></script>
+  <script src="{{asset('js/dataTypes.bootstrap4.min.js')}}"></script>
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -36,46 +43,74 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+            <li class="nav-item">
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
+                    <i class="material-icons">color_lens</i>
+                    <p>Dashboard</p>
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="list-group-item collapsed">
+                        <a href="#">
+                          <p>
+                              <i class="material-icons text-info">ballot</i>
+                            Contract Type
+                          </p>
+                        </a>
+                    </li>
+                    <li class="list-group-item collapsed">
+                        <a href="#">
+                          <p>
+                            <i class="material-icons text-info">description</i>
+                            Contract List
+                          </p>
+                        </a>
+                    </li>
+                    <li class="list-group-item collapsed">
+                        <a href="#">
+                          <p>
+                            <i class="material-icons text-info">people</i>
+                            Clients
+                          </p>
+                        </a>
+                    </li>
+                    <li class="list-group-item collapsed">
+                        <a href="#">
+                          <p>
+                            <i class="material-icons text-info">monetization_on</i>
+                            Payments
+                          </p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+          <li class="nav-item active">
             <a class="nav-link" href="{{url('home.index')}}">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <i class="material-icons">list</i>
+              <p>Contract Type</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
-              <i class="material-icons">content_paste</i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
+              <i class="material-icons">work</i>
+              <p>Managements</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
+              <i class="material-icons">settings_phone</i>
+              <p>Calling</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./icons.html">
+              <i class="material-icons">calendar_today</i>
+              <p>Calendar</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./map.html">
               <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
+              <p>Location</p>
             </a>
           </li>
         </ul>
@@ -360,6 +395,11 @@
 
     });
   </script>
+          <script>
+              $(document).ready(function() {
+                  $('#contractType').DataTable();
+              } );
+          </script>
 </body>
 
 </html>

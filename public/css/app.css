@@ -3,6 +3,20 @@
  * Docs & License: https://fullcalendar.io/
  * (c) 2018 Adam Shaw
  */
+.nav-link:hover{
+  background: rgb(147, 148, 148);
+}
+.list-group-item:hover{
+  background: rgb(147, 148, 148);
+}
+.list-group-item{
+  padding: 0;
+  height: 50px;
+}
+.collapse .list-group-item{
+  width: 90%;
+  margin: 0 auto;
+}
 .main-panel .navbar{
   padding: 18px;
 }
