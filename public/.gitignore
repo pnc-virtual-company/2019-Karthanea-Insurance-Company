@@ -7,12 +7,3 @@ fonts/materialdesignicons-webfont.woff2
 js/
 jstree/
 tinymce/
-** css/animate.min.css
-** css/app.css
-** css/bootstrap.min.css
-** css/demo.min.css
-** css/light-bootstrap.min.css
-** css/materialdesignicons.min.css
-** css/pe-icon-7-stroke.css
-
-*.js
