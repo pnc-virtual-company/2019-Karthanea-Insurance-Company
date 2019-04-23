@@ -151,7 +151,7 @@
                 <li>
                     <a href="typography.html">
                         <i class="pe-7s-news-paper"></i>
-                        <p>Typography</p>
+                        <p>Calendar</p>
                     </a>
                 </li>
                 <li>
