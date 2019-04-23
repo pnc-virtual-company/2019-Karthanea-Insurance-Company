@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{asset('images/favicon.png')}}">
+  <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-    Material Dashboard Dark Edition by Creative Tim
+      {{ config('app.name', 'Skeleton') }}
   </title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
@@ -18,25 +18,26 @@
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
+  <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
 {{-- class="dark-edition" --}}
 <body>
   <div class="wrapper">
-    <div class="sidebar" data-color="purple" data-background-color="blue" data-image="../assets/img/sidebar-2.jpg">
+    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('images/sidebar-4.jpg')}}">
       <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger | primary |"
 
         Tip 2: you can also add an image using data-image tag
     -->
-      <div class="logo">
+      <div class="logo bg-teal">
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-          <img src="{{asset('images/logo-1.png')}}" alt="" width="200px">
+          <img src="{{asset('images/logo-1.png')}}" alt="brand logo">
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
           <li class="nav-item active  ">
-            <a class="nav-link" href="./dashboard.html">
+            <a class="nav-link" href="{{url('home.index')}}">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
@@ -80,9 +81,9 @@
         </ul>
       </div>
     </div>
-    <div class="main-panel ">
+    <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top " id="navigation-example">
+      <nav class="navbar navbar-expand-lg bg-info navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid ">
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -135,7 +136,7 @@
         <li class="adjustments-line">
           <a href="javascript:void(0)" class="switch-trigger active-color">
             <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-purple active" data-color="blue"></span>
+              <span class="badge filter badge-primary active" data-color="lightblue"></span>
               <span class="badge filter badge-azure" data-color="azure"></span>
               <span class="badge filter badge-green" data-color="green"></span>
               <span class="badge filter badge-warning" data-color="orange"></span>

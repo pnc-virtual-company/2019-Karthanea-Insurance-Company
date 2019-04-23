@@ -2,12 +2,13 @@
     @section('content')
     <div class="content">
         <div class="container-fluid">
+            <h1>List of contract type</h1>
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
                             <div class="col">
                                 <table class="table table-bordered table-hover">
-                                    <tr class="bg-dark">
+                                    <tr class="bg-dark text-white">
                                         <th>ID</th>
                                         <th>Contract Type</th>
                                         <th>Action</th>
