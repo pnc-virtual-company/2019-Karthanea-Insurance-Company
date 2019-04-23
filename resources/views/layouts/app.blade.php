@@ -7,7 +7,10 @@
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        
+        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+        <link href="{{asset('css/pe-icon-7-stroke.css')}}" rel="stylesheet" />
         <link rel="icon" href="{{ asset('favicon.ico') }}">
 
         <!-- CSRF Token -->
@@ -30,9 +33,6 @@
     
     
         <!--     Fonts and icons     -->
-        <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-        <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
-        <link href="{{asset('css/pe-icon-7-stroke.css')}}" rel="stylesheet" />
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -77,9 +77,9 @@
                             @else
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                        {{ Auth::user()->name }}
                                     </a>
-                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{url('users/profile')}}">
                                              {{ __('Profile') }}
                                          </a>   
@@ -98,11 +98,10 @@
                     </div>
                 </div>
             </nav>
-    
-            <main>
+        </div>
+            <main class="mt-4">
                 @yield('content')
             </main>
-        </div>
     </div>
 @stack('scripts')
 	
@@ -112,7 +111,7 @@
         Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
         Tip 2: you can also add an image using data-image tag
     -->
-    	<div class="sidebar-wrapper bg-primary">
+    	<div class="sidebar-wrapper bg-secondary">
             <div class="logo">
                 <a href="{{url('users.index')}}" class="simple-text">
                     <img src="{{('images/logo-1.png')}}" alt="brand logo">
