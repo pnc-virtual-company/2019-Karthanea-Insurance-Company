@@ -395,11 +395,11 @@
 
     });
   </script>
-          <script>
-              $(document).ready(function() {
-                  $('#contractType').DataTable();
-              } );
-          </script>
+  <script>
+      $(document).ready(function() {
+          $('#contractType').DataTable();
+      } );
+  </script>
 </body>
 
 </html>
