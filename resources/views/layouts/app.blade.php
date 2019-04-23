@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-        <link rel="icon" type="image/png" href="{{asset('img/favicon.ico')}}">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    
-        <title>Light Bootstrap Dashboard by Creative Tim</title>
-    
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-        <meta name="viewport" content="width=device-width" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta name="csrf-token" content="{{ csrf_token() }}">
+
+        <link rel="icon" href="{{ asset('favicon.ico') }}">
+
+        <!-- CSRF Token -->
+
+        <title>{{ config('app.name', 'Skeleton') }}</title>
+        <link rel="icon" type="image/png" href="{{asset('images/favicon.ico')}}">
     
         <!-- Bootstrap core CSS     -->
         <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet" />
@@ -27,16 +33,6 @@
         <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
         <link href="{{asset('css/pe-icon-7-stroke.css')}}" rel="stylesheet" />
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <link rel="icon" href="{{ asset('favicon.ico') }}">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Skeleton') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -48,17 +44,13 @@
     <link rel="stylesheet" href="{{ asset('css/materialdesignicons.min.css') }}" />
 </head>
 <body>
-    <div class="main-panel">
+    <div class="main-panel mb-4">
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light navbar-laravel bg-secondary">
+            <nav class="navbar navbar-expand-md navbar-light navbar-laravel bg-primary">
                 <div class="container">
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-    
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <!-- Left Side Of Navbar -->
                         <ul class="navbar-nav mr-auto">
@@ -87,17 +79,15 @@
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }} <span class="caret"></span>
                                     </a>
-    
-                                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{url('users/profile')}}">
                                              {{ __('Profile') }}
-                                         </a>
+                                         </a>   
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                             {{ __('Logout') }}
                                         </a>
-    
                                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                             @csrf
                                         </form>
@@ -114,7 +104,7 @@
             </main>
         </div>
     </div>
-    @stack('scripts')
+@stack('scripts')
 	
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
@@ -124,11 +114,11 @@
     -->
     	<div class="sidebar-wrapper bg-primary">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text">
-                    Karthanea
+                <a href="{{url('users.index')}}" class="simple-text">
+                    <img src="{{('images/logo-1.png')}}" alt="brand logo">
                 </a>
             </div>
-            <ul class="nav">
+            <ul class="nav text-green">
                 <li class="active">
                     <a href="dashboard.html">
                         <i class="pe-7s-graph"></i>
