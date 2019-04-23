@@ -62,4 +62,4 @@ Route::get('examples', 'ExamplesController@index')->name('examples');
 /*
 =============================================================================*/
 
-Route::resource('/home','PageController@index');
+// Route::resource('/home','PageController@index');
