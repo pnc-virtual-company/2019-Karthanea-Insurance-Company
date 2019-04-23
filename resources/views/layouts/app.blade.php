@@ -128,7 +128,6 @@
                     Karthanea
                 </a>
             </div>
-
             <ul class="nav">
                 <li class="active">
                     <a href="dashboard.html">
@@ -158,7 +157,7 @@
                 <li>
                     <a href="maps.html">
                         <i class="pe-7s-map-marker"></i>
-                        <p>Maps</p>
+                        <p>Occupenacy</p>
                     </a>
                 </li>
                 <li>
