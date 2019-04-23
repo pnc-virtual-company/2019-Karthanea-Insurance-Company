@@ -41,7 +41,8 @@ You might need to update config/app.php with your own encryption key.
 
 ## Default users and roles
 
-Connect to the application as an administrator with the login *manager@example.com* and the password *password*.
+Connect to the application as an administrator with the login *manager@example.com* and the password *y
+*.
 All other users are created with random emails as login but they always have the same password *password*.
 
 ## Create your own application
