@@ -113,8 +113,8 @@
                 @yield('content')
             </main>
         </div>
-        @stack('scripts')
     </div>
+    @stack('scripts')
 	
 <div class="wrapper">
     <div class="sidebar" data-color="purple" data-image="assets/img/sidebar-5.jpg">
