@@ -49,56 +49,74 @@
       <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item">
-                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
+                <a href="#submenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
                     <i class="material-icons">color_lens</i>
                     <p>Dashboard</p>
                 </a>
-                <ul class="collapse list-unstyled" id="pageSubmenu">
+                <ul class="collapse list-unstyled" id="submenu">
                     <li class="list-group-item collapsed">
-                      <a href="{{url('/home')}}">
+                      <a href="{{url('/client')}}">
                           <p>
-                              <i class="material-icons text-info">ballot</i>
-                            Contract Type
+                              <i class="material-icons text-info">format_list_numbered</i>
+                            Clients List
                           </p>
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
                       <a href="#">
                           <p>
-                            <i class="material-icons text-info">description</i>
-                            Contract List
-                          </p>
-                        </a>
-                    </li>
-                    <li class="list-group-item collapsed">
-                        <a href="{{url('/client')}}">
-                          <p>
-                            <i class="material-icons text-info">people</i>
-                            Clients
-                          </p>
-                        </a>
-                    </li>
-                    <li class="list-group-item collapsed">
-                        <a href="#">
-                          <p>
-                            <i class="material-icons text-info">monetization_on</i>
-                            Payments
+                            <i class="material-icons text-info">pie_chart</i>
+                            Occupency
                           </p>
                         </a>
                     </li>
                 </ul>
             </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{url('home.index')}}">
+            <a class="nav-link" href="{{url('/')}}">
               <i class="material-icons">list</i>
               <p>Contract Type</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
+            <a data-toggle="collapse" aria-expanded="false" class="nav-link" href="#pageSubmenu">
               <i class="material-icons">work</i>
               <p>Managements</p>
             </a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li class="list-group-item collapsed">
+                  <a href="{{url('/')}}">
+                      <p>
+                          <i class="material-icons text-info">ballot</i>
+                        Contract Type
+                      </p>
+                    </a>
+                </li>
+                <li class="list-group-item collapsed">
+                  <a href="{{url('/')}}">
+                      <p>
+                        <i class="material-icons text-info">description</i>
+                        Contract List
+                      </p>
+                    </a>
+                </li>
+                <li class="list-group-item collapsed">
+                    <a href="{{url('/client')}}">
+                      <p>
+                        <i class="material-icons text-info">people</i>
+                        Clients
+                      </p>
+                    </a>
+                </li>
+                <li class="list-group-item collapsed">
+                    <a href="#">
+                      <p>
+                        <i class="material-icons text-info">monetization_on</i>
+                        Payments
+                      </p>
+                    </a>
+                </li>
+            </ul>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./icons.html">
