@@ -10,12 +10,6 @@
       {{ config('app.name', 'Skeleton') }}
   </title>
   
-  <!-- include dataTable link -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
   <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
@@ -100,19 +94,8 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./user.html">
-<<<<<<< HEAD
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="{{url('updatecontractype')}}">
-              <i class="material-icons">content_paste</i>
-              <p>Table List</p>
-=======
               <i class="material-icons">work</i>
               <p>Managements</p>
->>>>>>> d07efc52139d8c84267d773c13a7e4169247d746
             </a>
           </li>
           <li class="nav-item ">
@@ -418,19 +401,16 @@
 
     });
   </script>
-<<<<<<< HEAD
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-              <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-=======
   <script>
       $(document).ready(function() {
           $('#contractType').DataTable();
       } );
   </script>
->>>>>>> d07efc52139d8c84267d773c13a7e4169247d746
 </body>
 
 </html>
