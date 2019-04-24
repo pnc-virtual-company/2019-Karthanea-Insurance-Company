@@ -58,7 +58,7 @@
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
-                        <a href="#">
+                      <a href="#">
                           <p>
                             <i class="material-icons text-info">description</i>
                             Contract List
@@ -66,7 +66,7 @@
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
-                        <a href="#">
+                        <a href="{{url('/client')}}">
                           <p>
                             <i class="material-icons text-info">people</i>
                             Clients

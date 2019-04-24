@@ -66,4 +66,4 @@ Route::get('/', function () {
         return view('pages.contracttype');
     });
 Route::resource('/home','PageController@index');
-Route::get('/contract','ContractController@index');
+Route::get('/client','ClientController@index');
