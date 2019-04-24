@@ -45,7 +45,7 @@
                     </tbody>
                    
                 </table>
-                <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example"><i class='material-icons mr-2'>add_circle_outline</i>Create new contract type</button>
+               
        
             </div>
         </div>
