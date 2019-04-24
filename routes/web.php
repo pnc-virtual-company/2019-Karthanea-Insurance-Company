@@ -65,4 +65,7 @@
 Route::get('/', function () {
         return view('pages.contracttype');
     });
+    Route::get('/updatecontractype', function () {
+        return view('pages.contracttype');
+    });
 Route::resource('/home','PageController@index');

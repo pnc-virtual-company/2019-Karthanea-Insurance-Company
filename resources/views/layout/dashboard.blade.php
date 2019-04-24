@@ -9,16 +9,20 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+  
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  
   <!-- CSS Files -->
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
+  <link rel="stylesheet" href="{{asset('css/contracttype.css')}}">
+  
 </head>
 {{-- class="dark-edition" --}}
 <body>
@@ -49,7 +53,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="{{url('updatecontractype')}}">
               <i class="material-icons">content_paste</i>
               <p>Table List</p>
             </a>
@@ -125,7 +129,7 @@
       <script>
         const x = new Date().getFullYear();
         let date = document.getElementById('date');
-        date.innerHTML = '&copy; ' + x + date.innerHTML;
+        //date.innerHTML = '&copy; ' + x + date.innerHTML;
       </script>
     </div>
   </div>
@@ -194,6 +198,7 @@
   <script>
     $(document).ready(function() {
       $().ready(function() {
+        
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -357,9 +362,16 @@
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
+      $('#example').DataTable();
+                        
 
     });
   </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+              <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 </body>
 
 </html>
