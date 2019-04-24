@@ -1,3 +1,4 @@
+
     @extends('layout.dashboard')
     @section('content')
     <div class="content">
@@ -45,10 +46,12 @@
                     </tbody>
                    
                 </table>
-               
+                <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example"><i class='material-icons mr-2'>add_circle_outline</i>Create new contract type</button>
        
             </div>
         </div>
+       
+
         <div class="modal fade bd-example" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
             <div class="modal-content">
