@@ -360,6 +360,13 @@
 
     });
   </script>
+  <script>
+    $(function () {
+        $('#datetimepicker2').datetimepicker({
+            locale: 'ru'
+        });
+    });
+</script>
 </body>
 
 </html>
