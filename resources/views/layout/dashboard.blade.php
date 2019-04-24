@@ -9,16 +9,26 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+  
+  <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
+  <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
+  <script src="{{asset('js/jquery.dataTypes.min.js')}}"></script>
+  <script src="{{asset('js/dataTypes.bootstrap4.min.js')}}"></script>
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  
   <!-- CSS Files -->
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
+  <link rel="stylesheet" href="{{asset('css/contracttype.css')}}">
+  
 </head>
 {{-- class="dark-edition" --}}
 <body>
@@ -36,46 +46,92 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
-            <a class="nav-link" href="{{url('home.index')}}">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+            <li class="nav-item">
+                <a href="#submenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
+                    <i class="material-icons">color_lens</i>
+                    <p>Dashboard</p>
+                </a>
+                <ul class="collapse list-unstyled" id="submenu">
+                    <li class="list-group-item collapsed">
+                      <a href="{{url('/client')}}">
+                          <p>
+                              <i class="material-icons text-info">format_list_numbered</i>
+                            Clients List
+                          </p>
+                        </a>
+                    </li>
+                    <li class="list-group-item collapsed">
+                      <a href="#">
+                          <p>
+                            <i class="material-icons text-info">pie_chart</i>
+                            Occupency
+                          </p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="{{url('/')}}">
+              <i class="material-icons">list</i>
+              <p>Contract Type</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
+            <a class="nav-link" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+              <i class="material-icons">work</i>
+              <p>Managements</p>
             </a>
+            <ul class="collapse list-unstyled" id="pageSubmenu">
+                <li class="list-group-item collapsed">
+                  <a href="{{url('/')}}">
+                      <p>
+                          <i class="material-icons text-info">ballot</i>
+                        Contract Type
+                      </p>
+                    </a>
+                </li>
+                <li class="list-group-item collapsed">
+                  <a href="{{url('/')}}">
+                      <p>
+                        <i class="material-icons text-info">description</i>
+                        Contract List
+                      </p>
+                    </a>
+                </li>
+                <li class="list-group-item collapsed">
+                    <a href="{{url('/client')}}">
+                      <p>
+                        <i class="material-icons text-info">people</i>
+                        Clients
+                      </p>
+                    </a>
+                </li>
+                <li class="list-group-item collapsed">
+                    <a href="#">
+                      <p>
+                        <i class="material-icons text-info">monetization_on</i>
+                        Payments
+                      </p>
+                    </a>
+                </li>
+            </ul>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
-              <i class="material-icons">content_paste</i>
-              <p>Table List</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
+            <a class="nav-link" href="./icons.html">
+              <i class="material-icons">settings_phone</i>
+              <p>Calling</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
+              <i class="material-icons">calendar_today</i>
+              <p>Calendar</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./map.html">
               <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
+              <p>Location</p>
             </a>
           </li>
         </ul>
@@ -125,7 +181,7 @@
       <script>
         const x = new Date().getFullYear();
         let date = document.getElementById('date');
-        date.innerHTML = '&copy; ' + x + date.innerHTML;
+        //date.innerHTML = '&copy; ' + x + date.innerHTML;
       </script>
     </div>
   </div>
@@ -194,6 +250,7 @@
   <script>
     $(document).ready(function() {
       $().ready(function() {
+        
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -357,16 +414,21 @@
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
+      $('#example').DataTable();
+                        
 
     });
-  </script>
-  <script>
-    $(function () {
-        $('#datetimepicker2').datetimepicker({
-            locale: 'ru'
-        });
-    });
 </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  <script>
+      $(document).ready(function() {
+          $('#myTable').DataTable();
+      } );
+  </script>
 </body>
 
 </html>

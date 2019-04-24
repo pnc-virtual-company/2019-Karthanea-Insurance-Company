@@ -3,6 +3,17 @@
  * Docs & License: https://fullcalendar.io/
  * (c) 2018 Adam Shaw
  */
+.nav-link:hover{
+  background: rgb(147, 148, 148);
+}
+.list-group-item:hover{
+  background: rgb(147, 148, 148);
+}
+
+.collapse .list-group-item{
+  width: 90%;
+  margin: 0 auto;
+}
 .main-panel .navbar{
   padding: 18px;
 }
@@ -31,7 +42,8 @@ body .fc {
 .fc-bgevent {
   /* default look for background events */
   background: #8fdf82;
-  opacity: .3; }
+  opacity: .3; 
+}
 
 .fc-nonbusiness {
   /* default look for non-business-hours areas */
