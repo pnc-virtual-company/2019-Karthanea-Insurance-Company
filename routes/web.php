@@ -68,10 +68,10 @@ Route::get('/', function () {
 
 Route::resource('/home','PageController@index');
 Route::resource('/contract','contractsController');
-=======
 Route::get('/createContract','PageController@createContractType');
 Route::get('/openNewCall','PageController@OpenNewCall');
 
 Route::resource('/home','PageController@index');
 Route::get('/client','ClientController@index');
+
 Route::get('/payment','paymentController@index');
