@@ -75,3 +75,4 @@ Route::resource('/home','PageController@index');
 Route::get('/client','ClientController@index');
 
 Route::get('/payment','paymentController@index');
+Route::get('/login','loginController@index');
