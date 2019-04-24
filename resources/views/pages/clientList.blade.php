@@ -4,7 +4,7 @@
         <h1>List of Clients</h1>
         <div class="card">
             <div class="card-body">
-                <table id="contract" class="table table-striped table-bordered table-hover">
+                <table id="myTable" class="table table-striped table-bordered table-hover">
                     <thead class="bg-dark text-white">
                         <tr>
                             <th>Disable ID</th>
