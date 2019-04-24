@@ -10,6 +10,11 @@
       {{ config('app.name', 'Skeleton') }}
   </title>
   <!-- include dataTable link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
   <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
@@ -50,7 +55,7 @@
                 </a>
                 <ul class="collapse list-unstyled" id="pageSubmenu">
                     <li class="list-group-item collapsed">
-                        <a href="#">
+                      <a href="{{url('/home')}}">
                           <p>
                               <i class="material-icons text-info">ballot</i>
                             Contract Type
