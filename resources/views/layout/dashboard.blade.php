@@ -107,7 +107,7 @@
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                    <a href="#">
+                    <a href="{{url('/payment')}}">
                       <p>
                         <i class="material-icons text-info">monetization_on</i>
                         Payments
