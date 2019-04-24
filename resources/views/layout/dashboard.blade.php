@@ -9,6 +9,7 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+  
   <!-- include dataTable link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -26,11 +27,14 @@
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  
   <!-- CSS Files -->
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
+  <link rel="stylesheet" href="{{asset('css/contracttype.css')}}">
+  
 </head>
 {{-- class="dark-edition" --}}
 <body>
@@ -80,6 +84,15 @@
           </li>
           <li class="nav-item ">
             <a data-toggle="collapse" aria-expanded="false" class="nav-link" href="#pageSubmenu">
+            <a class="nav-link" href="./user.html">
+              <i class="material-icons">person</i>
+              <p>User Profile</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="{{url('updatecontractype')}}">
+              <i class="material-icons">content_paste</i>
+              <p>Table List</p>
               <i class="material-icons">work</i>
               <p>Managements</p>
             </a>
@@ -183,7 +196,7 @@
       <script>
         const x = new Date().getFullYear();
         let date = document.getElementById('date');
-        date.innerHTML = '&copy; ' + x + date.innerHTML;
+        //date.innerHTML = '&copy; ' + x + date.innerHTML;
       </script>
     </div>
   </div>
@@ -252,6 +265,7 @@
   <script>
     $(document).ready(function() {
       $().ready(function() {
+        
         $sidebar = $('.sidebar');
 
         $sidebar_img_container = $sidebar.find('.sidebar-background');
@@ -415,14 +429,24 @@
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
+      $('#example').DataTable();
+                        
 
     });
   </script>
+<<<<<<< HEAD
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+              <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+=======
   <script>
       $(document).ready(function() {
           $('#contractType').DataTable();
       } );
   </script>
+>>>>>>> d07efc52139d8c84267d773c13a7e4169247d746
 </body>
 
 </html>

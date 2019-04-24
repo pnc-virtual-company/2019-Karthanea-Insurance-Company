@@ -14,6 +14,7 @@ class PageController extends Controller
     public function index()
     {
         return view('pages.contracttype');
+        
     }
 
     /**
@@ -23,9 +24,11 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        
     }
-
+public function updatecontractype(){
+    return view('pages.updatecontractype');
+}
     /**
      * Store a newly created resource in storage.
      *
@@ -68,7 +71,7 @@ class PageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        return view('pages.updatecontractype');
     }
 
     /**
