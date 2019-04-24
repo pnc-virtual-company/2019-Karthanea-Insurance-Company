@@ -77,7 +77,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
-                                    <label for="phone">Phpne</label>
+                                    <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
                                     <input type="number" name="phone" id="phone" class="form-control">
