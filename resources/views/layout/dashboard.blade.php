@@ -9,9 +9,7 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
-<<<<<<< HEAD
   
-=======
   <!-- include dataTable link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
@@ -24,7 +22,6 @@
   <script src="{{asset('js/jquery.dataTypes.min.js')}}"></script>
   <script src="{{asset('js/dataTypes.bootstrap4.min.js')}}"></script>
 
->>>>>>> d07efc52139d8c84267d773c13a7e4169247d746
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->

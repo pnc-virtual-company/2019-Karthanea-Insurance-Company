@@ -7,7 +7,6 @@
         <h1>List of contract type</h1>
                 <div class="card">
                     <div class="card-body">
-<<<<<<< HEAD
                         
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead class="">
@@ -53,11 +52,8 @@
             </div>
 
             </div>
-                
     
-                
     @endsection
-=======
                         <div class="row">
                             <div class="col">
                                 <table id="contractType" class="table table-striped table-bordered" style="width:100%">
@@ -125,4 +121,3 @@
 
     @endsection
     
->>>>>>> d07efc52139d8c84267d773c13a7e4169247d746
