@@ -4,7 +4,7 @@
         <h1>List of Clients</h1>
         <div class="card">
             <div class="card-body">
-                <table id="contract" class="table table-striped table-bordered table-hover">
+                <table id="myTable" class="table table-striped table-bordered table-hover">
                     <thead class="bg-dark text-white">
                         <tr>
                             <th>Disable ID</th>
@@ -38,9 +38,11 @@
                         </tr>
                     </tbody>
                 </table>
+                <div>
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
+                </div>
             </div>
         </div>
-        <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
     </div>
           <!-- Modal -->
           <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-body">
                         
-            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                <table id="myTable" class="table table-striped table-bordered" style="width:100%">
                     <thead class="thead thead-dark text-white">
                         <tr>
                             <th class="text-center ">ID</th>
@@ -23,7 +23,6 @@
                                1
                             </td>
                             <td>Car</td>
-                           
                         </tr>
                         <tr >
                             <td class="text-center">
@@ -46,10 +45,9 @@
                     </tbody>
                    
                 </table>
-            <button class="btn btn-info" type="submit"><i class="material-icons text-white">add_circle_outline</i>  Create contract type</button> 
+            <a href="updatecontracttype.blade.php"><i class="material-icons text-white">add_circle_outline</i>  Create contract type</a> 
             </div>
 
             </div>
     
     @endsection
-                       
