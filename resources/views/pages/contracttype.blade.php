@@ -50,6 +50,12 @@
             <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
             </div>
         </div>
+            <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
+            </div>
+        </div>
+
+
+
         <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -90,6 +96,7 @@
                                                                                 <option value="3">Closed</option>
                                                                         </select>
                                                                  </div>
+
                                                     </div>
                                             </div>
 
