@@ -1,5 +1,5 @@
 # Karthanea Insurace  
-Karthanea is an application that helps insurace companies to keep record of their customers, contracts and call history. It is mainly used to find information about the client, its contracts and invoices. The application helps to keep record if the phone calls allowing to know about previouse conversations.
+*Karthanea* is an application that helps insurace companies to keep record of their customers, contracts and call history. It is mainly used to find information about the client, its contracts and invoices. The application helps to keep record if the phone calls allowing to know about previouse conversations.
 ## Feature
    - Login 
    - Manage Users
@@ -15,7 +15,7 @@ Karthanea is an application that helps insurace companies to keep record of thei
    
    
 ## Technologies 
-  - Laravel( version5.8 )
+  - `Laravel 5.8`
   - Bootstrap 4
   - Materialize
   - Data Table
@@ -41,7 +41,7 @@ Install the frontent dependencies :
 npm install
 ```
 
->If you want to [Get Node Package Manager](https://www.npmjs.com/get-npm) 
+>If you want to [Get Node Package Manager](https://nodejs.org/en/) here
 
 Build the JS and CSS bundles of the applications(change for prod in production) : 
 
@@ -50,7 +50,7 @@ npm run dev
 ```
 Launch the migration of the database
 
-` Note:` database name " ` skeleton`"
+` Note:` database name " ` kartheana_insurace`"
 
 ```
 php artisan migration:fresh --seed
