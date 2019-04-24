@@ -13,59 +13,53 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Contract Type</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>1</td>
+                                            <td>
+                                                <a href="#" class="text-center">
+                                                    <i class="material-icons text-success">create</i>
+                                                    <i class="material-icons text-danger">delete</i>
+                                                </a>1
+                                            </td>
                                             <td>Car</td>
+                                        </tr>
+                                        <tr>
                                             <td>
                                                 <a href="#" class="text-center">
                                                     <i class="material-icons text-success">create</i>
                                                     <i class="material-icons text-danger">delete</i>
-                                                </a>
+                                                </a>2
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
                                             <td>Motor</td>
+                                        </tr>
+                                        <tr>
                                             <td>
                                                 <a href="#" class="text-center">
                                                     <i class="material-icons text-success">create</i>
                                                     <i class="material-icons text-danger">delete</i>
-                                                </a>
+                                                </a>3
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
                                             <td>House</td>
+                                        </tr>
+                                        <tr>
                                             <td>
                                                 <a href="#" class="text-center">
                                                     <i class="material-icons text-success">create</i>
                                                     <i class="material-icons text-danger">delete</i>
-                                                </a>
+                                                </a>4
                                             </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
                                             <td>Bicycle</td>
-                                            <td>
-                                                <a href="#" class="text-center">
-                                                    <i class="material-icons text-success">create</i>
-                                                    <i class="material-icons text-danger">delete</i>
-                                                </a>
-                                            </td>
                                         </tr>
                                         <tr>
-                                            <td>5</td>
-                                            <td>Land</td>
                                             <td>
                                                 <a href="#" class="text-center">
                                                     <i class="material-icons text-success">create</i>
                                                     <i class="material-icons text-danger">delete</i>
-                                                </a>
+                                                </a>5
                                             </td>
+                                            <td>Land</td>
                                         </tr>
                                     </tbody>
 
