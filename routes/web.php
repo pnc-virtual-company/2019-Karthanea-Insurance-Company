@@ -65,7 +65,12 @@
 Route::get('/', function () {
         return view('pages.contracttype');
     });
+<<<<<<< HEAD
     Route::get('/updatecontractype', function () {
         return view('pages.contracttype');
     });
 Route::resource('/home','PageController@index');
+=======
+Route::resource('/home','PageController@index');
+Route::get('/client','ClientController@index');
+>>>>>>> d07efc52139d8c84267d773c13a7e4169247d746

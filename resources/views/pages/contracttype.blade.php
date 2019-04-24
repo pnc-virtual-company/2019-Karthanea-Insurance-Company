@@ -1,3 +1,4 @@
+
     @extends('layout.dashboard')
     @section('content')
     
@@ -6,6 +7,7 @@
         <h1>List of contract type</h1>
                 <div class="card">
                     <div class="card-body">
+<<<<<<< HEAD
                         
             <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead class="">
@@ -55,3 +57,72 @@
     
                 
     @endsection
+=======
+                        <div class="row">
+                            <div class="col">
+                                <table id="contractType" class="table table-striped table-bordered" style="width:100%">
+                                    <thead class="bg-dark text-white">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Contract Type</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-center">
+                                                    <i class="material-icons text-success">create</i>
+                                                    <i class="material-icons text-danger">delete</i>
+                                                </a>1
+                                            </td>
+                                            <td>Car</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-center">
+                                                    <i class="material-icons text-success">create</i>
+                                                    <i class="material-icons text-danger">delete</i>
+                                                </a>2
+                                            </td>
+                                            <td>Motor</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-center">
+                                                    <i class="material-icons text-success">create</i>
+                                                    <i class="material-icons text-danger">delete</i>
+                                                </a>3
+                                            </td>
+                                            <td>House</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-center">
+                                                    <i class="material-icons text-success">create</i>
+                                                    <i class="material-icons text-danger">delete</i>
+                                                </a>4
+                                            </td>
+                                            <td>Bicycle</td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <a href="#" class="text-center">
+                                                    <i class="material-icons text-success">create</i>
+                                                    <i class="material-icons text-danger">delete</i>
+                                                </a>5
+                                            </td>
+                                            <td>Land</td>
+                                        </tr>
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    @endsection
+    
+>>>>>>> d07efc52139d8c84267d773c13a7e4169247d746

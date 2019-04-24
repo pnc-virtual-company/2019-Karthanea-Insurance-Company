@@ -9,7 +9,22 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+<<<<<<< HEAD
   
+=======
+  <!-- include dataTable link -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+  <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
+  <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
+  <script src="{{asset('js/jquery.dataTypes.min.js')}}"></script>
+  <script src="{{asset('js/dataTypes.bootstrap4.min.js')}}"></script>
+
+>>>>>>> d07efc52139d8c84267d773c13a7e4169247d746
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--     Fonts and icons     -->
@@ -40,14 +55,55 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
+            <li class="nav-item">
+                <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
+                    <i class="material-icons">color_lens</i>
+                    <p>Dashboard</p>
+                </a>
+                <ul class="collapse list-unstyled" id="pageSubmenu">
+                    <li class="list-group-item collapsed">
+                      <a href="{{url('/home')}}">
+                          <p>
+                              <i class="material-icons text-info">ballot</i>
+                            Contract Type
+                          </p>
+                        </a>
+                    </li>
+                    <li class="list-group-item collapsed">
+                      <a href="#">
+                          <p>
+                            <i class="material-icons text-info">description</i>
+                            Contract List
+                          </p>
+                        </a>
+                    </li>
+                    <li class="list-group-item collapsed">
+                        <a href="{{url('/client')}}">
+                          <p>
+                            <i class="material-icons text-info">people</i>
+                            Clients
+                          </p>
+                        </a>
+                    </li>
+                    <li class="list-group-item collapsed">
+                        <a href="#">
+                          <p>
+                            <i class="material-icons text-info">monetization_on</i>
+                            Payments
+                          </p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+          <li class="nav-item active">
             <a class="nav-link" href="{{url('home.index')}}">
-              <i class="material-icons">dashboard</i>
-              <p>Dashboard</p>
+              <i class="material-icons">list</i>
+              <p>Contract Type</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./user.html">
+<<<<<<< HEAD
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
@@ -56,30 +112,28 @@
             <a class="nav-link" href="{{url('updatecontractype')}}">
               <i class="material-icons">content_paste</i>
               <p>Table List</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
-              <i class="material-icons">library_books</i>
-              <p>Typography</p>
+=======
+              <i class="material-icons">work</i>
+              <p>Managements</p>
+>>>>>>> d07efc52139d8c84267d773c13a7e4169247d746
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
+              <i class="material-icons">settings_phone</i>
+              <p>Calling</p>
+            </a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" href="./icons.html">
+              <i class="material-icons">calendar_today</i>
+              <p>Calendar</p>
             </a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="./map.html">
               <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
+              <p>Location</p>
             </a>
           </li>
         </ul>
@@ -367,11 +421,19 @@
 
     });
   </script>
+<<<<<<< HEAD
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
               <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+=======
+  <script>
+      $(document).ready(function() {
+          $('#contractType').DataTable();
+      } );
+  </script>
+>>>>>>> d07efc52139d8c84267d773c13a7e4169247d746
 </body>
 
 </html>
