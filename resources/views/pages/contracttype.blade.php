@@ -44,10 +44,10 @@
                     </tbody>
                    
                 </table>
-            <a href="updatecontracttype.blade.php"><i class="material-icons text-white">add_circle_outline</i>  Create contract type</a> 
+                <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
             </div>
             </div>
-            <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
+           
             </div>
         </div>
 
