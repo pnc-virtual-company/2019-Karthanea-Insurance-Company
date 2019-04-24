@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
@@ -9,6 +8,8 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+  <!-- pei chart link -->
+  <script src="https://cdnjs.com/libraries/Chart.js"></script>
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -107,7 +108,7 @@
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                    <a href="#">
+                    <a href="{{url('/payment')}}">
                       <p>
                         <i class="material-icons text-info">monetization_on</i>
                         Payments
