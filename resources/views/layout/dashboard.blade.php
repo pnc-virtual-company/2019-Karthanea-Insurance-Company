@@ -284,11 +284,9 @@
           if ($sidebar.length != 0) {
             $sidebar.attr('data-color', new_color);
           }
-
           if ($full_page.length != 0) {
             $full_page.attr('filter-color', new_color);
           }
-
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.attr('data-color', new_color);
           }
@@ -431,5 +429,4 @@
       } );
   </script>
 </body>
-
 </html>
