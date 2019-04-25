@@ -8,8 +8,13 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
-  <!-- pei chart link -->
-  <script src="https://cdnjs.com/libraries/Chart.js"></script>
+<!-- link calendar -->
+<link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
+<link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
+<script src='{{asset('packages/core/main.js')}}'></script>
+<script src='{{asset('packages/interaction/main.js')}}'></script>
+<script src='{{asset('packages/daygrid/main.js')}}'></script>
+<script src='{{asset('js/calendar.js')}}'></script>
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -62,7 +67,7 @@
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
-                      <a href="#">
+                      <a href="{{url('/chart')}}">
                           <p>
                             <i class="material-icons text-info">pie_chart</i>
                             Occupency
@@ -124,7 +129,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="{{url('/calendar')}}">
               <i class="material-icons">calendar_today</i>
               <p>Calendar</p>
             </a>
