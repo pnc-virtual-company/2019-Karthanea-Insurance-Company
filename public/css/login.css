@@ -36,7 +36,7 @@ form {
   .bar {
     position: absolute;
     width: 100%;
-    top: 50%;
+    top: 35%;
     border-bottom: 1px solid black;
   }
   .text {
@@ -44,5 +44,5 @@ form {
     font-size: 20px;
   }
   a.btn.btn-info.right.text-white.text-center {
-    margin-top: -10px;
+    margin-top: -12px;
 }

@@ -50,7 +50,7 @@
                                                                 <div class="bar"></div>
                                                               </div>
                                                               <div class="text">
-                                                                <p>or</p>
+                                                                <p>OR</p>
                                                               </div>
                                                               <div class="bar-container">
                                                                 <div class="bar"></div>
