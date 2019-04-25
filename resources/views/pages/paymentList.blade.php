@@ -15,12 +15,12 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <a href="#"><i class="material-icons text-success">create</i></a>
+                                            <a href="#"><i class="material-icons text-success" data-toggle="modal" data-target="#updatePayment">create</i></a>
                                             <input type="checkbox" name="disable" id="disable">
                                             1
                                         </td>
                                         <td>Li</td>
-                                        <td>File</td>
+                                        <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
                                     </tr>
             
                                     
@@ -42,19 +42,19 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <a href="#"><i class="material-icons text-success">create</i></a>
+                                                <a href="#"><i class="material-icons text-success" data-toggle="modal" data-target="#updatePayment">create</i></a>
                                                 1
                                             </td>
-                                            <td>car</td>
+                                            <td>car <i class="material-icons text-info ml-5">insert_drive_file</i></td>
                                             <td>Open</td>
                                             <td>20/10/2019</td>
                                             <td>20/11/2019</td>
                                             <td>$15</td>
-                                            <td>file</td>
+                                            <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
                                         </tr>
                                     </tbody>
                                 </table>
-            
+
                                 <table  id="myTabless" class="table table-striped table-bordered table-hover">
                                         <thead class="bg-dark text-white">
                                             <tr>
@@ -71,8 +71,22 @@
                                                 <td>$15</td>
                                                 <td>Paid <a href="#"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
                                                 <td>5/11/2019</td>
-                                                <td>file</td>
+                                                <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
                                             </tr>
+                                            <tr>
+                                                    <td>Oct.2019.12</td>
+                                                    <td>$15</td>
+                                                    <td>Paid <a href="#"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                                    <td>5/11/2019</td>
+                                                    <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
+                                                </tr>
+                                                <tr>
+                                                        <td>Oct.2019.12</td>
+                                                        <td>$15</td>
+                                                        <td>Paid <a href="#"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                                        <td>5/11/2019</td>
+                                                        <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
+                                                </tr>
                                         </tbody>
                                     </table>
                                 </table>
@@ -84,7 +98,7 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('js/login.js')}}"></script>
+    <script src="{{asset('js/table.js')}}"></script>
     {{-- payment model update status --}}
     
     <div class="modal fade" id="editPayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

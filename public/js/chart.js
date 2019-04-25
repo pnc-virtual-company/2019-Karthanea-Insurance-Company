@@ -59,6 +59,7 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
                             display: true,
                             scaleLabel: {
                                 display: true,
+                                labelString: 'Value'
                                 labelString: 'Average Call Duration(min) '
                             }
                         }]
@@ -128,6 +129,7 @@ var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'A
                 });
     
                 window.myLine.update();
+            });
             });
 // bar chart
             var barChartData = {

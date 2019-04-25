@@ -64,7 +64,8 @@
 Route::get('/', function () {
         return view('pages.clientList');
     });
-
+Route::get('/createContract','PageController@createContractType');
+Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
 Route::resource('/contract','contractsController');
@@ -77,6 +78,8 @@ Route::get('/createContract','PageController@createContractType');
 Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
 Route::get('/userCall','ClientController@userCall');
+Route::get('/calendar','CalendarController@index');
+Route::get('/chart','ChartController@index');
 
 Route::get('/payment','paymentController@index');
 Route::get('/contractlist','PageController@contractlist');
@@ -88,4 +91,4 @@ Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
 
 Route::get('/login','loginController@index');
-
+Route::get('/register','registerController@index');

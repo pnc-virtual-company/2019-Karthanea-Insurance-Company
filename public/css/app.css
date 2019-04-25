@@ -10,10 +10,13 @@
 .container a:hover{
   text-decoration: none;
 }
+
+
 .main-panel #navigation-example{
   position: sticky;
   margin-bottom:-6%;
 }
+
 #submenu .list-group-item, 
 #pageSubmenu .list-group-item
 {
