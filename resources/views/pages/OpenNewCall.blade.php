@@ -25,7 +25,6 @@
                                         </div>
                                         <div class="form-group ">
                                                 <div class="row">
-
                                                         <label for="call" >Call Operator</label>
                                                         <div class="col-6">
                                                             <input type="text" id="call" class="form-control">
