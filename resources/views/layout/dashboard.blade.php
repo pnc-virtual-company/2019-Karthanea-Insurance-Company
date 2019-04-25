@@ -177,18 +177,17 @@
                   <i class="material-icons">settings</i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="javascript:void(0)">
-                    <p>
+                  <a class="dropdown-item nav-link" href="#">
+                    <span>
                       <i class="material-icons">account_circle</i>
                       Profile
-                    </p>
+                    </span>
                   </a>
-                  <a class="dropdown-item" href="javascript:void(0)">
-                    <p>
-                        <a class="nav-link" href="{{url('/login')}}">
+                  <a class="dropdown-item nav-link" href="{{url('/login')}}">
+                    <span>
                       <i class="material-icons">logout</i>
                       Logout
-                    </p>
+                    </span>
                   </a>
                 </div>
               </li>
