@@ -1,3 +1,4 @@
+
     @extends('layout.dashboard')
     @section('content')
     <div class="content">
@@ -18,7 +19,7 @@
                         <tr >
                             <td class="text-center">
                                 <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons">edit</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
                                1
                             </td>
                             <td>Car</td>
@@ -26,7 +27,7 @@
                         <tr >
                             <td class="text-center">
                                 <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons">edit</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
                                2
                             </td>
                             <td>Moto</td>
@@ -35,7 +36,7 @@
                         <tr >
                             <td class="text-center">
                                 <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons">edit</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
                                3
                             </td>
                             <td>House</td>
@@ -44,42 +45,51 @@
                     </tbody>
                    
                 </table>
-                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType">Create contract type</button>
-                
-            </div>
-            </div>
-           
-            </div>
-        </div>
 
+                <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example"><i class='material-icons mr-2'>add_circle_outline</i>Create new contract type</button>
        
+
+                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create contract type</button>
+                <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example"><i class='material-icons mr-2'>add_circle_outline</i>Create new contract type</button>
+                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType">Create contract type</button>
+            </div>
+
             </div>
         </div>
-        {{-- model create --}}
-
-  <div class="modal fade" id="createContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create new contract type</h5>
-         
+       
+  {{-- model create --}}
+    
+        <div class="modal fade bd-example" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Create new contract type</h5>
+                          </div>
+                          <div class="card-body">
+                                <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                        <label for="">Type of contract</label>
+                                                        <div class="col-8">
+                                                            <input type="text" class="form-control" placeholder="type of contract">
+              
+                
+                                                         </div>
+                                                  </div>
+                                
+                                             </div>
+                                        </form>
+                                </div>
+                             </div>
+                             <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                <button type="button" class="btn btn-danger">Cancel</button>
+                              </div>
+                        </div>
+                 </div>
+            </div>
         </div>
-        <div class="modal-body">
-          <form action="#" method="POST" >
-              <div class="form-group">
-                  <label for="">Type of contract</label> 
-                  <input type="text" name="contracttype" id="" class="form-control">
-              </div>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        </div>
-        
-      </div>
-    </div>
-  </div>
 
 
   {{-- model update --}}
@@ -93,10 +103,15 @@
             </div>
             <div class="modal-body">
               <form action="#" method="POST" >
-                  <div class="form-group">
-                      <label for="">Type of contract</label> 
-                      <input type="text" name="contracttype" id="" class="form-control">
-                  </div>
+                  <div class="row">
+                      <div class="col-4"><p>Type of contract</p></div>
+                      <div class="col-7">
+                          <div class="form-group">
+                          
+                              <input type="text" name="contracttype" id="" class="form-control">
+                          </div>
+                      </div>
+                    </div>
               </form>
             </div>
             <div class="modal-footer">

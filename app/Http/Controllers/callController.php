@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class PageController extends Controller
+class callController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,18 +13,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        return view('pages.contracttype');
-        
+        return view('pages.listCall');
     }
-    public function createContractType(){
-        return view('pages.createContractType');
-    }
-    public function OpenNewCall(){
-        return view('pages.OpenNewCall');
-    }
-    public function location(){
-        return view('pages.location');
-    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -32,14 +23,9 @@ class PageController extends Controller
      */
     public function create()
     {
-        
+        //
     }
-public function updatecontractype(){
-    return view('pages.updatecontractype');
-}
-public function datepicker(){
-    return view('pages.date');
-}
+
     /**
      * Store a newly created resource in storage.
      *
@@ -82,7 +68,7 @@ public function datepicker(){
      */
     public function update(Request $request, $id)
     {
-        return view('pages.updatecontractype');
+        //
     }
 
     /**
@@ -94,8 +80,5 @@ public function datepicker(){
     public function destroy($id)
     {
         //
-    }
-    public function contractlist(){
-        return view('pages.addContract');
     }
 }
