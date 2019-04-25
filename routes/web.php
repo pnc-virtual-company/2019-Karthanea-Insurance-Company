@@ -87,3 +87,4 @@ Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
 
 Route::get('/login','loginController@index');
+
