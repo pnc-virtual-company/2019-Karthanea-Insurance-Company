@@ -200,9 +200,9 @@
                                         <form>
                                             <div class="form-group">
                                                 <div class="row">
-                                                    <label for="">Client</label>
+                                                    <label for="search">Client</label>
                                                     <div class="col-10">
-                                                        <input type="text" class="form-control" placeholder="Search">
+                                                        <input type="text" id="search" class="form-control" placeholder="Search">
                                                     </div>
                                                 </div>
                                             </div>
@@ -225,10 +225,8 @@
                                                         <div class="row">
                                                                 <div class="col-3">
                                                                         <label for="">Status</label>
-                                                                    
                                                                  </div>
                                                                  <div class="col-6">
-                                                                      
                                                                     <select class="browser-default custom-select">
                                                                         <option selected>Open</option>                                                                                <option value="1">To be completed</option>
                                                                         <option value="2">To be signed</option>
@@ -361,16 +359,14 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-                                                      <button type="button" class="btn btn-danger">Cancel</button>
+                                                      <button type="button" class="btn btn-info">OK</button>
+                                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                                     </div>
                                                   </div>
                                                 </div>
                                               </div>
                                         
-                                        
                                               {{-- model delete --}}
-                                        
                                           <div class="modal fade" id="deleteContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                   <div class="modal-content">
@@ -384,8 +380,8 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-                                                      <button type="button" class="btn btn-danger">No</button>
+                                                      <button type="button" class="btn btn-info">OK</button>
+                                                      <button type="button" class="btn btn-danger"  data-dismiss="modal">No</button>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -395,8 +391,8 @@
                                             </div>
                                          </div>
                                          <div class="modal-footer">
-                                            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-                                            <button type="button" class="btn btn-danger">Cancel</button>
+                                            <button type="button" class="btn btn-info" >OK</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                           </div>
                                     </div>
                              </div>
