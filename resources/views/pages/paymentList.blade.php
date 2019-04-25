@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1>Paymets</h1>
+        <h1>Payments</h1>
         <div class="card">
             <div class="card-body">
                 {{-- <table id="myTable" class="table table-striped table-bordered table-hover"> --}}
