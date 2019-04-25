@@ -78,3 +78,4 @@ Route::get('/chart','ChartController@index');
 
 Route::get('/payment','paymentController@index');
 Route::get('/login','loginController@index');
+Route::get('/date','PageController@datepicker');
