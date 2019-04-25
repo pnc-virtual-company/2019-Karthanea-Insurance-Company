@@ -24,42 +24,34 @@
                             <div class="col s12 ">
                               <div class="card-panel ">
                                	  	<div class="card  bg-info p-4 shadow-lg">
-                               	  		<h6 class="text-center text-white">Login</h6>
+                               	  		<h6 class="text-center text-white">Register</h6>
                                	  	</div>
                                     <div class="input-field">
                                             <i class="material-icons prefix" class="text-secondary">markunread</i>
                                             <input type="text" id="autocomplete-input" class="autocomplete icons">
-                                            <label for="autocomplete-input ">Email</label>
+                                            <label for="autocomplete-input ">Username</label>
                                      </div>
                                      <div class="input-field">
-                                            <i class="material-icons prefix">https</i>
+                                            <i class="material-icons prefix">map</i>
                                             <input type="text" id="autocomplete-input" class="autocomplete icons">
-                                            <label for="autocomplete-input">Password</label>
+                                            <label for="autocomplete-input">Address</label>
+                                     </div>
+                                     <div class="input-field">
+                                            <i class="material-icons prefix">call</i>
+                                            <input type="text" id="autocomplete-input" class="autocomplete icons">
+                                            <label for="autocomplete-input">Phone Number</label>
+                                     </div>
+                                     <div class="input-field">
+                                            <i class="material-icons prefix">markunread</i>
+                                            <input type="text" id="autocomplete-input" class="autocomplete icons">
+                                            <label for="autocomplete-input">Address</label>
                                      </div>
                                      <footer>
                                             <div class="container">
                                              <div class="row text-center">
                                                 <form action="">
                                                     <div class="form-group">
-                                                        <a href="{{url('/')}}" class="btn btn-info btn-sm right text-white text-center">LOGIN</a>
-                                                    </div>
-                                                    <div class="form-group text-info">
-                                                        <div class="title">
-                                                            <div class="title-row">
-                                                              <div class="bar-container">
-                                                                <div class="bar"></div>
-                                                              </div>
-                                                              <div class="text">
-                                                                <p>OR</p>
-                                                              </div>
-                                                              <div class="bar-container">
-                                                                <div class="bar"></div>
-                                                              </div>
-                                                            </div>
-                                                          </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <a href="{{url('/register')}}" class="btn btn-info btn-sm right text-white text-center">Register</a>
+                                                        <a href="{{url('/login')}}" class="btn btn-info btn-sm right text-white">Submit Register</a>
                                                     </div>
                                                   </form>
                                              </div>
