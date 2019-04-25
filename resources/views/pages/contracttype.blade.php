@@ -127,7 +127,7 @@
             <div class="modal-body">
               <form action="#" method="POST" >
                   <div class="row">
-                      <div class="col-4"><p>Type of contract</p></div>
+                      <div class="col-4"><p>Edit of contract</p></div>
                       <div class="col-7">
                           <div class="form-group">
                           
