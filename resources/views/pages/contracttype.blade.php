@@ -46,12 +46,7 @@
                    
                 </table>
 
-                <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example"><i class='material-icons mr-2'>add_circle_outline</i>Create new contract type</button>
-       
-
-                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create contract type</button>
-                <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example"><i class='material-icons mr-2'>add_circle_outline</i>Create new contract type</button>
-                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType">Create contract type</button>
+                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create New contract type</button>
             </div>
 
             </div>

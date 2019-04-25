@@ -19,9 +19,6 @@ class PageController extends Controller
     public function createContractType(){
         return view('pages.createContractType');
     }
-    public function OpenNewCall(){
-        return view('pages.OpenNewCall');
-    }
     public function location(){
         return view('pages.location');
     }
