@@ -3,7 +3,7 @@
     margin: -50px 6% 30px;
 }
 body {
-    background-image: linear-gradient(rgba(12, 98, 111) ,rgba(12, 98, 111)), url('../images/bg.jpg'); 
+    background-image: linear-gradient(rgb(0,0,0,0.7) ,rgb(0,0,0,0.7),rgb(0,0,0,0.7),rgb(0,0,0,0.7)), url('../images/bg.jpg'); 
     height: 80vh;
     background-size: cover;
     background-position: center;
