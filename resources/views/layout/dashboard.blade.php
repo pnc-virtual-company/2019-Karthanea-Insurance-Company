@@ -8,6 +8,11 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+
+  
+  <!-- pei chart link -->
+  <script src="https://cdnjs.com/libraries/Chart.js"></script>
+
 <!-- link calendar -->
 <link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
 <link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
@@ -15,6 +20,7 @@
 <script src='{{asset('packages/interaction/main.js')}}'></script>
 <script src='{{asset('packages/daygrid/main.js')}}'></script>
 <script src='{{asset('js/calendar.js')}}'></script>
+
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -34,6 +40,7 @@
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
   
+
 </head>
 {{-- class="dark-edition" --}}
 <body>
@@ -428,7 +435,31 @@
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <script>
       $(document).ready(function() {
-          $('#myTable').DataTable();
+          $('#myTable').DataTable({
+
+          });
+      } );
+      $(document).ready(function() {
+          $('#myTables').DataTable();
+      } );
+      $(document).ready(function() {
+          $('#myTable1').DataTable({
+            // "bInfo" : false
+            // "bPaginate": false,
+    // "bLengthChange": false,
+    "bFilter": true,
+    "bInfo": false,
+    // "bAutoWidth": false
+          });
+      } );
+      $(document).ready(function() {
+          $('#myTable2').DataTable({
+            // "paging": false,
+            "searching": false,
+            "fillter": false
+            // "bFilter": true
+            // "bInfo" : false
+          });
       } );
   </script>
 </body>
