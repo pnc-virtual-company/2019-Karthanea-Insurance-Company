@@ -9,18 +9,16 @@
       {{ config('app.name', 'Skeleton') }}
   </title>
 
-  
   <!-- pei chart link -->
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
 
-<!-- link calendar -->
-<link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
-<link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
-<script src='{{asset('packages/core/main.js')}}'></script>
-<script src='{{asset('packages/interaction/main.js')}}'></script>
-<script src='{{asset('packages/daygrid/main.js')}}'></script>
-<script src='{{asset('js/calendar.js')}}'></script>
-
+  <!-- link calendar -->
+  <link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
+  <link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
+  <script src='{{asset('packages/core/main.js')}}'></script>
+  <script src='{{asset('packages/interaction/main.js')}}'></script>
+  <script src='{{asset('packages/daygrid/main.js')}}'></script>
+  <script src='{{asset('js/calendar.js')}}'></script>
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -45,81 +43,88 @@
    
 </head>
 {{-- class="dark-edition" --}}
-<body>
+<body >
   <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('images/sidebar-4.jpg')}}">
+    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('images/sidebar-3.jpg')}}">
       <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger | primary |"
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger "
 
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo bg-teal">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="{{url('/')}}" class="simple-text logo-normal">
           <img src="{{asset('images/logo-1.png')}}" alt="brand logo">
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active">
-                <a href="#submenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
+                <a href="#submenu" data-toggle="collapse" id="dashboard" aria-expanded="false" class="nav-link">
                     <i class="material-icons">color_lens</i>
-                    <p>Dashboard</p>
+                    <p>
+                      Dashboard
+                      <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
+                      <span class="material-icons ml-5" id="dashUp">arrow_drop_up</span>
+                    </p>
                   </a>
-                <ul class="collapse list-unstyled" id="submenu">
+                  <ul class="collapse list-unstyled" id="submenu">
                     <li class="list-group-item collapsed">
                       <a href="{{url('/client')}}">
-                          <p>
+                          <span>
                               <i class="material-icons text-info">format_list_numbered</i>
                             Clients List
-                          </p>
+                          </span>
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
                       <a href="{{url('/chart')}}">
-                          <p>
+                          <span>
                             <i class="material-icons text-info">pie_chart</i>
                             Occupency
-                          </p>
+                          </span>
                         </a>
                     </li>
                 </ul>
             </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+            <a class="nav-link" href="#pageSubmenu" id="management" data-toggle="collapse" aria-expanded="false">
               <i class="material-icons">work</i>
-              <p>Managements</p>
+              <p>Managements
+                  <span class="material-icons ml-4" id="manageDown">arrow_drop_down</span>
+                  <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span>
+              </p>
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li class="list-group-item collapsed">
                   <a href="{{url('/contract')}}">
-                      <p>
+                      <span>
                           <i class="material-icons text-info">ballot</i>
                         Contract Type
-                      </p>
+                      </span>
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
                   <a href="{{url('/contractlist')}}">
-                      <p>
+                      <span>
                         <i class="material-icons text-info">description</i>
                         Contract List
-                      </p>
+                      </span>
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
                     <a href="{{url('/client')}}">
-                      <p>
+                      <span>
                         <i class="material-icons text-info">people</i>
                         Clients
-                      </p>
+                      </span>
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
                     <a href="{{url('/payment')}}">
-                      <p>
+                      <span>
                         <i class="material-icons text-info">monetization_on</i>
                         Payments
-                      </p>
+                      </span>
                     </a>
                 </li>
             </ul>
@@ -416,10 +421,17 @@
   </script>
   <script>
     $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
-      $('#example').DataTable();
-                        
+      $('#example').DataTable();                
+    });
+
+    $(document).ready(function() {
+      md.initDashboardPageCharts();
+      $('#myTable').DataTable();                
+    });
+    $(document).ready(function() {
+      md.initDashboardPageCharts();
+      $('#contractType').DataTable();                
     });
 </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
@@ -427,9 +439,10 @@
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
   <script>
       $(document).ready(function() {
-          $('#myTabless').DataTable({
+          $('#myTable').DataTable({
             "searching": false,
             "lengthChange": false
 
@@ -453,7 +466,12 @@
             "searching": false,
             "lengthChange": false
           });
+          $('#myTable3').DataTable({
+            "searching": false,
+            "lengthChange": false
+          });
       } );
   </script>
+
 </body>
 </html>
