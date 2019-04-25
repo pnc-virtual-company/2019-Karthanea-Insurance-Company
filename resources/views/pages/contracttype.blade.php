@@ -52,40 +52,8 @@
             </div>
         </div>
        
-  {{-- model create --}}
-    
-        <div class="modal fade bd-example" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog ">
-            <div class="modal-content">
-                    <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Create new contract type</h5>
-                          </div>
-                          <div class="card-body">
-                                <div class="modal-body">
-                                        <form>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                        <label for="">Type of contract</label>
-                                                        <div class="col-8">
-                                                            <input type="text" class="form-control" placeholder="type of contract">
-              
-                
-                                                         </div>
-                                                  </div>
-                                
-                                             </div>
-                                        </form>
-                                </div>
-                             </div>
-                             <div class="modal-footer">
-                                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-                                <button type="button" class="btn btn-danger">Cancel</button>
-                              </div>
-                        </div>
-                 </div>
-            </div>
-        </div>
-
+  
+        
         {{-- model create --}}
 
   <div class="modal fade" id="createContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -449,6 +449,10 @@
             "searching": false,
             "lengthChange": false
           });
+          $('#myTable3').DataTable({
+            "searching": false,
+            "lengthChange": false
+          });
       } );
   </script>
 </body>
