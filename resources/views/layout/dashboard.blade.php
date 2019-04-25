@@ -311,8 +311,6 @@
 
           $(this).parent('li').siblings().removeClass('active');
           $(this).parent('li').addClass('active');
-
-
           var new_image = $(this).find("img").attr('src');
 
           if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
