@@ -83,7 +83,7 @@
                 </ul>
             </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{{url('/')}}">
+            <a class="nav-link" href="{{url('/contract')}}">
               <i class="material-icons">list</i>
               <p>Contract Type</p>
             </a>
@@ -95,7 +95,7 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/')}}">
+                  <a href="{{url('/contract')}}">
                       <p>
                           <i class="material-icons text-info">ballot</i>
                         Contract Type
@@ -103,7 +103,7 @@
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/')}}">
+                  <a href="{{url('/contractlist')}}">
                       <p>
                         <i class="material-icons text-info">description</i>
                         Contract List
@@ -129,7 +129,7 @@
             </ul>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="{{url('/openNewCall')}}">
+            <a class="nav-link" href="{{url('/call')}}">
               <i class="material-icons">settings_phone</i>
               <p>Calling</p>
             </a>

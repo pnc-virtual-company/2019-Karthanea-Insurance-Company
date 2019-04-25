@@ -44,9 +44,7 @@
                     </tbody>
                    
                 </table>
-                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create contract type</button>
-                <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example"><i class='material-icons mr-2'>add_circle_outline</i>Create new contract type</button>
-                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType">Create contract type</button>
+                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create New contract type</button>
             </div>
             </div>
             </div>
@@ -66,17 +64,13 @@
         </div>
         <div class="modal-body">
           <form action="#" method="POST" >
-              <div class="form-group">
-                  <label for="contracttype">Type of contract</label> 
-                  <input type="text" name="contracttype" id="contracttype" class="form-control">
-            <div class="row">
-              <div class="col-4"><p>Type of contract</p></div>
-              <div class="col-7">
-                  <div class="form-group">
-                  
-                      <input type="text" name="contracttype" id="" class="form-control">
-                  </div>
-              </div>
+              <div class="row">
+                <div class="col-4"><label for="contracttype">Type of contract</label></div>
+                <div class="col-7">
+                    <div class="form-group">
+                        <input type="text" name="contracttype" id="contracttype" class="form-control">
+                    </div>
+                </div>
             </div>
               
           </form>
