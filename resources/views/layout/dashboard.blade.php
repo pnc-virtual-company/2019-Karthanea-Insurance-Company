@@ -431,7 +431,16 @@
     });
     $(document).ready(function() {
       md.initDashboardPageCharts();
-      $('#contractType').DataTable();                
+      $('#myTable3').DataTable();                
+    });
+    $(document).ready(function() {
+      md.initDashboardPageCharts();
+      $('#myTable4').DataTable();                
+    });
+    $(document).ready(function() {
+      md.initDashboardPageCharts();
+      $('#contractType').DataTable();  
+
     });
 </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
@@ -441,36 +450,36 @@
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
   <script>
-      $(document).ready(function() {
-          $('#myTable').DataTable({
-            "searching": false,
-            "lengthChange": false
+      // $(document).ready(function() {
+      //     $('#myTable').DataTable({
+      //       "searching": false,
+      //       "lengthChange": false
 
-          });
-      } );
-      $(document).ready(function() {
-          $('#myTables').DataTable({
-            "lengthChange": false,
-            "paging": false,
-            "bInfo" : false
-          });
-      } );
-      $(document).ready(function() {
-          $('#myTable1').DataTable({
-            "sDom": "lfrti",
-            "bInfo" : false
-          });
-      } );
-      $(document).ready(function() {
-          $('#myTable2').DataTable({
-            "searching": false,
-            "lengthChange": false
-          });
-          $('#myTable3').DataTable({
-            "searching": false,
-            "lengthChange": false
-          });
-      } );
+      //     });
+      // } );
+      // $(document).ready(function() {
+      //     $('#myTables').DataTable({
+      //       "lengthChange": false,
+      //       "paging": false,
+      //       "bInfo" : false
+      //     });
+      // } );
+      // $(document).ready(function() {
+      //     $('#myTable1').DataTable({
+      //       "sDom": "lfrti",
+      //       "bInfo" : false
+      //     });
+      // } );
+      // $(document).ready(function() {
+      //     $('#myTable2').DataTable({
+      //       "searching": false,
+      //       "lengthChange": false
+      //     });
+      //     $('#myTable3').DataTable({
+      //       "searching": false,
+      //       "lengthChange": false
+      //     });
+      // } );
   </script>
 
 </body>
