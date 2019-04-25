@@ -29,7 +29,7 @@
                                             2
                                         </td>
                                         <td>Li</td>
-                                        <td>File</td>
+                                        <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
                                         <td><i class="material-icons text-primary text-center">call</i></td>
                                     </tr>
                                 </tbody>
@@ -65,7 +65,7 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('js/login.js')}}"></script>
+    <script src="{{asset('js/table.js')}}"></script>
     {{-- modal new call  --}}
     <div class="modal fade bd-example-modal-lg" id="openNewCall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -155,7 +155,7 @@
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-                <button type="button" class="btn btn-danger">Cancel</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
               </div>
             </div>
           </div>

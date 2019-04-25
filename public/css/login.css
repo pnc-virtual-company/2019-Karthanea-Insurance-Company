@@ -3,10 +3,11 @@
     margin: -50px 6% 30px;
 }
 body {
-    background-image: linear-gradient(rgba(0,0,0,0.5) ,rgba(0,0,0,0.5)), url('../images/bg.jpg'); 
+    background-image: linear-gradient(rgb(0,0,0,0.7) ,rgb(0,0,0,0.7),rgb(0,0,0,0.7),rgb(0,0,0,0.7)), url('../images/bg.jpg'); 
     height: 80vh;
     background-size: cover;
     background-position: center;
+    color:lightseagreen;
 }
 .input-field .prefix {
     font-size: 1.6rem;
@@ -31,18 +32,27 @@ form {
   .bar-container {
     display: table-cell;
     position: relative;
+
     width: 50%;
   }
   .bar {
     position: absolute;
     width: 100%;
-    top: 35%;
+    top: 30%;
     border-bottom: 1px solid black;
   }
   .text {
     display: table-cell;
-    font-size: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+    font-size: 10px;
   }
-  a.btn.btn-info.right.text-white.text-center {
-    margin-top: -12px;
+  a.btn.btn-info.right.text-white {
+    margin-top: -25px;
+}
+p {
+  font-size: 14px;
+}
+form {
+  margin-top: 24px;
 }

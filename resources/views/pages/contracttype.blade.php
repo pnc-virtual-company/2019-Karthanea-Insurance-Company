@@ -80,7 +80,10 @@
                                 </div>
                              </div>
                              <div class="modal-footer">
-                                <button type="button" class="btn btn-info" >OK</button>
+
+                                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                
+
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                               </div>
                         </div>
@@ -128,7 +131,7 @@
             <div class="modal-body">
               <form action="#" method="POST" >
                   <div class="row">
-                      <div class="col-4"><p>Type of contract</p></div>
+                      <div class="col-4"><p>Edit of contract</p></div>
                       <div class="col-7">
                           <div class="form-group">
                           
@@ -139,14 +142,13 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+              <button type="button" class="btn btn-info">OK</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
           </div>
         </div>
       </div>
       {{-- model delete --}}
-
   <div class="modal fade" id="deleteContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -160,7 +162,7 @@
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+              <button type="button" class="btn btn-info" >OK</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
             </div>
           </div>

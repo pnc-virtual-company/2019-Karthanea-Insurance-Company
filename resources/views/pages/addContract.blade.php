@@ -66,6 +66,7 @@
                                                             </td>
                                                         </tr>
 
+
                             
                                        
                                                  
@@ -94,79 +95,119 @@
                                   <div class="card-body">
                                         <div class="modal-body">
                                                 <form>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <label for="">Client</label>
-                                                            <div class="col-10">
-                                                                <input type="text" class="form-control" placeholder="Search">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    
-                                                    <div class="form-group ">
-                                                        <div class="row">
-                                                            <label for="" >Type</label>
-                                                           <div class="col-5">
-                                                                <div class="row">
-                                                                        <div class="input-group col-md-12">
-                                                                            <input class="form-control py-2" type="search" value="search" id="example-search-input">
-                                                                            <span class="input-group-append">
-                                                                                <button data-toggle="modal" data-target="#selectAddContract" class="btn btn-outline-secondary bg-info text-white" type="button" style="margin-top:0%;">
-                                                                                   Select
-                                                                                </button>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>                            
-                                                            </div>
-                                                            
-                                                            <div class="col-6">
-
-                                                                <div class="row">
-                                                                        <div class="col-3">
-                                                                                <label for="">Status</label>
-                                                                            
-                                                                         </div>
-                                                                         <div class="col-6">
-                                                                              
-                                                                            <select class="browser-default custom-select">
-                                                                                <option selected>Open</option>                                                                                <option value="1">To be completed</option>
-                                                                                <option value="2">To be signed</option>
-                                                                                <option value="3">Closed</option>
-                                                                            </select>
-                                                                         </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-2">
+                                                                        <label for="">Client</label>
+                                                                </div>
+                                                               
+                                                                <div class="col-10">
+                                                                    <input type="text" class="form-control" placeholder="Search">
                                                                 </div>
                                                             </div>
-                                                             
+                                                        </div>
+                                                        
+                                                        <div class="form-group ">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="row">
+                                                                        <div class="col-2">
+                                                                          <label for="">Type</label>
+                                                                        </div>
+                                                                        <div class="col-10">
+                                                                                <div class="input-group col-md-12">
+                                                                                        <input class="form-control py-2" type="search" value="search" id="example-search-input">
+                                                                                        <span class="input-group-append">
+                                                                                            <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectAddContract" type="button" style="margin-top:0%;">
+                                                                                               Select
+                                                                                            </button>
+                                                                                        </span>
+                                                                                    </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                      
+                                                                
+                                                                <div class="col-6">
+            
+                                                                    <div class="row">
+                                                                            <div class="col-6">
+                                                                                    <label for="">Status</label>
+                                                                                
+                                                                             </div>
+                                                                             <div class="col-6">
+                                                                                  
+                                                                                <select class="browser-default custom-select">
+                                                                                    <option selected>Open</option>                                                                                <option value="1">To be completed</option>
+                                                                                    <option value="2">To be signed</option>
+                                                                                    <option value="3">Closed</option>
+                                                                                </select>
+                                                                             </div>
+                                                                    </div>
+                                                                </div>
+                                                                 
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="row">
+                                                                        <div class="col-3">
+                                                                                <label for="startDate">Start date</label>
+                                                                        </div>
+                                                                        <div class="col-9">
+                                                                                <div class="row">
+                                                                                    <div class="col-8">
+                                                                                            <input type="date" class="form-control" id='startDate'> 
+                                                                                    </div>
+                                                                                    <div class="col-3">
+                                                                                            <div class="input-group-btn">
+                                                                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                             </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                       
+                                                                                   
+                                                                                   
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                               
+                                                              <div class="col-6">
+                                                                  <div class="row">
+                                                                      <div class="col-3">
+                                                                            <label for="endDate">End Date</label>
+                                                                      </div>
+                                                                      <div class="col-9">
+                                                                          <div class="row">
+                                                                              <div class="col-9">
+                                                                                    <input type="date" class="form-control" id='endDate'>
+                                                                              </div>
+                                                                              <div class="col-3">
+                                                                                    <div class="input-group-btn">
+                                                                                            <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                     </div>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
                                                             
+                                                            
+                                                            
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    
-                                                        <div class="row">
-                                                            <label for="startDate">Start date</label>
-                                                        <div class="col-4">
-                                                             <input type="date" class="form-control" id='startDate'> 
+                                                        <div class="form-group ">
+                                                            <div class="row">
+                                                                <div class="col-2"><label for="" >Monthly bill</label></div>
+                                                                
+                                                                <div class="col-10">
+                                                                    <input type="text" class="form-control">
+                                                                </div>   
+                                                            </div>
                                                         </div>
-                                                        <div class="input-group-btn">
-                                                                <button class="btn btn-default" id='datetimepicker' ><i class="material-icons">date_range</i></button>
-                                                         </div>
-                                                        <label for="endDate">End Date</label>
-                                                        <div class="col-4">
-                                                                <input type="date" class="form-control" id='endDate'>
-                                                        </div>
-                                                        <div class="input-group-btn"  >
-                                                                <button class="btn btn-default" id='datetimepicker' ><i class="material-icons">date_range</i></button>
-                                                         </div>
-                                                        </div>
-                                                 
-                                                    <div class="form-group ">
-                                                        <div class="row">
-                                                            <label for="" >Monthly bill</label>
-                                                            <div class="col-4">
-                                                                <input type="text" class="form-control">
-                                                            </div>   
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                    </form>
                                             </div>
                                         </div>
                                     <div class="modal-footer mr-5">
@@ -197,75 +238,124 @@
                           <div class="card-body">
                                 <div class="modal-body">
                                         <form>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <label for="">Client</label>
-                                                    <div class="col-10">
-                                                        <input type="text" class="form-control" placeholder="Search">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            
-                                            <div class="form-group ">
-                                                <div class="row">
-                                                        <div class="row">
-                                                                <div class="input-group col-md-12">
-                                                                    <input class="form-control py-2" type="search" value="search" id="example-search-input">
-                                                                    <span class="input-group-append">
-                                                                        <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectAddContract" type="button" style="margin-top:0%;">
-                                                                           Select
-                                                                        </button>
-                                                                    </span>
+
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                                <label for="">Client</label>
+                                                        </div>
+                                                       
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control" placeholder="Search">
+                                                        </div>
+
+                                           
+                                                
+                                                <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="row">
+                                                                <div class="col-2">
+                                                                  <label for="">Type</label>
                                                                 </div>
+
+                                                                <div class="col-10">
+                                                                        <div class="input-group col-md-12">
+                                                                                <input class="form-control py-2" type="search" value="search" id="example-search-input">
+                                                                                <span class="input-group-append">
+                                                                                    <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectAddContract" type="button" style="margin-top:0%;">
+                                                                                       Select
+                                                                                    </button>
+                                                                                </span>
+                                                                            </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                              
+                                                        
+                                                        <div class="col-6">
+    
+                                                            <div class="row">
+                                                                    <div class="col-6">
+                                                                            <label for="">Status</label>
+                                                                        
+                                                                     </div>
+                                                                     <div class="col-6">
+                                                                          
+                                                                        <select class="browser-default custom-select">
+                                                                            <option selected>Open</option>                                                                                <option value="1">To be completed</option>
+                                                                            <option value="2">To be signed</option>
+                                                                            <option value="3">Closed</option>
+                                                                        </select>
+                                                                     </div>
+                                                            </div>
+
                                                             </div>   
                                                     
-                                                    <div class="col-6">
-
-                                                        <div class="row">
-                                                                <div class="col-3">
-                                                                        <label for="">Status</label>
-                                                                    
-                                                                 </div>
-                                                                 <div class="col-6">
-                                                                      
-                                                                    <select class="browser-default custom-select">
-                                                                        <option selected>Open</option>                                                                                <option value="1">To be completed</option>
-                                                                        <option value="2">To be signed</option>
-                                                                        <option value="3">Closed</option>
-                                                                    </select>
-                                                                 </div>
-                                                        </div>
+                                                  
+                                                         
+                                                        
                                                     </div>
-                                                     
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-6">
+                                                            <div class="row">
+                                                                <div class="col-3">
+                                                                        <label for="startDate">Start date</label>
+                                                                </div>
+                                                                <div class="col-9">
+                                                                        <div class="row">
+                                                                            <div class="col-8">
+                                                                                    <input type="date" class="form-control" id='startDate'> 
+                                                                            </div>
+                                                                            <div class="col-3">
+                                                                                    <div class="input-group-btn">
+                                                                                            <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                     </div>
+                                                                            </div>
+                                                                        </div>
+                                                                               
+                                                                           
+                                                                           
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                       
+                                                      <div class="col-6">
+                                                          <div class="row">
+                                                              <div class="col-3">
+                                                                    <label for="endDate">End Date</label>
+                                                              </div>
+                                                              <div class="col-9">
+                                                                  <div class="row">
+                                                                      <div class="col-9">
+                                                                            <input type="date" class="form-control" id='endDate'>
+                                                                      </div>
+                                                                      <div class="col-3">
+                                                                            <div class="input-group-btn">
+                                                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                             </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                          </div>
+                                                      </div>
                                                     
+                                                    
+                                                    
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="row">
-                                                    <label for="startDate">Start date</label>
-                                                <div class="col-4">
-                                                     <input type="date" class="form-control" id='startDate'> 
+                                                <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-2"><label for="" >Monthly bill</label></div>
+                                                        
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control">
+                                                        </div>   
+                                                    </div>
                                                 </div>
-                                                <div class="input-group-btn">
-                                                        <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
-                                                 </div>
-                                                <label for="endDate">End Date</label>
-                                                <div class="col-4">
-                                                        <input type="date" class="form-control" id='endDate'>
-                                                </div>
-                                                <div class="input-group-btn">
-                                                        <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
-                                                 </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group ">
-                                                <div class="row">
-                                                    <label for="" >Monthly bill</label>
-                                                    <div class="col-4">
-                                                        <input type="text" class="form-control">
-                                                    </div>   
-                                                </div>
-                                            </div>
+                                            
                                         </form>
                                     </div>
                                 </div>
@@ -360,16 +450,17 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                      <button type="button" class="btn btn-info" >OK</button>
+
+
+
+                                                  
                                                       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                                     </div>
                                                   </div>
                                                 </div>
                                               </div>
                                         
-                                        
                                               {{-- model delete --}}
-                                        
                                           <div class="modal fade" id="deleteContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                   <div class="modal-content">
@@ -383,8 +474,11 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
+
                                                       <button type="button" class="btn btn-info" >OK</button>
                                                       <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+
+                                                   
                                                     </div>
                                                   </div>
                                                 </div>
@@ -394,14 +488,18 @@
                                             </div>
                                          </div>
                                          <div class="modal-footer">
+
                                             <button type="button" class="btn btn-info">OK</button>
                                             <button type="button" class="btn btn-danger"  data-dismiss="modal">Cancel</button>
+
                                           </div>
                                     </div>
                              </div>
                         </div>
                     </div>
+
     
 
 
+=
 @endsection
