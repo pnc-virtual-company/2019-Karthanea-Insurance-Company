@@ -8,9 +8,19 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+
   
   <!-- pei chart link -->
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
+
+<!-- link calendar -->
+<link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
+<link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
+<script src='{{asset('packages/core/main.js')}}'></script>
+<script src='{{asset('packages/interaction/main.js')}}'></script>
+<script src='{{asset('packages/daygrid/main.js')}}'></script>
+<script src='{{asset('js/calendar.js')}}'></script>
+
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -64,7 +74,7 @@
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
-                      <a href="#">
+                      <a href="{{url('/chart')}}">
                           <p>
                             <i class="material-icons text-info">pie_chart</i>
                             Occupency
@@ -126,7 +136,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="{{url('/calendar')}}">
               <i class="material-icons">calendar_today</i>
               <p>Calendar</p>
             </a>
@@ -195,7 +205,7 @@
         <li class="adjustments-line">
           <a href="javascript:void(0)" class="switch-trigger active-color">
             <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-primary active" data-color="lightblue"></span>
+              <span class="badge filter badge-primary active" data-color="green"></span>
               <span class="badge filter badge-azure" data-color="azure"></span>
               <span class="badge filter badge-green" data-color="green"></span>
               <span class="badge filter badge-warning" data-color="orange"></span>
@@ -426,7 +436,31 @@
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <script>
       $(document).ready(function() {
-          $('#myTable').DataTable();
+          $('#myTable').DataTable({
+
+          });
+      } );
+      $(document).ready(function() {
+          $('#myTables').DataTable();
+      } );
+      $(document).ready(function() {
+          $('#myTable1').DataTable({
+            // "bInfo" : false
+            // "bPaginate": false,
+    // "bLengthChange": false,
+    "bFilter": true,
+    "bInfo": false,
+    // "bAutoWidth": false
+          });
+      } );
+      $(document).ready(function() {
+          $('#myTable2').DataTable({
+            // "paging": false,
+            "searching": false,
+            "fillter": false
+            // "bFilter": true
+            // "bInfo" : false
+          });
       } );
   </script>
 </body>

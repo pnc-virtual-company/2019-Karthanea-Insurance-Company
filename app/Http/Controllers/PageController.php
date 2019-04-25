@@ -89,4 +89,7 @@ public function updatecontractype(){
     {
         //
     }
+    public function contractlist(){
+        return view('pages.addContract');
+    }
 }
