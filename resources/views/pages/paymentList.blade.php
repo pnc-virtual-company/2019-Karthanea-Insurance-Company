@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1>List of Paymets</h1>
+        <h1>Paymets</h1>
         <div class="card">
             <div class="card-body">
                 {{-- <table id="myTable" class="table table-striped table-bordered table-hover"> --}}
@@ -70,7 +70,7 @@
                                             <tr>
                                                 <td>Oct.2019.12</td>
                                                 <td>$15</td>
-                                                <td>Paid <a href="#"><i class="material-icons text-success">create</i></a></td>
+                                                <td>Paid <a href="#"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
                                                 <td>5/11/2019</td>
                                                 <td>file</td>
                                             </tr>
@@ -85,4 +85,35 @@
             </div>
         </div>
     </div>
+    {{-- payment model update status --}}
+    
+    <div class="modal fade" id="editPayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit payment status</h5>
+            </div>
+            <div class="modal-body">
+              <form action="#" method="POST" >
+                  <div class="row">
+                      <div class="col-2"><p> Status</p></div>
+                      <div class="col-6">
+                            <select class=" custom-select">
+                                    <option selected>Unpaid</option>
+                                    <option value="1">Paid</option>
+                                    
+                            </select>
+                      </div>
+                  </div>
+                 
+                  
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+              <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection

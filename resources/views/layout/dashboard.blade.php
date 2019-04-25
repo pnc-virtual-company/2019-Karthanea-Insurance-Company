@@ -8,6 +8,11 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+
+  
+  <!-- pei chart link -->
+  <script src="https://cdnjs.com/libraries/Chart.js"></script>
+
 <!-- link calendar -->
 <link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
 <link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
@@ -15,6 +20,7 @@
 <script src='{{asset('packages/interaction/main.js')}}'></script>
 <script src='{{asset('packages/daygrid/main.js')}}'></script>
 <script src='{{asset('js/calendar.js')}}'></script>
+
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -35,6 +41,7 @@
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
   <link rel="stylesheet" href="{{asset('css/contracttype.css')}}">
   
+
 </head>
 {{-- class="dark-edition" --}}
 <body>
