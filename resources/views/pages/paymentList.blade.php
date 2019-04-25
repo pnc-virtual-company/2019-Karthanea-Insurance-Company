@@ -73,7 +73,7 @@
                                                     </a>
                                             </td>
 
-                                            <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
+                                            
 
                                         </tr>
                                     </tbody>
