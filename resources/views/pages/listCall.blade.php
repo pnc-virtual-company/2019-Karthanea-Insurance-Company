@@ -1,3 +1,4 @@
+
 @extends('layout.dashboard')
 @section('content')
     <div class="container">
@@ -64,8 +65,7 @@
             </div>
         </div>
     </div>
-
-    
+    <script src="{{asset('js/login.js')}}"></script>
     {{-- modal new call  --}}
     <div class="modal fade bd-example-modal-lg" id="openNewCall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
