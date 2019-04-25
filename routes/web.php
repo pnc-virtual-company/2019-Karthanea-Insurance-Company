@@ -75,7 +75,7 @@ Route::resource('/contract','contractsController');
 Route::get('/createContract','PageController@createContractType');
 Route::get('/openNewCall','PageController@OpenNewCall');
 
-Route::resource('/home','PageController@index');
+Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
 <<<<<<< HEAD
 <<<<<<< HEAD

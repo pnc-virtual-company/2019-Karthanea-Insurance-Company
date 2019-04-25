@@ -39,7 +39,6 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
-  <link rel="stylesheet" href="{{asset('css/contracttype.css')}}">
   
 
 </head>
@@ -130,7 +129,7 @@
             </ul>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="{{url('/openNewCall')}}">
               <i class="material-icons">settings_phone</i>
               <p>Calling</p>
             </a>
@@ -142,7 +141,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
+            <a class="nav-link" href="{{url('/location')}}">
               <i class="material-icons">location_ons</i>
               <p>Location</p>
             </a>

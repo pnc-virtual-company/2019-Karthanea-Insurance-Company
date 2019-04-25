@@ -44,16 +44,11 @@
                     </tbody>
                    
                 </table>
-<<<<<<< HEAD
+                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create contract type</button>
                 <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example"><i class='material-icons mr-2'>add_circle_outline</i>Create new contract type</button>
-       
-=======
                 <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType">Create contract type</button>
-                
             </div>
             </div>
-           
->>>>>>> c29191a361d2339bfac197e8339ad58eda064546
             </div>
         </div>
 
@@ -71,6 +66,9 @@
         </div>
         <div class="modal-body">
           <form action="#" method="POST" >
+              <div class="form-group">
+                  <label for="contracttype">Type of contract</label> 
+                  <input type="text" name="contracttype" id="contracttype" class="form-control">
             <div class="row">
               <div class="col-4"><p>Type of contract</p></div>
               <div class="col-7">
@@ -84,8 +82,8 @@
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-          <button type="button" class="btn btn-danger">Cancel</button>
+          <button type="submit" class="btn btn-info">Ok</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
