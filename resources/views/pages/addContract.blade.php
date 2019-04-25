@@ -493,6 +493,29 @@
                                             <i class="material-icons text-danger">chrome_reader_mode</i>
                                     </a>
                                 </td>
+                                <td>ofasdfasdfsdfpen</td>
+                                <td>dd/mm/yyyy</td>
+                                <td>dd/mm/yyyy</td>
+                                <td>$15</td>
+                                <td>
+                                    <a href="#" class="text-center">
+                                       $
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    1
+                                    <a href="#" class="text-center">
+                                        <i class="material-icons text-success">edit</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    Car
+                                    <a href="#" class="text-center">
+                                            <i class="material-icons text-danger">chrome_reader_mode</i>
+                                    </a>
+                                </td>
                                 <td>open</td>
                                 <td>dd/mm/yyyy</td>
                                 <td>dd/mm/yyyy</td>
