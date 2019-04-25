@@ -1,10 +1,9 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1>Paymets</h1>
+        <h1>Payments</h1>
         <div class="card">
             <div class="card-body">
-                {{-- <table id="myTable" class="table table-striped table-bordered table-hover"> --}}
                         <table id="myTables" class="table table-striped table-bordered table-hover">
                                 <thead class="bg-dark text-white">
                                     <tr>
@@ -56,7 +55,7 @@
                                     </tbody>
                                 </table>
             
-                                <table  id="myTable" class="table table-striped table-bordered table-hover">
+                                <table  id="myTabless" class="table table-striped table-bordered table-hover">
                                         <thead class="bg-dark text-white">
                                             <tr>
                                                 <th>Month</th>
@@ -85,6 +84,7 @@
             </div>
         </div>
     </div>
+    <script src="{{asset('js/login.js')}}"></script>
     {{-- payment model update status --}}
     
     <div class="modal fade" id="editPayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

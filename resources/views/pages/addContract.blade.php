@@ -5,7 +5,11 @@
         <h1>List of contract</h1>
             <div class="card">
                 <div class="card-body">
+
                     <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+
+                        <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+
                         <thead class="bg-dark text-white">
                             <tr>
                                 <th>ID</th>
@@ -19,6 +23,7 @@
                         </thead>
 
                         <tbody>
+
                             
                                             <tr>
                                                     <td>
@@ -44,6 +49,57 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
+
+                            <tr>
+                                <td>
+                                    1
+                                    <a href="#" class="text-center">
+                                        <i class="material-icons text-success">edit</i>
+                                    </a>
+                                </td>
+                                <td>
+                                    Car
+                                    <a href="#" class="text-center">
+                                            <i class="material-icons text-danger">chrome_reader_mode</i>
+                                    </a>
+                                </td>
+                                <td>open</td>
+                                <td>dd/mm/yyyy</td>
+                                <td>dd/mm/yyyy</td>
+                                <td>$15</td>
+                                <td>
+                                    <a href="#" class="text-center">
+                                       $
+                                    </a>
+                                </td>
+                            </tr>
+
+                                       
+                                                    <tr>
+                                                        <td>
+                                                            1
+                                                            <a href="#" class="text-center">
+                                                                <i class="material-icons text-success">edit</i>
+                                                            </a>
+                                                        </td>
+                                                        <td>
+                                                            Car
+                                                            <a href="#" class="text-center">
+                                                                    <i class="material-icons text-danger">chrome_reader_mode</i>
+                                                            </a>
+                                                        </td>
+                                                        <td>open</td>
+                                                        <td>dd/mm/yyyy</td>
+                                                        <td>dd/mm/yyyy</td>
+                                                        <td>$15</td>
+                                                        <td>
+                                                            <a href="#" class="text-center">
+                                                               $
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+
                                                         <td>
                                                             1
                                                             <a href="#" class="text-center">
@@ -142,7 +198,10 @@
             </div>
     </div>
 </div>
-                 
+
+        <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
+       
+
        
        {{-- modelad add a new contract --}}
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -200,24 +259,24 @@
                                                             
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
+                                                    
                                                         <div class="row">
                                                             <label for="startDate">Start date</label>
                                                         <div class="col-4">
                                                              <input type="date" class="form-control" id='startDate'> 
                                                         </div>
                                                         <div class="input-group-btn">
-                                                                <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                <button class="btn btn-default" id='datetimepicker' ><i class="material-icons">date_range</i></button>
                                                          </div>
                                                         <label for="endDate">End Date</label>
                                                         <div class="col-4">
                                                                 <input type="date" class="form-control" id='endDate'>
                                                         </div>
-                                                        <div class="input-group-btn">
-                                                                <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                        <div class="input-group-btn"  >
+                                                                <button class="btn btn-default" id='datetimepicker' ><i class="material-icons">date_range</i></button>
                                                          </div>
                                                         </div>
-                                                    </div>
+                                                 
                                                     <div class="form-group ">
                                                         <div class="row">
                                                             <label for="" >Monthly bill</label>
@@ -233,6 +292,7 @@
                                         <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
                                         <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
                                     </div>
+                                
                                 </div>
                             </div>
                         </div>
@@ -457,4 +517,14 @@
                         </div>
                     </div>
             
+
+            <script>
+                $(function () {
+                    $('#datetimepicker').datetimepicker();
+                });
+            </script>
+    
+    
+
+
 @endsection
