@@ -84,7 +84,7 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('js/login.js')}}"></script>
+    <script src="{{asset('js/table.js')}}"></script>
     {{-- payment model update status --}}
     
     <div class="modal fade" id="editPayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
