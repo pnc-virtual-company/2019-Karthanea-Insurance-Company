@@ -79,7 +79,6 @@ Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
 Route::get('/userCall','ClientController@userCall');
 Route::get('/calendar','CalendarController@index');
-Route::get('/chart','ChartController@index');
 
 Route::get('/payment','paymentController@index');
 Route::get('/contractlist','PageController@contractlist');
