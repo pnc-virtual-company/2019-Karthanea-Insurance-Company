@@ -65,9 +65,11 @@
 Route::get('/', function () {
         return view('pages.contracttype');
     });
-// Route::resource('/home','PageController');
 Route::get('/createContract','PageController@createContractType');
 Route::get('/openNewCall','PageController@OpenNewCall');
 
 Route::resource('/home','PageController@index');
 Route::get('/client','ClientController@index');
+
+
+Route::get('/payment','paymentController@index');

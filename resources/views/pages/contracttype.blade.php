@@ -6,12 +6,11 @@
         <h1>List of contract type</h1>
                 <div class="card">
                     <div class="card-body">
-                        
             <table id="myTable" class="table table-striped table-bordered" style="width:100%">
-                    <thead class="">
+                    <thead class="bg-dark text-white">
                         <tr>
-                            <th class="text-center"><h5>ID</h5></th>
-                            <th> <h5>Contract type</h5></th>
+                            <th class="text-center ">ID</th>
+                            <th> Contract type</th>
                              
                         </tr>
                     </thead>
@@ -19,16 +18,16 @@
                       
                         <tr >
                             <td class="text-center">
-                                <a href="#"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"><i class="material-icons">edit</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons">edit</i></a>
                                1
                             </td>
                             <td>Car</td>
                         </tr>
                         <tr >
                             <td class="text-center">
-                                <a href="#"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"><i class="material-icons">edit</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons">edit</i></a>
                                2
                             </td>
                             <td>Moto</td>
@@ -36,8 +35,8 @@
                         </tr>
                         <tr >
                             <td class="text-center">
-                                <a href="#"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"><i class="material-icons">edit</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons">edit</i></a>
                                3
                             </td>
                             <td>House</td>
@@ -51,7 +50,8 @@
             </div>
         </div>
        
-
+  {{-- model create --}}
+    
         <div class="modal fade bd-example" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
             <div class="modal-content">
@@ -65,22 +65,73 @@
                                                 <div class="row">
                                                         <label for="">Type of contract</label>
                                                         <div class="col-8">
-                                                        <input type="text" class="form-control" placeholder="type of contract">
-
-                                                        </div>
-                                                </div>
-                                            </div>
-                                          </form>
-                                  </div>
-                          </div>
-                          <div class="modal-footer mr-5">
-                                    <button type="button" class="btn bg-info ">OK</button>
-                                    <button type="button" class="btn bg-danger float-left" data-dismiss="modal">Cencel</button>
+                                                            <input type="text" class="form-control" placeholder="type of contract">
+              
+                
+                                                         </div>
+                                                  </div>
+                                
+                                             </div>
+                                        </form>
+                                </div>
+                             </div>
+                             <div class="modal-footer">
+                                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                <button type="button" class="btn btn-danger">Cancel</button>
+                              </div>
                         </div>
+                 </div>
             </div>
         </div>
+ 
+
+
+  {{-- model update --}}
+
+  <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit contract type</h5>
+              
+            </div>
+            <div class="modal-body">
+              <form action="#" method="POST" >
+                  <div class="form-group">
+                      <label for="">Type of contract</label> 
+                      <input type="text" name="contracttype" id="" class="form-control">
+                  </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+              <button type="button" class="btn btn-danger">Cancel</button>
+            </div>
+          </div>
         </div>
-        <div>
+      </div>
+
+
+      {{-- model delete --}}
+
+  <div class="modal fade" id="deleteContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+              
+            </div>
+            <div class="modal-body">
+              <form action="#" method="POST" >
+                 <p class="text-danger">Are you sure that you want to delete this contract type?</p>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+              <button type="button" class="btn btn-danger">No</button>
+            </div>
+          </div>
         </div>
+      </div>
+
      @endsection
-            
