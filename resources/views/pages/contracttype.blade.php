@@ -44,8 +44,7 @@
                     </tbody>
                    
                 </table>
-                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType">Create contract type</button>
-                
+                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create contract type</button>
             </div>
             </div>
            
@@ -67,14 +66,14 @@
         <div class="modal-body">
           <form action="#" method="POST" >
               <div class="form-group">
-                  <label for="">Type of contract</label> 
-                  <input type="text" name="contracttype" id="" class="form-control">
+                  <label for="contracttype">Type of contract</label> 
+                  <input type="text" name="contracttype" id="contracttype" class="form-control">
               </div>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-          <button type="button" class="btn btn-danger">Cancel</button>
+          <button type="submit" class="btn btn-info">Ok</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
         </div>
       </div>
     </div>
