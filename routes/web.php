@@ -78,9 +78,15 @@ Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 Route::get('/client','ClientController@index');
 <<<<<<< HEAD
+<<<<<<< HEAD
 Route::get('/payment','paymentController@index');
 Route::get('/contractlist','PageController@contractlist');
 =======
+=======
+Route::get('/payment','paymentController@index');
+Route::get('/login','loginController@index');
+Route::get('/call','callController@index');
+>>>>>>> 804a3619da9473633ecea30e4127a1f1b8e19c98
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
 
