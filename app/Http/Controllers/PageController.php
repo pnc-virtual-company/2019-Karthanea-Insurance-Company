@@ -16,12 +16,12 @@ class PageController extends Controller
         return view('pages.contracttype');
         
     }
-public function createContractType(){
-    return view('pages.createContractType');
-}
-public function OpenNewCall(){
-    return view('pages.OpenNewCall');
-}
+    public function createContractType(){
+        return view('pages.createContractType');
+    }
+    public function location(){
+        return view('pages.location');
+    }
     /**
      * Show the form for creating a new resource.
      *

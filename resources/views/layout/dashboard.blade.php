@@ -39,9 +39,6 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
-  <link rel="stylesheet" href="{{asset('css/contracttype.css')}}">
-  
-
 </head>
 {{-- class="dark-edition" --}}
 <body>
@@ -59,11 +56,11 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a href="#submenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
                     <i class="material-icons">color_lens</i>
                     <p>Dashboard</p>
-                </a>
+                  </a>
                 <ul class="collapse list-unstyled" id="submenu">
                     <li class="list-group-item collapsed">
                       <a href="{{url('/client')}}">
@@ -83,12 +80,6 @@
                     </li>
                 </ul>
             </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{url('/')}}">
-              <i class="material-icons">list</i>
-              <p>Contract Type</p>
-            </a>
-          </li>
           <li class="nav-item ">
             <a class="nav-link" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
               <i class="material-icons">work</i>
@@ -96,7 +87,7 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/')}}">
+                  <a href="{{url('/contract')}}">
                       <p>
                           <i class="material-icons text-info">ballot</i>
                         Contract Type
@@ -104,7 +95,7 @@
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/')}}">
+                  <a href="{{url('/contractlist')}}">
                       <p>
                         <i class="material-icons text-info">description</i>
                         Contract List
@@ -130,7 +121,7 @@
             </ul>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="{{url('/call')}}">
               <i class="material-icons">settings_phone</i>
               <p>Calling</p>
             </a>
@@ -142,7 +133,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
+            <a class="nav-link" href="{{url('/location')}}">
               <i class="material-icons">location_ons</i>
               <p>Location</p>
             </a>
@@ -205,7 +196,7 @@
         <li class="adjustments-line">
           <a href="javascript:void(0)" class="switch-trigger active-color">
             <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-primary active" data-color="green"></span>
+              <span class="badge filter badge-primary active" data-color="azure"></span>
               <span class="badge filter badge-azure" data-color="azure"></span>
               <span class="badge filter badge-green" data-color="green"></span>
               <span class="badge filter badge-warning" data-color="orange"></span>
@@ -320,8 +311,6 @@
 
           $(this).parent('li').siblings().removeClass('active');
           $(this).parent('li').addClass('active');
-
-
           var new_image = $(this).find("img").attr('src');
 
           if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
@@ -437,29 +426,28 @@
   <script>
       $(document).ready(function() {
           $('#myTable').DataTable({
+            "searching": false,
+            "lengthChange": false
 
           });
       } );
       $(document).ready(function() {
-          $('#myTables').DataTable();
+          $('#myTables').DataTable({
+            "lengthChange": false,
+            "paging": false,
+            "bInfo" : false
+          });
       } );
       $(document).ready(function() {
           $('#myTable1').DataTable({
-            // "bInfo" : false
-            // "bPaginate": false,
-    // "bLengthChange": false,
-    "bFilter": true,
-    "bInfo": false,
-    // "bAutoWidth": false
+            "sDom": "lfrti",
+            "bInfo" : false
           });
       } );
       $(document).ready(function() {
           $('#myTable2').DataTable({
-            // "paging": false,
             "searching": false,
-            "fillter": false
-            // "bFilter": true
-            // "bInfo" : false
+            "lengthChange": false
           });
       } );
   </script>
