@@ -34,6 +34,9 @@ class PageController extends Controller
 public function updatecontractype(){
     return view('pages.updatecontractype');
 }
+public function datepicker(){
+    return view('pages.date');
+}
     /**
      * Store a newly created resource in storage.
      *
