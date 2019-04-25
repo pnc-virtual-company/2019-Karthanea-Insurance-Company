@@ -1,0 +1,48 @@
+.card {
+    padding: 30px 0px;
+    margin: -50px 6% 30px;
+}
+body {
+    background-image: linear-gradient(rgba(0,0,0,0.5) ,rgba(0,0,0,0.5)), url('../images/bg.jpg'); 
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+}
+.input-field .prefix {
+    font-size: 1.6rem;
+}
+a.btn.btn-info.right.text-white.text-center {
+    width: 100px;
+}
+.input-field .prefix {
+    color: #6b6868;
+}
+form {
+    margin-left: 195px;
+}
+
+.title{
+    display: table;
+    width: 100%
+  } 
+  .title-row{
+    display: table-row;
+  } 
+  .bar-container {
+    display: table-cell;
+    position: relative;
+    width: 50%;
+  }
+  .bar {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    border-bottom: 1px solid black;
+  }
+  .text {
+    display: table-cell;
+    font-size: 20px;
+  }
+  a.btn.btn-info.right.text-white.text-center {
+    margin-top: -10px;
+}

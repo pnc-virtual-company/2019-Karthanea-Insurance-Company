@@ -166,6 +166,7 @@
                   </a>
                   <a class="dropdown-item" href="javascript:void(0)">
                     <p>
+                        <a class="nav-link" href="{{url('/login')}}">
                       <i class="material-icons">logout</i>
                       Logout
                     </p>
