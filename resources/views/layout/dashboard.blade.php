@@ -434,29 +434,28 @@
   <script>
       $(document).ready(function() {
           $('#myTable').DataTable({
+            "searching": false,
+            "lengthChange": false
 
           });
       } );
       $(document).ready(function() {
-          $('#myTables').DataTable();
+          $('#myTables').DataTable({
+            "lengthChange": false,
+            "paging": false,
+            "bInfo" : false
+          });
       } );
       $(document).ready(function() {
           $('#myTable1').DataTable({
-            // "bInfo" : false
-            // "bPaginate": false,
-    // "bLengthChange": false,
-    "bFilter": true,
-    "bInfo": false,
-    // "bAutoWidth": false
+            "sDom": "lfrti",
+            "bInfo" : false
           });
       } );
       $(document).ready(function() {
           $('#myTable2').DataTable({
-            // "paging": false,
             "searching": false,
-            "fillter": false
-            // "bFilter": true
-            // "bInfo" : false
+            "lengthChange": false
           });
       } );
   </script>
