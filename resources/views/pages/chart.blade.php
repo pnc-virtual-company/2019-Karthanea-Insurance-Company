@@ -29,6 +29,18 @@
         <button id="removeDataset">Remove Dataset</button>
         <button id="addData">Add Data</button>
         <button id="removeData">Remove Data</button> --}}
+        <div class="row">
+            <div class="col-6 col-md-6 col-sm-12">
+                <div style="width:100%;">
+                    <canvas id="canvas"></canvas>
+                </div>
+            </div>
+            <div class="col-6 col-md-6 col-sm-12">
+                <div style="width: 100%">
+                    <canvas id="canvas2"></canvas>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>

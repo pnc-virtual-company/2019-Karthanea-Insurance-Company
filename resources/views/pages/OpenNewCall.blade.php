@@ -60,10 +60,10 @@
                                       </form>
                               </div>
                       </div>
-                      <div class="modal-footer mr-5">
-                                <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Call</button>
-                                <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
-                    </div>
+                <div class="modal-footer mr-5">
+                         <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Call</button>
+                        <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                 </div>
         </div>
     </div>
     </div>

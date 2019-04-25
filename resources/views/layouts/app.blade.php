@@ -31,6 +31,12 @@
         <!--  CSS for Demo Purpose, don't include it in your project     -->
         <link href="{{asset('css/demo.css')}}" rel="stylesheet" />
     
+
+        //date picker
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
+
+
     
         <!--     Fonts and icons     -->
 

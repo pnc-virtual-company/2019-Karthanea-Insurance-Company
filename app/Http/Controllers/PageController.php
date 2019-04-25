@@ -16,12 +16,12 @@ class PageController extends Controller
         return view('pages.contracttype');
         
     }
-public function createContractType(){
-    return view('pages.createContractType');
-}
-public function OpenNewCall(){
-    return view('pages.OpenNewCall');
-}
+    public function createContractType(){
+        return view('pages.createContractType');
+    }
+    public function location(){
+        return view('pages.location');
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -33,6 +33,9 @@ public function OpenNewCall(){
     }
 public function updatecontractype(){
     return view('pages.updatecontractype');
+}
+public function datepicker(){
+    return view('pages.date');
 }
     /**
      * Store a newly created resource in storage.
@@ -88,5 +91,8 @@ public function updatecontractype(){
     public function destroy($id)
     {
         //
+    }
+    public function contractlist(){
+        return view('pages.addContract');
     }
 }

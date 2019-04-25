@@ -15,6 +15,17 @@
 <script src='{{asset('packages/interaction/main.js')}}'></script>
 <script src='{{asset('packages/daygrid/main.js')}}'></script>
 <script src='{{asset('js/calendar.js')}}'></script>
+
+  <!-- pei chart link -->
+  <script src="https://cdnjs.com/libraries/Chart.js"></script>
+
+  <!-- link calendar -->
+  <link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
+  <link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
+  <script src='{{asset('packages/core/main.js')}}'></script>
+  <script src='{{asset('packages/interaction/main.js')}}'></script>
+  <script src='{{asset('packages/daygrid/main.js')}}'></script>
+  <script src='{{asset('js/calendar.js')}}'></script>
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -33,97 +44,101 @@
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
-  <link rel="stylesheet" href="{{asset('css/contracttype.css')}}">
-  
+
+
+
+   
 </head>
 {{-- class="dark-edition" --}}
-<body>
+<body >
   <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('images/sidebar-4.jpg')}}">
+    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('images/sidebar-3.jpg')}}">
       <!--
-        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger | primary |"
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger "
 
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo bg-teal">
-        <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        <a href="{{url('/')}}" class="simple-text logo-normal">
           <img src="{{asset('images/logo-1.png')}}" alt="brand logo">
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item">
-                <a href="#submenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
+            <li class="nav-item active">
+                <a href="#submenu" data-toggle="collapse" id="dashboard" aria-expanded="false" class="nav-link">
                     <i class="material-icons">color_lens</i>
-                    <p>Dashboard</p>
-                </a>
-                <ul class="collapse list-unstyled" id="submenu">
+                    <p>
+                      Dashboard
+                      <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
+                      <span class="material-icons ml-5" id="dashUp">arrow_drop_up</span>
+                    </p>
+                  </a>
+                  <ul class="collapse list-unstyled" id="submenu">
                     <li class="list-group-item collapsed">
                       <a href="{{url('/client')}}">
-                          <p>
+                          <span>
                               <i class="material-icons text-info">format_list_numbered</i>
                             Clients List
-                          </p>
+                          </span>
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
                       <a href="{{url('/chart')}}">
                           <p>
+                          <span>
                             <i class="material-icons text-info">pie_chart</i>
                             Occupency
-                          </p>
+                          </span>
                         </a>
                     </li>
                 </ul>
             </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{url('/')}}">
-              <i class="material-icons">list</i>
-              <p>Contract Type</p>
-            </a>
-          </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
+            <a class="nav-link" href="#pageSubmenu" id="management" data-toggle="collapse" aria-expanded="false">
               <i class="material-icons">work</i>
-              <p>Managements</p>
+              <p>Managements
+                  <span class="material-icons ml-4" id="manageDown">arrow_drop_down</span>
+                  <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span>
+              </p>
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/')}}">
-                      <p>
+                  <a href="{{url('/contract')}}">
+                      <span>
                           <i class="material-icons text-info">ballot</i>
                         Contract Type
-                      </p>
+                      </span>
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/')}}">
-                      <p>
+                  <a href="{{url('/contractlist')}}">
+                      <span>
                         <i class="material-icons text-info">description</i>
                         Contract List
-                      </p>
+                      </span>
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
                     <a href="{{url('/client')}}">
-                      <p>
+                      <span>
                         <i class="material-icons text-info">people</i>
                         Clients
-                      </p>
+                      </span>
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                    <a href="#">
-                      <p>
+                    <a href="{{url('/payment')}}">
+                      <span>
                         <i class="material-icons text-info">monetization_on</i>
                         Payments
-                      </p>
+                      </span>
                     </a>
                 </li>
             </ul>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="{{url('/call')}}">
               <i class="material-icons">settings_phone</i>
               <p>Calling</p>
             </a>
@@ -135,7 +150,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
+            <a class="nav-link" href="{{url('/location')}}">
               <i class="material-icons">location_ons</i>
               <p>Location</p>
             </a>
@@ -168,6 +183,7 @@
                   </a>
                   <a class="dropdown-item" href="javascript:void(0)">
                     <p>
+                        <a class="nav-link" href="{{url('/login')}}">
                       <i class="material-icons">logout</i>
                       Logout
                     </p>
@@ -198,7 +214,7 @@
         <li class="adjustments-line">
           <a href="javascript:void(0)" class="switch-trigger active-color">
             <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-primary active" data-color="lightblue"></span>
+              <span class="badge filter badge-primary active" data-color="azure"></span>
               <span class="badge filter badge-azure" data-color="azure"></span>
               <span class="badge filter badge-green" data-color="green"></span>
               <span class="badge filter badge-warning" data-color="orange"></span>
@@ -313,8 +329,6 @@
 
           $(this).parent('li').siblings().removeClass('active');
           $(this).parent('li').addClass('active');
-
-
           var new_image = $(this).find("img").attr('src');
 
           if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
@@ -416,10 +430,25 @@
   </script>
   <script>
     $(document).ready(function() {
-      // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
-      $('#example').DataTable();
-                        
+      $('#example').DataTable();                
+    });
+
+    $(document).ready(function() {
+      md.initDashboardPageCharts();
+      $('#myTable').DataTable();                
+    });
+    $(document).ready(function() {
+      md.initDashboardPageCharts();
+      $('#myTable3').DataTable();                
+    });
+    $(document).ready(function() {
+      md.initDashboardPageCharts();
+      $('#myTable4').DataTable();                
+    });
+    $(document).ready(function() {
+      md.initDashboardPageCharts();
+      $('#contractType').DataTable();  
 
     });
 </script>
@@ -428,10 +457,39 @@
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
   <script>
-      $(document).ready(function() {
-          $('#myTable').DataTable();
-      } );
+      // $(document).ready(function() {
+      //     $('#myTable').DataTable({
+      //       "searching": false,
+      //       "lengthChange": false
+
+      //     });
+      // } );
+      // $(document).ready(function() {
+      //     $('#myTables').DataTable({
+      //       "lengthChange": false,
+      //       "paging": false,
+      //       "bInfo" : false
+      //     });
+      // } );
+      // $(document).ready(function() {
+      //     $('#myTable1').DataTable({
+      //       "sDom": "lfrti",
+      //       "bInfo" : false
+      //     });
+      // } );
+      // $(document).ready(function() {
+      //     $('#myTable2').DataTable({
+      //       "searching": false,
+      //       "lengthChange": false
+      //     });
+      //     $('#myTable3').DataTable({
+      //       "searching": false,
+      //       "lengthChange": false
+      //     });
+      // } );
   </script>
+
 </body>
 </html>

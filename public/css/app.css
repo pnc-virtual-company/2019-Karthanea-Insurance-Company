@@ -8,6 +8,16 @@
   margin: 0 auto;
 }
 
+#submenu .list-group-item, 
+#pageSubmenu .list-group-item
+{
+  padding: 16px;
+  font-size: 18%;
+  font-weight: bold;
+}
+#manageUp,#dashUp{
+  display: none;
+}
 .nav-link:hover{
   background: rgb(147, 148, 148);
 }
@@ -16,7 +26,7 @@
 }
 
 .collapse .list-group-item{
-  width: 90%;
+  width: 88%;
   margin: 0 auto;
 }
 .main-panel .navbar{
@@ -65,7 +75,7 @@ body .fc {
   height: 2.1em;
   padding: 0 .6em;
   /* text & cursor */
-  font-size: 2em;
+  font-size: .5em;
   /* normalize */
   white-space: nowrap;
   cursor: pointer; }
@@ -222,7 +232,7 @@ hr.fc-divider {
   table-layout: fixed;
   border-collapse: collapse;
   border-spacing: 0;
-  font-size: 1em;
+  font-size: .62em;
   /* normalize cross-browser */ }
 
 .fc th {
@@ -348,7 +358,7 @@ temporary rendered events).
   /* for resize handle and other inner positioning */
   display: block;
   /* make the <a> tag block */
-  font-size: 2em;
+  font-size: 1.2em;
   line-height: 1.3;
   border-radius: 3px;
   border: 1px solid #3a87ad;
