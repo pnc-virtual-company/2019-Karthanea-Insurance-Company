@@ -11,7 +11,6 @@
                         <tr>
                             <th class="text-center ">ID</th>
                             <th> Contract type</th>
-                             
                         </tr>
                     </thead>
                     <tbody>

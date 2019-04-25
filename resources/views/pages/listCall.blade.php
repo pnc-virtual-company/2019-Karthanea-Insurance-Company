@@ -23,7 +23,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
-                                            <a href="#" data-toggle="modal" data-target=".bd-example-modal"><i class="material-icons text-success">create</i></a>
+                                            <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
                                             <input type="checkbox" name="disable" id="disable">
                                             2
                                         </td>
@@ -48,7 +48,7 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="material-icons text-success">create</i></a>
+                                                <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
                                                 1
                                             </td>
                                             <td>14/08/2019</td>
@@ -60,14 +60,14 @@
                                 </table>
                             <div>
                             </div>
-                        <button type="button" class="btn bg-info ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons mr-3 text-white'>call</i>Open new call</button>
+                        <button type="button" class="btn bg-info ml-3 text-white btn-md" data-toggle="modal" data-target="#openNewCall"><i class='material-icons mr-3 text-white'>call</i>Open new call</button>
             </div>
         </div>
     </div>
 
     
-    {{-- modal new call --}}
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    {{-- modal new call  --}}
+    <div class="modal fade bd-example-modal-lg" id="openNewCall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
                 <div class="modal-header">
@@ -129,10 +129,34 @@
                     </div>
         </div>
     </div>
-    </div>
-
-    
+    </div> 
+ 
+      </div>
+      
+      <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit Disable</h5>
+                
+              </div>
+              <div class="modal-body">
+                <form action="#" method="POST" >
+                    <div class="row">
+                        <div class="col-4"><p>Type of contract</p></div>
+                        <div class="col-7">
+                            <div class="form-group">
+                            
+                                <input type="text" name="contracttype" id="" class="form-control">
+                            </div>
+                        </div>
+                      </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-danger">Cancel</button>
+              </div>
             </div>
-        </div>
-        </div>
-@endsection
+          </div>
+@endsection 

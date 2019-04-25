@@ -4,7 +4,6 @@
         <h1>Payments</h1>
         <div class="card">
             <div class="card-body">
-                {{-- <table id="myTable" class="table table-striped table-bordered table-hover"> --}}
                         <table id="myTables" class="table table-striped table-bordered table-hover">
                                 <thead class="bg-dark text-white">
                                     <tr>
@@ -56,7 +55,7 @@
                                     </tbody>
                                 </table>
             
-                                <table  id="myTable" class="table table-striped table-bordered table-hover">
+                                <table  id="myTabless" class="table table-striped table-bordered table-hover">
                                         <thead class="bg-dark text-white">
                                             <tr>
                                                 <th>Month</th>
