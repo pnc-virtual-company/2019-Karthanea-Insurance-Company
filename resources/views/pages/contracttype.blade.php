@@ -72,7 +72,6 @@
                 
                                                          </div>
                                                   </div>
-                                
                                              </div>
                                         </form>
                                 </div>
@@ -85,7 +84,6 @@
                  </div>
             </div>
         </div>
-
         {{-- model create --}}
 
   <div class="modal fade" id="createContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -105,7 +103,6 @@
                     </div>
                 </div>
             </div>
-              
           </form>
         </div>
         <div class="modal-footer">
@@ -145,8 +142,6 @@
           </div>
         </div>
       </div>
-
-
       {{-- model delete --}}
 
   <div class="modal fade" id="deleteContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -168,5 +163,4 @@
           </div>
         </div>
       </div>
-
      @endsection
