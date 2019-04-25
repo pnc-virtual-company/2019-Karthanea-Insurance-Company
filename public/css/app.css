@@ -7,9 +7,10 @@
   max-width: 900px;
   margin: 0 auto;
 }
-
+.container a:hover{
+  text-decoration: none;
+}
 .main-panel #navigation-example{
-  /* background: rgb(14, 109, 233); */
   position: sticky;
   margin-bottom:-6%;
 }

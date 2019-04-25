@@ -15,6 +15,10 @@ class ClientController extends Controller
     {
         return view('pages.clientList');
     }
+    public function userCall()
+    {
+        return view('pages.userCall');
+    }
 
     /**
      * Show the form for creating a new resource.

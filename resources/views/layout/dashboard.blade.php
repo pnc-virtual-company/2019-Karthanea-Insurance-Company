@@ -73,6 +73,14 @@
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
                     <li class="list-group-item collapsed">
+                      <a href="{{url('/userCall')}}">
+                          <span class="text-white">
+                              <i class="material-icons text-white">perm_phone_msg</i>
+                            User Call
+                          </span>
+                        </a>
+                    </li>
+                    <li class="list-group-item collapsed">
                       <a href="{{url('/client')}}">
                           <span class="text-white">
                               <i class="material-icons text-white">format_list_numbered</i>
@@ -135,7 +143,7 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="{{url('/call')}}">
-              <i class="material-icons">settings_phone</i>
+              <i class="material-icons">phone_forwarded</i>
               <p>Calling</p>
             </a>
           </li>
