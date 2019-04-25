@@ -7,21 +7,36 @@
   max-width: 900px;
   margin: 0 auto;
 }
+
+.main-panel #navigation-example{
+  /* background: rgb(14, 109, 233); */
+  position: sticky;
+  margin-bottom:-6%;
+}
 #submenu .list-group-item, 
 #pageSubmenu .list-group-item
 {
+  background: rgb(68, 67, 67);
+  color:#fff;
   padding: 16px;
   font-size: 18%;
   font-weight: bold;
 }
+
+#submenu .list-group-item:hover a, 
+#pageSubmenu .list-group-item:hover a
+{
+  text-decoration: none;
+}
+
 #manageUp,#dashUp{
   display: none;
 }
 .nav-link:hover{
-  background: rgb(147, 148, 148);
+  background: rgb(31, 94, 231);
 }
 .list-group-item:hover{
-  background: rgb(147, 148, 148);
+  background: rgb(31, 94, 231);
 }
 
 .collapse .list-group-item{
