@@ -18,7 +18,7 @@
                         <tr >
                             <td class="text-center">
                                 <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons">edit</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
                                1
                             </td>
                             <td>Car</td>
@@ -26,7 +26,7 @@
                         <tr >
                             <td class="text-center">
                                 <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons">edit</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
                                2
                             </td>
                             <td>Moto</td>
@@ -35,7 +35,7 @@
                         <tr >
                             <td class="text-center">
                                 <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons">edit</i></a>
+                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
                                3
                             </td>
                             <td>House</td>
@@ -66,10 +66,16 @@
         </div>
         <div class="modal-body">
           <form action="#" method="POST" >
-              <div class="form-group">
-                  <label for="">Type of contract</label> 
-                  <input type="text" name="contracttype" id="" class="form-control">
+            <div class="row">
+              <div class="col-4"><p>Type of contract</p></div>
+              <div class="col-7">
+                  <div class="form-group">
+                  
+                      <input type="text" name="contracttype" id="" class="form-control">
+                  </div>
               </div>
+            </div>
+              
           </form>
         </div>
         <div class="modal-footer">
@@ -92,10 +98,15 @@
             </div>
             <div class="modal-body">
               <form action="#" method="POST" >
-                  <div class="form-group">
-                      <label for="">Type of contract</label> 
-                      <input type="text" name="contracttype" id="" class="form-control">
-                  </div>
+                  <div class="row">
+                      <div class="col-4"><p>Type of contract</p></div>
+                      <div class="col-7">
+                          <div class="form-group">
+                          
+                              <input type="text" name="contracttype" id="" class="form-control">
+                          </div>
+                      </div>
+                    </div>
               </form>
             </div>
             <div class="modal-footer">

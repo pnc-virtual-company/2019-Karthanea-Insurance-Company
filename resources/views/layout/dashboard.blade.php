@@ -8,6 +8,7 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+  
   <!-- pei chart link -->
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
   
@@ -30,6 +31,7 @@
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
   <link rel="stylesheet" href="{{asset('css/contracttype.css')}}">
   
+
 </head>
 {{-- class="dark-edition" --}}
 <body>
