@@ -439,5 +439,39 @@
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+  <script>
+      $(document).ready(function() {
+          $('#myTable').DataTable({
+            "searching": false,
+            "lengthChange": false
+
+          });
+      } );
+      $(document).ready(function() {
+          $('#myTables').DataTable({
+            "lengthChange": false,
+            "paging": false,
+            "bInfo" : false
+          });
+      } );
+      $(document).ready(function() {
+          $('#myTable1').DataTable({
+            "sDom": "lfrti",
+            "bInfo" : false
+          });
+      } );
+      $(document).ready(function() {
+          $('#myTable2').DataTable({
+            "searching": false,
+            "lengthChange": false
+          });
+          $('#myTable3').DataTable({
+            "searching": false,
+            "lengthChange": false
+          });
+      } );
+  </script>
+
 </body>
 </html>

@@ -51,6 +51,10 @@
             </div>
         </div>
        
+
+  
+        
+
   {{-- model create --}}
     
         <div class="modal fade bd-example"  id="createContractType"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -83,6 +87,7 @@
                  </div>
             </div>
         </div>
+
         {{-- model create --}}
 
   <div class="modal fade" id="createContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
