@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
+    <title>{{('Karthanea')}}</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
@@ -28,18 +29,19 @@
                                	  	</div>
                                     <div class="input-field">
                                             <i class="material-icons prefix" class="text-secondary">markunread</i>
-                                            <input type="text" id="autocomplete-input" class="autocomplete icons">
+                                            <input type="text" id="autocomplete-input" class="autocomplete icons" required autofocus>
                                             <label for="autocomplete-input ">Email</label>
                                      </div>
                                      <div class="input-field">
                                             <i class="material-icons prefix">https</i>
-                                            <input type="text" id="autocomplete-input" class="autocomplete icons">
+                                            <input type="text" id="autocomplete-input" class="autocomplete icons" required>
                                             <label for="autocomplete-input">Password</label>
                                      </div>
                                      <footer>
                                             <div class="container">
                                              <div class="row text-center">
-                                                <form action="">
+                                                <form method="POST" action="">
+                                                    @csrf
                                                     <div class="form-group">
                                                         <a href="{{url('/')}}" class="btn btn-info btn-sm right text-white text-center">LOGIN</a>
                                                     </div>

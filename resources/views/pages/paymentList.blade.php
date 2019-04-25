@@ -15,6 +15,7 @@
                                 <tbody>
                                     <tr>
                                         <td>
+
                                                 <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
                                                 <input type="checkbox" name="disable" id="disable">
                                                 3
@@ -25,6 +26,7 @@
                                                         <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                 </a>
                                         </td>
+                               
                                     </tr>
             
                                     
@@ -52,24 +54,31 @@
                                                         </a>
                                                     </td>
                                             <td>
+
                                                     Car
                                                     <a href="#" class="text-center">
                                                             <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                     </a>
                                             </td>
+
+                                               
                                             <td>Open</td>
                                             <td>20/10/2019</td>
                                             <td>20/11/2019</td>
                                             <td>$15</td>
+
                                             <td>
                                                     <a href="#" class="text-center">
                                                             <i class="material-icons text-info ml-5">attach_money</i>
                                                     </a>
                                             </td>
+
+                                            <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
+
                                         </tr>
                                     </tbody>
                                 </table>
-            
+
                                 <table  id="myTabless" class="table table-striped table-bordered table-hover">
                                         <thead class="bg-dark text-white">
                                             <tr>
@@ -86,12 +95,27 @@
                                                 <td>$15</td>
                                                 <td>Paid <a href="#"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
                                                 <td>5/11/2019</td>
+
                                                 <td>
                                                         <a href="#" class="text-center">
                                                                 <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                         </a>
                                                 </td>
                                             </tr>
+                                            <tr>
+                                                    <td>Oct.2019.12</td>
+                                                    <td>$15</td>
+                                                    <td>Paid <a href="#"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                                    <td>5/11/2019</td>
+                                                    <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
+                                                </tr>
+                                                <tr>
+                                                        <td>Oct.2019.12</td>
+                                                        <td>$15</td>
+                                                        <td>Paid <a href="#"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                                        <td>5/11/2019</td>
+                                                        <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
+                                                </tr>
                                         </tbody>
                                     </table>
                                 </table>

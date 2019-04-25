@@ -50,7 +50,7 @@
    
 </head>
 {{-- class="dark-edition" --}}
-<body >
+<body>
   <div class="wrapper">
     <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('images/sidebar-3.jpg')}}">
       <!--
@@ -60,7 +60,11 @@
     -->
       <div class="logo bg-teal">
         <a href="{{url('/')}}" class="simple-text logo-normal">
-          <img src="{{asset('images/logo-1.png')}}" alt="brand logo">
+          <picture>
+            <source media="(min-width: 650px)" srcset="{{asset('images/logo-1.png')}}">
+            <source media="(min-width: 465px)" srcset="{{asset('images/logo-1.png')}}">
+            <img src="{{asset('images/logo-1.png')}}" alt="brand logo">
+          </picture>
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -74,20 +78,33 @@
                       <span class="material-icons ml-5" id="dashUp">arrow_drop_up</span>
                     </p>
                   </a>
-                  <ul class="collapse list-unstyled" id="submenu">
+                  <ul class="collapse list-unstyled " id="submenu">
+                    <li class="list-group-item collapsed">
+                      <a href="{{url('/userCall')}}">
+                          <span class="text-white">
+                              <i class="material-icons text-white">perm_phone_msg</i>
+                            User Call
+                          </span>
+                        </a>
+                    </li>
                     <li class="list-group-item collapsed">
                       <a href="{{url('/client')}}">
-                          <span>
-                              <i class="material-icons text-info">format_list_numbered</i>
+                          <span class="text-white">
+                              <i class="material-icons text-white">format_list_numbered</i>
                             Clients List
                           </span>
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
                       <a href="{{url('/chart')}}">
+
+                          <span class="text-white">
+                            <i class="material-icons text-white">pie_chart</i>
+
                           <p>
                           <span>
                             <i class="material-icons text-info">pie_chart</i>
+
                             Occupency
                           </span>
                         </a>
@@ -105,32 +122,32 @@
             <ul class="collapse list-unstyled" id="pageSubmenu">
                 <li class="list-group-item collapsed">
                   <a href="{{url('/contract')}}">
-                      <span>
-                          <i class="material-icons text-info">ballot</i>
+                      <span class="text-white">
+                          <i class="material-icons text-white">ballot</i>
                         Contract Type
                       </span>
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
                   <a href="{{url('/contractlist')}}">
-                      <span>
-                        <i class="material-icons text-info">description</i>
+                      <span class="text-white">
+                        <i class="material-icons text-white">description</i>
                         Contract List
                       </span>
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
                     <a href="{{url('/client')}}">
-                      <span>
-                        <i class="material-icons text-info">people</i>
+                      <span class="text-white">
+                        <i class="material-icons text-white">people</i>
                         Clients
                       </span>
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
                     <a href="{{url('/payment')}}">
-                      <span>
-                        <i class="material-icons text-info">monetization_on</i>
+                      <span class="text-white">
+                        <i class="material-icons text-white">monetization_on</i>
                         Payments
                       </span>
                     </a>
@@ -139,7 +156,7 @@
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="{{url('/call')}}">
-              <i class="material-icons">settings_phone</i>
+              <i class="material-icons">phone_forwarded</i>
               <p>Calling</p>
             </a>
           </li>
@@ -164,8 +181,6 @@
         <div class="container-fluid ">
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
             <span class="navbar-toggler-icon icon-bar"></span>
           </button>
           <div class="collapse navbar-collapse justify-content-end">
@@ -457,39 +472,6 @@
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
-  <script>
-      // $(document).ready(function() {
-      //     $('#myTable').DataTable({
-      //       "searching": false,
-      //       "lengthChange": false
-
-      //     });
-      // } );
-      // $(document).ready(function() {
-      //     $('#myTables').DataTable({
-      //       "lengthChange": false,
-      //       "paging": false,
-      //       "bInfo" : false
-      //     });
-      // } );
-      // $(document).ready(function() {
-      //     $('#myTable1').DataTable({
-      //       "sDom": "lfrti",
-      //       "bInfo" : false
-      //     });
-      // } );
-      // $(document).ready(function() {
-      //     $('#myTable2').DataTable({
-      //       "searching": false,
-      //       "lengthChange": false
-      //     });
-      //     $('#myTable3').DataTable({
-      //       "searching": false,
-      //       "lengthChange": false
-      //     });
-      // } );
-  </script>
 
 </body>
 </html>

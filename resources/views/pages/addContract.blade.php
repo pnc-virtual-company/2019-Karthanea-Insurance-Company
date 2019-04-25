@@ -66,6 +66,7 @@
                                                             </td>
                                                         </tr>
 
+
                             
                                        
                                                  
@@ -221,9 +222,13 @@
                 </div>
             </div>
 
+            <script type="text/javascript">
+//  modelad edit a new contract
+
 
 
  {{-- modelad edit a new contract --}}
+
  <div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -233,6 +238,7 @@
                           <div class="card-body">
                                 <div class="modal-body">
                                         <form>
+
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-2">
@@ -242,8 +248,8 @@
                                                         <div class="col-10">
                                                             <input type="text" class="form-control" placeholder="Search">
                                                         </div>
-                                                    </div>
-                                                </div>
+
+                                           
                                                 
                                                 <div class="form-group ">
                                                     <div class="row">
@@ -252,6 +258,7 @@
                                                                 <div class="col-2">
                                                                   <label for="">Type</label>
                                                                 </div>
+
                                                                 <div class="col-10">
                                                                         <div class="input-group col-md-12">
                                                                                 <input class="form-control py-2" type="search" value="search" id="example-search-input">
@@ -282,7 +289,10 @@
                                                                         </select>
                                                                      </div>
                                                             </div>
-                                                        </div>
+
+                                                            </div>   
+                                                    
+                                                  
                                                          
                                                         
                                                     </div>
@@ -440,16 +450,17 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
+
                                                       <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                                     
+
                                                       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                                     </div>
                                                   </div>
                                                 </div>
                                               </div>
                                         
-                                        
                                               {{-- model delete --}}
-                                        
                                           <div class="modal fade" id="deleteContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog" role="document">
                                                   <div class="modal-content">
@@ -463,8 +474,11 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
+
                                                       <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
                                                       <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+
+
                                                     </div>
                                                   </div>
                                                 </div>
@@ -474,7 +488,11 @@
                                             </div>
                                          </div>
                                          <div class="modal-footer">
+
                                             <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+
+                                         
+
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                           </div>
                                     </div>
@@ -488,8 +506,4 @@
                     $('#datetimepicker').datetimepicker();
                 });
             </script>
-    
-    
-
-
 @endsection
