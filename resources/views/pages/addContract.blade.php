@@ -186,7 +186,7 @@
 
 
 
- {{-- modelad edit a new contract --}}
+ 
 
  <div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -283,7 +283,7 @@
 
             {{-- model select contract  --}}
 
-            <div class="modal fade bd-example" id="selectAddContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal fade bd-example" id="#selectAddContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog ">
                         <div class="modal-content">
                                 <div class="modal-header">
@@ -360,8 +360,8 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-                                                      <button type="button" class="btn btn-danger">Cancel</button>
+                                                      <button type="button" class="btn btn-info" >OK</button>
+                                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -383,8 +383,8 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-                                                      <button type="button" class="btn btn-danger">No</button>
+                                                      <button type="button" class="btn btn-info" >OK</button>
+                                                      <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                                                     </div>
                                                   </div>
                                                 </div>
@@ -394,21 +394,13 @@
                                             </div>
                                          </div>
                                          <div class="modal-footer">
-                                            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-                                            <button type="button" class="btn btn-danger">Cancel</button>
+                                            <button type="button" class="btn btn-info">OK</button>
+                                            <button type="button" class="btn btn-danger"  data-dismiss="modal">Cancel</button>
                                           </div>
                                     </div>
                              </div>
                         </div>
                     </div>
-            
-
-            <script>
-                $(function () {
-                    $('#datetimepicker').datetimepicker();
-                });
-            </script>
-    
     
 
 
