@@ -426,7 +426,31 @@
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
   <script>
       $(document).ready(function() {
-          $('#myTable').DataTable();
+          $('#myTable').DataTable({
+
+          });
+      } );
+      $(document).ready(function() {
+          $('#myTables').DataTable();
+      } );
+      $(document).ready(function() {
+          $('#myTable1').DataTable({
+            // "bInfo" : false
+            // "bPaginate": false,
+    // "bLengthChange": false,
+    "bFilter": true,
+    "bInfo": false,
+    // "bAutoWidth": false
+          });
+      } );
+      $(document).ready(function() {
+          $('#myTable2').DataTable({
+            // "paging": false,
+            "searching": false,
+            "fillter": false
+            // "bFilter": true
+            // "bInfo" : false
+          });
       } );
   </script>
 </body>
