@@ -51,9 +51,13 @@
             </div>
         </div>
        
+
+  
+        
+
   {{-- model create --}}
     
-        <div class="modal fade bd-example" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal fade bd-example"  id="createContractType"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
             <div class="modal-content">
                     <div class="modal-header">
@@ -71,7 +75,6 @@
                 
                                                          </div>
                                                   </div>
-                                
                                              </div>
                                         </form>
                                 </div>
@@ -104,7 +107,6 @@
                     </div>
                 </div>
             </div>
-              
           </form>
         </div>
         <div class="modal-footer">
@@ -114,7 +116,6 @@
       </div>
     </div>
   </div>
-
   {{-- model update --}}
 
   <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -139,20 +140,18 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-              <button type="button" class="btn btn-danger">Cancel</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
           </div>
         </div>
       </div>
-
-
       {{-- model delete --}}
 
   <div class="modal fade" id="deleteContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+              <h5 class="modal-title" id="exampleModalLabel" >Confirmation</h5>
               
             </div>
             <div class="modal-body">
@@ -162,10 +161,9 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-              <button type="button" class="btn btn-danger">No</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
             </div>
           </div>
         </div>
       </div>
-
      @endsection

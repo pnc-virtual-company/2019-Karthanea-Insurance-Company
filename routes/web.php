@@ -61,20 +61,25 @@
 // Route::get('examples', 'ExamplesController@index')->name('examples');
 /*
 =============================================================================*/
-
 Route::get('/', function () {
         return view('pages.clientList');
     });
 
 Route::resource('/home','PageController@index');
+
+Route::resource('/contract','contractsController');
+
 Route::get('/contract','ContractController@index');
+
 
 Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
 
+Route::get('/payment','paymentController@index');
 Route::get('/contractlist','PageController@contractlist');
+
 Route::get('/payment','paymentController@index');
 
 Route::get('/call','callController@index');
