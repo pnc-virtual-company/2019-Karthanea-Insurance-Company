@@ -7,8 +7,16 @@
   max-width: 900px;
   margin: 0 auto;
 }
-.list-group-item .collapsedd{
-  padding: 12px 12px;
+
+#submenu .list-group-item, 
+#pageSubmenu .list-group-item
+{
+  padding: 16px;
+  font-size: 18%;
+  font-weight: bold;
+}
+#manageUp,#dashUp{
+  display: none;
 }
 .nav-link:hover{
   background: rgb(147, 148, 148);
@@ -18,7 +26,7 @@
 }
 
 .collapse .list-group-item{
-  width: 90%;
+  width: 88%;
   margin: 0 auto;
 }
 .main-panel .navbar{
