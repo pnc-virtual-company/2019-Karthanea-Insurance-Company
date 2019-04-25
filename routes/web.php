@@ -68,11 +68,22 @@ Route::get('/', function () {
 
 Route::resource('/home','PageController@index');
 Route::resource('/contract','contractsController');
+<<<<<<< HEAD
 
+=======
+>>>>>>> c29191a361d2339bfac197e8339ad58eda064546
 Route::get('/createContract','PageController@createContractType');
 Route::get('/openNewCall','PageController@OpenNewCall');
 
 Route::resource('/home','PageController@index');
 Route::get('/client','ClientController@index');
+<<<<<<< HEAD
 Route::get('/payment','paymentController@index');
 Route::get('/contractlist','PageController@contractlist');
+=======
+Route::get('/calendar','CalendarController@index');
+Route::get('/chart','ChartController@index');
+
+Route::get('/payment','paymentController@index');
+Route::get('/login','loginController@index');
+>>>>>>> c29191a361d2339bfac197e8339ad58eda064546
