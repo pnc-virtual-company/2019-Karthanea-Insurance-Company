@@ -56,11 +56,11 @@
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a href="#submenu" data-toggle="collapse" aria-expanded="false" class="nav-link">
                     <i class="material-icons">color_lens</i>
                     <p>Dashboard</p>
-                </a>
+                  </a>
                 <ul class="collapse list-unstyled" id="submenu">
                     <li class="list-group-item collapsed">
                       <a href="{{url('/client')}}">
@@ -80,12 +80,6 @@
                     </li>
                 </ul>
             </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="{{url('/contract')}}">
-              <i class="material-icons">list</i>
-              <p>Contract Type</p>
-            </a>
-          </li>
           <li class="nav-item ">
             <a class="nav-link" href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
               <i class="material-icons">work</i>
@@ -202,7 +196,7 @@
         <li class="adjustments-line">
           <a href="javascript:void(0)" class="switch-trigger active-color">
             <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-primary active" data-color="green"></span>
+              <span class="badge filter badge-primary active" data-color="azure"></span>
               <span class="badge filter badge-azure" data-color="azure"></span>
               <span class="badge filter badge-green" data-color="green"></span>
               <span class="badge filter badge-warning" data-color="orange"></span>
