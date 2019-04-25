@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
@@ -9,6 +8,13 @@
   <title>
       {{ config('app.name', 'Skeleton') }}
   </title>
+<!-- link calendar -->
+<link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
+<link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
+<script src='{{asset('packages/core/main.js')}}'></script>
+<script src='{{asset('packages/interaction/main.js')}}'></script>
+<script src='{{asset('packages/daygrid/main.js')}}'></script>
+<script src='{{asset('js/calendar.js')}}'></script>
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -61,7 +67,7 @@
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
-                      <a href="#">
+                      <a href="{{url('/chart')}}">
                           <p>
                             <i class="material-icons text-info">pie_chart</i>
                             Occupency
@@ -123,7 +129,7 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
+            <a class="nav-link" href="{{url('/calendar')}}">
               <i class="material-icons">calendar_today</i>
               <p>Calendar</p>
             </a>
@@ -192,7 +198,7 @@
         <li class="adjustments-line">
           <a href="javascript:void(0)" class="switch-trigger active-color">
             <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-primary active" data-color="lightblue"></span>
+              <span class="badge filter badge-primary active" data-color="green"></span>
               <span class="badge filter badge-azure" data-color="azure"></span>
               <span class="badge filter badge-green" data-color="green"></span>
               <span class="badge filter badge-warning" data-color="orange"></span>
@@ -283,11 +289,9 @@
           if ($sidebar.length != 0) {
             $sidebar.attr('data-color', new_color);
           }
-
           if ($full_page.length != 0) {
             $full_page.attr('filter-color', new_color);
           }
-
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.attr('data-color', new_color);
           }
@@ -416,7 +420,6 @@
       md.initDashboardPageCharts();
       $('#example').DataTable();
                         
-
     });
 </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
@@ -454,5 +457,4 @@
       } );
   </script>
 </body>
-
 </html>
