@@ -124,10 +124,10 @@
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                    <a href="{{url('/client')}}">
+                    <a href="{{url('/achiveClient')}}">
                       <span class="text-white">
                         <i class="material-icons text-white">people</i>
-                        Clients
+                        Achive Clients
                       </span>
                     </a>
                 </li>

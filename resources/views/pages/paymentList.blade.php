@@ -9,6 +9,9 @@
                                     <tr>
                                         <th>Disable ID</th>
                                         <th>Clients</th>
+                                        <th>Address</th>
+                                        <th>Phone</th>
+                                        <th>Email</th>
                                         <th>Contract</th>
                                     </tr>
                                 </thead>
@@ -21,6 +24,9 @@
                                                 3
                                         </td>
                                         <td>Li</td>
+                                        <td>Street.371 boreySorla</td>
+                                        <td>095 245 38</td>
+                                        <td>li@gmail.com</td>
                                         <td>
                                                 <a href="#" class="text-center">
                                                         <i class="material-icons text-info ml-5">insert_drive_file</i>
@@ -69,7 +75,7 @@
 
                                             <td>
                                                     <a href="#" class="text-center">
-                                                            <i class="material-icons text-info ml-5">attach_money</i>
+                                                            <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
                                                     </a>
                                             </td>
 
@@ -285,8 +291,8 @@
                                     </div>
                                 </div>
                             <div class="modal-footer mr-5">
-                                <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
-                                <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                                <button type="button" class="btn btn-info "><i class='material-icons'>check</i> Edit Contract</button>
+                                <button type="button" class="btn btn-danger  float-left" data-dismiss="modal"><i class='material-icons '>close</i> Cencel</button>
                             </div>
                         </div>
                     </div>
@@ -432,10 +438,20 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-2">
-                                <label for="name">Name</label>
+                                <label for="firstname">Firstname</label>
                             </div>
                             <div class="col-10">
-                                <input type="text" name="name" id="name" class="form-control">
+                                <input type="text" name="firstname" id="name" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="lastname">Lastname</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" name="lastname" id="name" class="form-control">
                             </div>
                         </div>
                     </div>
@@ -472,8 +488,8 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-info">OK</button>
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-info">Edit client</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
           </div>
         </div>

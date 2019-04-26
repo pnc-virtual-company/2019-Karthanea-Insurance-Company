@@ -92,3 +92,4 @@ Route::get('/chart','ChartController@index');
 
 Route::get('login','loginController@index')->name('login');
 Route::get('/register','registerController@index');
+Route::get('/achiveClient','ClientController@achiveClient');
