@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
-        <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-        <title>
-            {{ config('app.name', 'Skeleton') }}
-        </title> --}}
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
+    <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        {{ config('app.name', 'Karthanea') }}
+    </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
@@ -25,38 +25,51 @@
                     <div class="row">
                             <div class="col s12 ">
                               <div class="card-panel ">
-                               	  <form action="">
+                                     <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
                                         <div class="card  bg-info p-4 shadow-lg">
                                                 <h6 class="text-center text-white">Register</h6>
                                             </div>
                                        <div class="input-field">
-                                               <i class="material-icons prefix" class="text-secondary">markunread</i>
-                                               <input type="text" id="autocomplete-input" class="autocomplete icons">
+                                               <i class="material-icons prefix" class="text-secondary">person</i>
+                                               <input type="text" id="autocomplete-input" name="name" value="{{ old('name') }}" class="autocomplete icons">
                                                <label for="autocomplete-input ">Username</label>
                                         </div>
-                                        <div class="input-field">
-                                               <i class="material-icons prefix">map</i>
-                                               <input type="text" id="autocomplete-input" class="autocomplete icons">
+                                        {{-- <div class="input-field">
+                                               <i class="material-icons prefix">home</i>
+                                               <input type="text" id="autocomplete-input" name="address" class="autocomplete icons">
                                                <label for="autocomplete-input">Address</label>
                                         </div>
                                         <div class="input-field">
                                                <i class="material-icons prefix">call</i>
-                                               <input type="text" id="autocomplete-input" class="autocomplete icons">
+                                               <input type="text" id="autocomplete-input" name="phone" class="autocomplete icons">
                                                <label for="autocomplete-input">Phone Number</label>
-                                        </div>
+                                        </div> --}}
                                         <div class="input-field">
                                                <i class="material-icons prefix">markunread</i>
-                                               <input type="text" id="autocomplete-input" class="autocomplete icons">
-                                               <label for="autocomplete-input">Address</label>
+                                               <input type="text" id="autocomplete-input" name="email" value="{{ old('email') }}" class="autocomplete icons">
+                                               <label for="autocomplete-input">Email</label>
                                         </div>
+                                        <div class="input-field">
+                                               <i class="material-icons prefix">lock</i>
+                                               <input type="password" id="autocomplete-input" name="password" class="autocomplete icons">
+                                               <label for="autocomplete-input">Password</label>
+                                        </div>
+                                        <div class="form-group">
+                                                <label for="roles[]">Roles</label>
+                                                <select class="form-control" id="roles" name="roles[]" multiple size="5">
+                                                @foreach ($roles as $role)
+                                                    <option value="{{ $role->id }}" @if (!empty(old('roles'))) @if(in_array($role->id, old('roles'))) selected @endif @endif>{!! $role->name !!}</option>
+                                                @endforeach
+                                                </select>
+                                            </div>
                                         <footer>
                                                <div class="container">
                                                 <div class="row d-flex justify-content-center mt-5">
                                                        <div class="form-group">
-                                                           <a href="{{url('/login')}}" class="btn btn-info btn-sm right text-white">Submit Register</a>
+                                                           <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
                                                        </div>
                                                 </div>
-                                                
                                                </div>
                                              </footer>
                                      </form>
