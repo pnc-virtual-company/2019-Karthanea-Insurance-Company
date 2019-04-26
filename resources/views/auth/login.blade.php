@@ -14,7 +14,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
 <body>
     <div class="container"><br><br><br>
@@ -25,18 +25,28 @@
                             <div class="col s12 ">
                               <div class="card-panel ">
                                          <form method="POST" action="{{ route('login') }}">
-                                                @csrf
+                                            @csrf
                                             <div class="card  bg-info p-4 shadow-lg">
                                                     <h6 class="text-center text-white">Login</h6>
                                                 </div>
                                            <div class="input-field">
                                                    <i class="material-icons prefix" class="text-secondary">markunread</i>
-                                                   <input type="text" id="autocomplete-input" class="autocomplete icons" required autofocus>
+                                                   <input type="text" id="autocomplete-input" name="email" value="{{ old('email') }}" class="autocomplete pl-4 icons {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
+                                                   @if ($errors->has('email'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('email') }}</strong>
+                                                        </span>
+                                                    @endif
                                                    <label for="autocomplete-input ">Email</label>
                                             </div>
                                             <div class="input-field">
                                                    <i class="material-icons prefix">https</i>
-                                                   <input type="text" id="autocomplete-input" class="autocomplete icons" required>
+                                                   <input type="password" id="autocomplete-input" name="password" class="pl-4 autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}" required>
+                                                   @if ($errors->has('password'))
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $errors->first('password') }}</strong>
+                                                        </span>
+                                                    @endif
                                                    <label for="autocomplete-input">Password</label>
                                             </div>
                                             <footer>
@@ -45,7 +55,7 @@
                                                       <div class="form ">
                                                            @csrf
                                                            <div class="form-group">
-                                                               <a href="{{url('/')}}" class="btn btn-info btn-sm right text-white text-center">LOGIN</a>
+                                                               <button type="submit" class="btn btn-info btn-sm right text-white text-center">LOGIN</button>
                                                            </div>
                                                            <div class="form-group text-info">
                                                                <div class="title">
@@ -63,7 +73,7 @@
                                                                  </div>
                                                            </div>
                                                            <div class="form-group">
-                                                               <a href="{{url('/register')}}" class="btn btn-info btn-sm right text-white text-center">Register</a>
+                                                               <a href="{{ url('/register') }}" class="btn btn-info btn-sm right text-white text-center">Register</a>
                                                            </div>
                                                          </div>
                                                     </div>
