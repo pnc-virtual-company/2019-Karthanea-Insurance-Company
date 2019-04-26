@@ -152,7 +152,7 @@
                                                                                     </div>
                                                                                     <div class="col-3">
                                                                                             <div class="input-group-btn">
-                                                                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                                    <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
                                                                                              </div>
                                                                                     </div>
                                                                                 </div>
@@ -175,7 +175,7 @@
                                                                               </div>
                                                                               <div class="col-3">
                                                                                     <div class="input-group-btn">
-                                                                                            <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                            <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
                                                                                      </div>
                                                                               </div>
                                                                           </div>
@@ -604,7 +604,7 @@
 
             <script>
                 $(function () {
-                    $('#datetimepicker').datetimepicker();
+                    $('#datetimepicker').datepicker();
                 });
             </script>
 @endsection
