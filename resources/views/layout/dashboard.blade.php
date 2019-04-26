@@ -134,12 +134,6 @@
                       Archieve Clients
                     </span>
                   </a>
-                    <a href="{{url('/achiveClient')}}">
-                      <span class="text-white">
-                        <i class="material-icons text-white">people</i>
-                        Achive Clients
-                      </span>
-                    </a>
                 </li>
                 <li class="list-group-item collapsed">
                   <a href="{{url('/payment')}}">
