@@ -89,7 +89,7 @@ Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
 
-Route::get('/register','registerController@index');
+Route::get('/register','UserController@create');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/achiveClient','ClientController@achiveClient');
