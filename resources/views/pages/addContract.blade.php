@@ -18,7 +18,6 @@
                                              </tr>
                                 </thead>
                                 <tbody>
-                                  
                                         <tr>
                                                 <td>
                                                         1
@@ -66,25 +65,15 @@
                                                             </td>
                                                         </tr>
 
-
-                            
-                                       
-                                                 
-                                                   
                                 </tbody>
                                
                             </table>
-                        
                             <button type="button" class="btn bg-info ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
                 </div>
             </div>
     </div>
 </div>
 
-       
-       
-
-       
        {{-- modelad add a new contract --}}
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -224,10 +213,6 @@
 
             
 {{-- //  modelad edit a new contract --}}
-
-
-
-
                         </div>
                     </div>
   
