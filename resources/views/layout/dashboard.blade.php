@@ -463,6 +463,10 @@
     });
     $(document).ready(function() {
       md.initDashboardPageCharts();
+      $('#myTable5').DataTable();                
+    });
+    $(document).ready(function() {
+      md.initDashboardPageCharts();
       $('#contractType').DataTable();  
 
     });
