@@ -15,12 +15,12 @@ Auth::routes();
 
 // Route::get('users/profile','UserController@profile');
 // Route::get('users/export','UserController@export');
+// Route::resource('/users','UserController');
+
+//    The routes below are written for the examples only. 
+//    You can delete them because you do not need them for a real application.
 Route::resource('users','UserController');
 
-/*=============================================================================
-   The routes below are written for the examples only. 
-   You can delete them because you do not need them for a real application.
-*/
 // Route::get('examples/emails', 'ExamplesController@emails');
 // Route::get('examples/icons', 'ExamplesController@icons');
 // Route::get('examples/momentjs', 'ExamplesController@momentjs');
@@ -39,6 +39,13 @@ Route::resource('users','UserController');
 // Route::get('examples/pdf', 'ExamplesController@pdf');
 // Route::get('examples/translation', 'ExamplesController@translation');
 
+
+// Switch language code
+// Route::get('examples/translation/switch/{langCode}', function ($langCode) {
+//     App::setLocale($langCode);
+//     Session::put('langCode', $langCode);
+//     return Redirect::back();
+// });
 //Switch language code
 Route::get('examples/translation/switch/{langCode}', function ($langCode) {
     App::setLocale($langCode);
