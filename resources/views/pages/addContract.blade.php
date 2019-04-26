@@ -152,7 +152,7 @@
                                                                                     </div>
                                                                                     <div class="col-3">
                                                                                             <div class="input-group-btn">
-                                                                                                    <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                                    <button type="button"  class="btn btn-default datetimepicker" ><i class="material-icons">date_range</i></button>
                                                                                              </div>
                                                                                     </div>
                                                                                 </div>
@@ -175,7 +175,7 @@
                                                                               </div>
                                                                               <div class="col-3">
                                                                                     <div class="input-group-btn">
-                                                                                            <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                            <button type="button" class="btn btn-default datetimepicker" ><i class="material-icons">date_range</i></button>
                                                                                      </div>
                                                                               </div>
                                                                           </div>
@@ -241,7 +241,7 @@
 
                                                                 <div class="col-10">
                                                                         <div class="input-group col-md-12">
-                                                                                <input class="form-control py-2" type="search" value="search" id="example-search-input">
+                                                                                <input class="form-control py-2" type="search" placeholder="search" id="example-search-input">
                                                                                 <span class="input-group-append">
                                                                                     <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectAddContract" type="button" style="margin-top:0%;">
                                                                                        Select
@@ -251,8 +251,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                              
-                                                        
+                                                     
                                                         <div class="col-6">
     
                                                             <div class="row">
@@ -391,12 +390,7 @@
                                                             </tbody>
                                                            
                                                         </table>
-                                        
-                                                        
-                                                    
-                                          
-                                                
-                                                
+            
                                           {{-- model update --}}
                                         
                                           <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -522,12 +516,7 @@
                                                 </tbody>
                                                
                                             </table>
-                            
-                                            
-                                        
-                              
-                                    
-                                    
+
                               {{-- model update --}}
                             
                               <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -579,7 +568,6 @@
                                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
                                           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 
-
                                         </div>
                                       </div>
                                     </div>
@@ -600,11 +588,4 @@
                  </div>
             </div>
         </div>
-
-
-            <script>
-                $(function () {
-                    $('#datetimepicker').datepicker();
-                });
-            </script>
 @endsection
