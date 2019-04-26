@@ -152,7 +152,7 @@
                                                                                     </div>
                                                                                     <div class="col-3">
                                                                                             <div class="input-group-btn">
-                                                                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                                    <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
                                                                                              </div>
                                                                                     </div>
                                                                                 </div>
@@ -175,7 +175,7 @@
                                                                               </div>
                                                                               <div class="col-3">
                                                                                     <div class="input-group-btn">
-                                                                                            <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                            <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
                                                                                      </div>
                                                                               </div>
                                                                           </div>
@@ -348,8 +348,16 @@
         </div>
 
 
+<<<<<<< HEAD
 
     
 
 
+=======
+            <script>
+                $(function () {
+                    $('#datetimepicker').datepicker();
+                });
+            </script>
+>>>>>>> 69d1c6d5a997359752e5ec0492ff461e832c2dbe
 @endsection
