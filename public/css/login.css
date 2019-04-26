@@ -50,3 +50,9 @@ a.btn.btn-info.right.text-white.text-center {
 p {
   font-size: 14px;
 }
+.form-group button:not(:disabled) {
+  width: 120px;
+}
+.form-group a.btn.btn-info.right.text-white.text-center {
+  width: 120px;
+}

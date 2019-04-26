@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
   <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <title>
       {{ config('app.name', 'Karthanea') }}
   </title>
@@ -45,25 +47,25 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('images/sidebar-3.jpg')}}">
+    <div class="sidebar" data-color="primary" data-background-color="black" data-image="{{asset('images/sidebar-3.jpg')}}">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger "
-
+        
         Tip 2: you can also add an image using data-image tag
-    -->
+      -->
       <div class="logo bg-teal">
         <a href="{{url('/')}}" class="simple-text logo-normal">
           <picture>
             <source media="(min-width: 650px)" srcset="{{asset('images/logo-1.png')}}">
-            <source media="(min-width: 465px)" srcset="{{asset('images/logo-1.png')}}">
-            <img src="{{asset('images/logo-1.png')}}" alt="brand logo">
-          </picture>
+              <source media="(min-width: 465px)" srcset="{{asset('images/logo-1.png')}}">
+                <img src="{{asset('images/logo-1.png')}}" alt="brand logo">
+              </picture>
         </a>
       </div>
       <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="nav-item active">
-                <a href="#submenu" data-toggle="collapse" id="dashboard" aria-expanded="false" class="nav-link">
+              <a href="#submenu" data-toggle="collapse" id="dashboard" aria-expanded="false" class="nav-link">
                     <i class="material-icons">color_lens</i>
                     <p>
                       Dashboard
@@ -74,56 +76,62 @@
                   <ul class="collapse list-unstyled " id="submenu">
                     <li class="list-group-item collapsed">
                       <a href="{{url('/userCall')}}">
-                          <span class="text-white">
-                              <i class="material-icons text-white">perm_phone_msg</i>
-                            User Call
-                          </span>
-                        </a>
+                        <span class="text-white">
+                          <i class="material-icons text-white">perm_phone_msg</i>
+                          User Call
+                        </span>
+                      </a>
                     </li>
                     <li class="list-group-item collapsed">
                       <a href="{{url('/client')}}">
-                          <span class="text-white">
+                        <span class="text-white">
                               <i class="material-icons text-white">format_list_numbered</i>
-                            Clients List
-                          </span>
+                              Clients List
+                            </span>
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
                       <a href="{{url('/chart')}}">
-                          <span class="text-white">
-                            <i class="material-icons text-white">pie_chart</i>
-                            Occupency
-                          </span>
-                        </a>
+                        <span class="text-white">
+                          <i class="material-icons text-white">pie_chart</i>
+                          Occupency
+                        </span>
+                      </a>
                     </li>
-                </ul>
-            </li>
+                  </ul>
+                </li>
           <li class="nav-item ">
             <a class="nav-link" href="#pageSubmenu" id="management" data-toggle="collapse" aria-expanded="false">
               <i class="material-icons">work</i>
               <p>Managements
-                  <span class="material-icons ml-4" id="manageDown">arrow_drop_down</span>
-                  <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span>
+                <span class="material-icons ml-4" id="manageDown">arrow_drop_down</span>
+                <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span>
               </p>
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
-                <li class="list-group-item collapsed">
-                  <a href="{{url('/contract')}}">
-                      <span class="text-white">
-                          <i class="material-icons text-white">ballot</i>
-                        Contract Type
+              <li class="list-group-item collapsed">
+                <a href="{{url('/contract')}}">
+                  <span class="text-white">
+                    <i class="material-icons text-white">ballot</i>
+                    Contract Type
                       </span>
                     </a>
-                </li>
+                  </li>
                 <li class="list-group-item collapsed">
                   <a href="{{url('/contractlist')}}">
-                      <span class="text-white">
-                        <i class="material-icons text-white">description</i>
-                        Contract List
-                      </span>
-                    </a>
+                    <span class="text-white">
+                      <i class="material-icons text-white">description</i>
+                      Contract List
+                    </span>
+                  </a>
                 </li>
                 <li class="list-group-item collapsed">
+                  <a href="{{url('/client')}}">
+                    <span class="text-white">
+                      <i class="material-icons text-white">people</i>
+                      Archieve Clients
+                    </span>
+                  </a>
                     <a href="{{url('/achiveClient')}}">
                       <span class="text-white">
                         <i class="material-icons text-white">people</i>
@@ -132,12 +140,12 @@
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                    <a href="{{url('/payment')}}">
-                      <span class="text-white">
-                        <i class="material-icons text-white">monetization_on</i>
-                        Payments
-                      </span>
-                    </a>
+                  <a href="{{url('/payment')}}">
+                    <span class="text-white">
+                      <i class="material-icons text-white">monetization_on</i>
+                      Payments
+                    </span>
+                  </a>
                 </li>
             </ul>
           </li>
@@ -165,7 +173,7 @@
     <div class="main-panel">
       <!-- Navbar -->
       <nav class="navbar navbar-expand-lg bg-info navbar-absolute fixed-top " id="navigation-example">
-        <div class="container-fluid ">
+        <div class="container-fluid ">  
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
             <span class="navbar-toggler-icon icon-bar"></span>
@@ -177,18 +185,23 @@
                   <i class="material-icons">settings</i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item nav-link" href="#">
+                  <a class="dropdown-item nav-link" href="{{url('users/profile')}}">
                     <span>
                       <i class="material-icons">account_circle</i>
                       Profile
                     </span>
                   </a>
-                  <a class="dropdown-item nav-link" href="{{url('/login')}}">
-                    <span>
-                      <i class="material-icons">logout</i>
-                      Logout
-                    </span>
-                  </a>
+                  <a class="dropdown-item nav-link" href="{{ route('logout') }}" 
+                  onclick="event.preventDefault();
+                  document.getElementById('logout-form').submit();">
+                      <span>
+                        <i class="material-icons">logout</i>
+                        Logout
+                      </span>
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                      </form>
                 </div>
               </li>
             </ul>
@@ -199,9 +212,9 @@
       <div class="content">
         <div class="container-fluid">
            @yield('content')
+          </div>
         </div>
-      </div>
-      <script>
+        <script>
         const x = new Date().getFullYear();
         let date = document.getElementById('date');
         //date.innerHTML = '&copy; ' + x + date.innerHTML;
@@ -215,7 +228,7 @@
         <li class="adjustments-line">
           <a href="javascript:void(0)" class="switch-trigger active-color">
             <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-primary active" data-color="azure"></span>
+              <span class="badge filter badge-primary active" data-color="primary"></span>
               <span class="badge filter badge-azure" data-color="azure"></span>
               <span class="badge filter badge-green" data-color="green"></span>
               <span class="badge filter badge-warning" data-color="orange"></span>
@@ -294,13 +307,13 @@
             }
           }
         });
-
+        
         $('.fixed-plugin .active-color span').click(function() {
           $full_page_background = $('.full-page-background');
-
+          
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
-
+          
           var new_color = $(this).data('color');
 
           if ($sidebar.length != 0) {
@@ -313,32 +326,32 @@
             $sidebar_responsive.attr('data-color', new_color);
           }
         });
-
+        
         $('.fixed-plugin .background-color .badge').click(function() {
           $(this).siblings().removeClass('active');
           $(this).addClass('active');
-
+          
           var new_color = $(this).data('background-color');
-
+          
           if ($sidebar.length != 0) {
             $sidebar.attr('data-background-color', new_color);
           }
         });
-
+        
         $('.fixed-plugin .img-holder').click(function() {
           $full_page_background = $('.full-page-background');
-
+          
           $(this).parent('li').siblings().removeClass('active');
           $(this).parent('li').addClass('active');
           var new_image = $(this).find("img").attr('src');
-
+          
           if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
             $sidebar_img_container.fadeOut('fast', function() {
               $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
               $sidebar_img_container.fadeIn('fast');
             });
           }
-
+          
           if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
             var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
 
@@ -347,74 +360,74 @@
               $full_page_background.fadeIn('fast');
             });
           }
-
+          
           if ($('.switch-sidebar-image input:checked').length == 0) {
             var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
             var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
+            
             $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
             $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
           }
-
+          
           if ($sidebar_responsive.length != 0) {
             $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
           }
         });
-
+        
         $('.switch-sidebar-image input').change(function() {
           $full_page_background = $('.full-page-background');
-
+          
           $input = $(this);
-
+          
           if ($input.is(':checked')) {
             if ($sidebar_img_container.length != 0) {
               $sidebar_img_container.fadeIn('fast');
               $sidebar.attr('data-image', '#');
             }
-
+            
             if ($full_page_background.length != 0) {
               $full_page_background.fadeIn('fast');
               $full_page.attr('data-image', '#');
             }
-
+            
             background_image = true;
           } else {
             if ($sidebar_img_container.length != 0) {
               $sidebar.removeAttr('data-image');
               $sidebar_img_container.fadeOut('fast');
             }
-
+            
             if ($full_page_background.length != 0) {
               $full_page.removeAttr('data-image', '#');
               $full_page_background.fadeOut('fast');
             }
-
+            
             background_image = false;
           }
         });
-
+        
         $('.switch-sidebar-mini input').change(function() {
           $body = $('body');
-
+          
           $input = $(this);
-
+          
           if (md.misc.sidebar_mini_active == true) {
             $('body').removeClass('sidebar-mini');
             md.misc.sidebar_mini_active = false;
-
+            
             $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
+            
           } else {
-
+            
             $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
 
             setTimeout(function() {
               $('body').addClass('sidebar-mini');
-
+              
               md.misc.sidebar_mini_active = true;
             }, 300);
           }
-
+          
           // we simulate the window Resize so the charts will get updated in realtime.
           var simulateWindowResize = setInterval(function() {
             window.dispatchEvent(new Event('resize'));
@@ -424,7 +437,7 @@
           setTimeout(function() {
             clearInterval(simulateWindowResize);
           }, 1000);
-
+          
         });
       });
     });
@@ -434,7 +447,7 @@
       md.initDashboardPageCharts();
       $('#example').DataTable();                
     });
-
+    
     $(document).ready(function() {
       md.initDashboardPageCharts();
       $('#myTable').DataTable();                
@@ -454,15 +467,15 @@
     $(document).ready(function() {
       md.initDashboardPageCharts();
       $('#contractType').DataTable();  
-
+      
     });
-</script>
+    </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
+  
 </body>
 <script>
   //barChart
