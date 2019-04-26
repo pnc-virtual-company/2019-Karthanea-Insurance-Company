@@ -75,142 +75,125 @@
 </div>
 
        {{-- modelad add a new contract --}}
-            <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                            <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Add a new contract</h5>
-                                  </div>
-                                  <div class="card-body">
-                                        <div class="modal-body">
-                                                <form>
-                                                        <div class="form-group">
+
+ <div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit contract</h5>
+                          </div>
+                          <div class="card-body">
+                                <div class="modal-body">
+                                        <form>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <div class="col-2">
+                                                                <label for="">Client</label>
+                                                        </div>
+                                                       
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control" placeholder="Search">
+                                                        </div>
+                                                <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-6">
                                                             <div class="row">
                                                                 <div class="col-2">
-                                                                        <label for="">Client</label>
+                                                                  <label for="">Type</label>
                                                                 </div>
-                                                               
+
                                                                 <div class="col-10">
-                                                                    <input type="text" class="form-control" placeholder="Search">
+                                                                        <div class="input-group col-md-12">
+                                                                                <input class="form-control py-2" type="search" value="search" id="example-search-input">
+                                                                                <span class="input-group-append">
+                                                                                    <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#select" type="button" style="margin-top:0%;">
+                                                                                       Select
+                                                                                    </button>
+                                                                                </span>
+                                                                            </div>
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                              
                                                         
-                                                        <div class="form-group ">
+                                                        <div class="col-6">
+    
                                                             <div class="row">
-                                                                <div class="col-6">
-                                                                    <div class="row">
-                                                                        <div class="col-2">
-                                                                          <label for="">Type</label>
-                                                                        </div>
-                                                                        <div class="col-10">
-                                                                                <div class="input-group col-md-12">
-                                                                                        <input class="form-control py-2" type="search" value="search" id="example-search-input">
-                                                                                        <span class="input-group-append">
-                                                                                            <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#select" type="button" style="margin-top:0%;">
-                                                                                               Select
-                                                                                            </button>
-                                                                                        </span>
-                                                                                    </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                      
-                                                                
-                                                                <div class="col-6">
-            
-                                                                    <div class="row">
-                                                                            <div class="col-6">
-                                                                                    <label for="">Status</label>
-                                                                                
-                                                                             </div>
-                                                                             <div class="col-6">
-                                                                                  
-                                                                                <select class="browser-default custom-select">
-                                                                                    <option selected>Open</option>                                                                                <option value="1">To be completed</option>
-                                                                                    <option value="2">To be signed</option>
-                                                                                    <option value="3">Closed</option>
-                                                                                </select>
-                                                                             </div>
-                                                                    </div>
-                                                                </div>
-                                                                 
-                                                                
+                                                                    <div class="col-6">
+                                                                            <label for="">Status</label>
+                                                                        
+                                                                     </div>
+                                                                     <div class="col-6">
+                                                                          
+                                                                        <select class="browser-default custom-select">
+                                                                            <option selected>Open</option>                                                                                <option value="1">To be completed</option>
+                                                                            <option value="2">To be signed</option>
+                                                                            <option value="3">Closed</option>
+                                                                        </select>
+                                                                     </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <div class="row">
-                                                                <div class="col-6">
+
+                                                            </div>   
+                                                         
+                                                    </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                            <div class="col-6">
                                                                     <div class="row">
                                                                         <div class="col-3">
-                                                                                <label for="startDate">Start date</label>
+                                                                              <label for="endDate">Start Date</label>
                                                                         </div>
                                                                         <div class="col-9">
-                                                                                <div class="row">
-                                                                                    <div class="col-8">
-                                                                                            <input type="date" class="form-control" id='startDate'> 
-                                                                                    </div>
-                                                                                    <div class="col-3">
-                                                                                            <div class="input-group-btn">
-                                                                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
-                                                                                             </div>
-                                                                                    </div>
+                                                                            <div class="row">
+                                                                                <div class="col-12">
+                                                                                      <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
                                                                                 </div>
-                                                                                       
-                                                                                   
-                                                                                   
+                                                                              </div>
+                                                                              </div>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                               
-                                                              <div class="col-6">
+                                                       
+                                                      <div class="col-6">
+                                                          <div class="row">
+                                                              <div class="col-3">
+                                                                    <label for="endDate">End Date</label>
+                                                              </div>
+                                                              <div class="col-9">
                                                                   <div class="row">
-                                                                      <div class="col-3">
-                                                                            <label for="endDate">End Date</label>
+                                                                      <div class="col-12">
+                                                                            <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
                                                                       </div>
-                                                                      <div class="col-9">
-                                                                          <div class="row">
-                                                                              <div class="col-9">
-                                                                                    <input type="date" class="form-control" id='endDate'>
-                                                                              </div>
-                                                                              <div class="col-3">
-                                                                                    <div class="input-group-btn">
-                                                                                            <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
-                                                                                     </div>
-                                                                              </div>
-                                                                          </div>
-                                                                      </div>
+                                                                    </div>
+                                                                    </div>
                                                                   </div>
                                                               </div>
-                                                            
-                                                            
-                                                            
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group ">
-                                                            <div class="row">
-                                                                <div class="col-2"><label for="" >Monthly bill</label></div>
-                                                                
-                                                                <div class="col-10">
-                                                                    <input type="text" class="form-control">
-                                                                </div>   
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                            </div>
-                                        </div>
-                                    <div class="modal-footer mr-5">
-                                        <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
-                                        <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                                                          </div>
+                                                      </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-2"><label for="" >Monthly bill</label></div>
+                                                        
+                                                        <div class="col-10">
+                                                            <input type="text" class="form-control">
+                                                        </div>   
+                                                    </div>
+                                                </div>
+                                        </form>
                                     </div>
-                                
                                 </div>
+                            <div class="modal-footer mr-5">
+                                <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
+                                <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
                             </div>
                         </div>
-                    <div>
+                    </div>
                 </div>
-            </div>
-
+            <div>
+        </div>
+    </div>
             
 {{-- //  modelad edit a new contract --}}
  <div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -276,25 +259,20 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <div class="row">
-                                                                <div class="col-3">
-                                                                        <label for="startDate">Start date</label>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                        <div class="row">
-                                                                            <div class="col-8">
-                                                                                    <input type="date" class="form-control" id='startDate'> 
-                                                                            </div>
-                                                                            <div class="col-3">
-                                                                                    <div class="input-group-btn">
-                                                                                            <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
-                                                                                     </div>
+                                                            <div class="col-6">
+                                                                    <div class="row">
+                                                                        <div class="col-3">
+                                                                              <label for="endDate">Start Date</label>
+                                                                        </div>
+                                                                        <div class="col-9">
+                                                                            <div class="row">
+                                                                                <div class="col-12">
+                                                                                      <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
+                                                                                </div>
+                                                                              </div>
+                                                                              </div>
                                                                             </div>
                                                                         </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                        
                                                       <div class="col-6">
                                                           <div class="row">
@@ -303,14 +281,11 @@
                                                               </div>
                                                               <div class="col-9">
                                                                   <div class="row">
-                                                                      <div class="col-9">
-                                                                            <input type="date" class="form-control" id='endDate'>
+                                                                      <div class="col-12">
+                                                                            <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
                                                                       </div>
-                                                                      <div class="col-3">
-                                                                            <div class="input-group-btn">
-                                                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
-                                                                             </div>
-                                                                      </div>
+                                                                    </div>
+                                                                    </div>
                                                                   </div>
                                                               </div>
                                                           </div>

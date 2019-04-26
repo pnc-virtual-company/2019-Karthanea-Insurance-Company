@@ -99,22 +99,31 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <div class="row">
-                                                <label for="startDate">Date</label>
-                                            <div class="col-3">
-                                                 <input type="date" class="form-control" id='startDate'>
-                                                 
-                                            </div>
-                                            <div class="input-group-btn">
-                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
-                                             </div>
-                                            
-                                        </div>
+                                                <div class="row">
+                                                        <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-3">
+                                                                          <label for="endDate">Start Date</label>
+                                                                    </div>
+                                                                    <div class="col-9">
+                                                                        <div class="row">
+                                                                            <div class="col-12">
+                                                                                  <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
+                                                                            </div>
+                                                                          </div>
+                                                                          </div>
+                                                                        </div>
+                                                                    </div>
+                                                   
+                                                  
+                                                      </div>
+                                                  </div>
+                                                
                                         <div class="form-group">
                                                 <div class="row">
                                                         <label for="">Comments</label>
                                                         <div class="col-10">
-                                                       <textarea name="" id="" cols="50"></textarea>
+                                                       <textarea name="" id="" cols="50" class="form-control"></textarea>
     
                                                         </div>
                                                 </div>

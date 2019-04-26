@@ -8,6 +8,8 @@
   <title>
       {{ config('app.name', 'Karthanea') }}
   </title>
+  {{-- link and script datepicker --}}
+  
   <!-- pei chart link -->
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -456,10 +458,41 @@
       $('#contractType').DataTable();  
 
     });
+
+
+    
+
+
+   
 </script>
+{{-- Link datepicker --}}
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script>
+  
+   $(document).ready(function() {
+
+$(".txtDate").datepicker({
+    showOn: 'button',
+    buttonText: 'Show Date',
+    buttonImageOnly: true,
+    buttonImage: '../public/images/calendar.png',
+    dateFormat: 'mm/dd/yy',
+    
+     constrainInput: true
+});
+
+$(".ui-datepicker-trigger").mouseover(function() {
+    $(this).css('cursor', 'pointer');
+});
+
+});
+    </script>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  {{-- js datapicker --}}
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
