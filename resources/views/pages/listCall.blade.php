@@ -106,7 +106,7 @@
                                                  
                                             </div>
                                             <div class="input-group-btn">
-                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                    <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
                                              </div>
                                             
                                         </div>
