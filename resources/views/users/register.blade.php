@@ -64,14 +64,14 @@
                                                 </select>
                                             </div>
                                         <footer>
-                                               <div class="container">
+                                            <div class="container">
                                                 <div class="row d-flex justify-content-center mt-5">
-                                                       <div class="form-group">
-                                                           <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
-                                                       </div>
+                                                    <div class="form-group">
+                                                        <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
+                                                    </div>
                                                 </div>
-                                               </div>
-                                             </footer>
+                                            </div>
+                                        </footer>
                                      </form>
                               </div>
                             </div>

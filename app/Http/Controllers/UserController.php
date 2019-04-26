@@ -62,7 +62,7 @@ class UserController extends Controller
     {
         $request->user()->authorizeRoles(['Administrator']);
         $roles = Role::all();
-        return view('pages.register', ['roles' => $roles]);
+        return view('users.register', ['roles' => $roles]);
     }
 
     /**
