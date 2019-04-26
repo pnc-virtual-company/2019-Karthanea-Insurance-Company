@@ -9,6 +9,7 @@
                                 <thead class="bg-dark text-white">
                                         <tr>
                                                 <th>ID</th>
+                                                <th>Client Name</th>
                                                 <th>Contract Type</th>
                                                 <th>Status</th>
                                                 <th>Start</th>
@@ -22,9 +23,10 @@
                                                 <td>
                                                         1
                                                         <a href="#" class="text-center">
-                                                                <a href="#"  data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
+                                                                <a href="#"  data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">edit</i></a>
                                                         </a>
                                                     </td>
+                                                    <td>Bopha <a href="#" ><i class="material-icons ml-5 text-info">call</i></a></td>
                                                     <td>
                                                         Car
                                                         <a href="#" class="text-center">
@@ -45,9 +47,11 @@
                                                         <td>
                                                                 1
                                                                 <a href="#" class="text-center">
-                                                                        <a href="#"  data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
+                                                                        <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">edit</i></a>
                                                                 </a>
                                                             </td>
+                                                            
+                                                    <td>Bopha <a href="#"><i class="material-icons ml-5 text-info">call</i></a></td>
                                                             <td>
                                                                 Car
                                                                 <a href="#" class="text-center">
@@ -91,7 +95,7 @@
                                                                 </div>
                                                                
                                                                 <div class="col-10">
-                                                                    <input type="text" class="form-control" placeholder="Search">
+                                                                    <input type="text" class="form-control" placeholder="Client Name">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -105,7 +109,7 @@
                                                                         </div>
                                                                         <div class="col-10">
                                                                                 <div class="input-group col-md-12">
-                                                                                        <input class="form-control py-2" type="search" value="search" id="example-search-input">
+                                                                                        <input class="form-control py-2" id="example-search-input">
                                                                                         <span class="input-group-append">
                                                                                             <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#select" type="button" style="margin-top:0%;">
                                                                                                Select
@@ -152,7 +156,7 @@
                                                                                     </div>
                                                                                     <div class="col-3">
                                                                                             <div class="input-group-btn">
-                                                                                                    <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                                    <button type="button"  class="btn btn-default datetimepicker" ><i class="material-icons">date_range</i></button>
                                                                                              </div>
                                                                                     </div>
                                                                                 </div>
@@ -175,7 +179,7 @@
                                                                               </div>
                                                                               <div class="col-3">
                                                                                     <div class="input-group-btn">
-                                                                                            <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                            <button type="button" class="btn btn-default datetimepicker" ><i class="material-icons">date_range</i></button>
                                                                                      </div>
                                                                               </div>
                                                                           </div>
@@ -200,8 +204,8 @@
                                             </div>
                                         </div>
                                     <div class="modal-footer mr-5">
-                                        <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
-                                        <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                                        <button type="button" class="btn btn-info "><i class='material-icons'>check</i> Save Contract</button>
+                                        <button type="button" class="btn btn-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
                                     </div>
                                 
                                 </div>
@@ -210,14 +214,146 @@
                     <div>
                 </div>
             </div>
-
-            
-{{-- //  modelad edit a new contract --}}
                         </div>
                     </div>
-  
-{{-- select add contract --}}
-
+{{-- Model Edit List of contract --}}
+            <div class="modal fade bd-edit-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                            <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Edit the contract</h5>
+                                  </div>
+                                  <div class="card-body">
+                                        <div class="modal-body">
+                                                <form>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-2">
+                                                                        <label for="">Client</label>
+                                                                </div>
+                                                               
+                                                                <div class="col-10">
+                                                                    <input type="text" class="form-control" placeholder="Client Name">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group ">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="row">
+                                                                        <div class="col-2">
+                                                                          <label for="">Type</label>
+                                                                        </div>
+                                                                        <div class="col-10">
+                                                                                <div class="input-group col-md-12">
+                                                                                        <input class="form-control py-2" id="example-search-input">
+                                                                                        <span class="input-group-append">
+                                                                                            <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#select" type="button" style="margin-top:0%;">
+                                                                                               Select
+                                                                                            </button>
+                                                                                        </span>
+                                                                                    </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                      
+                                                                
+                                                                <div class="col-6">
+            
+                                                                    <div class="row">
+                                                                            <div class="col-6">
+                                                                                    <label for="">Status</label>
+                                                                                
+                                                                             </div>
+                                                                             <div class="col-6">
+                                                                                  
+                                                                                <select class="browser-default custom-select">
+                                                                                    <option selected>Open</option>                                                                                <option value="1">To be completed</option>
+                                                                                    <option value="2">To be signed</option>
+                                                                                    <option value="3">Closed</option>
+                                                                                </select>
+                                                                             </div>
+                                                                    </div>
+                                                                </div>
+                                                                 
+                                                                
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div class="row">
+                                                                <div class="col-6">
+                                                                    <div class="row">
+                                                                        <div class="col-3">
+                                                                                <label for="startDate">Start date</label>
+                                                                        </div>
+                                                                        <div class="col-9">
+                                                                                <div class="row">
+                                                                                    <div class="col-8">
+                                                                                            <input type="date" class="form-control" id='startDate'> 
+                                                                                    </div>
+                                                                                    <div class="col-3">
+                                                                                            <div class="input-group-btn">
+                                                                                                    <button type="button"  class="btn btn-default datetimepicker" ><i class="material-icons">date_range</i></button>
+                                                                                             </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                       
+                                                                                   
+                                                                                   
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                               
+                                                              <div class="col-6">
+                                                                  <div class="row">
+                                                                      <div class="col-3">
+                                                                            <label for="endDate">End Date</label>
+                                                                      </div>
+                                                                      <div class="col-9">
+                                                                          <div class="row">
+                                                                              <div class="col-9">
+                                                                                    <input type="date" class="form-control" id='endDate'>
+                                                                              </div>
+                                                                              <div class="col-3">
+                                                                                    <div class="input-group-btn">
+                                                                                            <button type="button" class="btn btn-default datetimepicker" ><i class="material-icons">date_range</i></button>
+                                                                                     </div>
+                                                                              </div>
+                                                                          </div>
+                                                                      </div>
+                                                                  </div>
+                                                              </div>
+                                                            
+                                                            
+                                                            
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <div class="row">
+                                                                <div class="col-2"><label for="" >Monthly bill</label></div>
+                                                                
+                                                                <div class="col-10">
+                                                                    <input type="text" class="form-control">
+                                                                </div>   
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                            </div>
+                                        </div>
+                                    <div class="modal-footer mr-5">
+                                        <button type="button" class="btn btn-info "><i class='material-icons'>check</i> Edit Contract</button>
+                                        <button type="button" class="btn btn-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                                    </div>
+                                
+                                </div>
+                            </div>
+                        </div>
+                    <div>
+                </div>
+            </div>
+                        </div>
+                    </div>
 {{-- model select contract  --}}
 
 <div class="modal fade bd-example" id="select"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -247,6 +383,7 @@
                                                         </td>
                                                         <td>Car</td>
                                                     </tr>
+                                                    
                                                     <tr >
                                                         <td class="text-center">
                                                             <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
@@ -268,12 +405,7 @@
                                                 </tbody>
                                                
                                             </table>
-                            
-                                            
-                                        
-                              
-                                    
-                                    
+
                               {{-- model update --}}
                             
                               <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -325,39 +457,18 @@
                                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
                                           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 
-
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                            
-                                        
+                                  </div> 
                                 </div>
                              </div>
                              <div class="modal-footer">
-
                                 <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-
-                             
-
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                               </div>
                         </div>
                  </div>
             </div>
         </div>
-
-
-<<<<<<< HEAD
-
-    
-
-
-=======
-            <script>
-                $(function () {
-                    $('#datetimepicker').datepicker();
-                });
-            </script>
->>>>>>> 69d1c6d5a997359752e5ec0492ff461e832c2dbe
 @endsection

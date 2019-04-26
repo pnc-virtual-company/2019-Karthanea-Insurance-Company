@@ -18,9 +18,6 @@ a.btn.btn-info.right.text-white.text-center {
 .input-field .prefix {
     color: #6b6868;
 }
-form {
-    margin-left: 195px;
-}
 
 .title{
     display: table;
@@ -52,7 +49,4 @@ form {
 }
 p {
   font-size: 14px;
-}
-form {
-  margin-top: 24px;
 }

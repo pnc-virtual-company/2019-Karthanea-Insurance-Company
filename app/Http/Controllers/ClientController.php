@@ -19,6 +19,9 @@ class ClientController extends Controller
     {
         return view('pages.userCall');
     }
+    public function achiveClient(){
+        return view('pages.AchiveClient');
+    }
 
     /**
      * Show the form for creating a new resource.

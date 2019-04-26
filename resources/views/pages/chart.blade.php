@@ -1,5 +1,5 @@
-<script src="https://cdnjs.com/libraries/Chart.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+{{-- <script src="https://cdnjs.com/libraries/Chart.js"></script> --}}
+{{-- <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script> --}}
 <script src="{{asset('js/utils.js')}}"></script>
 <script src="{{asset('js/Chart.min.js')}}"></script>
 <script src="{{asset('js/chart.js')}}"></script>
@@ -20,7 +20,7 @@
 <body>
     <div class="container mt-4">
         <div class="row">
-            <div class="col-6 col-md-6 col-sm-12">
+            <div class="col-10 col-md-10 col-sm-12">
                 <div style="width:100%;">
                     <canvas id="canvas"></canvas>
                 </div>
