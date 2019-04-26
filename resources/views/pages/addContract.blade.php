@@ -9,6 +9,7 @@
                                 <thead class="bg-dark text-white">
                                         <tr>
                                                 <th>ID</th>
+                                                <th>Client Name</th>
                                                 <th>Contract Type</th>
                                                 <th>Status</th>
                                                 <th>Start</th>
@@ -22,9 +23,10 @@
                                                 <td>
                                                         1
                                                         <a href="#" class="text-center">
-                                                                <a href="#"  data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
+                                                                <a href="#"  data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">edit</i></a>
                                                         </a>
                                                     </td>
+                                                    <td>Bopha <a href="#" ><i class="material-icons ml-5 text-info">call</i></a></td>
                                                     <td>
                                                         Car
                                                         <a href="#" class="text-center">
@@ -45,9 +47,11 @@
                                                         <td>
                                                                 1
                                                                 <a href="#" class="text-center">
-                                                                        <a href="#"  data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
+                                                                        <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">edit</i></a>
                                                                 </a>
                                                             </td>
+                                                            
+                                                    <td>Bopha <a href="#"><i class="material-icons ml-5 text-info">call</i></a></td>
                                                             <td>
                                                                 Car
                                                                 <a href="#" class="text-center">
@@ -103,6 +107,7 @@
                                                                 </div>
 
                                                                 <div class="col-10">
+
                                                                         <div class="input-group col-md-12">
                                                                                 <input class="form-control py-2" type="search" value="search" id="example-search-input">
                                                                                 <span class="input-group-append">
@@ -111,6 +116,7 @@
                                                                                     </button>
                                                                                 </span>
                                                                             </div>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -119,6 +125,7 @@
                                                         <div class="col-6">
     
                                                             <div class="row">
+
                                                                     <div class="col-6">
                                                                             <label for="">Status</label>
                                                                         
@@ -131,6 +138,7 @@
                                                                             <option value="3">Closed</option>
                                                                         </select>
                                                                      </div>
+
                                                             </div>
 
                                                             </div>   
@@ -145,11 +153,15 @@
                                                                               <label for="endDate">Start Date</label>
                                                                         </div>
                                                                         <div class="col-9">
+
                                                                             <div class="row">
                                                                                 <div class="col-12">
                                                                                       <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
+
                                                                                 </div>
                                                                               </div>
+
+
                                                                               </div>
                                                                             </div>
                                                                         </div>
@@ -168,6 +180,7 @@
                                                                     </div>
                                                                   </div>
                                                               </div>
+
                                                           </div>
                                                       </div>
                                                     </div>
@@ -182,6 +195,7 @@
                                                     </div>
                                                 </div>
                                         </form>
+
                                     </div>
                                 </div>
                             <div class="modal-footer mr-5">
@@ -191,6 +205,7 @@
                         </div>
                     </div>
                 </div>
+
             <div>
         </div>
     </div>
@@ -217,14 +232,24 @@
                                                 <div class="form-group ">
                                                     <div class="row">
                                                         <div class="col-6">
+
+            
                                                             <div class="row">
                                                                 <div class="col-2">
-                                                                  <label for="">Type</label>
+                                                                        <label for="">Client</label>
                                                                 </div>
-
+                                                               
                                                                 <div class="col-10">
+
+                                                                    <input type="text" class="form-control" placeholder="Client Name">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group ">
+
                                                                         <div class="input-group col-md-12">
-                                                                                <input class="form-control py-2" type="search" value="search" id="example-search-input">
+                                                                                <input class="form-control py-2" type="search" placeholder="search" id="example-search-input">
                                                                                 <span class="input-group-append">
                                                                                     <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectAddContract" type="button" style="margin-top:0%;">
                                                                                        Select
@@ -234,8 +259,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                              
-                                                        
+                                                     
                                                         <div class="col-6">
     
                                                             <div class="row">
@@ -259,6 +283,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="row">
+
                                                             <div class="col-6">
                                                                     <div class="row">
                                                                         <div class="col-3">
@@ -283,34 +308,43 @@
                                                                   <div class="row">
                                                                       <div class="col-12">
                                                                             <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
+
+
                                                                       </div>
                                                                     </div>
                                                                     </div>
                                                                   </div>
                                                               </div>
-                                                          </div>
-                                                      </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <div class="row">
-                                                        <div class="col-2"><label for="" >Monthly bill</label></div>
-                                                        
-                                                        <div class="col-10">
-                                                            <input type="text" class="form-control">
-                                                        </div>   
-                                                    </div>
-                                                </div>
-                                        </form>
+                                                            
+                                                            
+                                                            
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group ">
+                                                            <div class="row">
+                                                                <div class="col-2"><label for="" >Monthly bill</label></div>
+                                                                
+                                                                <div class="col-10">
+                                                                    <input type="text" class="form-control">
+                                                                </div>   
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                            </div>
+                                        </div>
+                                    <div class="modal-footer mr-5">
+                                        <button type="button" class="btn btn-info "><i class='material-icons'>check</i> Edit Contract</button>
+                                        <button type="button" class="btn btn-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
                                     </div>
+                                
                                 </div>
-                            <div class="modal-footer mr-5">
-                                <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
-                                <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
                             </div>
                         </div>
-                    </div>
+                    <div>
                 </div>
+
+            </div>
+
             <div>
         </div>
     </div>
@@ -366,12 +400,7 @@
                                                             </tbody>
                                                            
                                                         </table>
-                                        
-                                                        
-                                                    
-                                          
-                                                
-                                                
+            
                                           {{-- model update --}}
                                         
                                           <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -442,11 +471,9 @@
                                           </div>
                                     </div>
                              </div>
+
                         </div>
                     </div>
-            
-{{-- select add contract --}}
-
 {{-- model select contract  --}}
 
 <div class="modal fade bd-example" id="select"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -476,6 +503,7 @@
                                                         </td>
                                                         <td>Car</td>
                                                     </tr>
+                                                    
                                                     <tr >
                                                         <td class="text-center">
                                                             <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
@@ -497,12 +525,7 @@
                                                 </tbody>
                                                
                                             </table>
-                            
-                                            
-                                        
-                              
-                                    
-                                    
+
                               {{-- model update --}}
                             
                               <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -554,32 +577,18 @@
                                           <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
                                           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 
-
                                         </div>
                                       </div>
                                     </div>
-                                  </div>
-                            
-                                        
+                                  </div> 
                                 </div>
                              </div>
                              <div class="modal-footer">
-
                                 <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-
-                             
-
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                               </div>
                         </div>
                  </div>
             </div>
         </div>
-
-
-            <script>
-                $(function () {
-                    $('#datetimepicker').datetimepicker();
-                });
-            </script>
 @endsection

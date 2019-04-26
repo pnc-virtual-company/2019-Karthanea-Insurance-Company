@@ -49,7 +49,7 @@
                                     <tbody>
                                         <tr>
                                             <td>
-                                                <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
+                                                <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
                                                 1
                                             </td>
                                             <td>14/08/2019</td>
@@ -99,6 +99,7 @@
                                         </div>
 
                                         <div class="form-group">
+
                                                 <div class="row">
                                                         <div class="col-6">
                                                                 <div class="row">
@@ -119,6 +120,7 @@
                                                       </div>
                                                   </div>
                                                 
+
                                         <div class="form-group">
                                                 <div class="row">
                                                         <label for="">Comments</label>
@@ -141,6 +143,73 @@
     </div> 
  
       </div>
+        {{-- modal edit call  --}}
+      <div class="modal fade bd-edit-modal-lg" id="openNewCall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                    <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit call<i class='material-icons ml-3 text-success'>call</i></h5>
+                          </div>
+                          <div class="card-body">
+                                <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                        <label for="">Client</label>
+                                                        <div class="col-10">
+                                                        <input type="text" class="form-control">
+    
+                                                        </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group ">
+                                                    <div class="row">
+                                                            <label for="" >Call Operator</label>
+                                                            <div class="col-4">
+                                                                <input type="text" class="form-control">
+                                                            </div> 
+                                                            <label for="" >Duration</label>
+                                                            <div class="col-4">
+                                                                <input type="text" class="form-control">
+                                                            </div>    
+                                                    </div>
+                                            </div>
+    
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <label for="startDate">Date</label>
+                                                <div class="col-3">
+                                                     <input type="date" class="form-control" id='startDate'>
+                                                     
+                                                </div>
+                                                <div class="input-group-btn">
+                                                        <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                 </div>
+                                                
+                                            </div>
+                                            <div class="form-group">
+                                                    <div class="row">
+                                                            <label for="">Comments</label>
+                                                            <div class="col-10">
+                                                           <textarea name="" id="" cols="50"></textarea>
+        
+                                                            </div>
+                                                    </div>
+                                                </div>
+                                                
+                                          </form>
+                                  </div>
+                          </div>
+                          <div class="modal-footer mr-5">
+                                    <button type="button" class="btn btn-info "><i class='material-icons'>check</i>Edit Call</button>
+                                    <button type="button" class="btn btn-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                        </div>
+            </div>
+        </div>
+        </div> 
+     
+          </div>
+          
       
       <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">

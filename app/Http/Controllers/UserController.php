@@ -27,6 +27,7 @@ class UserController extends Controller
     }
 
     /**
+     * 
      * Display a the profile page. Accessible to any authenticated user.
      *
      * @param  \Illuminate\Http\Request  $request
