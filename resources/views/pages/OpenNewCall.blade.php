@@ -12,51 +12,46 @@
                       </div>
                       <div class="card-body">
                             <div class="modal-body">
-                                    <form>
+                                    <form action="" method="POST">
                                         <div class="form-group">
                                             <div class="row">
-                                                    <label for="">Client</label>
-                                                    <div class="col-10">
-                                                    <input type="text" class="form-control">
-
-                                                    </div>
+                                                <div class="col-2">
+                                                    <label for="client">Client</label>
+                                                </div>
+                                                <div class="col-10">
+                                                    <input type="text" id="client" class="form-control">
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="form-group ">
                                                 <div class="row">
-                                                        <label for="" >Call Operator</label>
-                                                        <div class="col-4">
-                                                            <input type="text" class="form-control">
+                                                        <label for="call" >Call Operator</label>
+                                                        <div class="col-6">
+                                                            <input type="text" id="call" class="form-control">
                                                         </div> 
                                                         <label for="" >Duration</label>
-                                                        <div class="col-4">
+                                                        <div class="col-6">
                                                             <input type="text" class="form-control">
                                                         </div>    
                                                 </div>
                                         </div>
-
                                         <div class="form-group">
                                             <div class="row">
                                                 <label for="startDate">Date</label>
                                             <div class="col-3">
                                                  <input type="date" class="form-control" id='startDate'>
-                                                 
                                             </div>
-                                            <div class="input-group-btn">
-                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
-                                             </div>
-                                            
+                                                <a class="btn btn-default" ><i class="material-icons">date_range</i></a>
                                         </div>
                                         <div class="form-group">
                                                 <div class="row">
-                                                        <label for="">Comments</label>
+                                                        <label for="comment">Comments</label>
                                                         <div class="col-10">
-                                                       <textarea name="" id="" cols="50"></textarea>
+                                                       <textarea name="comment" id="comment" cols="50"></textarea>
     
                                                         </div>
                                                 </div>
                                             </div>
-                                            
                                       </form>
                               </div>
                       </div>

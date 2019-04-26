@@ -18,7 +18,6 @@
                                              </tr>
                                 </thead>
                                 <tbody>
-                                  
                                         <tr>
                                                 <td>
                                                         1
@@ -66,25 +65,15 @@
                                                             </td>
                                                         </tr>
 
-
-                            
-                                       
-                                                 
-                                                   
                                 </tbody>
                                
                             </table>
-                        
                             <button type="button" class="btn bg-info ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
                 </div>
             </div>
     </div>
 </div>
 
-       
-       
-
-       
        {{-- modelad add a new contract --}}
             <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
@@ -163,7 +152,7 @@
                                                                                     </div>
                                                                                     <div class="col-3">
                                                                                             <div class="input-group-btn">
-                                                                                                    <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                                    <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
                                                                                              </div>
                                                                                     </div>
                                                                                 </div>
@@ -186,7 +175,7 @@
                                                                               </div>
                                                                               <div class="col-3">
                                                                                     <div class="input-group-btn">
-                                                                                            <button class="btn btn-default" ><i class="material-icons">date_range</i></button>
+                                                                                            <button type="button" class="btn btn-default" ><i class="material-icons">date_range</i></button>
                                                                                      </div>
                                                                               </div>
                                                                           </div>
@@ -224,10 +213,6 @@
 
             
 {{-- //  modelad edit a new contract --}}
-
-
-
-
  <div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -237,7 +222,6 @@
                           <div class="card-body">
                                 <div class="modal-body">
                                         <form>
-
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-2">
@@ -247,9 +231,6 @@
                                                         <div class="col-10">
                                                             <input type="text" class="form-control" placeholder="Search">
                                                         </div>
-
-                                           
-                                                
                                                 <div class="form-group ">
                                                     <div class="row">
                                                         <div class="col-6">
@@ -290,10 +271,7 @@
                                                             </div>
 
                                                             </div>   
-                                                    
-                                                  
                                                          
-                                                        
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
@@ -314,9 +292,6 @@
                                                                                      </div>
                                                                             </div>
                                                                         </div>
-                                                                               
-                                                                           
-                                                                           
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -340,9 +315,6 @@
                                                               </div>
                                                           </div>
                                                       </div>
-                                                    
-                                                    
-                                                    
                                                     </div>
                                                 </div>
                                                 <div class="form-group ">
@@ -354,7 +326,6 @@
                                                         </div>   
                                                     </div>
                                                 </div>
-                                            
                                         </form>
                                     </div>
                                 </div>
@@ -633,7 +604,7 @@
 
             <script>
                 $(function () {
-                    $('#datetimepicker').datetimepicker();
+                    $('#datetimepicker').datepicker();
                 });
             </script>
 @endsection

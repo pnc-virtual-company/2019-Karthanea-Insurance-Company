@@ -6,18 +6,14 @@
   <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <title>
-      {{ config('app.name', 'Skeleton') }}
+      {{ config('app.name', 'Karthanea') }}
   </title>
-<!-- link calendar -->
-<link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
-<link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
-<script src='{{asset('packages/core/main.js')}}'></script>
-<script src='{{asset('packages/interaction/main.js')}}'></script>
-<script src='{{asset('packages/daygrid/main.js')}}'></script>
-<script src='{{asset('js/calendar.js')}}'></script>
-
   <!-- pei chart link -->
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="{{asset('js/Chart.min.js')}}"></script>
+  <script src="{{asset('js/utils.js')}}"></script>
+  <script src="{{asset('js/chart.js')}}"></script>
 
   <!-- link calendar -->
   <link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
@@ -38,18 +34,15 @@
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
   <!-- CSS Files -->
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
-
-
-   
 </head>
-{{-- class="dark-edition" --}}
 <body>
   <div class="wrapper">
     <div class="sidebar" data-color="azure" data-background-color="black" data-image="{{asset('images/sidebar-3.jpg')}}">
@@ -97,14 +90,8 @@
                     </li>
                     <li class="list-group-item collapsed">
                       <a href="{{url('/chart')}}">
-
                           <span class="text-white">
                             <i class="material-icons text-white">pie_chart</i>
-
-                          <p>
-                          <span>
-                            <i class="material-icons text-info">pie_chart</i>
-
                             Occupency
                           </span>
                         </a>
@@ -190,18 +177,17 @@
                   <i class="material-icons">settings</i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item" href="javascript:void(0)">
-                    <p>
+                  <a class="dropdown-item nav-link" href="#">
+                    <span>
                       <i class="material-icons">account_circle</i>
                       Profile
-                    </p>
+                    </span>
                   </a>
-                  <a class="dropdown-item" href="javascript:void(0)">
-                    <p>
-                        <a class="nav-link" href="{{url('/login')}}">
+                  <a class="dropdown-item nav-link" href="{{url('/login')}}">
+                    <span>
                       <i class="material-icons">logout</i>
                       Logout
-                    </p>
+                    </span>
                   </a>
                 </div>
               </li>

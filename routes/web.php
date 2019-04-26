@@ -11,11 +11,7 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('examples.index', ['currentExample' => 'List of examples']);
-// });
-
-// Auth::routes();
+Auth::routes();
 
 // Route::get('users/profile','UserController@profile');
 // Route::get('users/export','UserController@export');
@@ -23,6 +19,7 @@
 
 //    The routes below are written for the examples only. 
 //    You can delete them because you do not need them for a real application.
+Route::resource('users','UserController');
 
 // Route::get('examples/emails', 'ExamplesController@emails');
 // Route::get('examples/icons', 'ExamplesController@icons');
@@ -49,6 +46,12 @@
 //     Session::put('langCode', $langCode);
 //     return Redirect::back();
 // });
+//Switch language code
+Route::get('examples/translation/switch/{langCode}', function ($langCode) {
+    App::setLocale($langCode);
+    Session::put('langCode', $langCode);
+    return Redirect::back();
+});
 
 //Service endpoints
 // Route::get('examples/emails/sendFakeEmail', 'ExamplesController@sendEmail');
@@ -72,13 +75,11 @@ Route::resource('/contract','contractsController');
 
 Route::get('/contract','ContractController@index');
 
-
 Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
 Route::get('/userCall','ClientController@userCall');
-Route::get('/calendar','CalendarController@index');
 
 Route::get('/payment','paymentController@index');
 Route::get('/contractlist','PageController@contractlist');
@@ -89,5 +90,5 @@ Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
 
-Route::get('/login','loginController@index');
+Route::get('login','loginController@index')->name('login');
 Route::get('/register','registerController@index');
