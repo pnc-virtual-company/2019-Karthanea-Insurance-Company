@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
-    <title>{{('Karthanea')}}</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>
+        {{ config('app.name', 'Skeleton') }}
+    </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
@@ -39,8 +40,8 @@
                                      </div>
                                      <footer>
                                             <div class="container">
-                                             <div class="row text-center">
-                                                <form method="POST" action="">
+                                             <div class="row d-flex justify-content-center mt-5">
+                                               <div class="form ">
                                                     @csrf
                                                     <div class="form-group">
                                                         <a href="{{url('/')}}" class="btn btn-info btn-sm right text-white text-center">LOGIN</a>
@@ -63,7 +64,7 @@
                                                     <div class="form-group">
                                                         <a href="{{url('/register')}}" class="btn btn-info btn-sm right text-white text-center">Register</a>
                                                     </div>
-                                                  </form>
+                                                  </div>
                                              </div>
                                              
                                             </div>
