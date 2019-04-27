@@ -77,7 +77,6 @@
                                                            </div>
                                                          </div>
                                                     </div>
-                                                    
                                                    </div>
                                                  </footer>
                                          </form>
@@ -86,7 +85,6 @@
                   </div>
             </div>
             <div class="col-3"></div>
-
         </div>
     </div>
 </body>

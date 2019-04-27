@@ -36,7 +36,7 @@ class UserController extends Controller
     public function profile(Request $request)
     {
         $user = Auth::user();
-        return view('users.profile', ['user' => $user]);
+        return view('users.userProfile', ['user' => $user]);
     }
 
     /**
@@ -62,7 +62,7 @@ class UserController extends Controller
     {
         $request->user()->authorizeRoles(['Administrator']);
         $roles = Role::all();
-        return view('users.create', ['roles' => $roles]);
+        return view('users.register', ['roles' => $roles]);
     }
 
     /**

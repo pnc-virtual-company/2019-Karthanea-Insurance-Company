@@ -6,12 +6,11 @@
   <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
-
   <title>
       {{ config('app.name', 'Karthanea') }}
   </title>
-  {{-- link and script datepicker --}}
-  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
   <!-- pei chart link -->
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -56,12 +55,12 @@
         Tip 2: you can also add an image using data-image tag
       -->
       <div class="logo bg-teal">
-        <a href="{{url('/')}}" class="simple-text logo-normal">
+        <a href="{{url('/client')}}" class="simple-text logo-normal">
           <picture>
             <source media="(min-width: 650px)" srcset="{{asset('images/logo-1.png')}}">
-              <source media="(min-width: 465px)" srcset="{{asset('images/logo-1.png')}}">
-                <img src="{{asset('images/logo-1.png')}}" alt="brand logo">
-              </picture>
+            <source media="(min-width: 465px)" srcset="{{asset('images/logo-1.png')}}">
+            <img src="{{asset('images/logo-1.png')}}" alt="brand logo">
+          </picture>
         </a>
       </div>
       <div class="sidebar-wrapper">
@@ -178,6 +177,8 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}">
+                    <span><strong>{{ Auth::user()->name }}</strong></span>
                   <i class="material-icons">settings</i>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -466,12 +467,6 @@
       
     });
 
-
-
-    
-
-
-   
 </script>
 {{-- Link datepicker --}}
  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
