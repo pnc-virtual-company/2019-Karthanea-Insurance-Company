@@ -23,54 +23,54 @@
         <div class="row">
             <div class="col-3"></div>
             <div class="col-6">
-                    <div class="row">
-                            <div class="col s12 ">
-                              <div class="card-panel ">
-                                     <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
-                                        {{ csrf_field() }}
-                                        <div class="card  bg-info p-4 shadow-lg">
-                                                <h6 class="text-center text-white">Register</h6>
-                                            </div>
-                                       <div class="input-field">
-                                               <i class="material-icons prefix" class="text-secondary">person</i>
-                                               <input type="text" id="autocomplete-input" name="name" value="{{ old('name') }}" class="autocomplete icons">
-                                               <label for="autocomplete-input ">Username</label>
-                                        </div>
-                                        <div class="input-field">
-                                               <i class="material-icons prefix">markunread</i>
-                                               <input type="text" id="autocomplete-input" name="email" value="{{ old('email') }}" class="autocomplete icons">
-                                               <label for="autocomplete-input">Email</label>
-                                        </div>
-                                        <div class="input-field">
-                                               <i class="material-icons prefix">lock</i>
-                                               <input type="password" id="autocomplete-input" name="password" class="autocomplete icons">
-                                               <label for="autocomplete-input">Password</label>
-                                            </div>
-                                            <div class="input-field">
-                                            <i class="material-icons prefix">how_to_reg</i>
-                                            <select id="roles" name="roles[]" multiple size="5">
-                                                @foreach ($roles as $role)
-                                                <option value="{{ $role->id }}" @if (!empty(old('roles'))) @if(in_array($role->id, old('roles'))) selected @endif @endif>{!! $role->name !!}</option>
-                                                @endforeach
-                                            </select>
-                                            <label for="roles[]">Roles</label>
-                                        </div>
-                                        <footer>
-                                            <div class="container">
-                                                <div class="row d-flex justify-content-center mt-5">
-                                                    <div class="form-group">
-                                                        <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </footer>
-                                     </form>
+                <div class="row">
+                    <div class="col s12 ">
+                        <div class="card-panel ">
+                            <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
+                              {{ csrf_field() }}
+                              <div class="card  bg-info p-4 shadow-lg">
+                                  <h6 class="text-center text-white">Register</h6>
                               </div>
-                            </div>
-                  </div>
+                              @include('validation-errors')
+                              <div class="input-field">
+                                          <i class="material-icons prefix" class="text-secondary">person</i>
+                                         <input type="text" id="autocomplete-input" name="name" value="{{ old('name') }}" class="autocomplete icons">
+                                         <label for="autocomplete-input ">Username</label>
+                                  </div>
+                                  <div class="input-field">
+                                         <i class="material-icons prefix">markunread</i>
+                                         <input type="text" id="autocomplete-input" name="email" value="{{ old('email') }}" class="autocomplete icons">
+                                         <label for="autocomplete-input">Email</label>
+                                  </div>
+                                  <div class="input-field">
+                                         <i class="material-icons prefix">lock</i>
+                                         <input type="password" id="autocomplete-input" name="password" class="autocomplete icons">
+                                         <label for="autocomplete-input">Password</label>
+                                      </div>
+                                      <div class="input-field">
+                                      <i class="material-icons prefix">how_to_reg</i>
+                                      <select id="roles" name="roles[]" multiple size="5">
+                                          @foreach ($roles as $role)
+                                          <option value="{{ $role->id }}" @if (!empty(old('roles'))) @if(in_array($role->id, old('roles'))) selected @endif @endif>{!! $role->name !!}</option>
+                                          @endforeach
+                                      </select>
+                                      <label for="roles[]">Roles</label>
+                                  </div>
+                                  <footer>
+                                      <div class="container">
+                                          <div class="row d-flex justify-content-center mt-5">
+                                              <div class="form-group">
+                                                  <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </footer>
+                               </form>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-3"></div>
-
         </div>
     </div>
 </body>

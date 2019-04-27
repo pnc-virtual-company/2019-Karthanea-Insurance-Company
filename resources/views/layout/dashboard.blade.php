@@ -177,9 +177,8 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}">
-                    <span><strong>{{ Auth::user()->name }}</strong></span>
-                  <i class="material-icons">settings</i>
+                  <span><strong>{{ Auth::user()->name }}</strong></span>
+                    <img id="imgProfilePic" src="{{asset('images/'.Auth::user()->avatar)}}">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item nav-link" href="{{url('users/profile')}}">

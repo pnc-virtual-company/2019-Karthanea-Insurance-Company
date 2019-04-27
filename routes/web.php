@@ -15,10 +15,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 // Route::get('/', function () {
-//     return view('examples.index', ['currentExample' => 'List of examples']);
-// });
+    //     return view('examples.index', ['currentExample' => 'List of examples']);
+    // });
 Auth::routes();
-
+    
 Route::get('users/profile','UserController@profile');
 // Route::get('users/export','UserController@export');
 Route::resource('users','UserController');
@@ -89,7 +89,7 @@ Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
 
-Route::get('/register','UserController@create');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/achiveClient','ClientController@achiveClient');
+Route::get('/userProfile','AvatarController@imageUpload');

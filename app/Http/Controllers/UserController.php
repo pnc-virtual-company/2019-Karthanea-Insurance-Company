@@ -45,12 +45,12 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
-    {
-        // $request->user()->authorizeRoles(['Administrator']);
-        // $users = User::with('roles')->get();
-        return view('users.register');
-    }
+    // public function index(Request $request)
+    // {
+    //     $request->user()->authorizeRoles(['Administrator']);
+    //     $users = User::with('roles')->get();
+    //     return view('users.register');
+    // }
     /**
      * Show the form for creating a new resource.
      *
