@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
+        <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
         <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
             {{ config('app.name', 'Skeleton') }}
-        </title> --}}
+        </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
@@ -47,7 +47,7 @@
                                         <div class="input-field">
                                                <i class="material-icons prefix">markunread</i>
                                                <input type="text" id="autocomplete-input" class="autocomplete icons">
-                                               <label for="autocomplete-input">Address</label>
+                                               <label for="autocomplete-input">Email</label>
                                         </div>
                                         <footer>
                                                <div class="container">
