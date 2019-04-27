@@ -29,14 +29,24 @@
                                             2
                                         </td>
                                         <td>Li</td>
-                                        <td><i class="material-icons text-info ml-5">insert_drive_file</i></td>
+                                        <td ><a class="toggleCallHistory" href="#"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
                                         <td><i class="material-icons text-primary text-center">call</i></td>
                                     </tr>
+                                    <tr>
+                                            <td>
+                                                <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
+                                                <input type="checkbox" name="disable" id="disable">
+                                                2
+                                            </td>
+                                            <td>Li</td>
+                                            <td ><a class="toggleCallHistory" href="#"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
+                                            <td><i class="material-icons text-primary text-center">call</i></td>
+                                        </tr>
                                 </tbody>
                                 <br>
                             </table>
 
-                                <table id="myTable2" class="table table-striped table-bordered table-hover">
+                                <table id="myTable2" class="table table-striped table-bordered table-hover collapse">
                                     <thead class="bg-dark text-white">
                                         <tr>
                                             <th>ID</th>
@@ -55,6 +65,46 @@
                                             <td>14/08/2019</td>
                                             <td>Pinau</td>
                                             <td>24min13sec</td>
+                                            <td>car contract review</td>
+                                        </tr>
+                                        <tr>
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                                    1
+                                                </td>
+                                                <td>14/08/2019</td>
+                                                <td>Pinau</td>
+                                                <td>24min13sec</td>
+                                                <td>car contract review</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                                    1
+                                                </td>
+                                                <td>14/08/2019</td>
+                                                <td>Pinau</td>
+                                                <td>24min13sec</td>
+                                                <td>car contract review</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                                    1
+                                                </td>
+                                                <td>14/08/2019</td>
+                                                <td>Pinau</td>
+                                                <td>24min13sec</td>
+                                                <td>car contract review</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                                    1
+                                                </td>
+                                                <td>14/08/2019</td>
+                                                <td>Pinau</td>
+                                                <td>24min13sec</td>
                                             <td>car contract review</td>
                                         </tr>
                                     </tbody>
