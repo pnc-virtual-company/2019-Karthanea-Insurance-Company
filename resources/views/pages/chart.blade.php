@@ -20,9 +20,6 @@
 <body>
     <div class="container mt-4">
         <div class="row">
-
-            <div class="col-10 col-md-10 col-sm-12">
-
                 <div class="col-6 col-md-6 col-sm-12">
                         <div class="card">
                             <div class="card-header">
@@ -30,7 +27,7 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-4">
+                                    <div class="col-3">
                                             <select class="form-control" name="" id="">
                                                 <option value="1">one</option>
                                                 <option value="2">two</option>  
@@ -38,7 +35,7 @@
                                                 <option value="4">four</option>    
                                             </select>    
                                         </div>
-                                        <div class="col-8">
+                                        <div class="col-9">
                                                 <div style="width:100%;">
                                                     <canvas id="pieChart"></canvas>
                                                 </div>  
@@ -76,10 +73,7 @@
                                 
                         </div>
                     </div>
-                </div>
-                
-                
-                
+                </div> 
             </div>
         </div>
         <div class="row">
@@ -96,7 +90,6 @@
             </div>
         </div>
     </div>
-    >
 </body>
 </html>
 @endsection 

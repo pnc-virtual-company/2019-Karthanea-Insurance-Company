@@ -603,7 +603,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
   });
 
 
-
 //PieChart
   var pie = document.getElementById('pieChart').getContext('2d');
   var pieChart = new Chart(pie, {
@@ -611,7 +610,7 @@ $(".ui-datepicker-trigger").mouseover(function() {
       data: {
           labels: ['Red', 'Blue', 'Yellow'],
           datasets: [{
-              label: '# of Votes',
+              label: 'Payment',
               data: [12, 19, 3],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
