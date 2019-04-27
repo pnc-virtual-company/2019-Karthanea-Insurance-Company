@@ -31,7 +31,7 @@
                                                 </div>
                                            <div class="input-field">
                                                    <i class="material-icons prefix" class="text-secondary">markunread</i>
-                                                   <input type="text" id="autocomplete-input" name="email" value="{{ old('email') }}" class="autocomplete pl-4 icons {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
+                                                   <input type="text" id="autocomplete-input" name="email" value="{{ old('email') }}" class="autocomplete icons {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
                                                    @if ($errors->has('email'))
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('email') }}</strong>
@@ -41,7 +41,7 @@
                                             </div>
                                             <div class="input-field">
                                                    <i class="material-icons prefix">https</i>
-                                                   <input type="password" id="autocomplete-input" name="password" class="pl-4 autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}" required>
+                                                   <input type="password" id="autocomplete-input" name="password" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}" required>
                                                    @if ($errors->has('password'))
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $errors->first('password') }}</strong>
@@ -56,31 +56,31 @@
                                                            @csrf
                                                            <div class="form-group">
                                                                <button type="submit" class="btn btn-info btn-sm right text-white text-center">LOGIN</button>
-                                                           </div>
-                                                           <div class="form-group text-info">
+                                                            </div>
+                                                            <div class="form-group text-info">
                                                                <div class="title">
                                                                    <div class="title-row">
                                                                      <div class="bar-container">
-                                                                       <div class="bar"></div>
+                                                                         <div class="bar"></div>
                                                                      </div>
                                                                      <div class="text">
-                                                                       <p>OR</p>
-                                                                     </div>
-                                                                     <div class="bar-container">
+                                                                         <p>OR</p>
+                                                                        </div>
+                                                                        <div class="bar-container">
                                                                        <div class="bar"></div>
-                                                                     </div>
+                                                                    </div>
                                                                    </div>
-                                                                 </div>
-                                                           </div>
-                                                           <div class="form-group">
-                                                               <a href="{{ url('/register') }}" class="btn btn-info btn-sm right text-white text-center">Register</a>
-                                                           </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <a href="{{ url('/register') }}" class="btn btn-info btn-sm right text-white text-center">Register</a>
+                                                            </div>
                                                          </div>
                                                     </div>
                                                    </div>
-                                                 </footer>
-                                         </form>
-                              </div>
+                                                </footer>
+                                        </form>
+                                </div>
                             </div>
                   </div>
             </div>

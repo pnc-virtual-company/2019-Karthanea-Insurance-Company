@@ -47,11 +47,10 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        $request->user()->authorizeRoles(['Administrator']);
-        $users = User::with('roles')->get();
-        return view('users.index', ['users' => $users]);
+        // $request->user()->authorizeRoles(['Administrator']);
+        // $users = User::with('roles')->get();
+        return view('users.register');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -87,7 +86,7 @@ class UserController extends Controller
 
         // process the validation of fields
         if ($validator->fails()) {
-            return Redirect::to('users/create')
+            return Redirect::to('users/register')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
@@ -102,7 +101,7 @@ class UserController extends Controller
             // redirect
             Session::flash('message.level', 'success');
             Session::flash('message.content', __('The user was successfully created'));
-            return Redirect::to('users');
+            return Redirect::to('/');
         }
     }
 
@@ -171,7 +170,7 @@ class UserController extends Controller
             // redirect
             Session::flash('message.level', 'success');
             Session::flash('message.content', __('The user was successfully updated'));
-            return Redirect::to('users');
+            return Redirect::to('/');
         }
     }
 

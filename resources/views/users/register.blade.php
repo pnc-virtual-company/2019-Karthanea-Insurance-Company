@@ -16,6 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/register.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
     <div class="container"><br><br><br>
@@ -35,16 +36,6 @@
                                                <input type="text" id="autocomplete-input" name="name" value="{{ old('name') }}" class="autocomplete icons">
                                                <label for="autocomplete-input ">Username</label>
                                         </div>
-                                        {{-- <div class="input-field">
-                                               <i class="material-icons prefix">home</i>
-                                               <input type="text" id="autocomplete-input" name="address" class="autocomplete icons">
-                                               <label for="autocomplete-input">Address</label>
-                                        </div>
-                                        <div class="input-field">
-                                               <i class="material-icons prefix">call</i>
-                                               <input type="text" id="autocomplete-input" name="phone" class="autocomplete icons">
-                                               <label for="autocomplete-input">Phone Number</label>
-                                        </div> --}}
                                         <div class="input-field">
                                                <i class="material-icons prefix">markunread</i>
                                                <input type="text" id="autocomplete-input" name="email" value="{{ old('email') }}" class="autocomplete icons">
@@ -54,15 +45,16 @@
                                                <i class="material-icons prefix">lock</i>
                                                <input type="password" id="autocomplete-input" name="password" class="autocomplete icons">
                                                <label for="autocomplete-input">Password</label>
-                                        </div>
-                                        <div class="form-group">
-                                                <label for="roles[]">Roles</label>
-                                                <select class="form-control" id="roles" name="roles[]" multiple size="5">
-                                                @foreach ($roles as $role)
-                                                    <option value="{{ $role->id }}" @if (!empty(old('roles'))) @if(in_array($role->id, old('roles'))) selected @endif @endif>{!! $role->name !!}</option>
-                                                @endforeach
-                                                </select>
                                             </div>
+                                            <div class="input-field">
+                                            <i class="material-icons prefix">how_to_reg</i>
+                                            <select id="roles" name="roles[]" multiple size="5">
+                                                @foreach ($roles as $role)
+                                                <option value="{{ $role->id }}" @if (!empty(old('roles'))) @if(in_array($role->id, old('roles'))) selected @endif @endif>{!! $role->name !!}</option>
+                                                @endforeach
+                                            </select>
+                                            <label for="roles[]">Roles</label>
+                                        </div>
                                         <footer>
                                             <div class="container">
                                                 <div class="row d-flex justify-content-center mt-5">
@@ -83,3 +75,16 @@
     </div>
 </body>
 </html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('select');
+    var instances = M.FormSelect.init(elems, options);
+  });
+
+  // Or with jQuery
+
+  $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
