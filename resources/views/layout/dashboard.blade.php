@@ -439,6 +439,28 @@
     });
   </script>
   <script>
+    //fade Bill
+    $(document).ready(function(){
+        $(".toggleBill").click(function(){
+          $("#myTabless").fadeToggle("slow");
+      });
+    });
+
+    //fade payment
+    $(document).ready(function(){
+      $(".togglePayment").click(function(){
+        $("#table2").fadeToggle("slow");
+      });
+    });
+    
+    //fade table call
+    $(document).ready(function(){
+      $(".toggleCallHistory").click(function(){
+        $("#myTable2").fadeToggle("slow");
+      });
+    });
+
+
     $(document).ready(function() {
       md.initDashboardPageCharts();
       $('#example').DataTable();                
@@ -580,7 +602,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
   });
 
 
-
 //PieChart
   var pie = document.getElementById('pieChart').getContext('2d');
   var pieChart = new Chart(pie, {
@@ -588,7 +609,7 @@ $(".ui-datepicker-trigger").mouseover(function() {
       data: {
           labels: ['Red', 'Blue', 'Yellow'],
           datasets: [{
-              label: '# of Votes',
+              label: 'Payment',
               data: [12, 19, 3],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
