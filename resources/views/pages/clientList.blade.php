@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1>List of Clients call Calendar</h1>
+        <h1>List of Clients</h1>
         <div class="card">
             <div class="card-body">
                 <table id="myTable" class="table table-striped table-bordered table-hover">
@@ -51,7 +51,7 @@
                     </tbody>
                 </table>
                 <div>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
+                    <button type="button" class="btn text-white bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
                 </div>
             </div>
         </div>
@@ -77,7 +77,6 @@
                                     <input type="text" name="firstname" id="name" class="form-control">
                                 </div>
                             </div>
-                           
                         </div>
                         <div class="form-group">
                             <div class="row">

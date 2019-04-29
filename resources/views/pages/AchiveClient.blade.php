@@ -51,7 +51,7 @@
                     </tbody>
                 </table>
                 <div>
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
+                    <button type="button" class="btn bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
                 </div>
             </div>
         </div>
