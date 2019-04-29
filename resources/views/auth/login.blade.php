@@ -74,7 +74,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <a href="{{ route('register') }}" class="btn btn-info btn-sm right text-white text-center">Register</a>
+                                                        <a href="{{ route('register') }}" class="btn btn-info btn-sm right text-white text-center">{{ __('Register') }}</a>
                                                     </div>
                                                 </div>
                                             </div>

@@ -20,7 +20,7 @@
                                 <p>{!! $user->email !!}</p>
                             </div>
                             <div class="col-6">
-                                    <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}" 
+                                    <img id="imgProfilePic" src="{{url('images/examples/faces/avatar.jpg')}}" 
                                 class="img-fluid rounded mx-auto d-block clickable"/>
                             <div class="col-6 mt-5">
                                 <h5>{!! $user->name !!}</h5>
@@ -39,15 +39,6 @@
                         <form class="md-form" action="{{url('/userProfile')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                                 <input type="file" class="btn btn-sm btn-success ">
-                            <div class="file-field">
-                              <div class="d-flex justify-content-center">
-                                <div class="btn btn-mdb-color btn-rounded float-left">
-                                  <span>Choose file</span>
-                                  <input type="file" name="fileUpload" required>
-                                  <button type="submit" class="btn btn-success">Upload</button>
-                                </div>
-                              </div>
-                            </div>
                         </form>
                     </div>
                 </div>
