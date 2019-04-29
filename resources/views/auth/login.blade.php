@@ -53,8 +53,7 @@
                                     <footer>
                                         <div class="container">
                                             <div class="row d-flex justify-content-center mt-5">
-                                                <div class="form ">
-                                                    @csrf
+                                                <div class="form">
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-info btn-sm right text-white text-center">LOGIN</button>
                                                     </div>
@@ -74,7 +73,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <a href="{{ url('/register') }}" class="btn btn-info btn-sm right text-white text-center">Register</a>
+                                                        <a href="{{ route('register') }}" class="btn btn-info btn-sm right text-white text-center">Register</a>
                                                     </div>
                                                 </div>
                                             </div>

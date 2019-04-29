@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
     
 Route::get('users/profile','UserController@profile');
-// Route::get('/register','PageController@create')
+Route::get('/register','UserController@create');
 Route::get('users/export','UserController@export');
 Route::resource('users','UserController');
 
@@ -67,7 +67,7 @@ Route::get('/createContract','PageController@createContractType');
 Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
-Route::resource('/contract','contractsController');
+// Route::resource('/contract','contractsController');
 
 Route::get('/contract','ContractController@index');
 
@@ -88,9 +88,5 @@ Route::get('/chart','ChartController@index');
 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/achiveClient','ClientController@achiveClient');
 Route::get('/userProfile','AvatarController@imageUpload');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/achiveClient','ClientController@achiveClient');

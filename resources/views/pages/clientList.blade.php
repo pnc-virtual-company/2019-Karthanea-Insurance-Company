@@ -20,7 +20,7 @@
                         <tr>
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                <input type="checkbox" name="disable" id="disable">
+                                <input type="checkbox" data-toggle="modal" data-target="#disableModal" name="disable" id="disable">
                                 1
                             </td>
                             <td>Mona</td>
@@ -31,7 +31,7 @@
                         <tr>
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                <input type="checkbox" name="disable" id="disable">
+                                <input type="checkbox" data-toggle="modal" data-target="#disableModal" name="disable" id="disable">
                                 2
                             </td>
                             <td>Sith</td>
@@ -42,7 +42,7 @@
                         <tr>
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                <input type="checkbox" name="disable" id="disable">
+                                <input type="checkbox" data-toggle="modal" data-target="#disableModal" name="disable" id="disable">
                                 3
                             </td>
                             <td>Sona</td>
@@ -200,4 +200,24 @@
               </div>
             </div>
           </div>
+          <!-- Modal -->
+<div class="modal fade" id="disableModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Disable User</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure that you want to disable this client?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn bg-primary">Yes</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
 @endsection

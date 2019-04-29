@@ -50,9 +50,9 @@
                                       <div class="input-field">
                                       <i class="material-icons prefix">how_to_reg</i>
                                       <select id="roles" name="roles[]" multiple size="5">
-                                          @foreach ($roles as $role)
-                                          <option value="{{ $role->id }}" @if (!empty(old('roles'))) @if(in_array($role->id, old('roles'))) selected @endif @endif>{!! $role->name !!}</option>
-                                          @endforeach
+                                            @foreach ($roles as $role)
+                                                <option value="{{ $role->id=2 }}" @if (!empty(old('roles'))) @if(in_array($role->id, old('roles'))) selected @endif @endif>{!! $role->name !!}</option>
+                                            @endforeach
                                       </select>
                                       <label for="roles[]">Roles</label>
                                   </div>

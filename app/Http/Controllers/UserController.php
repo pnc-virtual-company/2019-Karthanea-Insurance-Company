@@ -62,14 +62,7 @@ class UserController extends Controller
     {
         $request->user()->authorizeRoles(['Administrator']);
         $roles = Role::all();
-        return view('users.create', ['roles' => $roles]);
-    }
-
-    public function register()
-    {
-        $request->user()->authorizeRoles(['Administrator']);
-        $roles = Role::all();
-        return view('auth.register');
+        return view('users.register', ['roles' => $roles]);
     }
 
     /**
@@ -88,13 +81,13 @@ class UserController extends Controller
             'name'  => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'roles' => 'required'
+            'roles' => 'required' 
         );
         $validator = Validator::make(Input::all(), $rules);
 
         // process the validation of fields
         if ($validator->fails()) {
-            return Redirect::to('users/create')
+            return Redirect::to('users/register')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
