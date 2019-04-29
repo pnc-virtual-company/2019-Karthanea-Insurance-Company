@@ -206,7 +206,7 @@
                                     </div>
                                 </div>
                             <div class="modal-footer mr-5">
-                                <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
+                                <button type="button" class="btn bg-primary "><i class='material-icons'>check</i> Save Contract</button>
                                 <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
                             </div>
                         </div>
@@ -337,7 +337,7 @@
                                     </div>
                                 </div>
                             <div class="modal-footer mr-5">
-                                <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
+                                <button type="button" class="btn bg-primary "><i class='material-icons'>check</i> Save Contract</button>
                                 <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
                             </div>
                         </div>
@@ -423,7 +423,7 @@
                                                     </div>
                                                     <div class="modal-footer">
 
-                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                                      <button type="button" class="btn bg-primary" data-dismiss="modal">OK</button>
                                                      
 
                                                       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -447,7 +447,7 @@
                                                     </div>
                                                     <div class="modal-footer">
 
-                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                                      <button type="button" class="btn bg-primary" data-dismiss="modal">OK</button>
                                                       <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 
 
@@ -461,7 +461,7 @@
                                          </div>
                                          <div class="modal-footer">
 
-                                            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                            <button type="button" class="btn bg-primary" data-dismiss="modal">OK</button>
 
                                          
 
@@ -548,7 +548,7 @@
                                         </div>
                                         <div class="modal-footer">
 
-                                          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                          <button type="button" class="btn bg-primary" data-dismiss="modal">OK</button>
                                          
 
                                           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -572,7 +572,7 @@
                                         </div>
                                         <div class="modal-footer">
 
-                                          <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                          <button type="button" class="btn bg-primary" data-dismiss="modal">OK</button>
                                           <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
 
                                         </div>
@@ -582,7 +582,7 @@
                                 </div>
                              </div>
                              <div class="modal-footer">
-                                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                <button type="button" class="btn bg-primary" data-dismiss="modal">OK</button>
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                               </div>
                         </div>

@@ -19,7 +19,7 @@ Auth::routes();
     
 Route::get('users/profile','UserController@profile');
 // Route::get('/register','PageController@create')
-// Route::get('users/export','UserController@export');
+Route::get('users/export','UserController@export');
 Route::resource('users','UserController');
 
 /*=============================================================================

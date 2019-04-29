@@ -94,7 +94,7 @@ class UserController extends Controller
 
         // process the validation of fields
         if ($validator->fails()) {
-            return Redirect::to('auth/register')
+            return Redirect::to('users/create')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
@@ -109,7 +109,7 @@ class UserController extends Controller
             // redirect
             Session::flash('message.level', 'success');
             Session::flash('message.content', __('The user was successfully created'));
-            return Redirect::to('/');
+            return Redirect::to('users');
         }
     }
 

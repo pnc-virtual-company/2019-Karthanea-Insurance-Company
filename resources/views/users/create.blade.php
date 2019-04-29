@@ -1,7 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
 @include('validation-errors')
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
@@ -28,16 +27,16 @@
                             <input type="password" class="form-control" id="password" name="password">
                         </div>
 
-                        <div class="form-group">
-                            <label for="roles[]">Roles</label>
-                            <select class="form-control" id="roles" name="roles[]" multiple size="5">
-                            @foreach ($roles as $role)
+                        <div class="input-field">
+                            <i class="material-icons prefix">how_to_reg</i>
+                            <select id="roles" name="roles[]" multiple size="5">
+                                @foreach ($roles as $role)
                                 <option value="{{ $role->id }}" @if (!empty(old('roles'))) @if(in_array($role->id, old('roles'))) selected @endif @endif>{!! $role->name !!}</option>
-                            @endforeach
+                                @endforeach
                             </select>
+                            <label for="roles[]">Roles</label>
                         </div>
-
-                        <input type="submit" class="btn btn-primary" value="Save" />
+                        <input type="submit" class="btn bg-primary" value="Save" />
                     </form>
                 </div>
             </div>
@@ -46,7 +45,6 @@
 </div>
 
 @endsection
-
 @push('scripts')
 <script type="text/javascript">
 //On document ready, 

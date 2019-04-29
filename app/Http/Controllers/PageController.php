@@ -90,6 +90,6 @@ class PageController extends Controller
         //
     }
     public function contractlist(){
-        return view('pages.addContract');
+        return view('pages.listContract');
     }
 }

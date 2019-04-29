@@ -74,7 +74,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <a href="{{ url('users/register') }}" class="btn btn-info btn-sm right text-white text-center">Register</a>
+                                                        <a href="{{ url('/register') }}" class="btn btn-info btn-sm right text-white text-center">Register</a>
                                                     </div>
                                                 </div>
                                             </div>
