@@ -76,18 +76,22 @@
                 </div> 
             </div>
         </div>
+       
         <div class="row">
+            
             <div class="col-6 col-md-6 col-sm-12">
+            
                 <div style="width:100%;">
                     <canvas id="line"></canvas>
                 </div>
             </div>
-            <div class="col-6 col-md-6 col-sm-12">
 
+            <div class="col-6 col-md-6 col-sm-12">
+                
                 <div style="width:100%;">
-                    <canvas id="myChart"></canvas
+                    <canvas id="myChart"></canvas>
                 </div>
-            </div>
+             </div>
         </div>
     </div>
 </body>
