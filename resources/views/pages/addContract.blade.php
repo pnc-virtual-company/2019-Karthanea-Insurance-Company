@@ -79,7 +79,7 @@
                                 </tbody>
                                
                             </table>
-                            <button type="button" class="btn bg-info ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
+                            <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
                 </div>
             </div>
     </div>

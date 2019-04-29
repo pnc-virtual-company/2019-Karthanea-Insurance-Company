@@ -61,7 +61,7 @@ class UserController extends Controller
     {
         $request->user()->authorizeRoles(['Administrator']);
         $roles = Role::all();
-        return view('users.register', ['roles' => $roles]);
+        return view('users.create', ['roles' => $roles]);
     }
 
     /**

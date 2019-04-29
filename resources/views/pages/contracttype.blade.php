@@ -1,5 +1,4 @@
-
-    @extends('layout.dashboard')
+ @extends('layout.dashboard')
     @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -45,7 +44,7 @@
                    
                 </table>
 
-                <button type="submit" class="btn btn-info" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create New contract type</button>
+                <button type="submit" class="btn bg-primary text-white" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create New contract type</button>
             </div>
 
             </div>

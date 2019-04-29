@@ -1,14 +1,10 @@
-@extends('layouts.app')
-
+@extends('layout.dashboard')
 @section('content')
-
-@include('validation-errors')
-
 <div class="container">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">@lang('Edit a user')</div>
+                <div class="card-header text-center"><h3>@lang('Edit a user')</h3></div>
 
                 <div class="card-body">
 
@@ -37,7 +33,7 @@
                             </select>
                         </div>
 
-                        <input type="submit" class="btn btn-primary" value="Save" />
+                        <input type="submit" class="btn bg-primary text-white" value="Save" /> 
                     </form>
                 </div>
             </div>

@@ -1,14 +1,12 @@
-@extends('layouts.app')
-
+@extends('layout.dashboard')
 @section('content')
-
 @include('validation-errors')
 
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="card">
-                <div class="card-header">@lang('Create a new user')</div>
+            <div class="card"> 
+                <div class="card-header text-center"><h3>@lang('Create a new user')</h3> </div>
 
                 <div class="card-body">
 
