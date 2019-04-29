@@ -1,3 +1,8 @@
+<style>
+.btn:not(:disabled):not(.disabled) {
+    width: 113px;
+}
+</style>
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
@@ -10,6 +15,13 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
+                            <div class="col-6 data">
+                                <p>{!! $user->name !!}</p>
+                                <p>{!! $user->email !!}</p>
+                            </div>
+                            <div class="col-6">
+                                    <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}" 
+                                class="img-fluid rounded mx-auto d-block clickable"/>
                             <div class="col-6 mt-5">
                                 <h5>{!! $user->name !!}</h5>
                                 <h5>{!! $user->email !!}</h5>
@@ -26,6 +38,7 @@
                     <div class="card-footer">
                         <form class="md-form" action="{{url('/userProfile')}}" method="POST" enctype="multipart/form-data">
                             @csrf
+                                <input type="file" class="btn btn-sm btn-success ">
                             <div class="file-field">
                               <div class="d-flex justify-content-center">
                                 <div class="btn btn-mdb-color btn-rounded float-left">
@@ -41,5 +54,5 @@
             </div>
             <div class="col-3 col-md-3 col-sm-3 col-lg-3"></div>
         </div>
-    </div>
+</div>
 @endsection
