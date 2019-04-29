@@ -9,7 +9,7 @@
         </div>
     </div>
     <div class="container mt-4">
-        <h1>List of calls</h1>
+        <h1>Information Of Calls</h1>
         <div class="card">
             <div class="card-body">
                         <table  id="myTable1" class="table table-striped table-bordered table-hover">
