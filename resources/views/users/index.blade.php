@@ -3,11 +3,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-
+            
+                <div> <h1>@lang('Information of users')</h1></div>
             @include('session-flash')
 
             <div class="card">
-                <div class="card-header text-center"> <h3>@lang('Information of users')</h3></div>
 
                 <div class="card-body">
 

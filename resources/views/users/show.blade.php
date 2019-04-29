@@ -5,9 +5,9 @@
 
 <div class="container">
     <div class="row">
+            <div><h1>@lang('User details')</h1></div>
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header"> <h3>@lang('User details')</h3></div>
 
                 <div class="card-body">
 
