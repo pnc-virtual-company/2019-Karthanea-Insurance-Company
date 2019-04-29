@@ -10,7 +10,7 @@
       {{ config('app.name', 'Karthanea') }}
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="../css/profile.css">
   <!-- pei chart link -->
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>

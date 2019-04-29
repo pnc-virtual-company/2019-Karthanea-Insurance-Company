@@ -1,3 +1,8 @@
+<style>
+.btn:not(:disabled):not(.disabled) {
+    width: 113px;
+}
+</style>
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
@@ -10,28 +15,24 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6">
-                                <p><strong>User Name:</strong>  {!! $user->name !!}</p>
-                                <p><strong>Email:</strong> {!! $user->email !!}</p>
+                            <div class="col-6 data">
+                                <p>{!! $user->name !!}</p>
+                                <p>{!! $user->email !!}</p>
                             </div>
                             <div class="col-6">
-                                <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}" class="img-fluid rounded mx-auto d-block clickable"/>
+                                    <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}" 
+                                class="img-fluid rounded mx-auto d-block clickable"/>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
                         <form action="" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1">Choose Profile</label>
-                                <input type="file" class="form-control-file" name="fileUpload" id="exampleFormControlFile1">
-                            </div>
-                            <button type="submit" class="btn btn-success">Upload</button>
-                        </form>
+                                <input type="file" class="btn btn-sm btn-success ">
                     </div>
                 </div>
             </div>
             <div class="col-3 col-md-3 col-sm-3 col-lg-3"></div>
         </div>
-    </div>
+</div>
 @endsection

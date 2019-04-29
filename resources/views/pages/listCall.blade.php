@@ -1,7 +1,7 @@
 
 @extends('layout.dashboard')
 @section('content')
-    <div class="container">
+    <div class="container mt-4">
         <div class="row shadow-lg bg-light">
             <div class="col-4"><button class="btn btn-block btn-light "><i class="material-icons text-success  mr-4">call</i>  In a call</button></div>
             <div class="col-4"><button class="btn btn-block btn-light"><i class="material-icons text-success  mr-4">access_time</i> 5min13sec</button></div>
