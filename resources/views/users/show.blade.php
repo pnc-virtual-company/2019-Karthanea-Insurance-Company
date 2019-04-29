@@ -1,20 +1,19 @@
-@extends('layouts.app')
-
+@extends('layout.dashboard')
 @section('content')
 
 @include('validation-errors')
 
 <div class="container">
     <div class="row">
+            <div><h1>@lang('User details')</h1></div>
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">@lang('User details')</div>
 
                 <div class="card-body">
 
                     <div class="row">
                             <div class="col-md-12">
-                                <a class="btn btn-secondary" href="{{url('users')}}">@lang('Back to list')</a>
+                                <a class="btn bg-primary text-white" href="{{url('users')}}">@lang('Back to list')</a>
                             </div>
                         </div>
 

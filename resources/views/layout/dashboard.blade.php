@@ -10,6 +10,8 @@
       {{ config('app.name', 'Karthanea') }}
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="../css/profile.css">
   <!-- pei chart link -->
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -40,7 +42,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
   <!-- CSS Files -->
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
+  {{-- <!-- CSS Just for demo purpose, don't include it in your project --> --}}
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
@@ -126,7 +128,7 @@
                   </a>
                 </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/client')}}">
+                  <a href="{{url('/achiveclient')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
                       Archieve Clients
@@ -155,6 +157,11 @@
               <p>Calendar</p>
             </a>
           </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{url('users')}}">
+                  <i class="material-icons">person</i> {{ __('Users') }}
+              </a>
+          </li>
           <li class="nav-item ">
             <a class="nav-link" href="{{url('/location')}}">
               <i class="material-icons">location_ons</i>
@@ -177,9 +184,13 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span><strong>{{ Auth::user()->name }}</strong></span>
+                  @if (Auth::user()->avatar!= null)
                     <img id="imgProfilePic" src="{{asset('images/'.Auth::user()->avatar)}}">
+                  @else
+                    <img id="imgProfilePic" src="{{asset('images/default-avatar.png')}}">
+                  @endif
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item nav-link" href="{{url('users/profile')}}">
                     <span>
                       <i class="material-icons">account_circle</i>

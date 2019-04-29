@@ -1,4 +1,4 @@
-<div id="frmModalDeleteConfirmation" class="modal" tabindex="-1" role="dialog">
+<div id="frmModalDeleteConfirmation" class="modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -12,7 +12,7 @@
         </div>
         <div class="modal-footer">
             <button id="cmdDeleteConfirmation" type="button" class="btn btn-danger">@lang('Yes')</button>
-            <button id="cmdDeleteCancellation" type="button" class="btn btn-primary" data-dismiss="modal">@lang('No')</button>
+            <button id="cmdDeleteCancellation" type="button" class="btn bg-primary text-white" data-dismiss="modal">@lang('No')</button>
         </div>
         </div>
     </div>

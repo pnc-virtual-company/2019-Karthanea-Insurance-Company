@@ -1,8 +1,15 @@
 @extends('layout.dashboard')
 @section('content')
 <div class="content">
+<div class="container mt-4">
+    <div class="row shadow-lg bg-light">
+        <div class="col-4"><button class="btn btn-block btn-light "><i class="material-icons text-success  mr-4">call</i>  In a call</button></div>
+        <div class="col-4"><button class="btn btn-block btn-light"><i class="material-icons text-success  mr-4">access_time</i> 5min13sec</button></div>
+        <div class="col-4"><button class="btn btn-block btn-light"><i class="material-icons text-danger sm mr-4">call</i>  HANG UP</button></div>
+    </div>
+</div>
     <div class="container-fluid">
-        <h1>List of contract</h1>
+        <h1>Information Of Contract</h1>
             <div class="card">
                 <div class="card-body">
                         <table id="myTable3" class="table table-striped table-bordered" style="width:100%">
@@ -72,7 +79,7 @@
                                 </tbody>
                                
                             </table>
-                            <button type="button" class="btn bg-info ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
+                            <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
                 </div>
             </div>
     </div>

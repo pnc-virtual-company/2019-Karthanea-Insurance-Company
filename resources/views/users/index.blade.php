@@ -1,21 +1,20 @@
-@extends('layouts.app')
-
+@extends('layout.dashboard')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-
+            
+                <div> <h1>@lang('Information of users')</h1></div>
             @include('session-flash')
 
             <div class="card">
-                <div class="card-header">@lang('List of users')</div>
 
                 <div class="card-body">
 
                     <div class="row">
                         <div class="col-md-12">
-                            <a class="btn btn-secondary" href="{{url('users/create')}}">@lang('Add a new user')</a>
-                            <a class="btn btn-secondary" href="{{url('users/export')}}" download>@lang('Export to Excel')</a>
+                            <a class="btn bg-primary text-white" href="{{url('users/create')}}">@lang('Add a new user')</a>
+                            <a class="btn bg-primary  text-white" href="{{url('users/export')}}" download>@lang('Export to Excel')</a>
                         </div>
                     </div>
 
@@ -23,7 +22,7 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <table class="table table-bordered" id="users">
+                            <table id="myTable" class="table table-striped table-bordered table-hover">
                                 <thead>
                                     <tr>
                                         <th>@lang('ID')</th>
@@ -36,9 +35,9 @@
                                     @foreach ($users as $user)
                                     <tr data-id="{{ $user->id }}">
                                         <td>
-                                            <i class="mdi mdi-delete clickable delete-icon" data-id="{{ $user->id }}" title="@lang('delete the user')"></i>
-                                            <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="mdi mdi-pencil clickable"></i></a>
-                                            <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="mdi mdi-eye clickable"></i></a>
+                                           <a href="#"  data-toggle="modal" data-target="#frmModalDeleteConfirmation" ><i class="material-icons text-danger"data-id="{{ $user->id }}" title="@lang('delete the user')">delete</i></a> 
+                                            <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="material-icons">edit</i></a>
+                                            <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
                                             <span>{{ $user->id }}</span>
                                         </td>
                                         <td>
@@ -65,7 +64,6 @@
 
 <!-- Include the modal //-->
 @include('modal-confirm-delete')
-@include('modal-alert')
 @include('modal-wait')
 
 @endsection

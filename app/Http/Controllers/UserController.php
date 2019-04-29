@@ -45,24 +45,32 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function index(Request $request)
-    // {
-    //     $request->user()->authorizeRoles(['Administrator']);
-    //     $users = User::with('roles')->get();
-    //     return view('users.register');
-    // }
+    public function index(Request $request)
+    {
+        $request->user()->authorizeRoles(['Administrator']);
+        $users = User::with('roles')->get();
+        return view('users.index', ['users' => $users]);
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+   
     public function create(Request $request)
     {
         $request->user()->authorizeRoles(['Administrator']);
         $roles = Role::all();
-        return view('users.register', ['roles' => $roles]);
+        return view('users.create', ['roles' => $roles]);
     }
+
+    // public function register()
+    // {
+    //     $request->user()->authorizeRoles(['Administrator']);
+    //     $roles = Role::all();
+    //     return view('auth.register');
+    // }
 
     /**
      * Store a newly created resource in storage.
