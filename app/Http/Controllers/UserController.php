@@ -49,7 +49,7 @@ class UserController extends Controller
     {
         $request->user()->authorizeRoles(['Administrator']);
         $users = User::with('roles')->get();
-        return view('users.create');
+        return view('users.index', ['users' => $users]);
     }
     /**
      * Show the form for creating a new resource.
@@ -57,6 +57,7 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+   
     public function create(Request $request)
     {
         $request->user()->authorizeRoles(['Administrator']);
