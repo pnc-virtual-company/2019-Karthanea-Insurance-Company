@@ -38,7 +38,8 @@
   display: none;
 }
 .navbar .collapse .navbar-nav .nav-item .nav-link:hover{
-  background:#0353ca;
+  background:#007bff;
+  color:#ffffff;
 }
 .nav-link:hover{
   background: rgb(31, 94, 231);
