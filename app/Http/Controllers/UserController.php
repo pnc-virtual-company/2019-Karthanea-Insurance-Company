@@ -38,7 +38,6 @@ class UserController extends Controller
         $user = Auth::user();
         return view('users.userProfile', ['user' => $user]);
     }
-
     /**
      * Display a listing of the users.
      *
