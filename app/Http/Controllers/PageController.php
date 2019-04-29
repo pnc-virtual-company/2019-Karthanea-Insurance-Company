@@ -27,16 +27,13 @@ class PageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        
+   
+    public function updatecontractype(){
+        return view('pages.updatecontractype');
     }
-public function updatecontractype(){
-    return view('pages.updatecontractype');
-}
-public function datepicker(){
-    return view('pages.date');
-}
+    public function datepicker(){
+        return view('pages.date');
+    }
     /**
      * Store a newly created resource in storage.
      *
