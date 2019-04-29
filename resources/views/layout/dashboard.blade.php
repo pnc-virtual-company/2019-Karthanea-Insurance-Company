@@ -127,7 +127,7 @@
                   </a>
                 </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/client')}}">
+                  <a href="{{url('/achiveclient')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
                       Archieve Clients
