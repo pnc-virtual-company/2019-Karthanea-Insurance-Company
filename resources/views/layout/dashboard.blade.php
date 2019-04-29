@@ -42,7 +42,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
   <!-- CSS Files -->
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
+  {{-- <!-- CSS Just for demo purpose, don't include it in your project --> --}}
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
@@ -190,7 +190,7 @@
                     <img id="imgProfilePic" src="{{asset('images/default-avatar.png')}}">
                   @endif
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item nav-link" href="{{url('users/profile')}}">
                     <span>
                       <i class="material-icons">account_circle</i>

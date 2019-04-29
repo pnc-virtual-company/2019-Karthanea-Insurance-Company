@@ -37,6 +37,9 @@
 #manageUp,#dashUp{
   display: none;
 }
+.navbar .collapse .navbar-nav .nav-item .nav-link:hover{
+  background:#0353ca;
+}
 .nav-link:hover{
   background: rgb(31, 94, 231);
 }
