@@ -1,37 +1,58 @@
+<style>
+.btn:not(:disabled):not(.disabled) {
+    width: 113px;
+}
+</style>
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
         <div class="row">
             <div class="col-3 col-md-3 col-sm-3 col-lg-3"></div>
             <div class="col-6 col-md-6 col-sm-6 col-lg-6">
-                <div class="card shadow-lg">
+                <div class="card">
                     <div class="card-header text-center">
                         <h2>My Profile</h2>
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6">
-                                <p><strong>User Name:</strong>  {!! $user->name !!}</p>
-                                <p><strong>Email:</strong> {!! $user->email !!}</p>
+                            <div class="col-6 data">
+                                <p>{!! $user->name !!}</p>
+                                <p>{!! $user->email !!}</p>
                             </div>
                             <div class="col-6">
-                                <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}" class="img-fluid rounded mx-auto d-block clickable"/>
+                                    <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}" 
+                                class="img-fluid rounded mx-auto d-block clickable"/>
+                            <div class="col-6 mt-5">
+                                <h5>{!! $user->name !!}</h5>
+                                <h5>{!! $user->email !!}</h5>
+                            </div>
+                            <div class="col-6">
+                                @if (auth::user()->avatar!= null)
+                                    <img id="imgProfilePic" src="{{asset('images/'.Auth::user()->avatar)}}" class="img-fluid rounded mx-auto d-block clickable"/>
+                                @else
+                                    <img src="stronge/images/default-avatar.png" class="img-circle2">
+                                @endif
                             </div>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form class="md-form" action="{{url('/userProfile')}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
-                                <label for="exampleFormControlFile1">Choose Profile</label>
-                                <input type="file" class="form-control-file" name="fileUpload" id="exampleFormControlFile1">
+                                <input type="file" class="btn btn-sm btn-success ">
+                            <div class="file-field">
+                              <div class="d-flex justify-content-center">
+                                <div class="btn btn-mdb-color btn-rounded float-left">
+                                  <span>Choose file</span>
+                                  <input type="file" name="fileUpload" required>
+                                  <button type="submit" class="btn btn-success">Upload</button>
+                                </div>
+                              </div>
                             </div>
-                            <button type="submit" class="btn btn-success">Upload</button>
                         </form>
                     </div>
                 </div>
             </div>
             <div class="col-3 col-md-3 col-sm-3 col-lg-3"></div>
         </div>
-    </div>
+</div>
 @endsection

@@ -11,6 +11,7 @@
   </title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
+  <link rel="stylesheet" href="../css/profile.css">
   <!-- pei chart link -->
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
@@ -48,7 +49,7 @@
 </head>
 <body>
   <div class="wrapper">
-    <div class="sidebar" data-color="primary" data-background-color="black" data-image="{{asset('images/sidebar-3.jpg')}}">
+    <div class="sidebar" data-color="primary" data-background-color="black" data-image="{{asset('images/sidebar-4.jpg')}}">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger "
         
@@ -127,7 +128,7 @@
                   </a>
                 </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/client')}}">
+                  <a href="{{url('/achiveclient')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
                       Archieve Clients
@@ -172,7 +173,7 @@
     </div>
     <div class="main-panel">
       <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg bg-info navbar-absolute fixed-top " id="navigation-example">
+      <nav class="navbar navbar-expand-lg bg-seccuess navbar-absolute fixed-top " id="navigation-example">
         <div class="container-fluid ">  
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation" data-target="#navigation-example">
             <span class="sr-only">Toggle navigation</span>
@@ -182,9 +183,8 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}">
-                    <span><strong>{{ Auth::user()->name }}</strong></span>
-                  <i class="material-icons">settings</i>
+                  <span><strong>{{ Auth::user()->name }}</strong></span>
+                    <img id="imgProfilePic" src="{{asset('images/'.Auth::user()->avatar)}}">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item nav-link" href="{{url('users/profile')}}">
@@ -202,8 +202,8 @@
                       </span>
                     </a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                        @csrf
-                      </form>
+                      @csrf
+                    </form>
                 </div>
               </li>
             </ul>
@@ -221,50 +221,6 @@
         let date = document.getElementById('date');
         //date.innerHTML = '&copy; ' + x + date.innerHTML;
       </script>
-    </div>
-  </div>
-  <div class="fixed-plugin">
-    <div class="dropdown show-dropdown">
-      <ul class="dropdown-menu">
-        <li class="header-title"> Sidebar Filters</li>
-        <li class="adjustments-line">
-          <a href="javascript:void(0)" class="switch-trigger active-color">
-            <div class="badge-colors ml-auto mr-auto">
-              <span class="badge filter badge-primary active" data-color="primary"></span>
-              <span class="badge filter badge-azure" data-color="azure"></span>
-              <span class="badge filter badge-green" data-color="green"></span>
-              <span class="badge filter badge-warning" data-color="orange"></span>
-              <span class="badge filter badge-danger" data-color="danger"></span>
-            </div>
-            <div class="clearfix"></div>
-          </a>
-        </li>
-        <li class="header-title">Images</li>
-        <li>
-          <a class="img-holder switch-trigger" href="javascript:void(0)">
-            <img src="{{asset('images/sidebar-4.jpg')}}" alt="">
-          </a>
-        </li>
-        <li class="button-container">
-          <a href="https://www.creative-tim.com/product/material-dashboard-dark" target="_blank" class="btn btn-primary btn-block">Free Download</a>
-        </li>
-       
-        <li class="button-container">
-          <a href="https://demos.creative-tim.com/material-dashboard-dark/docs/2.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block">
-            View Documentation
-          </a>
-        </li>
-        <li class="button-container github-star">
-          <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard/tree/dark-edition" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-        </li>
-        <li class="header-title">Thank you for 95 shares!</li>
-        <li class="button-container text-center">
-          <button id="twitter" class="btn btn-round btn-twitter"><i class="fa fa-twitter"></i> &middot; 45</button>
-          <button id="facebook" class="btn btn-round btn-facebook"><i class="fa fa-facebook-f"></i> &middot; 50</button>
-          <br>
-          <br>
-        </li>
-      </ul>
     </div>
   </div>
   <!--   Core JS Files   -->
@@ -285,165 +241,6 @@
   <script src="{{asset('js/material-dashboard.js?v=2.1.0')}}"></script>
   <!-- Material Dashboard DEMO methods, don't include it in your project! -->
   <script src="{{asset('demo/demo.js')}}"></script>
-  <script>
-    $(document).ready(function() {
-      $().ready(function() {
-        
-        $sidebar = $('.sidebar');
-
-        $sidebar_img_container = $sidebar.find('.sidebar-background');
-
-        $full_page = $('.full-page');
-
-        $sidebar_responsive = $('body > .navbar-collapse');
-
-        window_width = $(window).width();
-
-        $('.fixed-plugin a').click(function(event) {
-          // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-          if ($(this).hasClass('switch-trigger')) {
-            if (event.stopPropagation) {
-              event.stopPropagation();
-            } else if (window.event) {
-              window.event.cancelBubble = true;
-            }
-          }
-        });
-        
-        $('.fixed-plugin .active-color span').click(function() {
-          $full_page_background = $('.full-page-background');
-          
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-          
-          var new_color = $(this).data('color');
-
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-color', new_color);
-          }
-          if ($full_page.length != 0) {
-            $full_page.attr('filter-color', new_color);
-          }
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.attr('data-color', new_color);
-          }
-        });
-        
-        $('.fixed-plugin .background-color .badge').click(function() {
-          $(this).siblings().removeClass('active');
-          $(this).addClass('active');
-          
-          var new_color = $(this).data('background-color');
-          
-          if ($sidebar.length != 0) {
-            $sidebar.attr('data-background-color', new_color);
-          }
-        });
-        
-        $('.fixed-plugin .img-holder').click(function() {
-          $full_page_background = $('.full-page-background');
-          
-          $(this).parent('li').siblings().removeClass('active');
-          $(this).parent('li').addClass('active');
-          var new_image = $(this).find("img").attr('src');
-          
-          if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            $sidebar_img_container.fadeOut('fast', function() {
-              $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-              $sidebar_img_container.fadeIn('fast');
-            });
-          }
-          
-          if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-            $full_page_background.fadeOut('fast', function() {
-              $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-              $full_page_background.fadeIn('fast');
-            });
-          }
-          
-          if ($('.switch-sidebar-image input:checked').length == 0) {
-            var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-            var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-            
-            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-          }
-          
-          if ($sidebar_responsive.length != 0) {
-            $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-          }
-        });
-        
-        $('.switch-sidebar-image input').change(function() {
-          $full_page_background = $('.full-page-background');
-          
-          $input = $(this);
-          
-          if ($input.is(':checked')) {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar_img_container.fadeIn('fast');
-              $sidebar.attr('data-image', '#');
-            }
-            
-            if ($full_page_background.length != 0) {
-              $full_page_background.fadeIn('fast');
-              $full_page.attr('data-image', '#');
-            }
-            
-            background_image = true;
-          } else {
-            if ($sidebar_img_container.length != 0) {
-              $sidebar.removeAttr('data-image');
-              $sidebar_img_container.fadeOut('fast');
-            }
-            
-            if ($full_page_background.length != 0) {
-              $full_page.removeAttr('data-image', '#');
-              $full_page_background.fadeOut('fast');
-            }
-            
-            background_image = false;
-          }
-        });
-        
-        $('.switch-sidebar-mini input').change(function() {
-          $body = $('body');
-          
-          $input = $(this);
-          
-          if (md.misc.sidebar_mini_active == true) {
-            $('body').removeClass('sidebar-mini');
-            md.misc.sidebar_mini_active = false;
-            
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-            
-          } else {
-            
-            $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-            setTimeout(function() {
-              $('body').addClass('sidebar-mini');
-              
-              md.misc.sidebar_mini_active = true;
-            }, 300);
-          }
-          
-          // we simulate the window Resize so the charts will get updated in realtime.
-          var simulateWindowResize = setInterval(function() {
-            window.dispatchEvent(new Event('resize'));
-          }, 180);
-
-          // we stop the simulation of Window Resize after the animations are completed
-          setTimeout(function() {
-            clearInterval(simulateWindowResize);
-          }, 1000);
-          
-        });
-      });
-    });
-  </script>
   <script>
     //fade Bill
     $(document).ready(function(){
@@ -466,30 +263,24 @@
       });
     });
 
-
     $(document).ready(function() {
       md.initDashboardPageCharts();
       $('#example').DataTable();                
     });
     
     $(document).ready(function() {
-      md.initDashboardPageCharts();
       $('#myTable').DataTable();                
     });
     $(document).ready(function() {
-      md.initDashboardPageCharts();
       $('#myTable3').DataTable();                
     });
     $(document).ready(function() {
-      md.initDashboardPageCharts();
       $('#myTable4').DataTable();                
     });
     $(document).ready(function() {
-      md.initDashboardPageCharts();
       $('#myTable5').DataTable();                
     });
     $(document).ready(function() {
-      md.initDashboardPageCharts();
       $('#contractType').DataTable();  
       
     });

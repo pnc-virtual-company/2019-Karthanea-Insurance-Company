@@ -13030,8 +13030,8 @@ fieldset[disabled] .form-group .form-control {
   padding: 0.625rem 0;
   margin-bottom: 20px;
   height: auto !important;
-  color: #555;
-  background-color: #fff !important;
+  color: rgb(255, 255, 255);
+  background-color: rgb(38, 114, 236) !important;
   box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12), 0 7px 10px -5px rgba(0, 0, 0, 0.15);
 }
 
@@ -18091,7 +18091,7 @@ Copyright (c) 2015 Daniel Eden
   }
   .navbar-transparent {
     padding-top: 15px;
-    background-color: rgba(0, 0, 0, 0.45);
+    background-color: rgba(89, 141, 238, 0.418);
   }
   body {
     position: relative;

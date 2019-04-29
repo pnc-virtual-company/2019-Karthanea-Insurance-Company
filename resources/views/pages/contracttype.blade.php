@@ -2,7 +2,7 @@
     @section('content')
     <div class="content">
         <div class="container-fluid">
-        <h1>List of contract type</h1>
+        <h1>Contract Type</h1>
                 <div class="card">
                     <div class="card-body">
             <table id="myTable" class="table table-striped table-bordered" style="width:100%">
