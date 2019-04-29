@@ -65,12 +65,12 @@ class UserController extends Controller
         return view('users.create', ['roles' => $roles]);
     }
 
-    // public function register()
-    // {
-    //     $request->user()->authorizeRoles(['Administrator']);
-    //     $roles = Role::all();
-    //     return view('auth.register');
-    // }
+    public function register(Request $request)
+    {
+        $request->user()->authorizeRoles(['Administrator']);
+        $roles = Role::all();
+        return view('auth.register'. ['roles' => $roles]);
+    }
 
     /**
      * Store a newly created resource in storage.

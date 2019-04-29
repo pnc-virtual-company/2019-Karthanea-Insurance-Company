@@ -26,7 +26,7 @@
                 <div class="row">
                     <div class="col s12 ">
                         <div class="card-panel ">
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
                               @csrf
                               <div class="card  bg-info p-4 shadow-lg">
                                   <h6 class="text-center text-white">Register</h6>

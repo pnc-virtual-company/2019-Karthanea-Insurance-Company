@@ -71,8 +71,7 @@
                     <i class="material-icons">color_lens</i>
                     <p>
                       Dashboard
-                      <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
-                      <span class="material-icons ml-5" id="dashUp">arrow_drop_up</span>
+                      <span class="material-icons ml-5" id="dash">arrow_drop_down</span>
                     </p>
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
@@ -428,5 +427,12 @@ $(".ui-datepicker-trigger").mouseover(function() {
           }]
       }
   });
+  </script>
+  <script>
+    $(document).ready(function(){
+      $('#dashboard').click(function(
+        $('a#dashboard p span#dash').html('<span class="material-icons ml-5" id="dash">arrow_drop_up</span>');
+      ));
+    });
   </script>
 </html>

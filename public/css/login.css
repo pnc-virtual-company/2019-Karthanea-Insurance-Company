@@ -12,7 +12,8 @@ body {
 .input-field .prefix {
     font-size: 1.6rem;
 }
-a.btn.btn-info.right.text-white.text-center {
+a.btn.btn-info.right.text-white.text-center,
+button.btn.right.text-white.text-center  {
     width: 100px;
 }
 .input-field .prefix {
