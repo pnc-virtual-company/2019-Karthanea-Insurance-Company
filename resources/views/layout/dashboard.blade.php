@@ -2,13 +2,13 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
   <meta charset="utf-8" />
-  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
-  <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
   <title>
-      {{ config('app.name', 'Karthanea') }}
+    {{ config('app.name', 'Karthanea') }}
   </title>
+  <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 
   <link rel="stylesheet" href="../css/profile.css">
