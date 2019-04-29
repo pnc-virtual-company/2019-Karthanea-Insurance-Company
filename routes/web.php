@@ -13,8 +13,12 @@
 
 Route::get('/', function () {
     return view('auth.login');
+    
 });
 
+// Route::get('/', function () {
+    //     return view('examples.index', ['currentExample' => 'List of examples']);
+    // });
 Auth::routes();
     
 Route::get('users/profile','UserController@profile');
