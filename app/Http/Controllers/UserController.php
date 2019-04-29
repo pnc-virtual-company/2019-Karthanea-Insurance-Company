@@ -57,6 +57,12 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function index(Request $request)
+    {
+        $request->user()->authorizeRoles(['Administrator']);
+        $roles = Role::all();
+        return view('users.index', ['roles' => $roles]);
+    }
     public function create(Request $request)
     {
         $request->user()->authorizeRoles(['Administrator']);
