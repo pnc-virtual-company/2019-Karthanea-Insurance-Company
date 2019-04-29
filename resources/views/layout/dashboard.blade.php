@@ -184,7 +184,11 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span><strong>{{ Auth::user()->name }}</strong></span>
+                  @if (Auth::user()->avatar!= null)
                     <img id="imgProfilePic" src="{{asset('images/'.Auth::user()->avatar)}}">
+                  @else
+                    <img id="imgProfilePic" src="{{asset('images/default-avatar.png')}}">
+                  @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item nav-link" href="{{url('users/profile')}}">
