@@ -9,7 +9,7 @@
     </div>
 </div>
     <div class="container-fluid">
-        <h1>List of contract</h1>
+        <h1>Information Of Contract</h1>
             <div class="card">
                 <div class="card-body">
                         <table id="myTable3" class="table table-striped table-bordered" style="width:100%">

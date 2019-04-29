@@ -35,8 +35,8 @@
                                         <td>095 245 38</td>
                                         <td>li@gmail.com</td>
                                         <td>
-                                                <a href="#" class="text-center">
-                                                        <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                                <a href="#" class="togglePayment">   
+                                                    <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                 </a>
                                         </td>
                                
@@ -46,7 +46,7 @@
                                 </tbody>
                                 <br>
                             </table>
-                                <table class="table table-striped table-bordered table-hover">
+                                <table id="table2" class="table table-striped table-bordered table-hover collapse">
                                     <thead class="bg-dark text-white">
                                         <tr>
                                             <th>ID</th>
@@ -81,7 +81,7 @@
                                             <td>$15</td>
 
                                             <td>
-                                                    <a href="#" class="text-center">
+                                                    <a href="#" class="toggleBill">
                                                             <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
                                                     </a>
                                             </td>
@@ -92,7 +92,7 @@
                                     </tbody>
                                 </table>
 
-                                <table  id="myTabless" class="table table-striped table-bordered table-hover">
+                                <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
                                         <thead class="bg-dark text-white">
                                             <tr>
                                                 <th>Month</th>
@@ -141,8 +141,9 @@
         </div>
     </div>
     <script src="{{asset('js/table.js')}}"></script>
-    {{-- payment model update status --}}
     
+    
+{{-- payment model update status --}}
     <div class="modal fade" id="editPayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -302,7 +303,7 @@
                                       <div class="card-body">
                                             <div class="modal-body">
                                                    
-                                                    <table id="myTable4" class="table table-striped table-bordered" style="width:100%">
+                                                    <table id="myTable4" class="table table-striped table-bordered collapse" style="width:100%">
                                                             <thead class="bg-dark text-white">
                                                                 <tr>
                                                                     <th class="text-center ">ID</th>

@@ -1,7 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1>List of Clients call Calendar</h1>
+        <h1>Information All The Clients </h1>
         <div class="card">
             <div class="card-body">
                 <table id="myTable" class="table table-striped table-bordered table-hover">
