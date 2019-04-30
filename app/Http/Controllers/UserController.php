@@ -192,6 +192,7 @@ class UserController extends Controller
         $request->user()->authorizeRoles(['Administrator']);
         $user = User::find($id);
         $user->delete();
+        return Redirect::to('users');
     }
 
     /**
