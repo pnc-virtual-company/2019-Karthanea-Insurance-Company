@@ -17,39 +17,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($client as $item)
                         <tr>
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
                                 <input type="checkbox" name="disable" id="disable">
-                                1
+                                {{$item->id_client}}
                             </td>
-                            <td>Mona</td>
-                            <td>Street 371 borey sorla</td>
-                            <td>097 674 245</td>
-                            <td>Mona@gmail.com</td>
+                            <td>{{$item->firstname}} {{$item->lastname}}</td>
+                            <td>{{$item->addresss}}</td>
+                            <td>{{$item->phonenumber}}</td>
+                            <td>{{$item->email}}</td>
                         </tr>
-                        <tr>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                <input type="checkbox" name="disable" id="disable">
-                                2
-                            </td>
-                            <td>Sith</td>
-                            <td>Street 371 borey sorla</td>
-                            <td>097 674 245</td>
-                            <td>Sith@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                <input type="checkbox" name="disable" id="disable">
-                                3
-                            </td>
-                            <td>Sona</td>
-                            <td>Street 371 borey sorla</td>
-                            <td>097 674 245</td>
-                            <td>Kirna@gmail.com</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div>
