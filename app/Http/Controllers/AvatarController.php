@@ -25,4 +25,28 @@ class AvatarController extends Controller
         }
         return view('users.userProfile',array('users'=>Auth::users()));
     }
+    public function profile()
+    {
+        $user = Auth::user();
+        return view('users.userProfile',compact('user',$user));
+    }
+    public function update_avatar(Request $request){
+
+        $request->validate([
+            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $user = Auth::user();
+
+        $avatarName =request()->avatar->getClientOriginalName();
+
+        $request->file('avatar')->storeAs('public/images',$avatarName);
+
+        $user->avatar = $avatarName;
+        $user->save();
+
+        return back()
+            ->with('success','You have successfully upload image.');
+
+    }
 }
