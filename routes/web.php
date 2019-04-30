@@ -71,7 +71,7 @@ Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
 
-Route::get('/contract','ContractController@index');
+Route::get('/contracttypeController','ContractController@index');
 
 Route::get('/createContract','PageController@createContractType');
 
@@ -79,7 +79,7 @@ Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
 Route::get('/userCall','ClientController@userCall');
 
-Route::get('/contractlist','PageController@contractlist');
+Route::get('/contractlist','ContractController@index');
 
 Route::get('/payment','paymentController@index');
 

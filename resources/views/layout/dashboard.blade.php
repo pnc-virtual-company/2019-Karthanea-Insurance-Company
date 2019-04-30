@@ -111,7 +111,7 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li class="list-group-item collapsed">
-                <a href="{{url('/contract')}}">
+                <a href="{{url('/contracttypeController')}}">
                   <span class="text-white">
                     <i class="material-icons text-white">ballot</i>
                     Contract Type
@@ -167,6 +167,7 @@
               <p>Location</p>
             </a>
           </li>
+          
         </ul>
       </div>
     </div>
