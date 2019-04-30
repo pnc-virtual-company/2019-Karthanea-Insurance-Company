@@ -45,7 +45,6 @@ return [
             'port' => env('DB_PORT', '3306'),
 
             'database' => env('DB_DATABASE', 'karthanea_insurance'),
-
             'username' => env('DB_USERNAME', 'root'),
             'password' => env('DB_PASSWORD', ''),
             'unix_socket' => env('DB_SOCKET', ''),
