@@ -31,7 +31,7 @@ class CreateUsersTable extends Migration
                 'name' => 'Administrator',
                 'email' => 'manager@example.com',
                 'password' => bcrypt('password'),
-                'avatar' => 'default-avatar.png',
+                'avatar' => 'avatar.jpg',
                 'remember_token' => str_random(10)
             )
         );

@@ -15,13 +15,6 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-6 data">
-                                <p>{!! $user->name !!}</p>
-                                <p>{!! $user->email !!}</p>
-                            </div>
-                            <div class="col-6">
-                                    <img id="imgProfilePic" src="{{url('images/examples/faces/avatar.jpg')}}" 
-                                class="img-fluid rounded mx-auto d-block clickable"/>
                             <div class="col-6 mt-5">
                                 <h5>{!! $user->name !!}</h5>
                                 <h5>{!! $user->email !!}</h5>
@@ -38,7 +31,8 @@
                     <div class="card-footer">
                         <form class="md-form" action="{{url('/userProfile')}}" method="POST" enctype="multipart/form-data">
                             @csrf
-                                <input type="file" class="btn btn-sm btn-success ">
+                            <input type="file" class="btn btn-secondary ">
+                            <button type="submit" class="btn bg-success text-white">Save Image</button>
                         </form>
                     </div>
                 </div>
