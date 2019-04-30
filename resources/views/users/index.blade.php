@@ -6,7 +6,6 @@
             
                 <div> <h1>@lang('Information of users')</h1></div>
             @include('session-flash')
-
             <div class="card">
 
                 <div class="card-body">
@@ -22,23 +21,22 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <table id="myTable" class="table table-striped table-bordered table-hover">
-                                <thead>
+                            <table id="myTable" class="table table-striped table-bordered table-hover ">
+                                <thead class="bg-dark text-white">
                                     <tr>
                                         <th>@lang('ID')</th>
                                         <th>@lang('Name')</th>
                                         <th>@lang('Email')</th>
                                         <th>@lang('Roles')</th>
+                                        <th>@lang('Action')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
                                     <tr data-id="{{ $user->id }}">
-                                        <td>
-                                           <a href="#"  data-toggle="modal" data-target="#frmModalDeleteConfirmation" ><i class="material-icons text-danger"data-id="{{ $user->id }}" title="@lang('delete the user')">delete</i></a> 
-                                            <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="material-icons">edit</i></a>
-                                            <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
-                                            <span>{{ $user->id }}</span>
+                                        <td>      
+                                                <span>{{ $user->id }}</span>
+                                            
                                         </td>
                                         <td>
                                             <span>{!! $user->name !!}</span>
@@ -49,6 +47,17 @@
                                         <td>
                                             <span>{{ $user->roles->pluck('name')->implode(', ') }}</span>
                                         </td>
+                                        <td>      
+                                                <form action="{{route('users.destroy',$user->id)}}" method="POST" class="text-center">
+                                                 @csrf
+                                                 @method("delete")    
+                                                
+                                                 <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="material-icons">edit</i></a>
+                                                <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
+                                                <button type="submit" data-toggle="modal" data-target="#frmModalDeleteConfirmation"  class="btn-danger">delete</button>      
+                                             </form>
+                                                 
+                                             </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -58,62 +67,12 @@
                 </div>
 
             </div>
+            
         </div>
     </div>
 </div>
 
 <!-- Include the modal //-->
 @include('modal-confirm-delete')
-@include('modal-wait')
 
 @endsection
-
-@push('scripts')
-<script type="text/javascript">
-var table = null;
-
-//On document ready, 
-$(function() {
-
-    //Transform the table into a richer widget
-    var table = $("#users").DataTable();
-    
-    //On click on delete, pass the object id to the confirmation modal
-    $('#users').on("click", ".delete-icon", function() {
-        $('#frmModalDeleteConfirmation').data("id", $(this).data("id"));
-        $('#frmModalDeleteConfirmation').modal('show');
-    });
-    
-    //On click on edit, fill the input modal
-    $('#users').on("click", ".edit-icon", function() {
-        $('#frmModalEditUser').modal('show');
-    });
-
-    //Delete the row from the DataTable if button OK or press Enter
-    $("#cmdDeleteConfirmation").click(function(e){
-        $('#frmModalWait').modal('show');
-        var id = $('#frmModalDeleteConfirmation').data("id");
-        $.ajax({
-            url: '{{url('users')}}/' + id,
-            type: 'DELETE',
-            data: {
-                id: id,
-                _method: 'DELETE',
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function() {
-                table.rows('tr[data-id="' + id + '"]').remove().draw();
-                $('#frmModalWait').modal('hide');
-                $('#frmModalDeleteConfirmation').modal('hide');
-            },
-            error:
-            function(result) {
-                $('#frmModalWait').modal('hide');
-                $('#frmModalDeleteConfirmation').modal('hide');                
-                $('#frmModalAlert').modal('show');
-            },
-        });
-    });
-});
-</script>
-@endpush

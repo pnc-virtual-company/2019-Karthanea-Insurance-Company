@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use \App\Contract ;
 class ContractController extends Controller
 {
     /**
@@ -13,7 +13,9 @@ class ContractController extends Controller
      */
     public function index()
     {
-        return view('pages.contracttype');
+        $contract = \App\Contract::all();
+        //dd($contract);
+        return view('pages.addContract',compact('contract'));
     }
 
     /**

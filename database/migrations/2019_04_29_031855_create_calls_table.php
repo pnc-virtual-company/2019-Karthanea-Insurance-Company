@@ -14,7 +14,7 @@ class CreateCallsTable extends Migration
     public function up()
     {
         Schema::create('calls', function (Blueprint $table) {
-            $table->increments('id_call');
+            $table->increments('id');
             $table->date('date');
             $table->string('callOperator');
             $table->dateTime('duration');
@@ -23,7 +23,7 @@ class CreateCallsTable extends Migration
             
             $table->integer('id_client')->unsigned();
             $table->foreign('id_client')
-                  ->references('id_client')
+                  ->references('id')
                   ->on('clients')
                   ->onDelete('cascade');
         });

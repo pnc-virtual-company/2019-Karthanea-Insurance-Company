@@ -32,28 +32,28 @@
                                     @include('validation-errors')
                                     <div class="input-field">
                                         <i class="material-icons prefix" class="text-secondary">markunread</i>
-                                        <input type="text" id="autocomplete-input" name="email" value="{{ old('email') }}" class="autocomplete icons {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
+                                        <input type="text" id="autocomplete-inputemail" name="email" value="{{ old('email') }}" class="autocomplete icons {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
+                                        <label for="autocomplete-inputemail">Email</label>
                                         @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
                                         @endif
-                                        <label for="autocomplete-input ">Email</label>
                                     </div>
                                     <div class="input-field">
                                         <i class="material-icons prefix">https</i>
-                                       <input type="password" id="autocomplete-input" name="password" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}" required>
-                                       @if ($errors->has('password'))
-                                       <span class="invalid-feedback" role="alert">
-                                           <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                        @endif
-                                        <label for="autocomplete-input">Password</label>
+                                        <input type="password" id="autocomplete-inputpwd" name="password" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}" required>
+                                        <label for="autocomplete-inputpwd">Password</label>
+                                        @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                         </span>
+                                         @endif
                                     </div>
                                     <footer>
                                         <div class="container">
                                             <div class="row d-flex justify-content-center mt-5">
-                                                <div class="form ">
+                                                <div class="form">
                                                     @csrf
                                                     <div class="form-group">
                                                         <button type="submit" class="btn btn-info btn-sm right text-white text-center">LOGIN</button>
