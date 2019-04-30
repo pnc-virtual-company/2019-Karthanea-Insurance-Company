@@ -33,43 +33,45 @@
                               <div class="input-field">
                                   <i class="material-icons prefix" class="text-secondary">person</i>
                                   <input type="text" id="autocomplete-inputname" required name="name" value="{{ old('name') }}" class="autocomplete icons {{ $errors->has('name') ? ' is-invalid' : '' }}">
-                                  <label for="autocomplete-inputname ">Username</label>
-                                    @if ($errors->has('name'))
+                                  <label for="autocomplete-inputname ">@lang('Username')</label>
+                                    {{-- @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('name') }}</strong>
                                         </span>
-                                    @endif
+                                    @endif --}}
                                   </div>
                                   <div class="input-field">
                                          <i class="material-icons prefix">markunread</i>
                                          <input type="text" id="autocomplete-inputemail" required name="email" value="{{ old('email') }}" class="autocomplete icons {{ $errors->has('email') ? ' is-invalid' : '' }}">
-                                         <label for="autocomplete-inputemail">Email</label>
-                                    @if ($errors->has('email'))
+                                         <label for="autocomplete-inputemail">@lang('Email')</label>
+                                    {{-- @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('email') }}</strong>
                                         </span>
-                                    @endif
+                                    @endif --}}
                                   </div>
                                     <div class="input-field">
                                         <i class="material-icons prefix">lock</i>
                                         <input type="password" id="autocomplete-inputpwd" required name="password" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}">
-                                        <label for="autocomplete-inputpwd">Password</label>
-                                        @if ($errors->has('password'))
+                                        <label for="autocomplete-inputpwd">@lang('Password')</label>
+                                        {{-- @if ($errors->has('password'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('password') }}</strong>
                                         </span>
-                                    @endif
+                                    @endif --}}
                                     </div>
                                     <div class="input-field">
                                         <i class="material-icons prefix">lock</i>
                                         <input type="password" id="autocomplete-inputpwdc" required name="password_confirmation" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}">
-                                        <label for="autocomplete-inputpwdc">Confirm Password</label>
+                                        <label for="autocomplete-inputpwdc">@lang('Confirm Password')</label>
                                     </div>
                                   <footer>
                                       <div class="container">
                                           <div class="row d-flex justify-content-center mt-5">
                                               <div class="form-group">
-                                                  <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
+                                                  <button type="submit" class="btn btn-info btn-sm right text-white">
+                                                        {{ __('Register Now') }}
+                                                  </button>
                                               </div>
                                           </div>
                                       </div>

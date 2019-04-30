@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 class AvatarController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth',['except'=>['userProfile']]);
+    }
     public function imageUpload(){
         return view('users.userProfile',array('users'=>Auth::users()));
     }
