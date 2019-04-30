@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use \App\Client;
+use \App\Contract;
+use \App\ContractType;
 class paymentController extends Controller
 {
     /**
@@ -13,7 +15,10 @@ class paymentController extends Controller
      */
     public function index()
     {
-        return view('pages.paymentList');
+        $client = Client::all();
+        // $contract = Contract::all();
+        // $contractType = ContractType::all();
+        return view('pages.paymentList',compact('client'));
     }
 
     /**

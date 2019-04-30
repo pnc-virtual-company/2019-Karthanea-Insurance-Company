@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
-
+use \App\Client;
 class ClientController extends Controller
 {
     /**
@@ -11,9 +11,13 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth',['except'=>['client']]);
+    }
     public function index()
     {
-        return view('pages.clientList');
+        $client = Client::all();
+        return view('pages.clientList',compact('client'));
     }
     public function userCall()
     {

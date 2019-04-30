@@ -65,13 +65,6 @@ class UserController extends Controller
         return view('users.create', ['roles' => $roles]);
     }
 
-    public function register(Request $request)
-    {
-        $request->user()->authorizeRoles(['Administrator']);
-        $roles = Role::all();
-        return view('auth.register'. ['roles' => $roles]);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -94,7 +87,7 @@ class UserController extends Controller
 
         // process the validation of fields
         if ($validator->fails()) {
-            return Redirect::to('users/register')
+            return Redirect::to('auth/register')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
@@ -178,10 +171,9 @@ class UserController extends Controller
             // redirect
             Session::flash('message.level', 'success');
             Session::flash('message.content', __('The user was successfully updated'));
-            return Redirect::to('/');
+            return Redirect::to('users');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      * This method is called by Ajax

@@ -23,26 +23,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($client as $value)
                                     <tr>
                                         <td>
-
-                                                <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                                <input type="checkbox" name="disable" id="disable">
-                                                3
+                                            <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
+                                            <input type="checkbox" name="disable" id="disable">
+                                            {{$value->id_client}}
                                         </td>
-                                        <td>Li</td>
-                                        <td>Street.371 boreySorla</td>
-                                        <td>095 245 38</td>
-                                        <td>li@gmail.com</td>
+                                        <td>{{$value->firstname}} {{$value->lastname}}</td>
+                                        <td>{{$value->addresss}}</td>
+                                        <td>{{$value->phonenumber}}</td>
+                                        <td>{{$value->email}}</td>
                                         <td>
-                                                <a href="#" class="togglePayment">   
-                                                    <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                                </a>
+                                            <a href="#" class="togglePayment">   
+                                                <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                            </a>
                                         </td>
-                               
                                     </tr>
-            
-                                    
+                                    @endforeach
                                 </tbody>
                                 <br>
                             </table>
@@ -59,36 +57,32 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        {{-- @foreach ($contract as $dataItem)
                                         <tr>
-                                                <td>
-                                                        1
-                                                        <a href="#" class="text-center">
-                                                                <a href="#"  data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
-                                                        </a>
-                                                    </td>
                                             <td>
-
-                                                    Car
-                                                    <a href="#" class="text-center">
-                                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                                    </a>
+                                                {{$dataItem->id_contract}}
+                                                <a href="#" class="text-center">
+                                                    <a href="#"  data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
+                                                </a>
                                             </td>
-
-                                               
-                                            <td>Open</td>
-                                            <td>20/10/2019</td>
-                                            <td>20/11/2019</td>
-                                            <td>$15</td>
-
+                                            <td> --}}
+                                                {{-- @foreach ($data->id_contracttype as $items) --}}
+                                                    {{-- <a href="#" class="text-center">
+                                                        <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                                    </a> --}}
+                                                {{-- @endforeach --}}
+                                            {{-- </td>
+                                            <td>{{$dataItem->status}}</td>
+                                            <td>{{$dataItem->startdate}}</td>
+                                            <td>{{$dataItem->enddate}}</td>
+                                            <td>{{$dataItem->monthlybill}} $</td>
                                             <td>
-                                                    <a href="#" class="toggleBill">
-                                                            <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
-                                                    </a>
+                                                <a href="#" class="toggleBill">
+                                                    <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
+                                                </a>
                                             </td>
-
-                                            
-
                                         </tr>
+                                        @endforeach --}}
                                     </tbody>
                                 </table>
 
