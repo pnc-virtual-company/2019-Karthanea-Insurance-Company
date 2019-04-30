@@ -38,7 +38,6 @@ class UserController extends Controller
         $user = Auth::user();
         return view('users.userProfile', ['user' => $user]);
     }
-
     /**
      * Display a listing of the users.
      *
@@ -109,7 +108,7 @@ class UserController extends Controller
             // redirect
             Session::flash('message.level', 'success');
             Session::flash('message.content', __('The user was successfully created'));
-            return Redirect::to('/');
+            return Redirect::to('users');
         }
     }
 

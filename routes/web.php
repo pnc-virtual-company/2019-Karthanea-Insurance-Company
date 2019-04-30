@@ -95,6 +95,3 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/achiveClient','ClientController@achiveClient');
 Route::get('/userProfile','AvatarController@imageUpload');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');

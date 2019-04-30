@@ -6,7 +6,6 @@
             
                 <div> <h1>@lang('Information of users')</h1></div>
             @include('session-flash')
-
             <div class="card">
 
                 <div class="card-body">
@@ -22,8 +21,8 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <table id="myTable" class="table table-striped table-bordered table-hover">
-                                <thead>
+                            <table id="myTable" class="table table-striped table-bordered table-hover ">
+                                <thead class="bg-dark text-white">
                                     <tr>
                                         <th>@lang('ID')</th>
                                         <th>@lang('Name')</th>
