@@ -178,7 +178,7 @@ class UserController extends Controller
             // redirect
             Session::flash('message.level', 'success');
             Session::flash('message.content', __('The user was successfully updated'));
-            return Redirect::to('/');
+            return Redirect::to('users');
         }
     }
 

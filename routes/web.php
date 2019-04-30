@@ -73,7 +73,7 @@ Route::resource('/home','PageController@index');
 
 Route::resource('/contract','contractsController');
 
-Route::get('/contract','ContractController@index');
+Route::get('/contracttypeController','ContractController@index');
 
 Route::get('/createContract','PageController@createContractType');
 
@@ -82,7 +82,7 @@ Route::get('/client','ClientController@index');
 Route::get('/achiveclient','ClientController@achiveclient');
 Route::get('/userCall','ClientController@userCall');
 
-Route::get('/contractlist','PageController@contractlist');
+Route::get('/contractlist','ContractController@index');
 
 Route::get('/payment','paymentController@index');
 
