@@ -42,7 +42,7 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
   <!-- CSS Files -->
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
-  <!-- CSS Just for demo purpose, don't include it in your project -->
+  {{-- <!-- CSS Just for demo purpose, don't include it in your project --> --}}
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
@@ -71,8 +71,7 @@
                     <i class="material-icons">color_lens</i>
                     <p>
                       Dashboard
-                      <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
-                      <span class="material-icons ml-5" id="dashUp">arrow_drop_up</span>
+                      <span class="material-icons ml-5" id="dash">arrow_drop_down</span>
                     </p>
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
@@ -184,14 +183,14 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span><strong>{{ Auth::user()->name }}</strong></span>
+                  <span><strong>{{ Auth::user()->name}}</strong></span>
                   @if (Auth::user()->avatar!= null)
                     <img id="imgProfilePic" src="{{asset('images/'.Auth::user()->avatar)}}">
                   @else
                     <img id="imgProfilePic" src="{{asset('images/default-avatar.png')}}">
                   @endif
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item nav-link" href="{{url('users/profile')}}">
                     <span>
                       <i class="material-icons">account_circle</i>
@@ -333,7 +332,7 @@ $(".ui-datepicker-trigger").mouseover(function() {
           labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
           datasets: [{
               label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 3],
+              data: [12, 19, 3, 5, 2, 32],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
                   'rgba(54, 162, 235, 0.2)',
@@ -371,7 +370,7 @@ $(".ui-datepicker-trigger").mouseover(function() {
       data: {
           labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
           datasets: [{
-              label: '# of Votes',
+              label: 'of Votes',
               data: [12, 19, 3, 5, 2, 3],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.2)',
@@ -429,5 +428,12 @@ $(".ui-datepicker-trigger").mouseover(function() {
           }]
       }
   });
+  </script>
+  <script>
+    $(document).ready(function(){
+      $('#dashboard').click(function(
+        $('a#dashboard p span#dash').html('<span class="material-icons ml-5" id="dash">arrow_drop_up</span>');
+      ));
+    });
   </script>
 </html>
