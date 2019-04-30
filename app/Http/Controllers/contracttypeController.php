@@ -3,20 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Contract ;
-class ContractController extends Controller
+
+class contracttypeController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+        public function index()
     {
-        $contract = \App\Contract::all();
-        //dd($contract);
-        return view('pages.addContract',compact('contract'));
+        return view('pages.contracttype');
     }
+   
 
     /**
      * Show the form for creating a new resource.
