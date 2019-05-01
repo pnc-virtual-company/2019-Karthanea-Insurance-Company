@@ -26,6 +26,8 @@
                 <div class="row">
                     <div class="col s12 ">
                         <div class="card-panel ">
+                            <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                              @csrf
                             <form action="{{ route('register')}}" method="POST">
                                 @csrf
                               <div class="card  bg-info p-4 shadow-lg">
@@ -33,6 +35,25 @@
                               </div>
                               @include('validation-errors')
                               <div class="input-field">
+                                        <i class="material-icons prefix" class="text-secondary">person</i>
+                                        <input type="text" id="autocomplete-input" name="name" required value="{{ old('name') }}" class="autocomplete icons">
+                                        <label for="autocomplete-input ">Username</label>
+                                  </div>
+                                  <div class="input-field">
+                                         <i class="material-icons prefix">markunread</i>
+                                         <input type="text" id="autocomplete-input" name="email" required value="{{ old('email') }}" class="autocomplete icons">
+                                         <label for="autocomplete-input">Email</label>
+                                  </div>
+                                  <div class="input-field">
+                                         <i class="material-icons prefix">lock</i>
+                                         <input type="password" id="autocomplete-input" name="password" required class="autocomplete icons">
+                                         <label for="autocomplete-input">Password</label>
+                                      </div>
+                                  <div class="input-field">
+                                         <i class="material-icons prefix">lock</i>
+                                         <input type="password" id="autocomplete-input" name="password_confirmation" required class="autocomplete icons">
+                                         <label for="autocomplete-input">Password</label>
+                                      </div>
                                   <i class="material-icons prefix" class="text-secondary">person</i>
                                   <input type="text" id="autocomplete-inputname" required name="name" value="{{ old('name') }}" class="autocomplete icons {{ $errors->has('name') ? ' is-invalid' : '' }}">
                                   <label for="autocomplete-inputname ">Username</label>
@@ -86,7 +107,6 @@
     </div>
 </body>
 </html>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
