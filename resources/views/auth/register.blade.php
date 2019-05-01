@@ -28,6 +28,8 @@
                         <div class="card-panel ">
                             <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                               @csrf
+                            <form action="{{ route('register')}}" method="POST">
+                                @csrf
                               <div class="card  bg-info p-4 shadow-lg">
                                   <h6 class="text-center text-white">Register</h6>
                               </div>
@@ -52,6 +54,40 @@
                                          <input type="password" id="autocomplete-input" name="password_confirmation" required class="autocomplete icons">
                                          <label for="autocomplete-input">Password</label>
                                       </div>
+                                  <i class="material-icons prefix" class="text-secondary">person</i>
+                                  <input type="text" id="autocomplete-inputname" required name="name" value="{{ old('name') }}" class="autocomplete icons {{ $errors->has('name') ? ' is-invalid' : '' }}">
+                                  <label for="autocomplete-inputname ">Username</label>
+                                    @if ($errors->has('name'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
+                                  </div>
+                                  <div class="input-field">
+                                         <i class="material-icons prefix">markunread</i>
+                                         <input type="text" id="autocomplete-inputemail" required name="email" value="{{ old('email') }}" class="autocomplete icons {{ $errors->has('email') ? ' is-invalid' : '' }}">
+                                         <label for="autocomplete-inputemail">Email</label>
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
+                                    @endif
+                                  </div>
+                                    <div class="input-field">
+                                        <i class="material-icons prefix">lock</i>
+                                        <input type="password" id="autocomplete-inputpwd" required name="password" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                        <label for="autocomplete-inputpwd">Password</label>
+                                        @if ($errors->has('password'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                    @endif
+                                    </div>
+                                    <div class="input-field">
+                                        <i class="material-icons prefix">lock</i>
+                                        <input type="password" id="autocomplete-inputpwdc" required name="password_confirmation" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}">
+                                        <label for="autocomplete-inputpwdc">Confirm Password</label>
+                                    </div>
                                   <footer>
                                       <div class="container">
                                           <div class="row d-flex justify-content-center mt-5">
