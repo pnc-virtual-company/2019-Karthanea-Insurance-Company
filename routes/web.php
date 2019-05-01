@@ -93,6 +93,7 @@ Route::get('/chart','ChartController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/achiveClient','ClientController@achiveClient');
-Route::get('/userProfile','AvatarController@imageUpload');
+Route::get('userProfile','AvatarController@profile');
 Route::get('/myprofile', 'uploadController@imageUpload');
+Route::get('userProfile','AvatarController@update_avatar');
 

@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use App\User;
 use App\Role;
+use Image;
 
 class UserController extends Controller
 {
@@ -38,6 +39,17 @@ class UserController extends Controller
         $user = Auth::user();
         return view('users.userProfile', ['user' => $user]);
     }
+    public function update_avatar(Request $request){
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOrginalExtension();
+            Image::make($avatar)->resize(300,300)->save (public_path('public/images' . $filename));
+            $user = Auth::user();
+            $user->avatar=$filename;
+            $user->save();
+        }
+        return view('users.userProfile', ['user' => $user]);
+    }
     /**
      * Display a listing of the users.
      *
@@ -62,13 +74,6 @@ class UserController extends Controller
         $request->user()->authorizeRoles(['Administrator']);
         $roles = Role::all();
         return view('users.create', ['roles' => $roles]);
-    }
-
-    public function register(Request $request)
-    {
-        $request->user()->authorizeRoles(['Administrator']);
-        $roles = Role::all();
-        return view('auth.register'. ['roles' => $roles]);
     }
 
     /**
