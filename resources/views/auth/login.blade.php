@@ -17,6 +17,9 @@
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
 <body>
+    {{-- @if (session::has('login'))
+        
+    @endif --}}
     <div class="container"><br><br><br>
         <div class="row">
             <div class="col-3"></div>
@@ -35,9 +38,9 @@
                                         <input type="text" id="autocomplete-inputemail" name="email" value="{{ old('email') }}" class="autocomplete icons {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
                                         <label for="autocomplete-inputemail">Email</label>
                                         @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('email') }}</strong>
+                                            </span>
                                         @endif
                                     </div>
                                     <div class="input-field">
@@ -45,9 +48,9 @@
                                         <input type="password" id="autocomplete-inputpwd" name="password" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}" required>
                                         <label for="autocomplete-inputpwd">Password</label>
                                         @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                         </span>
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('password') }}</strong>
+                                            </span>
                                          @endif
                                     </div>
                                     <footer>

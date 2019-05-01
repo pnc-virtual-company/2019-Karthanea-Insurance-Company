@@ -11,6 +11,9 @@ class ChartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth',['except'=>['chart']]);
+    }
     public function index()
     {
         return view('pages.chart');

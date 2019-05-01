@@ -30,13 +30,13 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/';
 
-    protected function redirectTo()
-    {
-        if (auth()->user()->role_id == 1) {
-            return '/';
-        }
-        return '/client';
-    }
+    // protected function redirectTo()
+    // {
+    //     if (auth()->user()->role_id == 1) {
+    //         return '/';
+    //     }
+    //     return '/client';
+    // }
     /**
      * Create a new controller instance.
      *
@@ -79,6 +79,8 @@ class RegisterController extends Controller
             ->roles()
             ->attach(Role::where('name', 'User')->first());
 
-        return $user;
+        return redirect()->route('/')
+        ->with($user);
     }
+
 }
