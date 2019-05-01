@@ -10,11 +10,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/register.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 </head>
 <body>
     <div class="container"><br><br><br>
@@ -24,54 +26,37 @@
                 <div class="row">
                     <div class="col s12 ">
                         <div class="card-panel ">
-                            <form action="{{ route('register')}}" method="POST" enctype="multipart/form-data">
-                            {{ csrf_field() }}
+                            <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
+                              @csrf
                               <div class="card  bg-info p-4 shadow-lg">
                                   <h6 class="text-center text-white">Register</h6>
                               </div>
                               @include('validation-errors')
                               <div class="input-field">
-                                  <i class="material-icons prefix" class="text-secondary">person</i>
-                                  <input type="text" id="autocomplete-inputname" required name="name" value="{{ old('name') }}" class="autocomplete icons {{ $errors->has('name') ? ' is-invalid' : '' }}">
-                                  <label for="autocomplete-inputname ">@lang('Username')</label>
-                                    {{-- @if ($errors->has('name'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
-                                        </span>
-                                    @endif --}}
+                                        <i class="material-icons prefix" class="text-secondary">person</i>
+                                        <input type="text" id="autocomplete-input" name="name" required value="{{ old('name') }}" class="autocomplete icons">
+                                        <label for="autocomplete-input ">Username</label>
                                   </div>
                                   <div class="input-field">
                                          <i class="material-icons prefix">markunread</i>
-                                         <input type="text" id="autocomplete-inputemail" required name="email" value="{{ old('email') }}" class="autocomplete icons {{ $errors->has('email') ? ' is-invalid' : '' }}">
-                                         <label for="autocomplete-inputemail">@lang('Email')</label>
-                                    {{-- @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif --}}
+                                         <input type="text" id="autocomplete-input" name="email" required value="{{ old('email') }}" class="autocomplete icons">
+                                         <label for="autocomplete-input">Email</label>
                                   </div>
-                                    <div class="input-field">
-                                        <i class="material-icons prefix">lock</i>
-                                        <input type="password" id="autocomplete-inputpwd" required name="password" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}">
-                                        <label for="autocomplete-inputpwd">@lang('Password')</label>
-                                        {{-- @if ($errors->has('password'))
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif --}}
-                                    </div>
-                                    <div class="input-field">
-                                        <i class="material-icons prefix">lock</i>
-                                        <input type="password" id="autocomplete-inputpwdc" required name="password_confirmation" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}">
-                                        <label for="autocomplete-inputpwdc">@lang('Confirm Password')</label>
-                                    </div>
+                                  <div class="input-field">
+                                         <i class="material-icons prefix">lock</i>
+                                         <input type="password" id="autocomplete-input" name="password" required class="autocomplete icons">
+                                         <label for="autocomplete-input">Password</label>
+                                      </div>
+                                  <div class="input-field">
+                                         <i class="material-icons prefix">lock</i>
+                                         <input type="password" id="autocomplete-input" name="password_confirmation" required class="autocomplete icons">
+                                         <label for="autocomplete-input">Password</label>
+                                      </div>
                                   <footer>
                                       <div class="container">
                                           <div class="row d-flex justify-content-center mt-5">
                                               <div class="form-group">
-                                                  <button type="submit" class="btn btn-info btn-sm right text-white">
-                                                        {{ __('Register Now') }}
-                                                  </button>
+                                                  <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
                                               </div>
                                           </div>
                                       </div>
@@ -86,7 +71,6 @@
     </div>
 </body>
 </html>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');
