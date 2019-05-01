@@ -18,7 +18,10 @@ class ClientController extends Controller
     {
         $client = Client::all();
         return view('pages.clientList',compact('client'));
-
+        $client=Client::all();
+        return view('pages.AchiveClient',compact('client'));
+        $client = Client::all();
+        return view('pages.clientList',compact('client'));
     }
     // public function userCall()
     // {
