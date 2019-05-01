@@ -17,12 +17,13 @@ class ClientController extends Controller
     }
     public function index()
     {
+        $client = Client::all();
+        return view('pages.clientList',compact('client'));
         $client=Client::all();
         return view('pages.AchiveClient',compact('client'));
 
         $client = Client::all();
         return view('pages.clientList',compact('client'));
-
     }
     public function userCall()
     {

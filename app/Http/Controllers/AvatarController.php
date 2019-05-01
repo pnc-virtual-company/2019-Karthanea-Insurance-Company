@@ -7,6 +7,8 @@ use Auth;
 use Image;
 class AvatarController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth',['except'=>['userProfile']]);
       /**
      * 
      * Display a the profile page. Accessible to any authenticated user.
