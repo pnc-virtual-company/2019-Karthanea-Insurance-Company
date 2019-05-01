@@ -30,6 +30,13 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/';
 
+    protected function redirectTo()
+    {
+        if (auth()->user()->role_id == 1) {
+            return '/';
+        }
+        return '/client';
+    }
     /**
      * Create a new controller instance.
      *
