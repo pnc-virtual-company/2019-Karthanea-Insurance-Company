@@ -11,7 +11,9 @@ class contracttypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+    public function __construct(){
+        $this->middleware('auth',['except'=>['contracttype']]);
+    }
         public function index()
     {
         return view('pages.contracttype');

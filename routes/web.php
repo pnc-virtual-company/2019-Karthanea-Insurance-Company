@@ -14,12 +14,12 @@
 Route::get('/', function () {
     return view('auth.login');
 });
-
 // Route::get('/', function () {
     //     return view('examples.index', ['currentExample' => 'List of examples']);
     // });
 Auth::routes();
-    
+Route::get('activate/{token}', 'Auth\RegisterController@activate')
+    ->name('activate');
 Route::get('users/profile','UserController@profile');
 // Route::get('users/export','UserController@export');
 Route::resource('users','UserController');
@@ -70,7 +70,7 @@ Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
 
-Route::get('/contracttypeController','ContractController@index');
+Route::get('/contracttype','ContractController@index');
 
 Route::get('/createContract','PageController@createContractType');
 
