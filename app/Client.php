@@ -13,12 +13,8 @@ class Client extends Model
         'lastname',
         'addresss',
         'phonenumber',
-        'email'
-
-    protected $fillable = [
-        'id','firstname', 'lastname', 'addresss','phonenumber','email'
-
-    ];
+        'email'];
+    
     public function calls(){
         return $this->hasMany(Call::class);
     }
