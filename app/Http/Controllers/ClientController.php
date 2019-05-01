@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Client;
 use Illuminate\Http\Request;
-use \App\Client;
 class ClientController extends Controller
 {
     /**
@@ -21,19 +20,18 @@ class ClientController extends Controller
         return view('pages.clientList',compact('client'));
         $client=Client::all();
         return view('pages.AchiveClient',compact('client'));
-
         $client = Client::all();
         return view('pages.clientList',compact('client'));
     }
-    public function userCall()
-    {
-        return view('pages.userCall');
-    }
-    public function achiveClient(){
+    // public function userCall()
+    // {
+    //     return view('pages.userCall');
+    // }
+    // public function achiveClient(){
        
-        $client=Client::all();
-        return view('pages.clientList',compact('client'));
-    }
+    //     $client=Client::all();
+    //     return view('pages.clientList',compact('client'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -42,8 +40,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $client = Client::all();
-        return view('pages.AchiveClient',compact('client'));
+        // $client = Client::all();
+        // return view('pages.AchiveClient',compact('client'));
     }
 
     /**

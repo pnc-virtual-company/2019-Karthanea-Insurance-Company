@@ -48,15 +48,12 @@
                                             <span>{{ $user->roles->pluck('name')->implode(', ') }}</span>
                                         </td>
                                         <td>      
-                                                <form action="{{route('users.destroy',$user->id)}}" method="POST" class="text-center">
-                                                 @csrf
-                                                 @method("delete")    
-                                                
+                                              
+                                                  
                                                  <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="material-icons">edit</i></a>
                                                 <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
-                                                <button type="submit" data-toggle="modal" data-target="#frmModalDeleteConfirmation"  class="btn-danger">delete</button>      
-                                             </form>
-                                                 
+                                                <a href="#" data-toggle="modal" data-target="#frmModalDeleteConfirmation" ><i class="material-icons text-danger">delete</i></a>
+                                            
                                              </td>
                                     </tr>
                                 @endforeach
