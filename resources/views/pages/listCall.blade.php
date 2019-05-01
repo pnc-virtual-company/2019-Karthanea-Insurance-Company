@@ -12,106 +12,105 @@
         <h1>Information Of Calls</h1>
         <div class="card">
             <div class="card-body">
-                        <table  id="myTable1" class="table table-striped table-bordered table-hover">
-                                <thead class="bg-dark text-white">
-                                    <tr>
-                                        <th>Disable ID</th>
-                                        <th>Clients</th>
-                                        <th>Contract</th>
-                                        <th>Call</th>
+                <table  id="myTable1" class="table table-striped table-bordered table-hover">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>Disable ID</th>
+                                <th>Clients</th>
+                                <th>Contract</th>
+                                <th>Call</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
+                                    <input type="checkbox" name="disable" id="disable">
+                                    2
+                                </td>
+                                <td>Li</td>
+                                <td ><a class="toggleCallHistory" href="#"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
+                                <td><i class="material-icons text-primary text-center">call</i></td>
+                            </tr>
+                            <tr>
+                                    <td>
+                                        <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
+                                        <input type="checkbox" name="disable" id="disable">
+                                        2
+                                    </td>
+                                    <td>Li</td>
+                                    <td ><a class="toggleCallHistory" href="#"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
+                                    <td><i class="material-icons text-primary text-center">call</i></td>
+                                </tr>
+                        </tbody>
+                        <br>
+                    </table>
+                        <table id="myTable2" class="table table-striped table-bordered table-hover collapse">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Call Operator</th>
+                                    <th>Duration</th>
+                                    <th>Comments</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                        1
+                                    </td>
+                                    <td>14/08/2019</td>
+                                    <td>Pinau</td>
+                                    <td>24min13sec</td>
+                                    <td>car contract review</td>
+                                </tr>
+                                <tr>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                            1
+                                        </td>
+                                        <td>14/08/2019</td>
+                                        <td>Pinau</td>
+                                        <td>24min13sec</td>
+                                        <td>car contract review</td>
                                     </tr>
-                                </thead>
-                                <tbody>
                                     <tr>
                                         <td>
-                                            <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
-                                            <input type="checkbox" name="disable" id="disable">
-                                            2
+                                            <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                            1
                                         </td>
-                                        <td>Li</td>
-                                        <td ><a class="toggleCallHistory" href="#"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
-                                        <td><i class="material-icons text-primary text-center">call</i></td>
+                                        <td>14/08/2019</td>
+                                        <td>Pinau</td>
+                                        <td>24min13sec</td>
+                                        <td>car contract review</td>
                                     </tr>
                                     <tr>
-                                            <td>
-                                                <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
-                                                <input type="checkbox" name="disable" id="disable">
-                                                2
-                                            </td>
-                                            <td>Li</td>
-                                            <td ><a class="toggleCallHistory" href="#"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
-                                            <td><i class="material-icons text-primary text-center">call</i></td>
-                                        </tr>
-                                </tbody>
-                                <br>
-                            </table>
-
-                                <table id="myTable2" class="table table-striped table-bordered table-hover collapse">
-                                    <thead class="bg-dark text-white">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Date</th>
-                                            <th>Call Operator</th>
-                                            <th>Duration</th>
-                                            <th>Comments</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>
-                                                <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                                1
-                                            </td>
-                                            <td>14/08/2019</td>
-                                            <td>Pinau</td>
-                                            <td>24min13sec</td>
-                                            <td>car contract review</td>
-                                        </tr>
-                                        <tr>
-                                                <td>
-                                                    <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                                    1
-                                                </td>
-                                                <td>14/08/2019</td>
-                                                <td>Pinau</td>
-                                                <td>24min13sec</td>
-                                                <td>car contract review</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                                    1
-                                                </td>
-                                                <td>14/08/2019</td>
-                                                <td>Pinau</td>
-                                                <td>24min13sec</td>
-                                                <td>car contract review</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                                    1
-                                                </td>
-                                                <td>14/08/2019</td>
-                                                <td>Pinau</td>
-                                                <td>24min13sec</td>
-                                                <td>car contract review</td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                                    1
-                                                </td>
-                                                <td>14/08/2019</td>
-                                                <td>Pinau</td>
-                                                <td>24min13sec</td>
-                                            <td>car contract review</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            <div>
-                            </div>
-                        <button type="button" class="btn bg-info ml-3 text-white btn-md" data-toggle="modal" data-target="#openNewCall"><i class='material-icons mr-3 text-white'>call</i>Open new call</button>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                            1
+                                        </td>
+                                        <td>14/08/2019</td>
+                                        <td>Pinau</td>
+                                        <td>24min13sec</td>
+                                        <td>car contract review</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                            1
+                                        </td>
+                                        <td>14/08/2019</td>
+                                        <td>Pinau</td>
+                                        <td>24min13sec</td>
+                                    <td>car contract review</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <div>
+                    </div>
+                <button type="button" class="btn bg-info ml-3 text-white btn-md" data-toggle="modal" data-target="#openNewCall"><i class='material-icons mr-3 text-white'>call</i>Open new call</button>
             </div>
         </div>
     </div>

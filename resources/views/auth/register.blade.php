@@ -28,6 +28,8 @@
                         <div class="card-panel ">
                             <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                               @csrf
+                            <form action="{{ route('register')}}" method="POST">
+                                @csrf
                               <div class="card  bg-info p-4 shadow-lg">
                                   <h6 class="text-center text-white">Register</h6>
                               </div>
