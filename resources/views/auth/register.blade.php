@@ -28,6 +28,8 @@
                         <div class="card-panel ">
                             <form action="{{ route('register') }}" method="POST" enctype="multipart/form-data">
                               @csrf
+                            <form action="{{ route('register')}}" method="POST">
+                                @csrf
                               <div class="card  bg-info p-4 shadow-lg">
                                   <h6 class="text-center text-white">Register</h6>
                               </div>
@@ -50,6 +52,8 @@
                                   <div class="input-field">
                                          <i class="material-icons prefix">lock</i>
                                          <input type="password" id="autocomplete-input" name="password_confirmation" required class="autocomplete icons">
+                                         <label for="autocomplete-input">Password</label>
+                                      </div>
                                          <label for="autocomplete-input">Password</label>
                                       </div>
                                   <footer>
