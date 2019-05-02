@@ -12,7 +12,7 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct(){
-        $this->middleware('auth',['except'=>['client']]);
+        $this->middleware('auth');
     }
     public function index()
     {
@@ -40,6 +40,7 @@ class ClientController extends Controller
      */
     public function create()
     {
+        return "hi";
         // $client = Client::all();
         // return view('pages.AchiveClient',compact('client'));
     }

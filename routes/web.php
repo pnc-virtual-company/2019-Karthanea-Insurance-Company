@@ -76,7 +76,7 @@ Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
-
+Route::get('/create','ClientController@create');
 // Route::get('/achiveclient','ClientController@achiveclient');
 Route::resource('/clientadd','ClientController');
 
