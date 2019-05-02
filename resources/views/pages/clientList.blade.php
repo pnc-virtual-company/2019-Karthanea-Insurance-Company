@@ -24,8 +24,8 @@
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id_client}}
                             </td>
-                            <td>{{$item->firstname}} {{$item->lastname}}</td>
-                            <td>{{$item->addresss}}</td>
+                            <td>{{$item->firstname}} {{$item->lastname}} </td>
+                            <td>{{$item->address}}</td>
                             <td>{{$item->phonenumber}}</td>
                             <td>{{$item->email}}</td>
                         </tr>
@@ -48,8 +48,10 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
+                <form method="POST" action="{{action('ClientController@store')}}">
+                @csrf
                 <div class="modal-body">
-                    <form action="#" method="POST">
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
@@ -76,7 +78,7 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="address" id="address" class="form-control">
+                                    <input type="text" name="addresss" id="address" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -86,7 +88,7 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="number" name="phone" id="phone" class="form-control">
+                                    <input type="number" name="phonenumber" id="phonenumber" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -100,12 +102,12 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info">OK</button>
+                    <button type="submit" class="btn btn-info">OK</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
+            </form>
               </div>
             </div>
           </div>

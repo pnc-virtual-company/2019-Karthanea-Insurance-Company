@@ -1,7 +1,7 @@
  @extends('layout.dashboard')
     @section('content')
     <div class="content">
-        <div class="container-fluid">
+        <div class="container-fluid">.
         <h1>Contract Type</h1>
                 <div class="card">
                     <div class="card-body">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Client;
 use Illuminate\Http\Request;
+
 class ClientController extends Controller
 {
     /**
@@ -12,16 +13,25 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct(){
-        $this->middleware('auth',['except'=>['client']]);
+        $this->middleware('auth');
     }
     public function index()
     {
-        $client = Client::all();
-        return view('pages.clientList',compact('client'));
+
         $client=Client::all();
         return view('pages.AchiveClient',compact('client'));
-        $client = Client::all();
-        return view('pages.clientList',compact('client'));
+
+        //$client = Client::all();
+        //return view('pages.clientList',compact('client'));
+
+    }
+    public function userCall()
+    {
+//         return view('pages.userCall');
+// =======
+//         $client = Client::all();
+//         return view('pages.clientList',compact('client'));
+
     }
     // public function userCall()
     // {
@@ -40,6 +50,7 @@ class ClientController extends Controller
      */
     public function create()
     {
+        return "hi";
         // $client = Client::all();
         // return view('pages.AchiveClient',compact('client'));
     }
@@ -66,7 +77,7 @@ class ClientController extends Controller
         $client ->phonenumber = $request->input('phonenumber') ; 
         $client ->email = $request->input('email') ; 
         $client->save();
-        return  redirect('/clientadd');
+        return  redirect('/client');
     }
 
     /**

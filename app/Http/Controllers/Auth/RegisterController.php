@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Reguest;
 
 class RegisterController extends Controller
 {
@@ -30,6 +31,7 @@ class RegisterController extends Controller
      */
     protected $redirectTo = '/client';
 
+    
     /**
      * Create a new controller instance.
      *
@@ -63,18 +65,30 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
+        return $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        // $user
-        //     ->roles()
-        //     ->attach(Role::where('name', 'User')->first());
 
         // $role = Role::select('id')->where('name','user')->first();
         // $user->roles()->attch($role);
         
         return $user;
+        
     }
+
+     /**
+     * The user has been registered 
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param mixed @user
+     * @return mixed 
+     */
+    // public function registered(Request $request , $user)
+    // {
+    //     $this->guard()->logout($user);
+    //     return redirect()->route('login')
+    //     ->withSuccess('Registered. Please check your email to activate your account.');
+    // }
 }

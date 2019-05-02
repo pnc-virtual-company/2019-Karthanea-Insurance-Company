@@ -8,15 +8,16 @@ class Contract extends Model
 {
 
     protected $fillable = [
-        'id','status', 'startdate', 'enddate','monthlybill','editby','id_client','id_contracttype'
+        'id','status', 'startdate', 'enddate','monthlybill','id_client','id_contracttype'
     ];
     public function client(){
-        return $this->belongsTo(Client::class);
+        return $this->belongsTo(Client::class,'id_client');
     }
-    public function bill(){
-        return $this->belongsTo(Bill::class);
+    public function bill(){ 
+        return $this->hasOne(Bill::class);
     }
-    public function contracttypes(){
-        return $this->hasMany(contract::class);
+    public function contracttype(){
+        return $this->belongsTo(Contracttype::class,'id_contracttype');
     }
 }
+

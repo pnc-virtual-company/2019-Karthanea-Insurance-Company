@@ -14,12 +14,12 @@
 Route::get('/', function () {
     return view('auth.login');
 });
-
 // Route::get('/', function () {
     //     return view('examples.index', ['currentExample' => 'List of examples']);
     // });
 Auth::routes();
-    
+Route::get('activate/{token}', 'Auth\RegisterController@activate')
+    ->name('activate');
 Route::get('users/profile','UserController@profile');
 // Route::get('users/export','UserController@export');
 Route::resource('users','UserController');
@@ -65,26 +65,34 @@ Route::get('examples', 'ExamplesController@index')->name('examples');
 /*
 =============================================================================*/
 
-Route::get('/createContract','PageController@createContractType');
+//Route::get('/createContract','PageController@createContractType');
 Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
 
-Route::get('/contracttypeController','ContractController@index');
 
-Route::get('/createContract','PageController@createContractType');
+Route::resource('/contracttypeController','contracttypeController');
+
+//Route::get('/contracttype','ContractController@index');
+
+
+//Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
-
+Route::get('/create','ClientController@create');
 // Route::get('/achiveclient','ClientController@achiveclient');
 Route::resource('/clientadd','ClientController');
+
+Route::resource('/client','ClientController');
+Route::resource('/achiveclient','clientAchiveController');
 
 
 Route::get('/userCall','ClientController@userCall');
 
-Route::get('/contractlist','ContractController@index');
-
+//Route::get('/contractlist','ContractController@index');
+Route::resource('/contractlist','ContractController');
+//Route::post('/store','ContractController@store');
 Route::get('/payment','paymentController@index');
 
 Route::get('/call','callController@index');
@@ -92,9 +100,13 @@ Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
 
 
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/achiveClient','ClientController@achiveClient');
+Route::get('/profile','ProfileController@profile');
+
 Route::get('userProfile','AvatarController@profile');
 Route::get('/myprofile', 'uploadController@imageUpload');
 Route::get('userProfile','AvatarController@update_avatar');
+
 
 Route::get('/home', 'HomeController@index')->name('home');
