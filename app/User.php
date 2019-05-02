@@ -10,6 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    const ACTIVE = 1;
+    const INACTIVE = 0;
     /**
      * The attributes that are mass assignable.
      *
@@ -67,5 +69,8 @@ class User extends Authenticatable
     public function hasRole($role)
     {
         return null !== $this->roles()->where('name', $role)->first();
+    }
+    public function profile(){
+        return $this->hasOne('App\Profile');
     }
 }

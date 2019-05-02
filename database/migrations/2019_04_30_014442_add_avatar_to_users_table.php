@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateContracttypesTable extends Migration
+class AddAvatarToUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateContracttypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('contracttypes', function (Blueprint $table) {
-             $table->increments('id');
-            $table->text('contracttype');
-            $table->timestamps();
+        Schema::table('users', function (Blueprint $table) {
+            $table->string('avatar')->default('default-avatar.png');
         });
     }
-
 
     /**
      * Reverse the migrations.
@@ -28,6 +25,8 @@ class CreateContracttypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contracttypes');
+        Schema::table('users', function (Blueprint $table) {
+            
+        });
     }
 }

@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container mt-4">
     <div class="row">
@@ -9,11 +8,18 @@
                 <div class="card-body">
                     
                     <div class="row">
+
                         <div class="col-md-4 col-sm-12 border-right text-center border-bottom">
                             <img src="{{ asset('storage/images/'.Auth::user()->avatar)}}"
                                 style="width: 150px; height: 140px;" class="rounded-circle btn" alt="profile" 
                                 data-toggle="modal" data-target="#upload"/>
                             <h5>Choose profile</h5>     
+
+                        <div class="col-md-12">
+                            <img id="imgProfilePic" src="{{url('images/examples/faces/m34.jpg')}}" class="img-fluid rounded mx-auto d-block clickable"/>
+                            {!! $user->name !!}<br />
+                            {!! $user->email !!}<br />
+
                         </div>
                         <div class="col-md-8 col-sm-12 pt-4">
                             <div class="row">

@@ -17,39 +17,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($client as $item)
                         <tr>
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
                                 <input type="checkbox" name="disable" id="disable">
-                                1
+                                {{$item->id_client}}
                             </td>
-                            <td>Mona</td>
-                            <td>Street 371 borey sorla</td>
-                            <td>097 674 245</td>
-                            <td>Mona@gmail.com</td>
+                            <td>{{$item->firstname}} {{$item->lastname}}</td>
+                            <td>{{$item->addresss}}</td>
+                            <td>{{$item->phonenumber}}</td>
+                            <td>{{$item->email}}</td>
                         </tr>
-                        <tr>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                <input type="checkbox" name="disable" id="disable">
-                                2
-                            </td>
-                            <td>Sith</td>
-                            <td>Street 371 borey sorla</td>
-                            <td>097 674 245</td>
-                            <td>Sith@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                <input type="checkbox" name="disable" id="disable">
-                                3
-                            </td>
-                            <td>Sona</td>
-                            <td>Street 371 borey sorla</td>
-                            <td>097 674 245</td>
-                            <td>Kirna@gmail.com</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div>
@@ -68,8 +48,10 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
+                <form method="POST" action="{{action('ClientController@store')}}">
+                @csrf
                 <div class="modal-body">
-                    <form action="#" method="POST">
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
@@ -96,7 +78,7 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="address" id="address" class="form-control">
+                                    <input type="text" name="addresss" id="address" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -106,7 +88,7 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="number" name="phone" id="phone" class="form-control">
+                                    <input type="number" name="phonenumber" id="phonenumber" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -120,12 +102,12 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info">OK</button>
+                    <button type="submit" class="btn btn-info">OK</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
+            </form>
               </div>
             </div>
           </div>
