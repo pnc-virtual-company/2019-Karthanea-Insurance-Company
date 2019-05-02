@@ -7,7 +7,6 @@
         <div class="col-8">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    
                     <div class="row">
                         <div class="col-md-4 col-sm-12 border-right text-center border-bottom">
                             <img src="{{ asset('storage/images/'.Auth::user()->avatar)}}"
@@ -63,11 +62,11 @@
                     <form action="{{url('/upload')}}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <div class="form-group text-center">
-                            <input type="file" id="file" class="form-control-file" name="profile">
+                            <input type="file" name="image" class="form-control" >
                         </div>
                         <div class="form-group text-right">
-                            <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
-                            <button class="btn btn-sm btn-primary">Save</button>
+                            <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+                            <button class="btn btn-sm bg-primary">Save</button>
                         </div>
                     </form>
                 </div>
