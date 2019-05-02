@@ -12,6 +12,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\UsersExport;
 use App\User;
 use App\Role;
+use Image;
 
 class UserController extends Controller
 {
@@ -36,6 +37,17 @@ class UserController extends Controller
     public function profile(Request $request)
     {
         $user = Auth::user();
+        return view('users.userProfile', ['user' => $user]);
+    }
+    public function update_avatar(Request $request){
+        if($request->hasFile('avatar')){
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOrginalExtension();
+            Image::make($avatar)->resize(300,300)->save (public_path('public/images' . $filename));
+            $user = Auth::user();
+            $user->avatar=$filename;
+            $user->save();
+        }
         return view('users.userProfile', ['user' => $user]);
     }
     /**
@@ -64,13 +76,6 @@ class UserController extends Controller
         return view('users.create', ['roles' => $roles]);
     }
 
-    public function register(Request $request)
-    {
-        $request->user()->authorizeRoles(['Administrator']);
-        $roles = Role::all();
-        return view('auth.register'. ['roles' => $roles]);
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -93,7 +98,7 @@ class UserController extends Controller
 
         // process the validation of fields
         if ($validator->fails()) {
-            return Redirect::to('users/register')
+            return Redirect::to('users/create')
                 ->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
@@ -112,6 +117,34 @@ class UserController extends Controller
         }
     }
 
+    public function insert(Request $request){
+        $request->user()->authorizeRoles(['User']);
+        $rules = array(
+            'name'  => 'required',
+            'email' => 'required|email',
+            'password' => 'required'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::to('auth/register')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+            // store the new user and attach roles to it
+            $user = new User;
+            $user->name = Input::get('name');
+            $user->email = Input::get('email');
+            $user->password = bcrypt(Input::get('password'));
+            $user->save();
+            $user->roles()->role_id('2')->attach(Input::get('roles'));
+            
+            // redirect
+            Session::flash('message.level', 'success');
+            Session::flash('message.content', __('The user was successfully created'));
+            return Redirect::to('/');
+        }
+    }
     /**
      * Display the specified resource.
      *
@@ -180,7 +213,6 @@ class UserController extends Controller
             return Redirect::to('users');
         }
     }
-
     /**
      * Remove the specified resource from storage.
      * This method is called by Ajax
@@ -192,6 +224,7 @@ class UserController extends Controller
         $request->user()->authorizeRoles(['Administrator']);
         $user = User::find($id);
         $user->delete();
+        return Redirect::to('users');
     }
 
     /**

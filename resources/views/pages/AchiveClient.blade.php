@@ -1,3 +1,6 @@
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
@@ -15,39 +18,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($client as $item)
                         <tr>
                             <td>
                                 <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
                                 <input type="checkbox" name="disable" id="disable">
-                                1
+                                {{$item->id_client}}
                             </td>
-                            <td>Mona</td>
-                            <td>Street 371 borey sorla</td>
-                            <td>097 674 245</td>
-                            <td>Mona@gmail.com</td>
+                            <td>{{$item->firstname}} {{$item->lastname}}</td>
+                            <td>{{$item->addresss}}</td>
+                            <td>{{$item->phonenumber}}</td>
+                            <td>{{$item->email}}</td>
                         </tr>
-                        <tr>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                <input type="checkbox" name="disable" id="disable">
-                                2
-                            </td>
-                            <td>Sith</td>
-                            <td>Street 371 borey sorla</td>
-                            <td>097 674 245</td>
-                            <td>Sith@gmail.com</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                <input type="checkbox" name="disable" id="disable">
-                                3
-                            </td>
-                            <td>Sona</td>
-                            <td>Street 371 borey sorla</td>
-                            <td>097 674 245</td>
-                            <td>Kirna@gmail.com</td>
-                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 <div>
@@ -55,8 +38,8 @@
                 </div>
             </div>
         </div>
-    </div>
-          <!-- Modal -->
+      </div>
+          <!-- Modal add -->
           <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -66,8 +49,9 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
+            <form id="form" action="{{action('clientAchiveController@store')}}" method="POST">
+                @csrf
                 <div class="modal-body">
-                    <form action="#" method="POST">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
@@ -77,7 +61,6 @@
                                     <input type="text" name="firstname" id="name" class="form-control">
                                 </div>
                             </div>
-                           
                         </div>
                         <div class="form-group">
                             <div class="row">
@@ -95,7 +78,7 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="address" id="address" class="form-control">
+                                    <input type="text" name="addresss" id="addresss" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -105,7 +88,7 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="number" name="phone" id="phone" class="form-control">
+                                    <input type="number" name="phonenumber" id="phonenumber" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -119,15 +102,16 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn bg-primary text-white">OK</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn bg-primary text-white">OK</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
+            </form>
               </div>
             </div>
           </div>
+
           <!-- Modal Edit -->
           <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -138,8 +122,11 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
+                <form id="editform" method="POST" action="/achiveclient">
+                    {{ csrf_field() }}
+                    {{ method_field('PUT')}}
                 <div class="modal-body">
-                    <form action="#" method="POST">
+                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
@@ -199,4 +186,10 @@
               </div>
             </div>
           </div>
+          <script>
+    $(document).ready(function() {
+
+  
+})
+          </script>
 @endsection

@@ -19,7 +19,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->string('avatar');
             $table->rememberToken();
             $table->timestamps();
         });
@@ -31,9 +30,9 @@ class CreateUsersTable extends Migration
                 'name' => 'Administrator',
                 'email' => 'manager@example.com',
                 'password' => bcrypt('password'),
-                'avatar' => 'avatar.jpg',
                 'remember_token' => str_random(10)
             )
+
         );
     }
 

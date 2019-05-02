@@ -26,36 +26,32 @@
                 <div class="row">
                     <div class="col s12 ">
                         <div class="card-panel ">
-                            <form action="{{ route('users.store') }}" method="POST" enctype="multipart/form-data">
-                              @csrf
+                            <form action="{{ route('register')}}" method="POST">
+                                @csrf
                               <div class="card  bg-info p-4 shadow-lg">
                                   <h6 class="text-center text-white">Register</h6>
                               </div>
                               @include('validation-errors')
                               <div class="input-field">
-                                          <i class="material-icons prefix" class="text-secondary">person</i>
-                                         <input type="text" id="autocomplete-input" name="name" value="{{ old('name') }}" class="autocomplete icons">
-                                         <label for="autocomplete-input ">Username</label>
+                                        <i class="material-icons prefix" class="text-secondary">person</i>
+                                        <input type="text" id="autocomplete-input" name="name" required value="{{ old('name') }}" class="autocomplete icons">
+                                        <label for="autocomplete-input ">Username</label>
                                   </div>
                                   <div class="input-field">
                                          <i class="material-icons prefix">markunread</i>
-                                         <input type="text" id="autocomplete-input" name="email" value="{{ old('email') }}" class="autocomplete icons">
+                                         <input type="text" id="autocomplete-input" name="email" required value="{{ old('email') }}" class="autocomplete icons">
                                          <label for="autocomplete-input">Email</label>
                                   </div>
                                   <div class="input-field">
                                          <i class="material-icons prefix">lock</i>
-                                         <input type="password" id="autocomplete-input" name="password" class="autocomplete icons">
+                                         <input type="password" id="autocomplete-input" name="password" required class="autocomplete icons">
                                          <label for="autocomplete-input">Password</label>
                                       </div>
-                                      <div class="input-field">
-                                      <i class="material-icons prefix">how_to_reg</i>
-                                      <select id="roles" name="roles[]" multiple size="5">
-                                          @foreach ($roles as $role)
-                                          <option value="{{ $role->id }}" @if (!empty(old('roles'))) @if(in_array($role->id, old('roles'))) selected @endif @endif>{!! $role->name !!}</option>
-                                          @endforeach
-                                      </select>
-                                      <label for="roles[]">Roles</label>
-                                  </div>
+                                    <div class="input-field">
+                                         <i class="material-icons prefix">lock</i>
+                                         <input type="password" id="autocomplete-input" name="password_confirmation" required class="autocomplete icons">
+                                         <label for="autocomplete-input">Confirm Password</label>
+                                    </div>
                                   <footer>
                                       <div class="container">
                                           <div class="row d-flex justify-content-center mt-5">
@@ -75,7 +71,6 @@
     </div>
 </body>
 </html>
-
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('select');

@@ -2,26 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use Illuminate\Http\Request;
-use \App\Client;
-use \App\Contract;
-use \App\ContractType;
-class paymentController extends Controller
+
+class clientAchiveController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
     public function index()
     {
-        $client = Client::all();
-        // $contract = Contract::all();
-        // $contractType = ContractType::all();
-        return view('pages.paymentList',compact('client'));
+        $client=Client::all();
+        return view('pages.AchiveClient',compact('client'));
     }
 
     /**
@@ -42,7 +36,21 @@ class paymentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'addresss'=>'required',
+            'phonenumber'=>'required',
+            'email'=>'required'
+          ]);
+        $client= new Client;
+        $client ->firstname = $request->input('firstname') ; 
+        $client ->lastname = $request->input('lastname') ; 
+        $client ->addresss = $request->input('addresss') ; 
+        $client ->phonenumber = $request->input('phonenumber') ; 
+        $client ->email = $request->input('email') ; 
+        $client->save();
+        return  redirect('/achiveclient');
     }
 
     /**

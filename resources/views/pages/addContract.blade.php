@@ -26,7 +26,10 @@
                                              </tr>
                                 </thead>
                                 <tbody>
-                                        <tr>
+                                    @foreach ($contract as $value=>$item)
+                                        
+                                   
+                                        {{-- <tr>
                                                 <td>
                                                         1
                                                         <a href="#" class="text-center">
@@ -49,33 +52,41 @@
                                                            $
                                                         </a>
                                                     </td>
-                                                </tr>
+                                                </tr> --}}
                                                 <tr>
                                                         <td>
-                                                                1
+                                                                {{$item->id_contract}}
                                                                 <a href="#" class="text-center">
                                                                         <a href="#" data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
                                                                 </a>
                                                             </td>
                                                             
-                                                    <td>Bopha <a href="#"><i class="material-icons ml-5 text-info">call</i></a></td>
+                                                    <td><a href="#"><i class="material-icons ml-5 text-info">call</i></a></td>
                                                             <td>
-                                                                Car
+                                                                {{-- @foreach ($item->contracttypes()->pluck('contracttype') as $items)     --}}
+                                                                  
                                                                 <a href="#" class="text-center">
+                                                                        {{-- {{$items}} --}}
                                                                         <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                                 </a>
+                                                                {{-- @endforeach --}}
+
+                                                                {{-- @foreach ($item->client()->pluck('firstname') as $items)  
+                                                                <button class=" btn btn-info btn-sm text-white">{{ $items}}</button> 
+                                                                @endforeach  --}}
+                                                                
                                                             </td>
-                                                            <td>open</td>
-                                                            <td>dd/mm/yyyy</td>
-                                                            <td>dd/mm/yyyy</td>
-                                                            <td>$15</td>
+                                                            <td>{{$item->status}}</td>
+                                                            <td>{{$item->startdate}}</td>
+                                                            <td>{{$item->enddate}}</td>
+                                                            <td>{{$item->monthlybill}}</td>
                                                             <td>
                                                                 <a href="#" class="text-center">
                                                                    $
                                                                 </a>
                                                             </td>
                                                         </tr>
-
+                                                        @endforeach
                                 </tbody>
                                
                             </table>

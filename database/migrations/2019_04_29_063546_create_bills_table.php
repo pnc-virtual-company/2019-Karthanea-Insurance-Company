@@ -14,7 +14,7 @@ class CreateBillsTable extends Migration
     public function up()
     {
         Schema::create('bills', function (Blueprint $table) {
-             $table->increments('id_bill');
+             $table->increments('id');
             $table->text('status');
             $table->date('startdate');
             $table->date('enddate');
@@ -23,7 +23,7 @@ class CreateBillsTable extends Migration
 
             $table->integer('id_contract')->unsigned();
             $table->foreign('id_contract')
-                  ->references('id_contract')
+                  ->references('id')
                   ->on('contracts')
                   ->onDelete('cascade');
 

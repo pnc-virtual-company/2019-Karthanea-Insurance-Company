@@ -6,6 +6,28 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
+            <div class="row">
+                    @if ($message = Session::get('success'))
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                             </div>
+        
+                    @endif
+        
+                    @if (count($errors) > 0)
+                        <div class="alert alert-danger">
+                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </div>
         <div class="row">
             <div class="col-3 col-md-3 col-sm-3 col-lg-3"></div>
             <div class="col-6 col-md-6 col-sm-6 col-lg-6">

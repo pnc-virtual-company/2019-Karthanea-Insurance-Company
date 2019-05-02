@@ -28,16 +28,15 @@
                                         <th>@lang('Name')</th>
                                         <th>@lang('Email')</th>
                                         <th>@lang('Roles')</th>
+                                        <th>@lang('Action')</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($users as $user)
                                     <tr data-id="{{ $user->id }}">
-                                        <td>
-                                           <a href="#"  data-toggle="modal" data-target="#frmModalDeleteConfirmation" ><i class="material-icons text-danger"data-id="{{ $user->id }}" title="@lang('delete the user')">delete</i></a> 
-                                            <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="material-icons">edit</i></a>
-                                            <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
-                                            <span>{{ $user->id }}</span>
+                                        <td>      
+                                                <span>{{ $user->id }}</span>
+                                            
                                         </td>
                                         <td>
                                             <span>{!! $user->name !!}</span>
@@ -48,6 +47,11 @@
                                         <td>
                                             <span>{{ $user->roles->pluck('name')->implode(', ') }}</span>
                                         </td>
+                                        <td>      
+                                            <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="material-icons">edit</i></a>
+                                            <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
+                                            <a href="#" data-id="{{$user->id}}" data-name="{{$user->name}}" data-toggle="modal" data-target="#frmModalDeleteConfirmation" ><i class="material-icons text-danger">delete</i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -57,62 +61,23 @@
                 </div>
 
             </div>
+            
         </div>
     </div>
 </div>
 
 <!-- Include the modal //-->
 @include('modal-confirm-delete')
-@include('modal-wait')
 
 @endsection
-
-@push('scripts')
-<script type="text/javascript">
-var table = null;
-
-//On document ready, 
-$(function() {
-
-    //Transform the table into a richer widget
-    var table = $("#users").DataTable();
-    
-    //On click on delete, pass the object id to the confirmation modal
-    $('#users').on("click", ".delete-icon", function() {
-        $('#frmModalDeleteConfirmation').data("id", $(this).data("id"));
-        $('#frmModalDeleteConfirmation').modal('show');
-    });
-    
-    //On click on edit, fill the input modal
-    $('#users').on("click", ".edit-icon", function() {
-        $('#frmModalEditUser').modal('show');
-    });
-
-    //Delete the row from the DataTable if button OK or press Enter
-    $("#cmdDeleteConfirmation").click(function(e){
-        $('#frmModalWait').modal('show');
-        var id = $('#frmModalDeleteConfirmation').data("id");
-        $.ajax({
-            url: '{{url('users')}}/' + id,
-            type: 'DELETE',
-            data: {
-                id: id,
-                _method: 'DELETE',
-                _token: $('meta[name="csrf-token"]').attr('content')
-            },
-            success: function() {
-                table.rows('tr[data-id="' + id + '"]').remove().draw();
-                $('#frmModalWait').modal('hide');
-                $('#frmModalDeleteConfirmation').modal('hide');
-            },
-            error:
-            function(result) {
-                $('#frmModalWait').modal('hide');
-                $('#frmModalDeleteConfirmation').modal('hide');                
-                $('#frmModalAlert').modal('show');
-            },
-        });
-    });
-});
+<script>
+    $("#frmModalDeleteConfirmation").on('show.bs.modal',function(event){
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var name = button.data('name')
+        var modal = $(this)
+        modal.find('#name').text(name)
+        var url = "{{url('view')}}/"+id;
+        $('#fDelete').attr('action',url);
+    })
 </script>
-@endpush

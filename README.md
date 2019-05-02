@@ -50,7 +50,7 @@ npm run dev
 ```
 Launch the migration of the database
 
-` Note:` database name " ` kartheana_insurace`"
+` Note:` database name " ` karthanea_insurance`"
 
 ```
 php artisan migration:fresh --seed

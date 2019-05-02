@@ -13,16 +13,14 @@
 
 Route::get('/', function () {
     return view('auth.login');
-    
 });
-
 // Route::get('/', function () {
     //     return view('examples.index', ['currentExample' => 'List of examples']);
     // });
 Auth::routes();
-    
+Route::get('activate/{token}', 'Auth\RegisterController@activate')
+    ->name('activate');
 Route::get('users/profile','UserController@profile');
-Route::get('auth/register','UserController@register');
 // Route::get('users/export','UserController@export');
 Route::resource('users','UserController');
 
@@ -71,18 +69,25 @@ Route::get('/createContract','PageController@createContractType');
 Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
-Route::resource('/contract','contractsController');
 
-Route::get('/contract','ContractController@index');
+Route::get('/contracttype','ContractController@index');
 
 Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
-Route::get('/achiveclient','ClientController@achiveclient');
+Route::get('/create','ClientController@create');
+// Route::get('/achiveclient','ClientController@achiveclient');
+Route::resource('/clientadd','ClientController');
+
+Route::get('/client','ClientController@index');
+Route::resource('/achiveclient','clientAchiveController');
+// Route::POST('/clientadd','clientAchiveController@store');
+
+
 Route::get('/userCall','ClientController@userCall');
 
-Route::get('/contractlist','PageController@contractlist');
+Route::get('/contractlist','ContractController@index');
 
 Route::get('/payment','paymentController@index');
 
@@ -93,5 +98,7 @@ Route::get('/chart','ChartController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/achiveClient','ClientController@achiveClient');
-Route::get('/profile','ProfileController@profile');
+Route::resource('profile', 'ProfileController');
+Route::post('/uploadprofile', 'ProfileController@upload');
+// Route::get('/home', 'HomeController@index')->name('home');
 
