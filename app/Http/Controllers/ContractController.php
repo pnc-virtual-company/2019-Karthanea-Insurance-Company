@@ -11,6 +11,9 @@ class ContractController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
     public function index()
     {
         $contract = \App\Contract::all();

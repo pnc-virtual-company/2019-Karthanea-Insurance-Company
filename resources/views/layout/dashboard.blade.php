@@ -156,11 +156,13 @@
               <p>Calendar</p>
             </a>
           </li>
+          @if (Auth::user()->name =="Administrator")
             <li class="nav-item">
               <a class="nav-link" href="{{url('users')}}">
-                  <i class="material-icons">person</i> {{ __('Users') }}
+                <i class="material-icons">person</i> {{ __('Users') }}
               </a>
-          </li>
+            </li>
+          @endif
           <li class="nav-item ">
             <a class="nav-link" href="{{url('/location')}}">
               <i class="material-icons">location_ons</i>
