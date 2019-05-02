@@ -16,6 +16,7 @@ class contracttypeController extends Controller
     }
         public function index()
     {
+        
         return view('pages.contracttype');
     }
    

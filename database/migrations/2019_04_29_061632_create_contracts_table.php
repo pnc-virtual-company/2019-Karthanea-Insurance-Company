@@ -17,8 +17,8 @@ class CreateContractsTable extends Migration
              $table->increments('id');
            
             $table->string('status');
-            $table->date('startdate');
-            $table->date('enddate');
+            $table->string('startdate');
+            $table->string('enddate');
             $table->integer('monthlybill');
             $table->timestamps();
 
@@ -27,7 +27,7 @@ class CreateContractsTable extends Migration
                   ->references('id')
                   ->on('clients')
                   ->onDelete('cascade');
-            // $table->increments('id_contracttype');
+            // // $table->increments('id_contracttype');
              $table->integer('id_contracttype')->unsigned();
              $table->foreign('id_contracttype')
                         ->references('id')

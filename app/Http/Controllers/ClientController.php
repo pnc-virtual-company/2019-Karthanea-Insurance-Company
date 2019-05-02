@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Client;
 use Illuminate\Http\Request;
+
 class ClientController extends Controller
 {
     /**
@@ -16,8 +17,21 @@ class ClientController extends Controller
     }
     public function index()
     {
-        $client = Client::all();
-        return view('pages.clientList',compact('client'));
+
+        $client=Client::all();
+        return view('pages.AchiveClient',compact('client'));
+
+        //$client = Client::all();
+        //return view('pages.clientList',compact('client'));
+
+    }
+    public function userCall()
+    {
+//         return view('pages.userCall');
+// =======
+//         $client = Client::all();
+//         return view('pages.clientList',compact('client'));
+
     }
     // public function userCall()
     // {

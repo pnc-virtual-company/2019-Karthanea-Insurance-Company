@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\Contract ;
+use App\Contract ;
 class ContractController extends Controller
 {
     /**
@@ -16,9 +16,11 @@ class ContractController extends Controller
     }
     public function index()
     {
-        $contract = \App\Contract::all();
+        $contractselect = \App\Contract::all();
+        $contracttype = \App\Contracttype::all();
+        $client = \App\Client::all();
         //dd($contract);
-        return view('pages.addContract',compact('contract'));
+        return view('pages.addContract',compact('contractselect','contracttype','client'));
     }
 
     /**
@@ -39,7 +41,17 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // $this->validate($request,[
+        //     'status'=>'required',
+        //     'startdate'=>'required',
+        //     'enddate'=>'required',
+        //     'monthlybill'=>'required',
+            
+        //   ]);
+
+
+        $contract = Contract::create($request->all());
+        return redirect('/contractlist');
     }
 
     /**
