@@ -1,33 +1,22 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
+
 use App\Client;
 use Illuminate\Http\Request;
-class ClientController extends Controller
+
+class clientAchiveController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
     public function index()
     {
-        $client = Client::all();
-        return view('pages.clientList',compact('client'));
+        $client=Client::all();
+        return view('pages.AchiveClient',compact('client'));
     }
-    // public function userCall()
-    // {
-    //     return view('pages.userCall');
-    // }
-    // public function achiveClient(){
-       
-    //     $client=Client::all();
-    //     return view('pages.clientList',compact('client'));
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -36,9 +25,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        return "hi";
-        // $client = Client::all();
-        // return view('pages.AchiveClient',compact('client'));
+        //
     }
 
     /**
@@ -63,7 +50,7 @@ class ClientController extends Controller
         $client ->phonenumber = $request->input('phonenumber') ; 
         $client ->email = $request->input('email') ; 
         $client->save();
-        return  redirect('/clientadd');
+        return  redirect('/achiveclient');
     }
 
     /**
@@ -85,8 +72,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = Client::findOrfail($id);
-        return view('pages.AchiveClient',compact('client'));
+        //
     }
 
     /**
@@ -98,21 +84,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'firstname'=>'required',
-            'lastname'=>'required',
-            'addresss'=>'required',
-            'phonenumber'=>'required',
-            'email'=>'required'
-          ]);
-        $client=Client::find($id);
-        $client->firstname=$request->get('firstname');
-        $client->lastname=$request->get('lastname');
-        $client->addresss=$request->get('addresss');
-        $client->phonenumber=$request->get('phonenumber');
-        $client->email=$request->get('email');
-        $client->save();
-        return redirect('/achiveclient');
+        //
     }
 
     /**

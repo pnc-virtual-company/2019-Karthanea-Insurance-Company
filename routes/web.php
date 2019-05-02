@@ -80,6 +80,10 @@ Route::get('/create','ClientController@create');
 // Route::get('/achiveclient','ClientController@achiveclient');
 Route::resource('/clientadd','ClientController');
 
+Route::get('/client','ClientController@index');
+Route::resource('/achiveclient','clientAchiveController');
+// Route::POST('/clientadd','clientAchiveController@store');
+
 
 Route::get('/userCall','ClientController@userCall');
 
@@ -92,7 +96,6 @@ Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
 
 
-Route::get('/achiveClient','ClientController@achiveClient');
 Route::get('userProfile','AvatarController@profile');
 Route::get('/myprofile', 'uploadController@imageUpload');
 Route::get('userProfile','AvatarController@update_avatar');
