@@ -76,9 +76,8 @@ Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 
-Route::get('/client','ClientController@index');
+Route::resource('/client','ClientController');
 Route::resource('/achiveclient','clientAchiveController');
-// Route::POST('/clientadd','clientAchiveController@store');
 
 
 Route::get('/userCall','ClientController@userCall');
