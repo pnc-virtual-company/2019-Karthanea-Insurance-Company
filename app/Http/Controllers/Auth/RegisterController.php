@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/';
+    protected $redirectTo = '/client';
 
     /**
      * Create a new controller instance.
@@ -68,10 +68,13 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
-        $user
-            ->roles()
-            ->attach(Role::where('name', 'User')->first());
+        // $user
+        //     ->roles()
+        //     ->attach(Role::where('name', 'User')->first());
 
+        // $role = Role::select('id')->where('name','user')->first();
+        // $user->roles()->attch($role);
+        
         return $user;
     }
 }

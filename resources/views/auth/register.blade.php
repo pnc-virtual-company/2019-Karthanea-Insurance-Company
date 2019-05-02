@@ -54,9 +54,6 @@
                                          <input type="password" id="autocomplete-input" name="password_confirmation" required class="autocomplete icons">
                                          <label for="autocomplete-input">Password</label>
                                     </div>
-                                      </div>
-                                         <label for="autocomplete-input">Password</label>
-                                      </div>
                                   <footer>
                                       <div class="container">
                                           <div class="row d-flex justify-content-center mt-5">
