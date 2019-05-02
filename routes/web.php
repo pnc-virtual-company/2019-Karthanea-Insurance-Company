@@ -66,14 +66,14 @@ Route::get('examples', 'ExamplesController@index')->name('examples');
 /*
 =============================================================================*/
 
-Route::get('/createContract','PageController@createContractType');
+//Route::get('/createContract','PageController@createContractType');
 Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
 
-Route::get('/contracttypeController','ContractController@index');
+Route::resource('/contracttypeController','contracttypeController');
 
-Route::get('/createContract','PageController@createContractType');
+//Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
@@ -84,8 +84,9 @@ Route::resource('/clientadd','ClientController');
 
 Route::get('/userCall','ClientController@userCall');
 
-Route::get('/contractlist','ContractController@index');
-
+//Route::get('/contractlist','ContractController@index');
+Route::resource('/contractlist','ContractController');
+//Route::post('/store','ContractController@store');
 Route::get('/payment','paymentController@index');
 
 Route::get('/call','callController@index');

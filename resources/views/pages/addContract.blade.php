@@ -26,7 +26,7 @@
                                              </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($contract as $value=>$item)
+                                    @foreach ($contractselect as $value=>$item)
                                         
                                    
                                         {{-- <tr>
@@ -53,33 +53,52 @@
                                                         </a>
                                                     </td>
                                                 </tr> --}}
-                                                <tr>
-                                                        <td>
-                                                                {{$item->id_contract}}
-                                                                <a href="#" class="text-center">
-                                                                        <a href="#" data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
-                                                                </a>
+                                                <tr class="data-row">
+                                                        <td class="id">
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                        {{$item->id}}
+                                                                </div>
+                                                                <div class="col-4">
+                                                                        <a href="#" class="text-center">
+                                                                                <a href="#" data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
+                                                                        </a>
+                                                                </div>
+                                                            </div>
+                                                                
+                                                               
                                                             </td>
-                                                            
-                                                    <td><a href="#"><i class="material-icons ml-5 text-info">call</i></a></td>
-                                                            <td>
-                                                                {{-- @foreach ($item->contracttypes()->pluck('contracttype') as $items)     --}}
-                                                                  
-                                                                <a href="#" class="text-center">
-                                                                        {{-- {{$items}} --}}
-                                                                        <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                                                </a>
-                                                                {{-- @endforeach --}}
-
-                                                                {{-- @foreach ($item->client()->pluck('firstname') as $items)  
-                                                                <button class=" btn btn-info btn-sm text-white">{{ $items}}</button> 
-                                                                @endforeach  --}}
+                                                            <td class="client">
+                                                                <div class="row">
+                                                                    <div class="col-5">
+                                                                            {{$item->client->firstname}} {{$item->client->lastname}}
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                            <a href="#" id="edit-item"><i class="material-icons ml-5 text-info">call</i></a>
+                                                                    </div>
+                                                                </div>
+                                                                   
                                                                 
                                                             </td>
-                                                            <td>{{$item->status}}</td>
-                                                            <td>{{$item->startdate}}</td>
-                                                            <td>{{$item->enddate}}</td>
-                                                            <td>{{$item->monthlybill}}</td>
+                                                            <td class="contracttype">
+                                                                <div class="row">
+                                                                    <div class="col-5">
+                                                                            {{$item->contracttype->contracttype}} 
+                                                                    </div>
+                                                                    <div class="col-4">
+                                                                            <a href="#" class="text-center">
+                                                                                    <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                                                            </a>  
+                                                                    </div>
+                                                                </div>
+                                                                   
+                                                               
+                                                            </td>
+                                                            <td class="status">{{$item['status']}}</td>
+                                                            <td class="startdate">{{$item['startdate']}}</td>
+                                                            <td class="enddate">{{$item['enddate']}}</td>
+                                                            <td class="monthlybill">$ {{$item['monthlybill']}}</td>
+                                                            
                                                             <td>
                                                                 <a href="#" class="text-center">
                                                                    $
@@ -102,20 +121,35 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                     <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Edit contract</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Add New Contract</h5>
                           </div>
                           <div class="card-body">
+                                <form action="{{action('ContractController@store')}} " method="POST">
+                                        @csrf
                                 <div class="modal-body">
-                                        <form>
+                                           
+                                          
                                                 <div class="form-group">
                                                     <div class="row">
+                                                        
+                                                            
+                                                       
                                                         <div class="col-2">
                                                                 <label for="">Client</label>
                                                         </div>
-                                                       
+                                                        
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Search">
+                                                           
+                                                                <select name="id_client" id="" class="browser-default custom-select">
+                                                                     @foreach ($client as $item)
+                                                                    <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
+                                                                    @endforeach
+                                                                </select>
+                                                            
+                                                            
+                                                            
                                                         </div>
+                                                       
                                                 <div class="form-group ">
                                                     <div class="row">
                                                         <div class="col-6">
@@ -127,7 +161,12 @@
                                                                 <div class="col-10">
 
                                                                         <div class="input-group col-md-12">
-                                                                                <input class="form-control py-2" type="search" value="search" id="example-search-input">
+                                                                                <select name="id_contracttype" id="" class="browser-default custom-select">
+                                                                                        @foreach ($contracttype as $item)
+                                                                                       <option value="{{$item->id}}">{{$item->contracttype}}</option>
+                                                                                       @endforeach
+                                                                                   </select>
+                                                                                {{-- <input class="form-control py-2" name="id_contracttype" type="search"  id="example-search-input"> --}}
                                                                                 <span class="input-group-append">
                                                                                     <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#select" type="button" style="margin-top:0%;">
                                                                                        Select
@@ -150,10 +189,13 @@
                                                                      </div>
                                                                      <div class="col-6">
                                                                           
-                                                                        <select class="browser-default custom-select">
-                                                                            <option selected>Open</option>                                                                                <option value="1">To be completed</option>
-                                                                            <option value="2">To be signed</option>
-                                                                            <option value="3">Closed</option>
+                                                                        <select class="browser-default custom-select" name="status">
+                                                                            <option selected value="Open">Open</option> 
+                                                                            <option value="To be completed">To be completed</option>                                                                              
+                                                                            <option value="To be signed">To be signed</option>
+                                                                            <option value="Closed">Closed</option>
+                                                                           
+                                                                           
                                                                         </select>
                                                                      </div>
 
@@ -174,7 +216,7 @@
 
                                                                             <div class="row">
                                                                                 <div class="col-12">
-                                                                                      <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
+                                                                                      <input type='text' name="startdate" class='txtDate' placeholder="mm/dd/yy"  />
 
                                                                                 </div>
                                                                               </div>
@@ -192,7 +234,7 @@
                                                               <div class="col-9">
                                                                   <div class="row">
                                                                       <div class="col-12">
-                                                                            <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
+                                                                            <input type='text' name="enddate" class='txtDate' placeholder="mm/dd/yy"  />
                                                                       </div>
                                                                     </div>
                                                                     </div>
@@ -208,18 +250,39 @@
                                                         <div class="col-2"><label for="" >Monthly bill</label></div>
                                                         
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" name="monthlybill" class="form-control">
                                                         </div>   
                                                     </div>
                                                 </div>
-                                        </form>
 
-                                    </div>
+                                                {{-- <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-2"><label for="" >Client ID</label></div>
+                                                        
+                                                        <div class="col-10">
+                                                             <input type="text" name="id_client" class="form-control">
+                                                        </div>   
+                                                    </div>
+                                                </div> --}}
+
+                                                {{-- <div class="form-group ">
+                                                    <div class="row">
+                                                        <div class="col-2"><label for="" >Contract Type</label></div>
+                                                        
+                                                        <div class="col-10">
+                                                            <input type="text" name="id_contracttype" class="form-control">
+                                                        </div>   
+                                                    </div>
+                                                </div> --}}
+                                                
+                                            </div>
+                                        
                                 </div>
                             <div class="modal-footer mr-5">
-                                <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
+                                <button type="submit" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
                                 <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
                             </div>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -237,7 +300,8 @@
                           </div>
                           <div class="card-body">
                                 <div class="modal-body">
-                                        <form>
+                                        <form id="edit-form" class="form-horizontal" method="POST" action="">
+                                            @csrf
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-2">
@@ -245,7 +309,7 @@
                                                         </div>
                                                        
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control" placeholder="Search">
+                                                            <input type="text" class="form-control" placeholder="Search" name='client' id='client'>
                                                         </div>
                                                 <div class="form-group ">
                                                     <div class="row">
@@ -258,7 +322,7 @@
                                                                 <div class="col-10">
 
                                                                         <div class="input-group col-md-12">
-                                                                                <input class="form-control py-2" type="search" value="search" id="example-search-input">
+                                                                                <input class="form-control py-2" type="search" value="search" name = 'contracttype' id="contracttype">
                                                                                 <span class="input-group-append">
                                                                                     <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectAddContract" type="button" style="margin-top:0%;">
                                                                                        Select
@@ -281,10 +345,11 @@
                                                                      </div>
                                                                      <div class="col-6">
                                                                           
-                                                                        <select class="browser-default custom-select">
-                                                                            <option selected>Open</option>                                                                                <option value="1">To be completed</option>
-                                                                            <option value="2">To be signed</option>
-                                                                            <option value="3">Closed</option>
+                                                                        <select class="browser-default custom-select" name="status" id="status">
+                                                                            <option selected>Open</option>                                                                                
+                                                                            <option value="To be completed">To be completed</option>
+                                                                            <option value="To be signed">To be signed</option>
+                                                                            <option value="Closed">Closed</option>
                                                                         </select>
                                                                      </div>
 
@@ -305,7 +370,7 @@
 
                                                                             <div class="row">
                                                                                 <div class="col-12">
-                                                                                      <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
+                                                                                      <input type='text' class='txtDate' placeholder="mm/dd/yy"  name='startdate' id='startdate'/>
 
                                                                                 </div>
                                                                               </div>
@@ -323,7 +388,7 @@
                                                               <div class="col-9">
                                                                   <div class="row">
                                                                       <div class="col-12">
-                                                                            <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
+                                                                            <input type='text' class='txtDate' placeholder="mm/dd/yy"  name='enddate' id='enddate'/>
                                                                       </div>
                                                                     </div>
                                                                     </div>
@@ -339,7 +404,7 @@
                                                         <div class="col-2"><label for="" >Monthly bill</label></div>
                                                         
                                                         <div class="col-10">
-                                                            <input type="text" class="form-control">
+                                                            <input type="text" class="form-control" name='monthlybill' id='monthlybill'>
                                                         </div>   
                                                     </div>
                                                 </div>
@@ -348,7 +413,7 @@
                                     </div>
                                 </div>
                             <div class="modal-footer mr-5">
-                                <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
+                                <button type="button" class="btn bg-info " data-dismiss="modal"><i class='material-icons'>check</i> Save Contract</button>
                                 <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
                             </div>
                         </div>
@@ -358,6 +423,7 @@
             <div>
         </div>
     </div>
+    
 
             {{-- model select contract  --}}
 
@@ -483,6 +549,55 @@
 
                         </div>
                     </div>
+
+                     {{-- edit function modal
+                    <script src="{{asset('js/app.js')}}"></script>
+    <script>
+            $(document).ready(function() {
+      /**
+       * for showing edit item popup
+       */
+    
+      $(document).on('click', "#edit-item", function() {
+        $(this).addClass('edit-item-trigger-clicked'); //useful for identifying which trigger was clicked and consequently grab data from the correct row and not the wrong one.
+    
+        var options = {
+          'backdrop': 'static'
+        };
+        $('#editContract').modal(options)
+      })
+    
+      // on modal show
+      $('#editContract').on('show.bs.modal', function() {
+        var el = $(".edit-item-trigger-clicked"); // See how its usefull right here? 
+        var row = el.closest(".data-row");
+    
+        // get the data
+        var id = el.data('item-id');
+        var client = row.children(".client").text();
+        var contracttype = row.children(".contracttype").text();
+        var status = row.children(".status").text();
+        var startdate = row.children(".startdate").text();
+        var enddate = row.children(".enddate").text();
+        var monthlybill = row.children(".monthlybill").text();
+    
+        // fill the data in the input fields
+        $("#client").val(client);
+        $("#contracttype").val(contracttype);
+        $("#status").val(status);
+        $("#startdate").val(startdate);
+        $("#enddate").val(enddate);
+        $("#monthlybill").val(monthlybill);
+    
+      })
+    
+      // on modal hide
+      $('#editContract').on('hide.bs.modal', function() {
+        $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')
+        $("#edit-form").trigger("reset");
+      })
+    })
+        </script> --}}
 {{-- model select contract  --}}
 
 <div class="modal fade bd-example" id="select"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">

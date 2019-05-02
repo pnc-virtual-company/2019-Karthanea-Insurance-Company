@@ -23,7 +23,7 @@
                                 {{$item->id_client}}
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}}</td>
-                            <td>{{$item->addresss}}</td>
+                            <td>{{$item->address}}</td>
                             <td>{{$item->phonenumber}}</td>
                             <td>{{$item->email}}</td>
                         </tr>
