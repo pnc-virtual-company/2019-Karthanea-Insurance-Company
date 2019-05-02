@@ -111,7 +111,7 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li class="list-group-item collapsed">
-                <a href="{{url('/contracttypeController')}}">
+                <a href="{{url('/contracttype')}}">
                   <span class="text-white">
                     <i class="material-icons text-white">ballot</i>
                     Contract Type
@@ -156,11 +156,13 @@
               <p>Calendar</p>
             </a>
           </li>
+          @if (Auth::user()->name =="Administrator")
             <li class="nav-item">
               <a class="nav-link" href="{{url('users')}}">
-                  <i class="material-icons">person</i> {{ __('Users') }}
+                <i class="material-icons">person</i> {{ __('Users') }}
               </a>
-          </li>
+            </li>
+          @endif
           <li class="nav-item ">
             <a class="nav-link" href="{{url('/location')}}">
               <i class="material-icons">location_ons</i>
@@ -185,13 +187,14 @@
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span><strong>{{ Auth::user()->name}}</strong></span>
                   @if (Auth::user()->avatar!= null)
-                    <img id="imgProfilePic" src="{{asset('images/'.Auth::user()->avatar)}}">
+                    <img id="imgProfilePic" src="{{asset('storage/images/'.Auth::user()->avatar)}}">
                   @else
-                    <img id="imgProfilePic" src="{{asset('images/default-avatar.png')}}">
+                    <img id="imgProfilePic" src="{{asset('storage/images/default-avatar.png')}}">
                   @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item nav-link" href="{{url('users/profile')}}">
+
+                  <a class="dropdown-item nav-link" href="{{url('/profile')}}">
                     <span>
                       <i class="material-icons">account_circle</i>
                       Profile

@@ -13,8 +13,10 @@ class Client extends Model
         'lastname',
         'address',
         'phonenumber',
+
         'email'
     ];
+
     
     public function calls(){
         return $this->hasMany(Call::class);

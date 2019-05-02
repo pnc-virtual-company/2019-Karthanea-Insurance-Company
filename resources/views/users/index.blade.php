@@ -48,16 +48,10 @@
                                             <span>{{ $user->roles->pluck('name')->implode(', ') }}</span>
                                         </td>
                                         <td>      
-                                                <form action="{{route('users.destroy',$user->id)}}" method="POST" class="text-center">
-                                                 @csrf
-                                                 @method("delete")    
-                                                
-                                                 <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="material-icons">edit</i></a>
-                                                <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
-                                                <button type="submit" data-toggle="modal" data-target="#frmModalDeleteConfirmation"  class="btn-danger">delete</button>      
-                                             </form>
-                                                 
-                                             </td>
+                                            <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="material-icons">edit</i></a>
+                                            <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
+                                            <a href="#" data-id="{{$user->id}}" data-name="{{$user->name}}" data-toggle="modal" data-target="#frmModalDeleteConfirmation" ><i class="material-icons text-danger">delete</i></a>
+                                        </td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -76,3 +70,14 @@
 @include('modal-confirm-delete')
 
 @endsection
+<script>
+    $("#frmModalDeleteConfirmation").on('show.bs.modal',function(event){
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var name = button.data('name')
+        var modal = $(this)
+        modal.find('#name').text(name)
+        var url = "{{url('view')}}/"+id;
+        $('#fDelete').attr('action',url);
+    })
+</script>

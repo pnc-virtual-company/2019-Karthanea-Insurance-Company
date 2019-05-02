@@ -13,10 +13,11 @@ class ClientController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __construct(){
-        $this->middleware('auth',['except'=>['client']]);
+        $this->middleware('auth');
     }
     public function index()
     {
+
         $client=Client::all();
         return view('pages.AchiveClient',compact('client'));
 
@@ -26,13 +27,21 @@ class ClientController extends Controller
     }
     public function userCall()
     {
-        return view('pages.userCall');
+//         return view('pages.userCall');
+// =======
+//         $client = Client::all();
+//         return view('pages.clientList',compact('client'));
+
     }
-    public function achiveClient(){
+    // public function userCall()
+    // {
+    //     return view('pages.userCall');
+    // }
+    // public function achiveClient(){
        
-        $client=Client::all();
-        return view('pages.clientList',compact('client'));
-    }
+    //     $client=Client::all();
+    //     return view('pages.clientList',compact('client'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -41,8 +50,9 @@ class ClientController extends Controller
      */
     public function create()
     {
-        $client = Client::all();
-        return view('pages.AchiveClient',compact('client'));
+        return "hi";
+        // $client = Client::all();
+        // return view('pages.AchiveClient',compact('client'));
     }
 
     /**
@@ -67,7 +77,7 @@ class ClientController extends Controller
         $client ->phonenumber = $request->input('phonenumber') ; 
         $client ->email = $request->input('email') ; 
         $client->save();
-        return  redirect('/clientadd');
+        return  redirect('/client');
     }
 
     /**

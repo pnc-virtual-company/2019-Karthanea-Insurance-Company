@@ -2,25 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use Illuminate\Http\Request;
-use App\Contract ;
-class ContractController extends Controller
+
+class clientAchiveController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
     public function index()
     {
-        $contractselect = \App\Contract::all();
-        $contracttype = \App\Contracttype::all();
-        $client = \App\Client::all();
-        //dd($contract);
-        return view('pages.addContract',compact('contractselect','contracttype','client'));
+        $client=Client::all();
+        return view('pages.AchiveClient',compact('client'));
     }
 
     /**
@@ -41,17 +36,21 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'status'=>'required',
-        //     'startdate'=>'required',
-        //     'enddate'=>'required',
-        //     'monthlybill'=>'required',
-            
-        //   ]);
-
-
-        $contract = Contract::create($request->all());
-        return redirect('/contractlist');
+        $this->validate($request,[
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'addresss'=>'required',
+            'phonenumber'=>'required',
+            'email'=>'required'
+          ]);
+        $client= new Client;
+        $client ->firstname = $request->input('firstname') ; 
+        $client ->lastname = $request->input('lastname') ; 
+        $client ->addresss = $request->input('addresss') ; 
+        $client ->phonenumber = $request->input('phonenumber') ; 
+        $client ->email = $request->input('email') ; 
+        $client->save();
+        return  redirect('/achiveclient');
     }
 
     /**
@@ -85,7 +84,21 @@ class ContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'addresss'=>'required',
+            'phonenumber'=>'required',
+            'email'=>'required'
+          ]);
+        $client= Client::find($id);
+        $client ->firstname = $request->input('firstname') ; 
+        $client ->lastname = $request->input('lastname') ; 
+        $client ->addresss = $request->input('addresss') ; 
+        $client ->phonenumber = $request->input('phonenumber') ; 
+        $client ->email = $request->input('email') ; 
+        $client->save();
+        return  redirect('/achiveclient');
     }
 
     /**

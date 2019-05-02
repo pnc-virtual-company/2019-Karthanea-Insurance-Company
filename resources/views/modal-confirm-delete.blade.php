@@ -11,8 +11,13 @@
             <p>@lang('Are you sure that you want to delete this object?')</p>
         </div>
         <div class="modal-footer">
-            <button type="submit"  class="btn-danger">@lang('Yes')</button>
-            <button id="cmdDeleteCancellation" type="button" class="btn bg-primary text-white" data-dismiss="modal">@lang('No')</button>
+                <form action="{{route('users.destroy',$user->id)}}" method="POST" class="text-center">
+                        @csrf
+                        @method("delete")   
+                    <button type="submit"  class="btn-danger btn">@lang('Yes')</button>
+                    <button id="cmdDeleteCancellation" type="button" class="btn bg-primary text-white" data-dismiss="modal">@lang('No')</button>
+                </form>
+                                                 
         </div>
         </div>
     </div>
