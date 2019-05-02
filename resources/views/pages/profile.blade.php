@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.dashboard')
 
 @section('content')
 <div class="container mt-4">
@@ -31,17 +31,22 @@
                                     <p><strong>Email:</strong> </p>
                                 </div>
                                 <div class="col-9">{{$user['email']}}</div>
-
-                                <div class="col-3">
-                                    <p><strong>Created:</strong> </p>
-                                </div>
-                                <div class="col-9">{{$user['created_at']->format('d M Y - H:i:s')}}</div>
                             </div>
                         </div>
                     </div>
-                
+
                 </div>
             </div>
+            <br>
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    {{session('success')}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
+
         </div>
         <div class="col-2"></div> 
 

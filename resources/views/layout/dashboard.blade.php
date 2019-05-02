@@ -191,7 +191,8 @@
                   @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
-                  <a class="dropdown-item nav-link" href="{{url('users/profile')}}">
+
+                  <a class="dropdown-item nav-link" href="{{url('/profile')}}">
                     <span>
                       <i class="material-icons">account_circle</i>
                       Profile
