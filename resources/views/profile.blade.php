@@ -62,15 +62,12 @@
                 </div>
                 <form action="{{url('/uploadmyprofile')}}" enctype="multipart/form-data" method="POST">
                 <div class="modal-body">
-                   
-                        @csrf
-                            <input type="file" id="file" class="form-control-file" name="profile">
-                           
-                   
+                    @csrf
+                    <input type="file" id="file" class="form-control-file" name="profile">
                 </div>
                 <div class="modal-footer">
-                        <button type="button" class="btn btn-sm bg-danger text-white" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-sm bg-primary text-white">Save</button>
+                    <button type="button" class="btn btn-sm bg-danger text-white" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-sm bg-primary text-white">Save</button>
                 </div>
             </form>
               </div>
