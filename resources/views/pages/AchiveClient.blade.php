@@ -19,7 +19,7 @@
                         @foreach ($client as $item)
                         <tr>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient">
+                                <a href="#" data-toggle="modal" data-target="#editClient" >
                                 <i class="material-icons text-success">edit</i></a>
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id_client}} 
@@ -112,6 +112,7 @@
           </div>
 
           <!-- Modal Edit -->
+          {{-- @foreach ($client as $item)
           <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -121,7 +122,6 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                @foreach ($client as $item)
                 <form id="editform" method="POST" action="">
                     @csrf
                     @method('PATCH')
@@ -182,8 +182,31 @@
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
                 </form>
-                @endforeach
               </div>
             </div>
-          </div>
+          </div> --}}
+          {{-- @endforeach --}}
 @endsection
+{{-- <script>
+        $('#editClient').on('show.bs.modal',function (event){
+                var button = $(event.relatedTarget)
+                var firstname = button.data('firstname')
+                var lastname = button.data('lastname')    
+                var addresss = button.data('addresss')
+                var phonenumber = button.data('phonenumber')
+                var email = button.data('email')
+               
+                var modal = $(this)
+    
+                modal.find('#firstname').attr('value',firstname)
+                modal.find('#lastname').attr('value',lastname)
+                modal.find('#addresss').attr('value',addresss)
+                modal.find('#phonenumber').attr('value',phonenumber)
+                modal.find('#email').attr('value',email)
+    
+                var url ="{{url('/campaignListTest')}}/"+ id_client;
+                $('#editform').attr('action',url);   
+                });
+            });
+    
+    </script> --}}
