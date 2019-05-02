@@ -80,9 +80,8 @@ Route::get('/create','ClientController@create');
 // Route::get('/achiveclient','ClientController@achiveclient');
 Route::resource('/clientadd','ClientController');
 
-Route::get('/client','ClientController@index');
+Route::resource('/client','ClientController');
 Route::resource('/achiveclient','clientAchiveController');
-// Route::POST('/clientadd','clientAchiveController@store');
 
 
 Route::get('/userCall','ClientController@userCall');
