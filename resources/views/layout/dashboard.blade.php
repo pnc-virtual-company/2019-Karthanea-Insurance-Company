@@ -18,7 +18,6 @@
   <script src="{{asset('js/Chart.min.js')}}"></script>
   <script src="{{asset('js/utils.js')}}"></script>
   <script src="{{asset('js/chart.js')}}"></script>
-
   <!-- link calendar -->
   <link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
   <link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
