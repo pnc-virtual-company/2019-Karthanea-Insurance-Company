@@ -45,7 +45,6 @@
   {{-- <!-- CSS Just for demo purpose, don't include it in your project --> --}}
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
-
 </head>
 <body>
   <div class="wrapper">

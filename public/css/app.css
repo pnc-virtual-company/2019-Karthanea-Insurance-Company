@@ -16,10 +16,9 @@
 }
 #imgProfile{
   border-radius: 100%;
-  /* width: 40px; */
   width: 140px;
-   height: 140px;
-   background-color:rgb(250, 246, 246);
+  height: 140px;
+  background-color:rgb(250, 246, 246);
 }
 .nav-link #imgProfilePic{
   border-radius: 50%;

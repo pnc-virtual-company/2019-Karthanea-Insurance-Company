@@ -22,7 +22,7 @@ Route::get('/', function () {
 Auth::routes();
     
 Route::get('users/profile','UserController@profile');
-// Route::get('users/export','UserController@export');
+Route::get('users/export','UserController@export');
 Route::resource('users','UserController');
 
 /*=============================================================================
