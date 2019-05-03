@@ -51,6 +51,8 @@ class clientAchiveController extends Controller
         $client ->email = $request->input('email') ; 
         $client->save();
         return  redirect('/achiveclient');
+        // return  view('/achiveclient');
+
     }
 
     /**
@@ -72,7 +74,7 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-        //
+     //
     }
 
     /**
@@ -84,9 +86,7 @@ class clientAchiveController extends Controller
      */
     public function update(Request $request, $id)
     {
-<<<<<<< HEAD
-        //
-=======
+
         $this->validate($request,[
             'firstname'=>'required',
             'lastname'=>'required',
@@ -101,9 +101,11 @@ class clientAchiveController extends Controller
         $client ->phonenumber = $request->input('phonenumber') ; 
         $client ->email = $request->input('email') ; 
         $client->save();
+
+        $client = Client::findOrFail('$id');
+
         return  redirect('/achiveclient');
->>>>>>> 1e9c524696ecffb0ad69c2eb28759624bf0e0da7
-    }
+
 
     /**
      * Remove the specified resource from storage.

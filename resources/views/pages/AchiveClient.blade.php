@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-=======
->>>>>>> 1e9c524696ecffb0ad69c2eb28759624bf0e0da7
+
 
 @extends('layout.dashboard')
 @section('content')
@@ -24,17 +23,17 @@
                         @foreach ($client as $item)
                         <tr>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient">
+                                <a href="#" data-toggle="modal" data-target="#editClient" >
                                 <i class="material-icons text-success">edit</i></a>
                                 <input type="checkbox" name="disable" id="disable">
-<<<<<<< HEAD
+
                                 {{$item->id_client}}
-=======
+
                                 {{$item->id_client}} 
->>>>>>> 1e9c524696ecffb0ad69c2eb28759624bf0e0da7
+
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}}</td>
-                            <td>{{$item->addresss}}</td>
+                            <td>{{$item->address}}</td>
                             <td>{{$item->phonenumber}}</td>
                             <td>{{$item->email}}</td>
                         </tr>
@@ -86,11 +85,11 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-<<<<<<< HEAD
+
                                     <input type="text" name="addresss" id="addresss" class="form-control">
-=======
+
                                     <input type="text" name="addresss" class="form-control">
->>>>>>> 1e9c524696ecffb0ad69c2eb28759624bf0e0da7
+
                                 </div>
                             </div>
                         </div>
@@ -100,11 +99,11 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
-<<<<<<< HEAD
+
                                     <input type="number" name="phonenumber" id="phonenumber" class="form-control">
-=======
+
                                     <input type="number" name="phonenumber" class="form-control">
->>>>>>> 1e9c524696ecffb0ad69c2eb28759624bf0e0da7
+
                                 </div>
                             </div>
                         </div>
@@ -120,11 +119,10 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-<<<<<<< HEAD
+
                     <button type="submit" class="btn bg-primary text-white">OK</button>
-=======
-                    <button type="submit" class="btn bg-primary text-white" >OK</button>
->>>>>>> 1e9c524696ecffb0ad69c2eb28759624bf0e0da7
+
+
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
@@ -133,6 +131,7 @@
           </div>
 
           <!-- Modal Edit -->
+          {{-- @foreach ($client as $item)
           <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -142,19 +141,19 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-<<<<<<< HEAD
+
                 <form id="editform" method="POST" action="/achiveclient">
                     {{ csrf_field() }}
                     {{ method_field('PUT')}}
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-=======
+
                 @foreach ($client as $item)
+
                 <form id="editform" method="POST" action="">
                     @csrf
                     @method('PATCH')
                 <div class="modal-body">
->>>>>>> 1e9c524696ecffb0ad69c2eb28759624bf0e0da7
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
@@ -211,7 +210,6 @@
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
                 </form>
-                @endforeach
               </div>
             </div>
           </div>
@@ -221,4 +219,31 @@
   
 })
           </script>
+
+          </div> --}}
+          {{-- @endforeach --}}
+
 @endsection
+{{-- <script>
+        $('#editClient').on('show.bs.modal',function (event){
+                var button = $(event.relatedTarget)
+                var firstname = button.data('firstname')
+                var lastname = button.data('lastname')    
+                var addresss = button.data('addresss')
+                var phonenumber = button.data('phonenumber')
+                var email = button.data('email')
+               
+                var modal = $(this)
+    
+                modal.find('#firstname').attr('value',firstname)
+                modal.find('#lastname').attr('value',lastname)
+                modal.find('#addresss').attr('value',addresss)
+                modal.find('#phonenumber').attr('value',phonenumber)
+                modal.find('#email').attr('value',email)
+    
+                var url ="{{url('/campaignListTest')}}/"+ id_client;
+                $('#editform').attr('action',url);   
+                });
+            });
+    
+    </script> --}}
