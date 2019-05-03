@@ -6,6 +6,7 @@
         <div class="col-2"></div>
         <div class="col-8">
             <div class="card shadow-sm">
+                <div class="card-header bg-secondary text-white"><h4> View User Profile</h4></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 col-sm-12 border-right text-center border-bottom">

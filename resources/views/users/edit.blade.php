@@ -4,11 +4,9 @@
     
     <div class="row">
         <div class="col-md-12">
+                <div> <h1>@lang('Edit users')</h1></div>
             <div class="card">
-                <div class="card-header text-center"><h3>@lang('Edit a user')</h3></div>
-
                 <div class="card-body">
-
                     <form action="{{ route('users.update', $user->id) }}" method="POST" enctype="multipart/form-data">
                         <!-- Simulate PUT or PATCH verb, 
                              See: https://laravel.com/docs/5.7/controllers#resource-controllers //-->
@@ -33,8 +31,10 @@
                             @endforeach
                             </select>
                         </div>
-           
-                        <input type="submit" class="btn bg-primary text-white" value="Save" /> 
+                        <div class="float-right">
+                                <a href="{{url('users')}}" class="btn bg-info text-white">Back To List</a>
+                                <input type="submit" class="btn bg-primary text-white" value="Save" />
+                            </div>
                     </form>
                 </div>
             </div>
