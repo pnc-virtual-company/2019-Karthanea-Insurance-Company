@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('auth.login');
 });
+
 // Route::get('/', function () {
     //     return view('examples.index', ['currentExample' => 'List of examples']);
     // });
@@ -86,7 +87,6 @@ Route::get('/client','ClientController@index');
 Route::resource('/achiveclient','clientAchiveController');
 // Route::POST('/clientadd','clientAchiveController@store');
 
-
 Route::get('/userCall','ClientController@userCall');
 
 //Route::get('/contractlist','ContractController@index');
@@ -97,7 +97,6 @@ Route::get('/payment','paymentController@index');
 Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/achiveClient','ClientController@achiveClient');

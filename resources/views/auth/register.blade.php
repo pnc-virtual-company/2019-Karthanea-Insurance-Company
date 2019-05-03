@@ -57,16 +57,6 @@
                                          <input type="password" id="password_confirmation" name="password_confirmation" required class="autocomplete icons">
                                          <label for="password_confirmation">Confirm Password</label>
                                     </div>
-                                    <footer>
-                                        <div class="container">
-                                            <div class="row mt-5">
-                                                <div class="form-group">
-                                                    <input type="submit" class="btn btn-info btn-sm float-right text-white" value="Register Now">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </footer>
-                                </form>
                                   <footer>
                                       <div class="container">
                                           <div class="row d-flex justify-content-center mt-5">
@@ -74,7 +64,7 @@
                                                   <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
                                               </div>
                                               <div class="form-group">
-                                                    <a href="{{ route('login') }}"><button  type="button" class="btn btn-info">Cancel</button></a>
+                                                    <a href="{{ route('login') }}"><button  type="button" class="btn btn-secondary">Cancel</button></a>
                                             </div>
                                           </div>
                                       </div>
