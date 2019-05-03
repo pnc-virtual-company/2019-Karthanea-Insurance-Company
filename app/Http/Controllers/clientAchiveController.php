@@ -14,7 +14,7 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        $client=Client::all();
+        $client = Client::all();
         return view('pages.AchiveClient',compact('client'));
     }
 
