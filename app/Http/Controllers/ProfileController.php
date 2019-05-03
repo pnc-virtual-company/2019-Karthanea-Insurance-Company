@@ -16,24 +16,30 @@ class ProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile(Request $request)
+    public function index()
     {
-        $user = Auth::user();
-        return view('pages.profile', ['user' => $user]);
+        $user = Auth::user(); 
+        return view('profile',compact('user'));
     }
     public function upload(Request $request)
     {
+       
         $request->validate([
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'profile' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        $user = Auth::user();
-        $avatarName = request()->profile->getClientOriginalName();
-        
-        $request->file('pages.profile')->storeAs('public/images',$avatarName);
-        $user->avatar = $avatarName;
-        $user->save();
+        if($request->hasFile('profile')){
+            $avatarName = request()->profile->getClientOriginalName();
+            $request->file('profile')->storeAs('public/images',$avatarName);
+            
+            $user = Auth::user();
+            $user->avatar = $avatarName;
+            $user->save();
+           
+        }
         return back()
-            ->with('success','You have successfully upload image.');
-    
+                ->with('success','You have successfully upload image.');
+
+        
+        
     }
 }

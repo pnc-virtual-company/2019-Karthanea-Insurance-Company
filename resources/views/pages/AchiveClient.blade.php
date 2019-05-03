@@ -1,4 +1,8 @@
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
@@ -22,7 +26,11 @@
                                 <a href="#" data-toggle="modal" data-target="#editClient" >
                                 <i class="material-icons text-success">edit</i></a>
                                 <input type="checkbox" name="disable" id="disable">
+
+                                {{$item->id_client}}
+
                                 {{$item->id_client}} 
+
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}}</td>
                             <td>{{$item->address}}</td>
@@ -87,7 +95,11 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
+
+                                    <input type="number" name="phonenumber" id="phonenumber" class="form-control">
+
                                     <input type="number" name="phonenumber" class="form-control">
+
                                 </div>
                             </div>
                         </div>
@@ -103,7 +115,10 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="submit" class="btn bg-primary text-white" >OK</button>
+
+                    <button type="submit" class="btn bg-primary text-white">OK</button>
+
+
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
@@ -122,6 +137,15 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
+
+                <form id="editform" method="POST" action="/achiveclient">
+                    {{ csrf_field() }}
+                    {{ method_field('PUT')}}
+                <div class="modal-body">
+                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+
+                @foreach ($client as $item)
+
                 <form id="editform" method="POST" action="">
                     @csrf
                     @method('PATCH')
@@ -184,8 +208,17 @@
                 </form>
               </div>
             </div>
+          </div>
+          <script>
+    $(document).ready(function() {
+
+  
+})
+          </script>
+
           </div> --}}
           {{-- @endforeach --}}
+
 @endsection
 {{-- <script>
         $('#editClient').on('show.bs.modal',function (event){

@@ -72,9 +72,26 @@ class clientAchiveController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+        $this->validate($request,[
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'addresss'=>'required',
+            'phonenumber'=>'required',
+            'email'=>'required'
+          ]);
+        $client= Client::find($id);
+        $client ->firstname = $request->input('firstname') ; 
+        $client ->lastname = $request->input('lastname') ; 
+        $client ->addresss = $request->input('addresss') ; 
+        $client ->phonenumber = $request->input('phonenumber') ; 
+        $client ->email = $request->input('email') ; 
+        $client->save();
+
         $client = Client::findOrFail('$id');
+
         return  redirect('/achiveclient');
-    }
+
 
     /**
      * Remove the specified resource from storage.

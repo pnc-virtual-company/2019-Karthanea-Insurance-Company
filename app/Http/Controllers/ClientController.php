@@ -77,8 +77,8 @@ class ClientController extends Controller
         $client ->phonenumber = $request->input('phonenumber') ; 
         $client ->email = $request->input('email') ; 
         $client->save();
-        return  redirect('/client');
-    }
+        return  redirect('/clientadd');
+    } 
 
     /**
      * Display the specified resource.
