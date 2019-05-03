@@ -17,7 +17,9 @@
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
 <body>
-   @extends('layout.partials._alert')
+    {{-- <div class="container">
+        @extends('layout.partials._alert')
+    </div> --}}
     <div class="container"><br><br><br>
         <div class="row">
             <div class="col-3"></div>

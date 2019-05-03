@@ -90,7 +90,7 @@ Route::resource('/achiveclient','clientAchiveController');
 Route::get('/userCall','ClientController@userCall');
 
 //Route::get('/contractlist','ContractController@index');
-Route::resource('/contractlist','ContractController');
+Route::resource('contractlist','ContractController');
 //Route::post('/store','ContractController@store');
 Route::get('/payment','paymentController@index');
 

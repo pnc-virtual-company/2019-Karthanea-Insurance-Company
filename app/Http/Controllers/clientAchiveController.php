@@ -14,7 +14,7 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        $client=Client::all();
+        $client = Client::all();
         return view('pages.AchiveClient',compact('client'));
     }
 
@@ -36,6 +36,7 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
+        $client = Client::create($request->all());
         $this->validate($request,[
             'firstname'=>'required',
             'lastname'=>'required',

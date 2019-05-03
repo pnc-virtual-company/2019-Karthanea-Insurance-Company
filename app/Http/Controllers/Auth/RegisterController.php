@@ -7,8 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Reguest;
-
+use Illuminate\Http\Request;
+use App\Role;
 class RegisterController extends Controller
 {
     /*
@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/client';
+    protected $redirectTo = '/';
 
     
     /**
@@ -65,30 +65,31 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return $user = User::create([
+        $role = Role::where('name','User')->first();
+
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        
+        $user->assignRole($role);
 
-        // $role = Role::select('id')->where('name','user')->first();
-        // $user->roles()->attch($role);
-        
         return $user;
-        
     }
 
-     /**
-     * The user has been registered 
+  /**
+     * The user has been registered.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param mixed @user
-     * @return mixed 
+     * @param  mixed  $user
+     * @return mixed
      */
-    // public function registered(Request $request , $user)
-    // {
-    //     $this->guard()->logout($user);
-    //     return redirect()->route('login')
-    //     ->withSuccess('Registered. Please check your email to activate your account.');
-    // }
+    protected function registered(Request $request, $user)
+    {
+        $this->guard()->logout();
+
+        return redirect()->route('login')
+                ->withSuccess('Registered. Please check your email to activate your account.');
+    }
 }

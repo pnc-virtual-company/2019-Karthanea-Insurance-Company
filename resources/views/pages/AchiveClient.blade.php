@@ -88,11 +88,7 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-
-                                    <input type="text" name="addresss" id="addresss" class="form-control">
-
-                                    <input type="text" name="addresss" class="form-control">
-
+                                    <input type="text" name="address" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -183,6 +179,7 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
+                                    <input type="text"value="{{$item->address}}" name="addresss" id="addresss" class="form-control">
                                     <input type="text"value="" name="addresss" id="addresss" class="form-control">
                                 </div>
                             </div>

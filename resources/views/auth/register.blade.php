@@ -39,24 +39,34 @@
                               @include('validation-errors')
                               <div class="input-field">
                                         <i class="material-icons prefix" class="text-secondary">person</i>
-                                        <input type="text" id="autocomplete-input" name="name" required value="{{ old('name') }}" class="autocomplete icons">
-                                        <label for="autocomplete-input ">Username</label>
+                                        <input type="text" id="name" name="name" required value="{{ old('name') }}" class="autocomplete icons">
+                                        <label for="name ">Username</label>
                                   </div>
                                   <div class="input-field">
                                          <i class="material-icons prefix">markunread</i>
-                                         <input type="text" id="autocomplete-input" name="email" required value="{{ old('email') }}" class="autocomplete icons">
-                                         <label for="autocomplete-input">Email</label>
+                                         <input type="text" id="email" name="email" required value="{{ old('email') }}" class="autocomplete icons">
+                                         <label for="email">Email</label>
                                   </div>
                                   <div class="input-field">
                                          <i class="material-icons prefix">lock</i>
-                                         <input type="password" id="autocomplete-input" name="password" required class="autocomplete icons">
-                                         <label for="autocomplete-input">Password</label>
+                                         <input type="password" id="password" name="password" required class="autocomplete icons">
+                                         <label for="password">Password</label>
                                       </div>
                                     <div class="input-field">
                                          <i class="material-icons prefix">lock</i>
-                                         <input type="password" id="autocomplete-input" name="password_confirmation" required class="autocomplete icons">
-                                         <label for="autocomplete-input">Confirm Password</label>
+                                         <input type="password" id="password_confirmation" name="password_confirmation" required class="autocomplete icons">
+                                         <label for="password_confirmation">Confirm Password</label>
                                     </div>
+                                    <footer>
+                                        <div class="container">
+                                            <div class="row mt-5">
+                                                <div class="form-group">
+                                                    <input type="submit" class="btn btn-info btn-sm float-right text-white" value="Register Now">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </footer>
+                                </form>
                                   <footer>
                                       <div class="container">
                                           <div class="row d-flex justify-content-center mt-5">
