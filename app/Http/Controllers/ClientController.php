@@ -81,7 +81,7 @@ class ClientController extends Controller
         // $client = Client::create($request->all());
         return redirect('/client');
     }
-    
+
     /**
      * Display the specified resource.
      *
