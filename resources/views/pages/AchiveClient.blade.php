@@ -2,7 +2,6 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
-
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
@@ -31,8 +30,6 @@
                                 <input type="checkbox" name="disable" id="disable">
 
                                 {{$item->id_client}}
-
-                                {{$item->id_client}} 
 
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}}</td>
@@ -88,7 +85,9 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="address" class="form-control">
+
+                                    <input type="text" name="addresss" id="addresss" class="form-control">
+
                                 </div>
                             </div>
                         </div>
@@ -100,8 +99,6 @@
                                 <div class="col-10">
 
                                     <input type="number" name="phonenumber" id="phonenumber" class="form-control">
-
-                                    <input type="number" name="phonenumber" class="form-control">
 
                                 </div>
                             </div>
@@ -118,9 +115,7 @@
                         </div>
                 </div>
                 <div class="modal-footer">
-
                     <button type="submit" class="btn bg-primary text-white">OK</button>
-
 
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
@@ -140,12 +135,12 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-
                 <form id="editform" method="POST" action="/achiveclient">
                     {{ csrf_field() }}
                     {{ method_field('PUT')}}
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+
 
                 @foreach ($client as $item)
 
@@ -153,6 +148,7 @@
                     @csrf
                     @method('PATCH')
                 <div class="modal-body">
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
