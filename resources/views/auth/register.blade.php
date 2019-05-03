@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        button[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+        margin: 5px;
+        }
+    </style>
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -62,6 +67,19 @@
                                         </div>
                                     </footer>
                                 </form>
+                                  <footer>
+                                      <div class="container">
+                                          <div class="row d-flex justify-content-center mt-5">
+                                              <div class="form-group">
+                                                  <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
+                                              </div>
+                                              <div class="form-group">
+                                                    <a href="{{ route('login') }}"><button  type="button" class="btn btn-info">Cancel</button></a>
+                                            </div>
+                                          </div>
+                                      </div>
+                                  </footer>
+                               </form>
                         </div>
                     </div>
                 </div>
