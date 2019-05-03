@@ -84,7 +84,25 @@ class clientAchiveController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< HEAD
         //
+=======
+        $this->validate($request,[
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'addresss'=>'required',
+            'phonenumber'=>'required',
+            'email'=>'required'
+          ]);
+        $client= Client::find($id);
+        $client ->firstname = $request->input('firstname') ; 
+        $client ->lastname = $request->input('lastname') ; 
+        $client ->addresss = $request->input('addresss') ; 
+        $client ->phonenumber = $request->input('phonenumber') ; 
+        $client ->email = $request->input('email') ; 
+        $client->save();
+        return  redirect('/achiveclient');
+>>>>>>> 1e9c524696ecffb0ad69c2eb28759624bf0e0da7
     }
 
     /**

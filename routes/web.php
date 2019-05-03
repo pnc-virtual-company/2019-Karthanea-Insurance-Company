@@ -102,3 +102,9 @@ Route::resource('profile', 'ProfileController');
 Route::post('/uploadprofile', 'ProfileController@upload');
 // Route::get('/home', 'HomeController@index')->name('home');
 
+// Route::get('userProfile','AvatarController@profile');
+// Route::get('/myprofile', 'uploadController@imageUpload');
+// Route::get('userProfile','AvatarController@update_avatar');
+
+
+// Route::get('/home', 'HomeController@index')->name('home');
