@@ -77,8 +77,10 @@ class ClientController extends Controller
         $client ->phonenumber = $request->input('phonenumber') ; 
         $client ->email = $request->input('email') ; 
         $client->save();
-        return  redirect('/clientadd');
-    } 
+        return  redirect('/client');
+        // $client = Client::create($request->all());
+        return redirect('/client');
+    }
 
     /**
      * Display the specified resource.
@@ -112,20 +114,21 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'firstname'=>'required',
-            'lastname'=>'required',
-            'addresss'=>'required',
-            'phonenumber'=>'required',
-            'email'=>'required'
-          ]);
-        $client=Client::find($id);
-        $client->firstname=$request->get('firstname');
-        $client->lastname=$request->get('lastname');
-        $client->addresss=$request->get('addresss');
-        $client->phonenumber=$request->get('phonenumber');
-        $client->email=$request->get('email');
-        $client->save();
+        // $request->validate([
+        //     'firstname'=>'required',
+        //     'lastname'=>'required',
+        //     'addresss'=>'required',
+        //     'phonenumber'=>'required',
+        //     'email'=>'required'
+        //   ]);
+        // $client=Client::find($id);
+        // $client->firstname=$request->get('firstname');
+        // $client->lastname=$request->get('lastname');
+        // $client->addresss=$request->get('addresss');
+        // $client->phonenumber=$request->get('phonenumber');
+        // $client->email=$request->get('email');
+        // $client->save();
+        $client = Client::findOrFail($id);
         return redirect('/achiveclient');
     }
 

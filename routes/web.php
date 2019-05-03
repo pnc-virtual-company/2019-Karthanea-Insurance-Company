@@ -81,8 +81,6 @@ Route::resource('/contracttypeController','contracttypeController');
 Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
 Route::get('/create','ClientController@create');
-// Route::get('/achiveclient','ClientController@achiveclient');
-Route::resource('/clientadd','ClientController');
 
 Route::get('/client','ClientController@index');
 Route::resource('/achiveclient','clientAchiveController');
