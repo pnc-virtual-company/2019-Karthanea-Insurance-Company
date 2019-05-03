@@ -50,8 +50,8 @@ class clientAchiveController extends Controller
         $client ->phonenumber = $request->input('phonenumber') ; 
         $client ->email = $request->input('email') ; 
         $client->save();
-        return  redirect('/achiveclient');
-        // return  view('/achiveclient');
+        // $client = Client::create($request->all());
+        return redirect('/achiveclient');
 
     }
 

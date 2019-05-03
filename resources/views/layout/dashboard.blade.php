@@ -130,7 +130,7 @@
                   <a href="{{url('/achiveclient')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
-                      Archieve Clients
+                      Archive Clients
                     </span>
                   </a>
                 </li>

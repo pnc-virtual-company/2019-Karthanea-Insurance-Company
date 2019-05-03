@@ -19,7 +19,10 @@
                         @foreach ($client as $item)
                         <tr>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient" >
+                            <a href="#" data-toggle="modal" data-target="#editClient" data-id="{{$item->id_client}}"
+                                data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}"
+                                data-addresss="{{$item->addresss}}" data-phonenumber="{{$item->phonenumber}}"
+                                data-email="{{$item->email}}">
                                 <i class="material-icons text-success">edit</i></a>
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id_client}} 
@@ -112,7 +115,7 @@
           </div>
 
           <!-- Modal Edit -->
-          {{-- @foreach ($client as $item)
+          @foreach ($client as $item)
           <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -132,7 +135,7 @@
                                     <label for="firstname">Firstname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" value="{{$item->firstname}}" name="firstname" id="firstname" class="form-control">
+                                    <input type="text" value="" name="firstname" id="firstname" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -142,7 +145,7 @@
                                     <label for="lastname">Lastname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" value="{{$item->lastname}}" name="lastname" id="lastname" class="form-control">
+                                    <input type="text" value="" name="lastname" id="lastname" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -152,7 +155,7 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text"value="{{$item->addresss}}" name="addresss" id="addresss" class="form-control">
+                                    <input type="text"value="" name="addresss" id="addresss" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -162,7 +165,7 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="number"value="{{$item->phonenumber}}" name="phonenumber" id="phonenumber" class="form-control">
+                                    <input type="number"value="" name="phonenumber" id="phonenumber" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -172,7 +175,7 @@
                                     <label for="email">E-Mail</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="email" value="{{$item->email}}" name="email" id="email" class="form-control">
+                                    <input type="email" value="" name="email" id="email" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -184,10 +187,10 @@
                 </form>
               </div>
             </div>
-          </div> --}}
-          {{-- @endforeach --}}
+          </div>
+          @endforeach
 @endsection
-{{-- <script>
+<script>
         $('#editClient').on('show.bs.modal',function (event){
                 var button = $(event.relatedTarget)
                 var firstname = button.data('firstname')
@@ -209,4 +212,4 @@
                 });
             });
     
-    </script> --}}
+    </script>
