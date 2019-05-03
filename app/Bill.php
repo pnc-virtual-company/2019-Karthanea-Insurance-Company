@@ -10,6 +10,6 @@ class Bill extends Model
         'id','status', 'startdate', 'monthlybill','id_contract'
     ];
     public function contract(){
-        return $this->hasOne(Contract::class);
+        return $this->belongsTo(Contract::class,'id_contract');
     }
 }

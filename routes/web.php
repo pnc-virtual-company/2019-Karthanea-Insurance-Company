@@ -65,20 +65,22 @@ Route::get('examples', 'ExamplesController@index')->name('examples');
 /*
 =============================================================================*/
 
-Route::get('/createContract','PageController@createContractType');
+//Route::get('/createContract','PageController@createContractType');
 Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
 
-Route::get('/contracttype','ContractController@index');
 
-Route::get('/createContract','PageController@createContractType');
+Route::resource('/contracttypeController','contracttypeController');
+
+//Route::get('/contracttype','ContractController@index');
+
+
+//Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 Route::get('/client','ClientController@index');
 Route::get('/create','ClientController@create');
-// Route::get('/achiveclient','ClientController@achiveclient');
-Route::resource('/clientadd','ClientController');
 
 Route::get('/client','ClientController@index');
 Route::resource('/achiveclient','clientAchiveController');
@@ -87,8 +89,9 @@ Route::resource('/achiveclient','clientAchiveController');
 
 Route::get('/userCall','ClientController@userCall');
 
-Route::get('/contractlist','ContractController@index');
-
+//Route::get('/contractlist','ContractController@index');
+Route::resource('contractlist','ContractController');
+//Route::post('/store','ContractController@store');
 Route::get('/payment','paymentController@index');
 
 Route::get('/call','callController@index');

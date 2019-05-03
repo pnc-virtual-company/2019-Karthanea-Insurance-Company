@@ -111,7 +111,7 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li class="list-group-item collapsed">
-                <a href="{{url('/contracttype')}}">
+                <a href="{{url('/contracttypeController')}}">
                   <span class="text-white">
                     <i class="material-icons text-white">ballot</i>
                     Contract Type
@@ -130,7 +130,7 @@
                   <a href="{{url('/achiveclient')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
-                      Archieve Clients
+                      Archive Clients
                     </span>
                   </a>
                 </li>
@@ -156,13 +156,13 @@
               <p>Calendar</p>
             </a>
           </li>
-          @if (Auth::user()->name =="Administrator")
+          @if (Auth::user()->name=="Administrator")
             <li class="nav-item">
               <a class="nav-link" href="{{url('users')}}">
-                <i class="material-icons">person</i> {{ __('Users') }}
-              </a>
-            </li>
-          @endif
+                  <i class="material-icons">person</i> {{ __('Users') }}
+                </a>
+              </li>
+            @endif
           <li class="nav-item ">
             <a class="nav-link" href="{{url('/location')}}">
               <i class="material-icons">location_ons</i>

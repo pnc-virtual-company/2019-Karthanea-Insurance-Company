@@ -24,8 +24,8 @@
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id_client}}
                             </td>
-                            <td>{{$item->firstname}} {{$item->lastname}}</td>
-                            <td>{{$item->addresss}}</td>
+                            <td>{{$item->firstname}} {{$item->lastname}} </td>
+                            <td>{{$item->address}}</td>
                             <td>{{$item->phonenumber}}</td>
                             <td>{{$item->email}}</td>
                         </tr>

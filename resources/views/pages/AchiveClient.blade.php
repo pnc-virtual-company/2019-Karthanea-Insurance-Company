@@ -1,3 +1,4 @@
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
@@ -21,13 +22,18 @@
                         @foreach ($client as $item)
                         <tr>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient">
+                            <a href="#" data-toggle="modal" data-target="#editClient" data-id="{{$item->id_client}}"
+                                data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}"
+                                data-addresss="{{$item->addresss}}" data-phonenumber="{{$item->phonenumber}}"
+                                data-email="{{$item->email}}">
                                 <i class="material-icons text-success">edit</i></a>
                                 <input type="checkbox" name="disable" id="disable">
+
                                 {{$item->id_client}}
+
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}}</td>
-                            <td>{{$item->addresss}}</td>
+                            <td>{{$item->address}}</td>
                             <td>{{$item->phonenumber}}</td>
                             <td>{{$item->email}}</td>
                         </tr>
@@ -79,7 +85,9 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
+
                                     <input type="text" name="addresss" id="addresss" class="form-control">
+
                                 </div>
                             </div>
                         </div>
@@ -89,7 +97,9 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
+
                                     <input type="number" name="phonenumber" id="phonenumber" class="form-control">
+
                                 </div>
                             </div>
                         </div>
@@ -106,6 +116,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn bg-primary text-white">OK</button>
+
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
@@ -114,6 +125,7 @@
           </div>
 
           <!-- Modal Edit -->
+          @foreach ($client as $item)
           <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -128,13 +140,22 @@
                     {{ method_field('PUT')}}
                 <div class="modal-body">
                     <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
+
+
+                @foreach ($client as $item)
+
+                <form id="editform" method="POST" action="">
+                    @csrf
+                    @method('PATCH')
+                <div class="modal-body">
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
                                     <label for="firstname">Firstname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" value="{{$item->firstname}}" name="firstname" id="firstname" class="form-control">
+                                    <input type="text" value="" name="firstname" id="firstname" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -144,7 +165,7 @@
                                     <label for="lastname">Lastname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" value="{{$item->lastname}}" name="lastname" id="lastname" class="form-control">
+                                    <input type="text" value="" name="lastname" id="lastname" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -154,7 +175,8 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text"value="{{$item->addresss}}" name="addresss" id="addresss" class="form-control">
+                                    <input type="text"value="{{$item->address}}" name="addresss" id="addresss" class="form-control">
+                                    <input type="text"value="" name="addresss" id="addresss" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -164,7 +186,7 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="number"value="{{$item->phonenumber}}" name="phonenumber" id="phonenumber" class="form-control">
+                                    <input type="number"value="" name="phonenumber" id="phonenumber" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -174,7 +196,7 @@
                                     <label for="email">E-Mail</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="email" value="{{$item->email}}" name="email" id="email" class="form-control">
+                                    <input type="email" value="" name="email" id="email" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -184,14 +206,31 @@
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
                 </form>
-                @endforeach
               </div>
             </div>
           </div>
-          <script>
-    $(document).ready(function() {
-
-  
-})
-          </script>
+          @endforeach
 @endsection
+<script>
+        $('#editClient').on('show.bs.modal',function (event){
+                var button = $(event.relatedTarget)
+                var firstname = button.data('firstname')
+                var lastname = button.data('lastname')    
+                var addresss = button.data('addresss')
+                var phonenumber = button.data('phonenumber')
+                var email = button.data('email')
+               
+                var modal = $(this)
+    
+                modal.find('#firstname').attr('value',firstname)
+                modal.find('#lastname').attr('value',lastname)
+                modal.find('#addresss').attr('value',addresss)
+                modal.find('#phonenumber').attr('value',phonenumber)
+                modal.find('#email').attr('value',email)
+    
+                var url ="{{url('/campaignListTest')}}/"+ id_client;
+                $('#editform').attr('action',url);   
+                });
+            });
+    
+    </script>
