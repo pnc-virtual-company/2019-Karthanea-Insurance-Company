@@ -28,10 +28,10 @@
                                         <td>
                                             <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
                                             <input type="checkbox" name="disable" id="disable">
-                                            {{$value->id_client}}
+                                            {{$value->id}}
                                         </td>
                                         <td>{{$value->firstname}} {{$value->lastname}}</td>
-                                        <td>{{$value->addresss}}</td>
+                                        <td>{{$value->address}}</td>
                                         <td>{{$value->phonenumber}}</td>
                                         <td>{{$value->email}}</td>
                                         <td>
@@ -57,7 +57,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{-- @foreach ($contract as $dataItem)
+                                        @foreach ($contract as $dataItem)
                                         <tr>
                                             <td>
                                                 {{$dataItem->id_contract}}
@@ -65,13 +65,13 @@
                                                     <a href="#"  data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
                                                 </a>
                                             </td>
-                                            <td> --}}
-                                                {{-- @foreach ($data->id_contracttype as $items) --}}
-                                                    {{-- <a href="#" class="text-center">
+                                            <td>
+                                                @foreach ($data->id_contracttype as $items)
+                                                    <a href="#" class="text-center">
                                                         <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                                    </a> --}}
-                                                {{-- @endforeach --}}
-                                            {{-- </td>
+                                                    </a>
+                                                @endforeach
+                                            </td>
                                             <td>{{$dataItem->status}}</td>
                                             <td>{{$dataItem->startdate}}</td>
                                             <td>{{$dataItem->enddate}}</td>
@@ -82,7 +82,7 @@
                                                 </a>
                                             </td>
                                         </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
 
