@@ -89,9 +89,6 @@ class clientAchiveController extends Controller
     public function update(Request $request, $id)
     {
 
-    }
-
-
         $this->validate($request,[
             'firstname'=>'required',
             'lastname'=>'required',
@@ -99,6 +96,7 @@ class clientAchiveController extends Controller
             'phonenumber'=>'required',
             'email'=>'required'
           ]);
+
         $client= Client::findOrFail($id);
         $client ->firstname = $request->input('firstname') ; 
         $client ->lastname = $request->input('lastname') ; 

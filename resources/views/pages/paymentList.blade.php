@@ -26,7 +26,7 @@
                                     @foreach ($client as $value)
                                     <tr>
                                         <td>
-                                            <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
+                                            <a href="{{route('payment.show',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
                                             <input type="checkbox" name="disable" id="disable">
                                             {{$value->id}}
                                         </td>
@@ -60,17 +60,16 @@
                                         @foreach ($contract as $dataItem)
                                         <tr>
                                             <td>
-                                                {{$dataItem->id_contract}}
+                                                {{$dataItem->id}}
                                                 <a href="#" class="text-center">
                                                     <a href="#"  data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
                                                 </a>
                                             </td>
                                             <td>
-                                                @foreach ($data->id_contracttype as $items)
-                                                    <a href="#" class="text-center">
-                                                        <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                                    </a>
-                                                @endforeach
+                                                {{$value->name}}
+                                                <a href="#" class="text-center">
+                                                    <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                                </a>
                                             </td>
                                             <td>{{$dataItem->status}}</td>
                                             <td>{{$dataItem->startdate}}</td>
