@@ -36,21 +36,10 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'firstname'=>'required',
-            'lastname'=>'required',
-            'addresss'=>'required',
-            'phonenumber'=>'required',
-            'email'=>'required'
-          ]);
-        $client= new Client;
-        $client ->firstname = $request->input('firstname') ; 
-        $client ->lastname = $request->input('lastname') ; 
-        $client ->addresss = $request->input('addresss') ; 
-        $client ->phonenumber = $request->input('phonenumber') ; 
-        $client ->email = $request->input('email') ; 
-        $client->save();
-        return  redirect('/achiveclient');
+        $client = Client::create($request->all());
+        return redirect('/achiveclient');
+        
+       
     }
 
     /**

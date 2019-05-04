@@ -308,7 +308,15 @@ $(".txtDate").datepicker({
     
      constrainInput: true
 });
-
+$(".startDate").datepicker({
+    showOn: 'button',
+    buttonText: 'Show Date',
+    buttonImageOnly: true,
+    buttonImage: '../public/images/calendar.png',
+    dateFormat: 'mm/dd/yy',
+    
+     constrainInput: true
+});
 $(".ui-datepicker-trigger").mouseover(function() {
     $(this).css('cursor', 'pointer');
 });
