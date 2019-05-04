@@ -14,7 +14,7 @@
             
                                 <div class="row">
                                     <div class="col-md-12">
-                                        <a class="btn bg-primary text-white" href="{{url('users/create')}}">@lang('Add a new user')</a>
+                                       <a class="btn bg-primary text-white" href="{{url('users/create')}}">@lang('Add a new user')</a>
                                     </div>
                                 </div>
             
@@ -77,7 +77,7 @@
                         <div class="modal-header">
                         <h5 class="modal-title">Delete User</h5>
                         <button type="button" class="close" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true" data-dismiss="modal">&times;</span>
                         </button>
                         </div>
                         <div class="modal-body">
