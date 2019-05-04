@@ -80,7 +80,7 @@ Route::resource('/contracttypeController','contracttypeController');
 //Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
-Route::get('/client','ClientController@index');
+Route::resource('/client','ClientController');
 Route::get('/create','ClientController@create');
 
 Route::get('/client','ClientController@index');

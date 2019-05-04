@@ -53,6 +53,7 @@ class clientAchiveController extends Controller
         // return  redirect('/achiveclient');
         $client = Client::create($request->all());
         return redirect('/achiveclient');
+       
 
     }
 
@@ -98,7 +99,7 @@ class clientAchiveController extends Controller
             'phonenumber'=>'required',
             'email'=>'required'
           ]);
-        $client= Client::find($id);
+        $client= Client::findOrFail($id);
         $client ->firstname = $request->input('firstname') ; 
         $client ->lastname = $request->input('lastname') ; 
         $client ->addresss = $request->input('addresss') ; 
@@ -106,10 +107,8 @@ class clientAchiveController extends Controller
         $client ->email = $request->input('email') ; 
         $client->save();
 
-        $client = Client::findOrFail('$id');
-
         return  redirect('/achiveclient');
-
+        }
 
     /**
      * Remove the specified resource from storage.
