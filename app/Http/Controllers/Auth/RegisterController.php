@@ -89,7 +89,6 @@ class RegisterController extends Controller
     {
         $this->guard()->logout();
 
-        return redirect()->route('login')
-                ->withSuccess('Registered. Please check your email to activate your account.');
+        return redirect()->route('login');
     }
 }

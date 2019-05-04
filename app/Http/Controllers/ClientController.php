@@ -15,12 +15,9 @@ class ClientController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
+
     public function index()
     {
-
-        // $client=Client::all();
-        // return view('pages.AchiveClient',compact('client'));
-
         $client = Client::all();
         return view('pages.clientList',compact('client'));
 
