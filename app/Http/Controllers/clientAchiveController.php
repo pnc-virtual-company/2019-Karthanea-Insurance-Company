@@ -14,7 +14,7 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        $client=Client::all();
+        $client = Client::all();
         return view('pages.AchiveClient',compact('client'));
     }
 
@@ -36,10 +36,12 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
+
         $client = Client::create($request->all());
         return redirect('/achiveclient');
         
        
+
     }
 
     /**
@@ -61,7 +63,7 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-        //
+     //
     }
 
     /**
@@ -73,6 +75,10 @@ class clientAchiveController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+    }
+
+
         $this->validate($request,[
             'firstname'=>'required',
             'lastname'=>'required',
@@ -80,15 +86,16 @@ class clientAchiveController extends Controller
             'phonenumber'=>'required',
             'email'=>'required'
           ]);
-        $client= Client::find($id);
+        $client= Client::findOrFail($id);
         $client ->firstname = $request->input('firstname') ; 
         $client ->lastname = $request->input('lastname') ; 
         $client ->addresss = $request->input('addresss') ; 
         $client ->phonenumber = $request->input('phonenumber') ; 
         $client ->email = $request->input('email') ; 
         $client->save();
+
         return  redirect('/achiveclient');
-    }
+        }
 
     /**
      * Remove the specified resource from storage.

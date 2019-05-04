@@ -71,7 +71,8 @@
                     <i class="material-icons">color_lens</i>
                     <p>
                       Dashboard
-                      <span class="material-icons ml-5" id="dash">arrow_drop_down</span>
+                      <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
+                      <span class="material-icons ml-4" id="dashUp">arrow_drop_up</span>
                     </p>
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
@@ -111,7 +112,7 @@
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
               <li class="list-group-item collapsed">
-                <a href="{{url('/contracttype')}}">
+                <a href="{{url('/contracttypeController')}}">
                   <span class="text-white">
                     <i class="material-icons text-white">ballot</i>
                     Contract Type
@@ -130,7 +131,7 @@
                   <a href="{{url('/achiveclient')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
-                      Archieve Clients
+                      Archive Clients
                     </span>
                   </a>
                 </li>
@@ -156,7 +157,7 @@
               <p>Calendar</p>
             </a>
           </li>
-          @if (Auth::user()->name=="Administrator")
+          @if ( Auth::user()->hasRole('Administrator') )
             <li class="nav-item">
               <a class="nav-link" href="{{url('users')}}">
                   <i class="material-icons">person</i> {{ __('Users') }}
@@ -447,5 +448,5 @@ $(".ui-datepicker-trigger").mouseover(function() {
       ));
     });
   </script>
-
+    
 </html>
