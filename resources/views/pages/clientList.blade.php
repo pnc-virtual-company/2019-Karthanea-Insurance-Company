@@ -15,11 +15,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($client as $item)
+                        @foreach ($client as $value=>$item)
                         
                         <tr>
                             <td>
-                                <a href="" data-toggle="modal" data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id}}
@@ -58,7 +58,7 @@
                                     <label for="name">Firstname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="firstname" id="name" class="form-control">
+                                    <input type="text" name="firstname"  class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +68,7 @@
                                     <label for="name">Lastname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="lastname" id="name" class="form-control">
+                                    <input type="text" name="lastname"  class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -78,7 +78,7 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="address" id="address" class="form-control">
+                                    <input type="text" name="address"  class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -88,7 +88,7 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="number" name="phonenumber" id="phonenumber" class="form-control">
+                                    <input type="number" name="phonenumber"  class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -98,7 +98,7 @@
                                     <label for="email">E-Mail</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="email" name="email" id="email" class="form-control">
+                                    <input type="email" name="email"  class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -117,14 +117,15 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
-                  <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+                
                 </div>
+                
+                <form action="" method="POST" id="editClientList">
+                    @csrf
+                    @method('PATCH')
+                   
                 <div class="modal-body">
-                    <form action="" method="POST" id="editform">
-                        @csrf
-                        @method('PATCH')
+                    
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
@@ -181,6 +182,7 @@
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
+           
               </div>
             </div>
           </div>
@@ -190,12 +192,17 @@
         $('#editClient').on('show.bs.modal',function (event){
               var button = $(event.relatedTarget)
               var firstname = button.data('firstname')
-              var lastname = button.data('lastname')    
+              console.log(firstname)
+              var lastname = button.data('lastname')   
+              console.log(lastname) 
               var address = button.data('address')
+              console.log(address)
               var phonenumber = button.data('phonenumber')
+              console.log(phonenumber)
               var email = button.data('email')
               var id = button.data('id')
-             console.log(email);
+             console.log(email)
+             console.log(id)
 
               var modal = $(this)
   
@@ -206,9 +213,9 @@
               modal.find('#email').attr('value',email)
   
               var url ="{{url('/client')}}/"+ id;
-              $('#editform').attr('action',url);   
+              $('#editClientList').attr('action',url);   
               });
-          });
+          
 
         </script>
 @endsection
