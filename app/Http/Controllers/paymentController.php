@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Client;
+use \App\Bill;
 use \App\Contract;
 use \App\ContractType;
 class paymentController extends Controller
@@ -16,11 +17,12 @@ class paymentController extends Controller
     public function __construct(){
         $this->middleware('auth');
     }
+
     public function index()
     {
         $client = Client::all();
-        // $contract = Contract::all();
-        // $contractType = ContractType::all();
+        $contract = Contract::find('id_client');
+        $client->id_client = $client->contracts->pluck('id_client')->toArray();
         return view('pages.paymentList',compact('client'));
     }
 
@@ -53,7 +55,8 @@ class paymentController extends Controller
      */
     public function show($id)
     {
-        //
+        
+        return view('pages.paymentList',compact('client'));
     }
 
     /**

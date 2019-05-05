@@ -17,7 +17,6 @@
     <link rel="stylesheet" href="{{asset('css/login.css')}}">
 </head>
 <body>
-   @extends('layout.partials._alert')
     <div class="container"><br><br><br>
         <div class="row">
             <div class="col-3"></div>
@@ -31,14 +30,25 @@
                                         <h6 class="text-center text-white">Login</h6>
                                     </div>
                                     @include('validation-errors')
+                                    @if (Auth::check())
+                                        <div class="container">
+                                            <div class="alert alert-warning text-center">
+                                                <h5>You Already Login !!!</h5>
+                                            </div>
+                                            <div class="row d-flex justify-content-center mt-5">
+                                                <a href="{{url('/client')}}" class="btn btn-info">Go to Site Page</a>
+                                            </div>
+                                        </div>
+                                    @else
+                                        
                                     <div class="input-field">
                                         <i class="material-icons prefix" class="text-secondary">markunread</i>
                                         <input type="text" id="autocomplete-inputemail" name="email" value="{{ old('email') }}" class="autocomplete icons {{ $errors->has('email') ? ' is-invalid' : '' }}" required autofocus>
                                         <label for="autocomplete-inputemail">Email</label>
                                         @if ($errors->has('email'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('email') }}</strong>
-                                            </span>
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
                                         @endif
                                     </div>
                                     <div class="input-field">
@@ -46,10 +56,10 @@
                                         <input type="password" id="autocomplete-inputpwd" name="password" class="autocomplete icons {{ $errors->has('password') ? ' is-invalid' : '' }}" required>
                                         <label for="autocomplete-inputpwd">Password</label>
                                         @if ($errors->has('password'))
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $errors->first('password') }}</strong>
-                                            </span>
-                                         @endif
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
+                                        @endif
                                     </div>
                                     <footer>
                                         <div class="container">
@@ -81,6 +91,7 @@
                                             </div>
                                         </div>
                                     </footer>
+                                    @endif
                                 </form>
                             </div>
                         </div>

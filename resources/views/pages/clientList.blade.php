@@ -1,9 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-
         <h1>Information All The Clients </h1>
-
         <div class="card">
             <div class="card-body">
                 <table id="myTable" class="table table-striped table-bordered table-hover">
@@ -18,11 +16,13 @@
                     </thead>
                     <tbody>
                         @foreach ($client as $item)
+                        
                         <tr>
                             <td>
-                                <a href="#" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
+                                <a href="" data-toggle="modal" data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                               
                                 <input type="checkbox" name="disable" id="disable">
-                                {{$item->id_client}}
+                                {{$item->id}}
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}} </td>
                             <td>{{$item->address}}</td>
@@ -38,7 +38,7 @@
             </div>
         </div>
     </div>
-          <!-- Modal -->
+          <!-- Modal add -->
           <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -78,7 +78,7 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="addresss" id="address" class="form-control">
+                                    <input type="text" name="address" id="address" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -122,64 +122,93 @@
                   </button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="POST">
+                    <form action="" method="POST" id="editform">
+                        @csrf
+                        @method('PATCH')
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
-                                    <label for="firstname">Firstname</label>
+                                    <label for="">Firstname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="firstname" id="name" class="form-control">
+                                    <input type="text" name="firstname" id="firstname" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
-                                    <label for="lastname">Lastname</label>
+                                    <label for="">Lastname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="lastname" id="name" class="form-control">
+                                    <input type="text" name="lastname" id="lastname" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
-                                    <label for="address">Address</label>
+                                    <label for="">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="address" id="address" class="form-control">
+                                    <input type="text" name="address" id="address" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
-                                    <label for="phone">Phone</label>
+                                    <label for="">Phone</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="number" name="phone" id="phone" class="form-control">
+                                    <input type="number" name="phonenumber" id="phonenumber" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
-                                    <label for="email">E-Mail</label>
+                                    <label for="">E-Mail</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="email" name="email" id="email" class="form-control">
+                                    <input type="email" name="email" id="email" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
-                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-info">OK</button>
+                    <button type="submit" class="btn btn-info">OK</button>
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
+            </form>
               </div>
             </div>
           </div>
+          
+          <script src="{{asset('js/app.js')}}"></script>
+<script>
+        $('#editClient').on('show.bs.modal',function (event){
+              var button = $(event.relatedTarget)
+              var firstname = button.data('firstname')
+              var lastname = button.data('lastname')    
+              var address = button.data('address')
+              var phonenumber = button.data('phonenumber')
+              var email = button.data('email')
+              var id = button.data('id')
+             console.log(email);
+
+              var modal = $(this)
+  
+              modal.find('#firstname').attr('value',firstname)
+              modal.find('#lastname').attr('value',lastname)
+              modal.find('#address').attr('value',address)
+              modal.find('#phonenumber').attr('value',phonenumber)
+              modal.find('#email').attr('value',email)
+  
+              var url ="{{url('/client')}}/"+ id;
+              $('#editform').attr('action',url);   
+              });
+          });
+
+        </script>
 @endsection

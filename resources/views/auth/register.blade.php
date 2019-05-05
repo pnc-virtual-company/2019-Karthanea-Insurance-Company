@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        button[type=button]:not(:disabled), [type=reset]:not(:disabled), [type=submit]:not(:disabled), button:not(:disabled) {
+        margin: 5px;
+        }
+    </style>
     <link rel="apple-touch-icon" sizes="76x76" href="{{asset('images/apple-icon.png')}}">
     <link rel="icon" type="image/png" href="{{asset('images/icon.png')}}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -34,23 +39,23 @@
                               @include('validation-errors')
                               <div class="input-field">
                                         <i class="material-icons prefix" class="text-secondary">person</i>
-                                        <input type="text" id="autocomplete-input" name="name" required value="{{ old('name') }}" class="autocomplete icons">
-                                        <label for="autocomplete-input ">Username</label>
+                                        <input type="text" id="name" name="name" required value="{{ old('name') }}" class="autocomplete icons">
+                                        <label for="name ">Username</label>
                                   </div>
                                   <div class="input-field">
                                          <i class="material-icons prefix">markunread</i>
-                                         <input type="text" id="autocomplete-input" name="email" required value="{{ old('email') }}" class="autocomplete icons">
-                                         <label for="autocomplete-input">Email</label>
+                                         <input type="text" id="email" name="email" required value="{{ old('email') }}" class="autocomplete icons">
+                                         <label for="email">Email</label>
                                   </div>
                                   <div class="input-field">
                                          <i class="material-icons prefix">lock</i>
-                                         <input type="password" id="autocomplete-input" name="password" required class="autocomplete icons">
-                                         <label for="autocomplete-input">Password</label>
+                                         <input type="password" id="password" name="password" required class="autocomplete icons">
+                                         <label for="password">Password</label>
                                       </div>
                                     <div class="input-field">
                                          <i class="material-icons prefix">lock</i>
-                                         <input type="password" id="autocomplete-input" name="password_confirmation" required class="autocomplete icons">
-                                         <label for="autocomplete-input">Confirm Password</label>
+                                         <input type="password" id="password_confirmation" name="password_confirmation" required class="autocomplete icons">
+                                         <label for="password_confirmation">Confirm Password</label>
                                     </div>
                                   <footer>
                                       <div class="container">
@@ -58,6 +63,9 @@
                                               <div class="form-group">
                                                   <input type="submit" class="btn btn-info btn-sm right text-white" value="Submit Register">
                                               </div>
+                                              <div class="form-group">
+                                                    <a href="{{ route('login') }}"><button  type="button" class="btn btn-secondary">Cancel</button></a>
+                                            </div>
                                           </div>
                                       </div>
                                   </footer>

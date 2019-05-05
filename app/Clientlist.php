@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Client extends Model
+class Clientlist extends Model
 {
     protected $table='clients';
     protected $primarykey='id';
@@ -15,8 +15,6 @@ class Client extends Model
         'phonenumber',
         'email'
     ];
-
-    
     public function calls(){
         return $this->hasMany(Call::class);
     }

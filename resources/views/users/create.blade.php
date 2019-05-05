@@ -34,8 +34,10 @@
                             @endforeach
                             </select>
                         </div>
-
-                        <input type="submit" class="btn bg-primary" value="Save" />
+                        <div class="float-right">
+                            <a href="{{url('users')}}" class="btn bg-info text-white">Back To List</a>
+                            <input type="submit" class="btn bg-primary text-white" value="Save" />
+                        </div>
                     </form>
                 </div>
             </div>
