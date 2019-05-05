@@ -14,8 +14,8 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        // $client = Client::all();
-        // return view('pages.AchiveClient',compact('client'));
+        $client = Client::all();
+        return view('pages.AchiveClient',compact('client'));
     }
 
     /**
@@ -76,7 +76,7 @@ class clientAchiveController extends Controller
     public function update(Request $request, $id)
     {
       
-      $client =Client::find($id);//seect * from Post where id=$id
+      $client =Client::findOrFail($id);//seect * from Post where id=$id
       $client->update($request->all());
       return  redirect('/achiveclient');
         }
