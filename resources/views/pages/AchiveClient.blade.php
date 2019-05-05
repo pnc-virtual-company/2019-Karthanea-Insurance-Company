@@ -1,4 +1,4 @@
-
+{{-- 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 
@@ -27,9 +27,7 @@
                                 data-addresss="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}"
                                 data-email="{{$item->email}}"> <i class="material-icons text-success">edit</i></a>
                                 <input type="checkbox" name="disable" id="disable">
-
                                 {{$item->id}}
-
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}}</td>
                             <td>{{$item->address}}</td>
@@ -222,4 +220,4 @@
                 $('#editform').attr('action',url);   
                 });
     
-    </script>
+    </script> --}}

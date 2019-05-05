@@ -21,8 +21,8 @@ class CreateBillsTable extends Migration
             $table->integer('monthlybill');
             $table->timestamps();
 
-            $table->integer('id_contract')->unsigned();
-            $table->foreign('id_contract')
+            $table->integer('contract_id')->unsigned();
+            $table->foreign('contract_id')
                   ->references('id')
                   ->on('contracts')
                   ->onDelete('cascade');

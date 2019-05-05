@@ -21,9 +21,11 @@ class paymentController extends Controller
     public function index()
     {
         $client = Client::all();
-        $contract = Contract::find('id_client');
-        $client->id_client = $client->contracts->pluck('id_client')->toArray();
-        return view('pages.paymentList',compact('client'));
+        // $contract = Contract::find('id_client');
+        // $client->id_client = $client->contracts->pluck('id_client')->toArray();
+        $contract = Contract::all();
+        // $client->contract = contract()->client_id;
+        return view('pages.paymentList',compact('client','contract'));
     }
 
     /**
@@ -55,8 +57,8 @@ class paymentController extends Controller
      */
     public function show($id)
     {
-        
-        return view('pages.paymentList',compact('client'));
+        // $contract = Contract::all();
+        // return view('pages.paymentList',compact('client'));
     }
 
     /**
