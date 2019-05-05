@@ -72,7 +72,7 @@
                     <p>
                       Dashboard
                       <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
-                      <span class="material-icons ml-4" id="dashUp">arrow_drop_up</span>
+                      {{-- <span class="material-icons ml-4" id="dashUp">arrow_drop_up</span> --}}
                     </p>
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
@@ -107,7 +107,7 @@
               <i class="material-icons">work</i>
               <p>Managements
                 <span class="material-icons ml-4" id="manageDown">arrow_drop_down</span>
-                <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span>
+                {{-- <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span> --}}
               </p>
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -120,7 +120,7 @@
                     </a>
                   </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/contractlist')}}">
+                  <a href="{{url('/contract')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">description</i>
                       Contract List
@@ -414,7 +414,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
       }
   });
 
-
 //PieChart
   var pie = document.getElementById('pieChart').getContext('2d');
   var pieChart = new Chart(pie, {
@@ -441,12 +440,4 @@ $(".ui-datepicker-trigger").mouseover(function() {
       }
   });
   </script>
-  <script>
-    $(document).ready(function(){
-      $('#dashboard').click(function(
-        $('a#dashboard p span#dash').html('<span class="material-icons ml-5" id="dash">arrow_drop_up</span>');
-      ));
-    });
-  </script>
-    
 </html>
