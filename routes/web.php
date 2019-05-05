@@ -84,7 +84,6 @@ Route::get('/create','ClientController@create');
 
 Route::get('/client','ClientController@index');
 Route::resource('/achiveclient','clientAchiveController');
-// Route::POST('/clientadd','clientAchiveController@store');
 
 
 Route::get('/userCall','ClientController@userCall');
