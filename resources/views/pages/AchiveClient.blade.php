@@ -132,7 +132,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body"
+                <div class="modal-body">
                 <form id="editform" method="POST" action="">
                     @csrf
                     @method('PATCH')
@@ -221,6 +221,5 @@
                 var url ="{{url('/achiveclient')}}/"+ id;
                 $('#editform').attr('action',url);   
                 });
-            });
     
     </script>

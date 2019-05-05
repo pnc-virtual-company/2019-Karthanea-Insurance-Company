@@ -402,8 +402,8 @@
             var startdate = button.data('startdate')
             console.log(status)
             var monthlybill = button.data('monthlybill')
-            var id_client = button.data('id_client')
-            var id_contracttype = button.data('id_contracttype')
+            var client_id = button.data('client_id')
+            var contracttype_id = button.data('contracttype_id')
             var id = button.data('id')
             var modal = $(this)
             modal.find('#status').attr('value',status)
@@ -411,8 +411,8 @@
             modal.find('#enddate').attr('value',enddate)
             modal.find('#startdate').attr('value',startdate)
             modal.find('#monthlybill').attr('value',monthlybill)
-            modal.find('#id_client').attr('value',id_client)
-            modal.find('#id_contracttype').attr('value',id_contracttype)
+            modal.find('#id_client').attr('value',client_id)
+            modal.find('#id_contracttype').attr('value',contracttype_id)
             
             var url ="{{url('/contractlist')}}/"+id;
             $('#editForm').attr('action',url);   
