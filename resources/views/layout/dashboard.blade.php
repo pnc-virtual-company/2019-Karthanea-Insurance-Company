@@ -71,7 +71,8 @@
                     <i class="material-icons">color_lens</i>
                     <p>
                       Dashboard
-                      <span class="material-icons ml-5" id="dash">arrow_drop_down</span>
+                      <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
+                      <span class="material-icons ml-4" id="dashUp">arrow_drop_up</span>
                     </p>
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
@@ -156,7 +157,7 @@
               <p>Calendar</p>
             </a>
           </li>
-          @if (Auth::user()->name=="Administrator")
+          @if ( Auth::user()->hasRole('Administrator') )
             <li class="nav-item">
               <a class="nav-link" href="{{url('users')}}">
                   <i class="material-icons">person</i> {{ __('Users') }}
@@ -308,7 +309,15 @@ $(".txtDate").datepicker({
     
      constrainInput: true
 });
-
+$(".startDate").datepicker({
+    showOn: 'button',
+    buttonText: 'Show Date',
+    buttonImageOnly: true,
+    buttonImage: '../public/images/calendar.png',
+    dateFormat: 'mm/dd/yy',
+    
+     constrainInput: true
+});
 $(".ui-datepicker-trigger").mouseover(function() {
     $(this).css('cursor', 'pointer');
 });
@@ -439,5 +448,5 @@ $(".ui-datepicker-trigger").mouseover(function() {
       ));
     });
   </script>
-
+    
 </html>

@@ -73,7 +73,7 @@ class ContractController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -85,7 +85,9 @@ class ContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contract = \App\Contract::find($id);//select * from Post where id=$id
+        $contract->update($request->all());
+        return  redirect('contractlist');
     }
 
     /**
