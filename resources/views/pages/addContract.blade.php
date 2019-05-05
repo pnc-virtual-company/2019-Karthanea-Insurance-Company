@@ -110,7 +110,7 @@
                                                         
                                                         <div class="col-10">
                                                            
-                                                                <select name="client_id" id="client_id" class="browser-default custom-select">
+                                                                <select name="client_id" id="client_id" class="browser-default custom-select" required>
                                                                      @foreach ($client as $item)
                                                                     <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
                                                                     @endforeach
@@ -130,15 +130,15 @@
 
                                                                 <div class="col-10">
 
-                                                                        <div class="input-group col-md-12">
-                                                                                <select name="contracttype_id" id="" class="browser-default custom-select">
+                                                                        <div class="input-group ">
+                                                                                <select name="contracttype_id" id="" class="browser-default custom-select" required>
                                                                                         @foreach ($contracttype as $item)
                                                                                        <option value="{{$item->id}}">{{$item->contracttype}}</option>
                                                                                        @endforeach
                                                                                    </select>
                                                                                 {{-- <input class="form-control py-2" name="id_contracttype" type="search"  id="example-search-input"> --}}
                                                                                 <span class="input-group-append">
-                                                                                    <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#select" type="button" style="margin-top:0%;">
+                                                                                    <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectCreateContract" type="button" style="margin-top:0%;">
                                                                                        Select
                                                                                     </button>
                                                                                 </span>
@@ -153,13 +153,13 @@
     
                                                             <div class="row">
 
-                                                                    <div class="col-6">
+                                                                    <div class="col-2">
                                                                             <label for="">Status</label>
                                                                         
                                                                      </div>
-                                                                     <div class="col-6">
+                                                                     <div class="col-10">
                                                                           
-                                                                        <select class="browser-default custom-select" name="status">
+                                                                        <select class="browser-default custom-select" name="status" required>
                                                                             <option selected value="Open">Open</option> 
                                                                             <option value="To be completed">To be completed</option>                                                                              
                                                                             <option value="To be signed">To be signed</option>
@@ -186,7 +186,7 @@
 
                                                                             <div class="row">
                                                                                 <div class="col-12">
-                                                                                      <input type='text' name="startdate" class='txtDate' placeholder="mm/dd/yy"  />
+                                                                                      <input type='text' name="startdate" class='txtDate' placeholder="mm/dd/yy"  required/>
 
                                                                                 </div>
                                                                               </div>
@@ -204,7 +204,7 @@
                                                               <div class="col-9">
                                                                   <div class="row">
                                                                       <div class="col-12">
-                                                                            <input type='text' name="enddate" class='txtDate' placeholder="mm/dd/yy"  />
+                                                                            <input type='text' name="enddate" class='txtDate' placeholder="mm/dd/yy"  required/>
                                                                       </div>
                                                                     </div>
                                                                     </div>
@@ -220,7 +220,7 @@
                                                         <div class="col-2"><label for="" >Monthly bill</label></div>
                                                         
                                                         <div class="col-10">
-                                                            <input type="text" name="monthlybill" class="form-control">
+                                                            <input type="text" name="monthlybill" class="form-control" required>
                                                         </div>   
                                                     </div>
                                                 </div>
@@ -231,7 +231,7 @@
                                 </div>
                             <div class="modal-footer mr-5">
                                 <button type="submit" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
-                                <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                                <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cancel</button>
                             </div>
                         </form>
                         </div>
@@ -252,7 +252,7 @@
                                 <h5 class="modal-title" id="exampleModalLabel">Edit Contract</h5>
                               </div>
                               <div class="card-body">
-                                    <form action=" " method="POST" id="editForm">
+                                    <form action="" method="POST" id="editForm">
                                             
                                             @csrf
                                             @method('PATCH')
@@ -266,7 +266,7 @@
                                                                
                                                                     <select name="client_id" id="client_id" class="browser-default custom-select" value="">
                                                                          @foreach ($client as $item)
-                                                                        <option value="{{$item->id}}" name="client_id" id="client_id" >{{$item->firstname}} {{$item->lastname}}</option>
+                                                                        <option value="{{$item->id}}" >{{$item->firstname}} {{$item->lastname}}</option>
                                                                         @endforeach
                                                                     </select>
                                                             </div>
@@ -280,7 +280,7 @@
     
                                                                     <div class="col-10">
     
-                                                                            <div class="input-group col-md-12">
+                                                                            <div class="input-group">
                                                                                 <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select">
                                                                                     @foreach ($contracttype as $item)
                                                                                    <option value="{{$item->id}}">{{$item->contracttype}}</option>
@@ -288,7 +288,7 @@
                                                                                </select>
                                                                                     {{-- <input class="form-control py-2" name="id_contracttype" type="search"  id="example-search-input"> --}}
                                                                                     <span class="input-group-append">
-                                                                                        <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectAddContract" type="button" style="margin-top:0%;">
+                                                                                        <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectUpdateContract" type="button" style="margin-top:0%;">
                                                                                            Select
                                                                                         </button>
                                                                                     </span>
@@ -303,11 +303,11 @@
         
                                                                 <div class="row">
     
-                                                                        <div class="col-6">
+                                                                        <div class="col-2">
                                                                                 <label for="">Status</label>
                                                                             
                                                                          </div>
-                                                                         <div class="col-6">
+                                                                         <div class="col-10">
                                                                               
                                                                             <select class="browser-default custom-select" name="status" id="status"  >
                                                                                @foreach ($contractselect as $item)
@@ -403,6 +403,7 @@
             console.log(status)
             var monthlybill = button.data('monthlybill')
             var client_id = button.data('client_id')
+            console.log(client_id)
             var contracttype_id = button.data('contracttype_id')
             var id = button.data('id')
             var modal = $(this)
@@ -421,7 +422,7 @@
 
             {{-- model select contract  --}}
 
-            <div class="modal fade bd-example" id="selectAddContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal fade bd-example" id="selectUpdateContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                     <div class="modal-dialog ">
                         <div class="modal-content">
                                 <div class="modal-header">
@@ -457,15 +458,7 @@
                                                                     <td>Moto</td>
                                                                    
                                                                 </tr>
-                                                                <tr >
-                                                                    <td class="text-center">
-                                                                        <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                                                        <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                                                                       3
-                                                                    </td>
-                                                                    <td>House</td>
-                                                                   
-                                                                </tr>
+                                                                
                                                             </tbody>
                                                            
                                                         </table>
@@ -479,7 +472,7 @@
                                                       <h5 class="modal-title" id="exampleModalLabel">Edit contract type</h5>
                                                       
                                                     </div>
-                                                    <form id="editform" method="POST" action="">
+                                                    <form id="" method="POST" action="">
                                                             @csrf
                                                             @method('PATCH')
 
@@ -554,7 +547,7 @@
    
 {{-- model select contract  --}}
 
-<div class="modal fade bd-example" id="select"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+<div class="modal fade bd-example" id="selectCreateContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog ">
             <div class="modal-content">
                     <div class="modal-header">
@@ -575,8 +568,8 @@
                                                   
                                                     <tr >
                                                         <td class="text-center">
-                                                            <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                                            <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
+                                                            <a href="#"  data-toggle="modal" data-target="#deleteContracttyprCreate"><i class="material-icons text-danger">delete</i></a>
+                                                            <a href="#"  data-toggle="modal" data-target="#updateContracttypeCreate"><i class="material-icons text-success">edit</i></a>
                                                            1
                                                         </td>
                                                         <td>Car</td>
@@ -584,22 +577,15 @@
                                                     
                                                     <tr >
                                                         <td class="text-center">
-                                                            <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                                            <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
+                                                            <a href="#"  data-toggle="modal" data-target="#deleteContracttyprCreate"><i class="material-icons text-danger">delete</i></a>
+                                                            <a href="#"  data-toggle="modal" data-target="#updateContracttypeCreate"><i class="material-icons text-success">edit</i></a>
+                                                           
                                                            2
                                                         </td>
                                                         <td>Moto</td>
                                                        
                                                     </tr>
-                                                    <tr >
-                                                        <td class="text-center">
-                                                            <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                                            <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                                                           3
-                                                        </td>
-                                                        <td>House</td>
-                                                       
-                                                    </tr>
+                                                    
                                                 </tbody>
                                                
                                             </table>
