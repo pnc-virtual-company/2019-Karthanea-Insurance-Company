@@ -37,7 +37,7 @@
                                                                 </div>
                                                                 <div class="col-4">
                                                                         <a href="#" class="text-center">
-                                                                                <a href="{{route('contractlist.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->stardate}}" data-id_contracttype="{{$item->id_contracttype}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-id_client="{{$item->id_client}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
+                                                                                <a href="{{route('contractlist.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
                                                                         </a>
                                                                 </div>
                                                             </div>
@@ -110,7 +110,7 @@
                                                         
                                                         <div class="col-10">
                                                            
-                                                                <select name="id_client" id="client" class="browser-default custom-select">
+                                                                <select name="client_id" id="client_id" class="browser-default custom-select">
                                                                      @foreach ($client as $item)
                                                                     <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
                                                                     @endforeach
@@ -131,7 +131,7 @@
                                                                 <div class="col-10">
 
                                                                         <div class="input-group col-md-12">
-                                                                                <select name="id_contracttype" id="" class="browser-default custom-select">
+                                                                                <select name="contracttype_id" id="" class="browser-default custom-select">
                                                                                         @foreach ($contracttype as $item)
                                                                                        <option value="{{$item->id}}">{{$item->contracttype}}</option>
                                                                                        @endforeach
@@ -264,9 +264,9 @@
                                                             </div>
                                                             <div class="col-10">
                                                                
-                                                                    <select name="id_client" id="id_client" class="browser-default custom-select" value="">
+                                                                    <select name="client_id" id="client_id" class="browser-default custom-select" value="">
                                                                          @foreach ($client as $item)
-                                                                        <option value="{{$item->id}}" name="id_client" id="id_client" >{{$item->firstname}} {{$item->lastname}}</option>
+                                                                        <option value="{{$item->id}}" name="client_id" id="client_id" >{{$item->firstname}} {{$item->lastname}}</option>
                                                                         @endforeach
                                                                     </select>
                                                             </div>
@@ -281,7 +281,7 @@
                                                                     <div class="col-10">
     
                                                                             <div class="input-group col-md-12">
-                                                                                <select name="id_contracttype" id="id_contracttype" class="browser-default custom-select">
+                                                                                <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select">
                                                                                     @foreach ($contracttype as $item)
                                                                                    <option value="{{$item->id}}">{{$item->contracttype}}</option>
                                                                                    @endforeach
@@ -402,8 +402,8 @@
             var startdate = button.data('startdate')
             console.log(status)
             var monthlybill = button.data('monthlybill')
-            var id_client = button.data('id_client')
-            var id_contracttype = button.data('id_contracttype')
+            var client_id = button.data('client_id')
+            var contracttype_id = button.data('contracttype_id')
             var id = button.data('id')
             var modal = $(this)
             modal.find('#status').attr('value',status)
@@ -411,8 +411,8 @@
             modal.find('#enddate').attr('value',enddate)
             modal.find('#startdate').attr('value',startdate)
             modal.find('#monthlybill').attr('value',monthlybill)
-            modal.find('#id_client').attr('value',id_client)
-            modal.find('#id_contracttype').attr('value',id_contracttype)
+            modal.find('#client_id').attr('value',client_id)
+            modal.find('#contracttype_id').attr('value',contracttype_id)
             
             var url ="{{url('/contractlist')}}/"+id;
             $('#editForm').attr('action',url);   

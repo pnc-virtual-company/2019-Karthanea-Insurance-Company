@@ -63,21 +63,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'firstname'=>'required',
-            'lastname'=>'required',
-            'addresss'=>'required',
-            'phonenumber'=>'required',
-            'email'=>'required'
-          ]);
-        $client= new Client;
-        $client ->firstname = $request->input('firstname') ; 
-        $client ->lastname = $request->input('lastname') ; 
-        $client ->addresss = $request->input('addresss') ; 
-        $client ->phonenumber = $request->input('phonenumber') ; 
-        $client ->email = $request->input('email') ; 
-        $client->save();
-        return  redirect('/client');
+        
     }
 
     /**
@@ -99,8 +85,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        $client = Client::findOrfail($id);
-        return view('pages.AchiveClient',compact('client'));
+     
     }
 
     /**
@@ -112,21 +97,9 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            'firstname'=>'required',
-            'lastname'=>'required',
-            'addresss'=>'required',
-            'phonenumber'=>'required',
-            'email'=>'required'
-          ]);
-        $client=Client::find($id);
-        $client->firstname=$request->get('firstname');
-        $client->lastname=$request->get('lastname');
-        $client->addresss=$request->get('addresss');
-        $client->phonenumber=$request->get('phonenumber');
-        $client->email=$request->get('email');
-        $client->save();
-        return redirect('/achiveclient');
+        $ = \App\Contract::find($id);//select * from Post where id=$id
+        $contract->update($request->all());
+        return  redirect('contractlist');
     }
 
     /**
