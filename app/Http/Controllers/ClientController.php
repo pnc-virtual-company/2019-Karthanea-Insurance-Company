@@ -44,8 +44,10 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
+
         $client = Clientlist::create($request->all());
         return redirect('/client');
+
     }
 
     /**
@@ -67,7 +69,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-       
+
     }
 
     /**
@@ -79,10 +81,12 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         
         $client = Clientlist::find($id);//seect * from Post where id=$id
         $client->update($request->all());
         return  redirect('/client');
+
 
     }
 
