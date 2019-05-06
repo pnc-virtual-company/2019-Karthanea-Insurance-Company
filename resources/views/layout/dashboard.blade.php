@@ -190,7 +190,7 @@
                   @if (Auth::user()->avatar!= null)
                     <img id="imgProfilePic" src="{{asset('storage/images/'.Auth::user()->avatar)}}">
                   @else
-                    <img id="imgProfilePic" src="{{asset('storage/images/default-avatar.png')}}">
+                    <img id="imgProfilePic" src="{{asset('storage/images/avatar.jpg')}}">
                   @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">

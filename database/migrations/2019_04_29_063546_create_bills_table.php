@@ -14,13 +14,8 @@ class CreateBillsTable extends Migration
     public function up()
     {
         Schema::create('bills', function (Blueprint $table) {
-             $table->increments('id');
-            $table->text('status');
-            $table->date('startdate');
-            $table->date('enddate');
-            $table->integer('monthlybill');
+            $table->increments('id');
             $table->timestamps();
-
             $table->integer('contract_id')->unsigned();
             $table->foreign('contract_id')
                   ->references('id')

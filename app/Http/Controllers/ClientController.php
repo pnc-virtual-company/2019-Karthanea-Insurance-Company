@@ -44,8 +44,13 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-
+        
+        
         $client = Clientlist::create($request->all());
+        $checkbox=$request->checkbox;       
+        foreach($checkbox as $key=>$item){
+            $client->$item->state->attach($item); 
+        }
         return redirect('/client');
 
     }
@@ -82,11 +87,9 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
 
-        
         $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
         $client->update($request->all());
         return  redirect('/client');
-
 
     }
 

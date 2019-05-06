@@ -1,7 +1,8 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1>Information All The Clients </h1>
+        <h1>Information All The Clients Active </h1>
         <div class="card">
             <div class="card-body">
                 <table id="myTable" class="table table-striped table-bordered table-hover">
@@ -16,12 +17,13 @@
                     </thead>
                     <tbody>
                         @foreach ($client as $value=>$item)
-                        
                         <tr>
                             <td>
                                 <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                
-                                <input type="checkbox" name="disable" id="disable">
+                                <input type="checkbox" name="checkbox" id="checkbox">
+                                
+
                                 {{$item->id}}
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}} </td>
@@ -216,6 +218,13 @@
               $('#editClientList').attr('action',url);   
               });
           
+
+           if(disable.checked == true){
+                // document.getElementById('disable').innerHTML='checked';
+           } else {
+
+           }
+});
 
         </script>
 @endsection
