@@ -19,7 +19,7 @@
                         
                         <tr>
                             <td>
-                                <a href="{{route('achiveclient.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id}}
@@ -119,7 +119,6 @@
                   <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
                 
                 </div>
-                <div class="modal-body">
                 
                 <form action="" method="POST" id="editClientList">
                     @csrf
@@ -191,26 +190,6 @@
           <script src="{{asset('js/app.js')}}"></script>
 <script>
         $('#editClient').on('show.bs.modal',function (event){
-                var button = $(event.relatedTarget)
-                var firstname = button.data('firstname')
-                var lastname = button.data('lastname')    
-                var address = button.data('address')
-                var phonenumber = button.data('phonenumber')
-                var email = button.data('email')
-               
-                var modal = $(this)
-    
-                modal.find('#firstname').attr('value',firstname)
-                modal.find('#lastname').attr('value',lastname)
-                modal.find('#address').attr('value',address)
-                modal.find('#phonenumber').attr('value',phonenumber)
-                modal.find('#email').attr('value',email)
-    
-                var url ="{{url('/achiveclient')}}/"+ id;
-                $('#editform').attr('action',url);   
-                });
-    
-    </script> --}}
               var button = $(event.relatedTarget)
               var firstname = button.data('firstname')
               console.log(firstname)
@@ -233,7 +212,7 @@
               modal.find('#phonenumber').attr('value',phonenumber)
               modal.find('#email').attr('value',email)
   
-              var url ="{{url('/client')}}/"+ id;
+              var url ="{{url('/clientAchive')}}/"+ id;
               $('#editClientList').attr('action',url);   
               });
           
