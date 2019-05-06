@@ -213,6 +213,7 @@
               modal.find('#email').attr('value',email)
   
               var url ="{{url('/clientAchive')}}/"+ id;
+
               $('#editClientList').attr('action',url);   
               });
           
