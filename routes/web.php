@@ -86,7 +86,7 @@ Route::get('/create','ClientController@create');
 Route::get('/client','ClientController@index');
 Route::resource('/achiveclient','clientAchiveController');
 
-Route::get('/userCall','ClientController@userCall');
+Route::resource('/userCall','UsercallController');
 
 //Route::get('/contractlist','ContractController@index');
 Route::resource('contract','ContractController');

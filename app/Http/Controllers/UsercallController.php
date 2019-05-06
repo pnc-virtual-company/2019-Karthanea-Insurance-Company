@@ -4,20 +4,16 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class CalendarController extends Controller
+class UsercallController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
     public function index()
     {
-        $call = \App\Call::all();
-        return view('pages.calendar',compact('call'));
+        return view('pages.userCall');
     }
 
     /**
