@@ -24,12 +24,11 @@
                             <td>
                             <a href="#" data-toggle="modal" data-target="#editClient" data-id="{{$item->id_client}}"
                                 data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}"
-                                data-addresss="{{$item->addresss}}" data-phonenumber="{{$item->phonenumber}}"
-                                data-email="{{$item->email}}">
-                                <i class="material-icons text-success">edit</i></a>
+                                data-addresss="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}"
+                                data-email="{{$item->email}}"> <i class="material-icons text-success">edit</i></a>
                                 <input type="checkbox" name="disable" id="disable">
 
-                                {{$item->id_client}}
+                                {{$item->id}}
 
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}}</td>
@@ -86,7 +85,7 @@
                                 </div>
                                 <div class="col-10">
 
-                                    <input type="text" name="addresss" id="addresss" class="form-control">
+                                    <input type="text" name="address" id="address" class="form-control">
 
                                 </div>
                             </div>
@@ -97,7 +96,6 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
-
                                     <input type="number" name="phonenumber" id="phonenumber" class="form-control">
 
                                 </div>
@@ -125,7 +123,6 @@
           </div>
 
           <!-- Modal Edit -->
-          @foreach ($client as $item)
           <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
@@ -135,15 +132,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form id="editform" method="POST" action="/achiveclient">
-                    {{ csrf_field() }}
-                    {{ method_field('PUT')}}
-                <div class="modal-body">
-                    <input type="hidden" name="_token" value="<?php echo csrf_token(); ?>">
-
-
-                @foreach ($client as $item)
-
+                <div class="modal-body"
                 <form id="editform" method="POST" action="">
                     @csrf
                     @method('PATCH')
@@ -160,63 +149,64 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="lastname">Lastname</label>
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="lastname">Lastname</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" value="" name="lastname" id="lastname" class="form-control">
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-10">
-                                    <input type="text" value="" name="lastname" id="lastname" class="form-control">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="address">Address</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" value="" name="address" id="address" class="form-control">
+                                            
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="phone">Phone</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="number"value="" name="phonenumber" id="phonenumber" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="email">E-Mail</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="email" value="" name="email" id="email" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="address">Address</label>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text"value="{{$item->address}}" name="addresss" id="addresss" class="form-control">
-                                    <input type="text"value="" name="addresss" id="addresss" class="form-control">
-                                </div>
-                            </div>
+                        <div class="modal-footer">
+                                <button type="submit" class="btn bg-primary text-white edit">Edit</button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="phone">Phone</label>
-                                </div>
-                                <div class="col-10">
-                                    <input type="number"value="" name="phonenumber" id="phonenumber" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="email">E-Mail</label>
-                                </div>
-                                <div class="col-10">
-                                    <input type="email" value="" name="email" id="email" class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer">
-                        <button type="submit" class="btn bg-primary text-white edit">Edit</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                </div>
                 </form>
               </div>
             </div>
           </div>
-          @endforeach
-@endsection
+         
+              
+          @endsection
 <script>
         $('#editClient').on('show.bs.modal',function (event){
                 var button = $(event.relatedTarget)
                 var firstname = button.data('firstname')
                 var lastname = button.data('lastname')    
-                var addresss = button.data('addresss')
+                var address = button.data('address')
                 var phonenumber = button.data('phonenumber')
                 var email = button.data('email')
                
@@ -224,11 +214,11 @@
     
                 modal.find('#firstname').attr('value',firstname)
                 modal.find('#lastname').attr('value',lastname)
-                modal.find('#addresss').attr('value',addresss)
+                modal.find('#address').attr('value',address)
                 modal.find('#phonenumber').attr('value',phonenumber)
                 modal.find('#email').attr('value',email)
     
-                var url ="{{url('/campaignListTest')}}/"+ id_client;
+                var url ="{{url('/achiveclient')}}/"+ id;
                 $('#editform').attr('action',url);   
                 });
             });

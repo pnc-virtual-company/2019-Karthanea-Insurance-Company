@@ -7,4 +7,4 @@ $('#deleteModal').on('show.bs.modal',function(event){
   modal.find('#title').text(title)
   var url = "{{url('users/')}}/"+id;
   $("#fDelete").attr('action',url);
-});
+  });

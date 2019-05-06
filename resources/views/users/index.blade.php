@@ -2,24 +2,24 @@
 @extends('layout.dashboard')
 @section('content')
 <body>
-        <div class="container">
-                <div class="row justify-content-center">
+    <div class="container">
+        <div class="row justify-content-center">
                     <div class="col-md-12">
                         
-                            <div> <h1>@lang('Information of users')</h1></div>
+                        <div> <h1>@lang('Information of users')</h1></div>
                         @include('session-flash')
                         <div class="card">
-            
+                            
                             <div class="card-body">
-            
+                                
                                 <div class="row">
                                     <div class="col-md-12">
-                                       <a class="btn bg-primary text-white" href="{{url('users/create')}}">@lang('Add a new user')</a>
+                                        <a class="btn bg-primary text-white" href="{{url('users/create')}}">@lang('Add a new user')</a>
                                     </div>
                                 </div>
-            
+                                
                                 <div class="row"><div class="col-md-12">&nbsp;</div></div>
-            
+                                
                                 <div class="row">
                                     <div class="col-md-12">
                                         <table id="myTable" class="table table-striped table-bordered table-hover ">
@@ -35,10 +35,10 @@
                                             <tbody>
                                                 @foreach ($users as $user)
                                                 <tr data-id="{{ $user->id }}">
-                                                    <td>      
+                                                        <td>      
                                                             <span>{{ $user->id }}</span>
-                                                        
-                                                    </td>
+                                                            
+                                                        </td>
                                                     <td>
                                                         <span>{!! $user->name !!}</span>
                                                     </td>
@@ -54,24 +54,25 @@
                                                         <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
                                                         <a href="" aria-hidden="true" data-toggle="modal" data-target="#deleteModal" data-id="{{$user->id}}" data-title="{{$user->name}}"><i class="material-icons text-danger">delete</i></a>
                                                     
-                                                </td>
+                                                    </td>
                                                 </tr>
                                             @endforeach
-                                            </tbody>
+                                        </tbody>
                                         </table>
                                     
                                     </div>
                                 </div>
                             </div>
-            
+                            
                         </div>
                         
                     </div>
                 </div>
-            </div>             
-            @endsection
-             <!-- Delete Modal -->
-             <div  class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            </div>
+    {{-- <script src="{{asset('js/app.js')}}"></script> --}}
+    
+              <!-- Delete Modal -->
+              <div  class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -96,22 +97,22 @@
                     </div>
                     </div>
                 </div>
-
-                              <!-- Modal -->
-            <script src="{{asset('js/app.js')}}"></script>
-            <script src="{{asset('js/jquery-3.3.1.min.js')}} "></script>
-            <script>
-                    $('#deleteModal').on('show.bs.modal',function(event){
-                        var button=$(event.relatedTarget)
-                        var id =button.data('id')
-                        console.log(id);
-                        var title =button.data('title')
-                        var modal=$(this)
-                        modal.find('#title').text(title)
-                        var url = "{{url('users/')}}/"+id;
-                        $("#fDelete").attr('action',url);
-                        });
-                </script>   
-          
-             
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+          <script type="text/javascript">
+                          $('#deleteModal').on('show.bs.modal',function(event){
+                              var button=$(event.relatedTarget)
+                              var id =button.data('id')
+                              console.log(id);
+                              var title =button.data('title')
+                              var modal=$(this)
+                              modal.find('#title').text(title)
+                              var url = "{{url('users/')}}/"+id;
+                              $("#fDelete").attr('action',url);
+                              });
+                      </script>   
+          @endsection
+                      
+      
+       
+            
 </body>

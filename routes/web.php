@@ -80,18 +80,13 @@ Route::resource('/contracttypeController','contracttypeController');
 //Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
-Route::get('/client','ClientController@index');
+Route::resource('/client','ClientController');
 Route::get('/create','ClientController@create');
 
-Route::get('/client','ClientController@index');
 Route::resource('/achiveclient','clientAchiveController');
-// Route::POST('/clientadd','clientAchiveController@store');
 
 Route::get('/userCall','ClientController@userCall');
-
-//Route::get('/contractlist','ContractController@index');
 Route::resource('contractlist','ContractController');
-//Route::post('/store','ContractController@store');
 Route::get('/payment','paymentController@index');
 
 Route::get('/call','callController@index');
@@ -99,14 +94,5 @@ Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/achiveClient','ClientController@achiveClient');
 Route::resource('profile', 'ProfileController');
 Route::post('/uploadprofile', 'ProfileController@upload');
-// Route::get('/home', 'HomeController@index')->name('home');
-
-// Route::get('userProfile','AvatarController@profile');
-// Route::get('/myprofile', 'uploadController@imageUpload');
-// Route::get('userProfile','AvatarController@update_avatar');
-
-
-// Route::get('/home', 'HomeController@index')->name('home');
