@@ -66,7 +66,6 @@
                                                 </a>
                                             </td>
                                             <td>
-                                                {{$data->name}}
                                                 <a href="#" class="text-center">
                                                     <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                 </a>

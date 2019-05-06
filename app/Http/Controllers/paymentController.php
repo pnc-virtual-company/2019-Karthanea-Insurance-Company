@@ -22,6 +22,7 @@ class paymentController extends Controller
     {
         $client = Client::all();
         $contract = Contract::all();
+
         // $contracttype = $contracttype->contract;
         return view('pages.paymentList',compact('client','contract'));
     }
@@ -55,7 +56,8 @@ class paymentController extends Controller
      */
     public function show($id)
     {
-       //
+       $contract = Contract::find($id)->contracttype;
+       return view('pages.paymentList');
     }
 
     /**
