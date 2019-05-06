@@ -69,7 +69,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-
+//
     }
 
     /**
@@ -83,7 +83,7 @@ class ClientController extends Controller
     {
 
         
-        $client = Clientlist::find($id);//seect * from Post where id=$id
+        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
         $client->update($request->all());
         return  redirect('/client');
 
