@@ -38,7 +38,7 @@ class clientAchiveController extends Controller
     {
 
         $client = Client::create($request->all());
-        return redirect('/achiveclient');
+        return redirect('/clientAchive');
         
        
 
@@ -78,7 +78,7 @@ class clientAchiveController extends Controller
       
       $client =Client::find($id);//seect * from Post where id=$id
       $client->update($request->all());
-      return  redirect('/achiveclient');
+      return  redirect('/clientAchive');
         }
 
     /**

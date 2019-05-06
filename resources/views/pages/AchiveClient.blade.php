@@ -19,7 +19,7 @@
                         
                         <tr>
                             <td>
-                                <a href="{{route('achiveclient.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id}}
