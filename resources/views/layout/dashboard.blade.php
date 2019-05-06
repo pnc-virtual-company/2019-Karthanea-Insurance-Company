@@ -440,4 +440,38 @@ $(".ui-datepicker-trigger").mouseover(function() {
     });
   </script>
 
+
+{{-- ContractType --}}
+  <script>
+  
+  // // Update
+  //     $('#edit').on('show.bs.modal', function (event) {
+  //         var button = $(event.relatedTarget) 
+  //         var title = button.data('mytitle') 
+  //         var description = button.data('mydescription') 
+  //         var cat_id = button.data('catid') 
+  //         var modal = $(this)
+  //         modal.find('.modal-body #title').val(title);
+  //         modal.find('.modal-body #des').val(description);
+  //         modal.find('.modal-body #cat_id').val(cat_id);
+  //     })//end Update
+
+    // //Delete
+    //   $('#deleteContractType').on('show.bs.modal', function (event) {
+    //     var button = $(event.relatedTarget);
+    //     var id = button.data('id')
+    //    console.log(id)
+    //     var title = button.data('title')
+
+    //     var modal = $(this)
+
+    //     modal.find('#conId').val(title)
+
+    //     var url = "{{url('/contracttype/')}}/"+id;
+
+    //     $("#formDelete").attr('action',url);
+        
+    //   })//end Delete
+    </script>
+
 </html>

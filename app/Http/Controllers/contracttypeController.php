@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Contracttype;
 class contracttypeController extends Controller
 {
     /**
@@ -16,8 +16,8 @@ class contracttypeController extends Controller
     }
         public function index()
     {
-        
-        return view('pages.contracttype');
+        $contracttype =Contracttype::all();
+        return view('pages.contracttype',compact("contracttype"));
     }
    
 
@@ -39,7 +39,9 @@ class contracttypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
+        $contracttype = Contracttype::create($request->all());
+        return redirect('/contracttype');
     }
 
     /**
@@ -84,6 +86,9 @@ class contracttypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contracttype=Contracttype::findOrFail($id);
+        $contracttype->delete();
+        return redirect('contracttype');
+        // dd($id);
     }
 }
