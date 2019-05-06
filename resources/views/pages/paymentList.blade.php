@@ -57,24 +57,24 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($contract as $dataItem)
+                                        @foreach ($contract as $data)
                                         <tr>
                                             <td>
-                                                {{$dataItem->id}}
+                                                {{$data->id}}
                                                 <a href="#" class="text-center">
                                                     <a href="#"  data-toggle="modal" data-target="#editContract"><i class="material-icons text-success">edit</i></a>
                                                 </a>
                                             </td>
                                             <td>
-                                                {{-- {{$value->name}} --}}
+                                                {{$data->name}}
                                                 <a href="#" class="text-center">
                                                     <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                 </a>
                                             </td>
-                                            <td>{{$dataItem->status}}</td>
-                                            <td>{{$dataItem->startdate}}</td>
-                                            <td>{{$dataItem->enddate}}</td>
-                                            <td>{{$dataItem->monthlybill}} $</td>
+                                            <td>{{$data->status}}</td>
+                                            <td>{{$data->startdate}}</td>
+                                            <td>{{$data->enddate}}</td>
+                                            <td>{{$data->monthlybill}} $</td>
                                             <td>
                                                 <a href="#" class="toggleBill">
                                                     <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>

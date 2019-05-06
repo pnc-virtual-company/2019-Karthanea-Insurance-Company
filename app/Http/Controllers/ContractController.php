@@ -51,7 +51,7 @@ class ContractController extends Controller
 
 
         $contract = Contract::create($request->all());
-        return redirect('/contractlist');
+        return redirect('contract');
     }
 
     /**
