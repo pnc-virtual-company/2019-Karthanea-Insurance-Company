@@ -17,9 +17,11 @@ class CreateContractsTable extends Migration
              $table->increments('id');
            
             $table->string('status');
-            $table->string('startdate');
-            $table->string('enddate');
+            $table->date('startdate');
+            $table->date('enddate');
+            $table->string('monthlyduedate');
             $table->integer('monthlybill');
+            
             $table->timestamps();
 
             $table->integer('client_id')->unsigned();

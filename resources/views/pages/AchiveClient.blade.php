@@ -212,7 +212,7 @@
               modal.find('#phonenumber').attr('value',phonenumber)
               modal.find('#email').attr('value',email)
   
-              var url ="{{url('/achiveClient')}}/"+ id;
+              var url ="{{url('/achiveclient')}}/"+ id;
               $('#editClientList').attr('action',url);   
               });
           
