@@ -39,9 +39,6 @@ class clientAchiveController extends Controller
 
         $client = Client::create($request->all());
         return redirect('/clientAchive');
-        
-       
-
     }
 
     /**

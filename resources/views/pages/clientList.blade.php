@@ -1,7 +1,8 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1>Information All The Clients </h1>
+        <h1>Information All The Clients Active </h1>
         <div class="card">
             <div class="card-body">
                 <table id="myTable" class="table table-striped table-bordered table-hover">
@@ -16,12 +17,13 @@
                     </thead>
                     <tbody>
                         @foreach ($client as $value=>$item)
-                        
                         <tr>
                             <td>
                                 <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                
-                                <input type="checkbox" name="disable" id="disable">
+                                <input type="checkbox" name="checkbox" id="checkbox">
+                                
+
                                 {{$item->id}}
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}} </td>
@@ -58,7 +60,7 @@
                                     <label for="name">Firstname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="firstname"  class="form-control">
+                                    <input type="text" name="firstname" required class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -68,7 +70,7 @@
                                     <label for="name">Lastname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="lastname"  class="form-control">
+                                    <input type="text" name="lastname" required class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -78,7 +80,7 @@
                                     <label for="address">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="address"  class="form-control">
+                                    <input type="text" name="address" required class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -88,7 +90,7 @@
                                     <label for="phone">Phone</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="number" name="phonenumber"  class="form-control">
+                                    <input type="number" name="phonenumber" required class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -98,7 +100,7 @@
                                     <label for="email">E-Mail</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="email" name="email"  class="form-control">
+                                    <input type="email" name="email" required class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -132,7 +134,7 @@
                                     <label for="">Firstname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="firstname" id="firstname" value="" class="form-control">
+                                    <input type="text" requiredname="firstname" id="firstname" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -142,7 +144,7 @@
                                     <label for="">Lastname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="lastname" id="lastname" value="" class="form-control">
+                                    <input type="text" required name="lastname" id="lastname" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -152,7 +154,7 @@
                                     <label for="">Address</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="address" id="address" value="" class="form-control">
+                                    <input type="text" required name="address" id="address" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -162,7 +164,7 @@
                                     <label for="">Phone</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="number" name="phonenumber" id="phonenumber" value="" class="form-control">
+                                    <input type="number" required name="phonenumber" id="phonenumber" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -172,7 +174,7 @@
                                     <label for="">E-Mail</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="email" name="email" id="email" value="" class="form-control">
+                                    <input type="email" required name="email" id="email" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -216,6 +218,13 @@
               $('#editClientList').attr('action',url);   
               });
           
+
+           if(disable.checked == true){
+                // document.getElementById('disable').innerHTML='checked';
+           } else {
+
+           }
+});
 
         </script>
 @endsection

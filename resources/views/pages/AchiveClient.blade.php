@@ -119,7 +119,6 @@
                   <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
                 
                 </div>
-                <div class="modal-body">
                 
                 <form action="" method="POST" id="editClientList">
                     @csrf
