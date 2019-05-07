@@ -1,5 +1,6 @@
- @extends('layout.dashboard')
-    @section('content')
+@extends('layout.dashboard')
+@section('content')
+<script src="{{asset('js/app.js')}}"></script>
     <div class="content">
         <div class="container-fluid">.
         <h1>Contract Type</h1>
@@ -141,7 +142,6 @@
       </div>
 
 
-      <script src="{{asset('js/app.js')}}"></script>
       <script>
               $('#updateContractType').on('show.bs.modal',function(event){
                   var button = $(event.relatedTarget)

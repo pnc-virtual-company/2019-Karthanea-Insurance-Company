@@ -75,8 +75,6 @@ Route::resource('/home','PageController@index');
 Route::resource('/contracttype','contracttypeController');
 
 //Route::get('/contracttype','ContractController@index');
-
-
 //Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
@@ -88,9 +86,7 @@ Route::resource('/clientAchive','clientAchiveController');
 
 Route::get('/userCall','ClientController@userCall');
 
-//Route::get('/contractlist','ContractController@index');
 Route::resource('contract','ContractController');
-Route::resource('bill','BillController');
 Route::resource('payment','paymentController');
 //Route::post('/store','ContractController@store');
 Route::get('/payment','paymentController@index');
@@ -111,3 +107,4 @@ Route::post('/uploadprofile', 'ProfileController@upload');
 
 
 // Route::get('/home', 'HomeController@index')->name('home');
+Route::get('listCContract','paymentController@listCContract');

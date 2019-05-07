@@ -1,5 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
+<script src="{{asset('js/app.js')}}"></script>
 <div class="content">
 <div class="container mt-4">
     <div class="row shadow-lg bg-light">
@@ -36,7 +37,7 @@
                                                                         {{$item->id}}
                                                                 </div>
                                                                 <div class="col-4">
-                                                                    <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->stardate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
+                                                                    <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
                                                                 </div>
                                                             </div>
                                                                 
@@ -107,16 +108,14 @@
                                                         </div>
                                                         
                                                         <div class="col-10">
-                                                           
-                                                                <select name="client_id" id="client_id" class="browser-default custom-select" required>
-                                                                     @foreach ($client as $item)
-                                                                    <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                            
-                                                            
-                                                            
+                                                            <select name="client_id" id="client_id" class="browser-default custom-select" required>
+                                                                 @foreach ($client as $item)
+                                                                <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
                                                         </div>
+                                                        
                                                        
                                                 <div class="form-group ">
                                                     <div class="row">
@@ -267,6 +266,7 @@
                                                                         <option value="{{$item->id}}" >{{$item->firstname}} {{$item->lastname}}</option>
                                                                         @endforeach
                                                                     </select>
+                                                                    <input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
                                                             </div>
                                                     <div class="form-group ">
                                                         <div class="row">
@@ -390,7 +390,6 @@
                 <div>
             </div>
         </div>
-        <script src="{{asset('js/app.js')}}"></script>
 <script>
         $('#editContract').on('show.bs.modal',function(event){
             var button = $(event.relatedTarget)
@@ -401,7 +400,9 @@
             console.log(status)
             var monthlybill = button.data('monthlybill')
             var client_id = button.data('client_id')
+            var bill_id = button.data('bill_id')
             console.log(client_id)
+            console.log(bill_id)
             var contracttype_id = button.data('contracttype_id')
             var id = button.data('id')
             var modal = $(this)
@@ -411,6 +412,7 @@
             modal.find('#startdate').attr('value',startdate)
             modal.find('#monthlybill').attr('value',monthlybill)
             modal.find('#client_id').attr('value',client_id)
+            modal.find('#bill_id').attr('value',bill_id)
             modal.find('#contracttype_id').attr('value',contracttype_id)
             
             var url ="{{url('/contractlist')}}/"+id;
@@ -439,24 +441,17 @@
                                                             </thead>
                                                             <tbody>
                                                               
-                                                                <tr >
-                                                                    <td class="text-center">
-                                                                        <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                                                        <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                                                                       1
-                                                                    </td>
-                                                                    <td>Car</td>
-                                                                </tr>
-                                                                <tr >
-                                                                    <td class="text-center">
-                                                                        <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                                                        <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                                                                       2
-                                                                    </td>
-                                                                    <td>Moto</td>
-                                                                   
-                                                                </tr>
-                                                                
+                                                                    @foreach ($contracttype as $item)
+                                                                    <tr >
+                                                                        <td class="text-center">
+                                                                            <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                                                            <a href="{{route('contracttype.update',$item->id)}}"  data-toggle="modal" data-target="#updateContractType" data-id="{{$item->id}}"  data-contracttype="{{$item->contracttype}}" ><i class="material-icons text-success">edit</i></a>
+                                               
+                                                                            {{$item->id}}
+                                                                        </td>
+                                                                        <td>{{$item->contracttype}}</td>
+                                                                    </tr>
+                                                                    @endforeach
                                                             </tbody>
                                                            
                                                         </table>
@@ -564,26 +559,17 @@
                                                 </thead>
                                                 <tbody>
                                                   
-                                                    <tr >
-                                                        <td class="text-center">
-                                                            <a href="#"  data-toggle="modal" data-target="#deleteContracttyprCreate"><i class="material-icons text-danger">delete</i></a>
-                                                            <a href="#"  data-toggle="modal" data-target="#updateContracttypeCreate"><i class="material-icons text-success">edit</i></a>
-                                                           1
-                                                        </td>
-                                                        <td>Car</td>
-                                                    </tr>
-                                                    
-                                                    <tr >
-                                                        <td class="text-center">
-                                                            <a href="#"  data-toggle="modal" data-target="#deleteContracttyprCreate"><i class="material-icons text-danger">delete</i></a>
-                                                            <a href="#"  data-toggle="modal" data-target="#updateContracttypeCreate"><i class="material-icons text-success">edit</i></a>
-                                                           
-                                                           2
-                                                        </td>
-                                                        <td>Moto</td>
-                                                       
-                                                    </tr>
-                                                    
+                                                        @foreach ($contracttype as $item)
+                                                        <tr >
+                                                            <td class="text-center">
+                                                                <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                                                <a href="{{route('contracttype.update',$item->id)}}"  data-toggle="modal" data-target="#updateContractType" data-id="{{$item->id}}"  data-contracttype="{{$item->contracttype}}" ><i class="material-icons text-success">edit</i></a>
+                                   
+                                                                {{$item->id}}
+                                                            </td>
+                                                            <td>{{$item->contracttype}}</td>
+                                                        </tr>
+                                                        @endforeach
                                                 </tbody>
                                                
                                             </table>

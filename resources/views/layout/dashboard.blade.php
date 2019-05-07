@@ -72,7 +72,6 @@
                     <p>
                       Dashboard
                       <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
-                      {{-- <span class="material-icons ml-4" id="dashUp">arrow_drop_up</span> --}}
                     </p>
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
@@ -107,7 +106,6 @@
               <i class="material-icons">work</i>
               <p>Managements
                 <span class="material-icons ml-4" id="manageDown">arrow_drop_down</span>
-                {{-- <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span> --}}
               </p>
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -221,14 +219,14 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-           @yield('content')
-          </div>
+          @yield('content')
         </div>
-        <script>
+      </div>
+      <script>
         const x = new Date().getFullYear();
         let date = document.getElementById('date');
         //date.innerHTML = '&copy; ' + x + date.innerHTML;
-      </script>
+        </script>
     </div>
   </div>
   <!--   Core JS Files   -->

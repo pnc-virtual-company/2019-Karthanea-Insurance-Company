@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contract ;
+use App\Bill;
 class ContractController extends Controller
 {
     /**
@@ -19,8 +20,9 @@ class ContractController extends Controller
         $contractselect = \App\Contract::all();
         $contracttype = \App\Contracttype::all();
         $client = \App\Client::all();
+        $bill = Bill::all();
         //dd($contract);
-        return view('pages.addContract',compact('contractselect','contracttype','client'));
+        return view('pages.addContract',compact('contractselect','contracttype','client','bill'));
     }
 
     /**
@@ -41,16 +43,12 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'status'=>'required',
-        //     'startdate'=>'required',
-        //     'enddate'=>'required',
-        //     'monthlybill'=>'required',
-            
-        //   ]);
-
-
         $contract = Contract::create($request->all());
+        $select =$request->bills;
+        foreach($select as $key=>$item){
+            $contract->tags()->attach($item);
+        }
+        $contract->save();
         return redirect('contract');
     }
 
