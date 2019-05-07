@@ -233,13 +233,14 @@
     </div>
   </div>
   <!--   Core JS Files   -->
- 
+  
+  {{-- <script src="{{asset('js/app.js')}}"></script> --}}
   <script src="{{asset('js/core/jquery.min.js')}}"></script>
   <script src="{{asset('js/core/popper.min.js')}}"></script>
   {{-- modal error --}}
-  {{-- <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script> --}}
+  <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
   <script src="https://unpkg.com/default-passive-events"></script>
-  {{-- <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script> --}}
+  <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!--  Google Maps Plugin    -->
@@ -338,7 +339,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-  
 </body>
 <script>
   //barChart

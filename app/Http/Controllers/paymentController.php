@@ -64,7 +64,6 @@ class paymentController extends Controller
     public function show($id)
     {
         $client = Client::all();
-       dd($contract = Client::all()->contract->id);
         // $contract = Contract::with('contracttype')->where('id',$contracttype_id)->first();
         return view('pages.paymentList',compact('contract'));
     }

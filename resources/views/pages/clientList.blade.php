@@ -193,7 +193,7 @@
             </div>
           </div>
           
-          <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
 <script>
         $('#editClient').on('show.bs.modal',function (event){
               var button = $(event.relatedTarget)
