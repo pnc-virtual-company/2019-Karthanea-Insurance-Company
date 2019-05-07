@@ -43,9 +43,12 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-
+       
         $client = Clientlist::create($request->all());
-        return redirect('/clientAchive');
+
+        return redirect('/achiveclient');
+       
+
 
     }
 
@@ -83,9 +86,27 @@ class clientAchiveController extends Controller
 
         $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
         $client->update($request->all());
-        return  redirect('/clientAchive');
 
-    }
+        return  redirect('/achiveclient');
+
+
+        // $this->validate($request,[
+        //     'firstname'=>'required',
+        //     'lastname'=>'required',
+        //     'addresss'=>'required',
+        //     'phonenumber'=>'required',
+        //     'email'=>'required'
+        //   ]);
+        // $client= Client::findOrFail($id);
+        // $client ->firstname = $request->input('firstname') ; 
+        // $client ->lastname = $request->input('lastname') ; 
+        // $client ->addresss = $request->input('addresss') ; 
+        // $client ->phonenumber = $request->input('phonenumber') ; 
+        // $client ->email = $request->input('email') ; 
+        // $client->save();
+
+        // return  redirect('/achiveclient');
+
 
     /**
      * Remove the specified resource from storage.
@@ -93,8 +114,9 @@ class clientAchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    // public function destroy($id)
+    // {
+    //     //
+    // }
+}
 }

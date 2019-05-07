@@ -13,6 +13,7 @@
 
   <link rel="stylesheet" href="../css/profile.css">
   <!-- pei chart link -->
+
   <script src="https://cdnjs.com/libraries/Chart.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="{{asset('js/Chart.min.js')}}"></script>
@@ -22,6 +23,7 @@
   <!-- link calendar -->
   <link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
   <link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
+  
   <script src='{{asset('packages/core/main.js')}}'></script>
   <script src='{{asset('packages/interaction/main.js')}}'></script>
   <script src='{{asset('packages/daygrid/main.js')}}'></script>
@@ -41,6 +43,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
   <!-- CSS Files -->
+
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
   {{-- <!-- CSS Just for demo purpose, don't include it in your project --> --}}
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
@@ -77,7 +80,7 @@
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
                     <li class="list-group-item collapsed">
-                      <a href="{{url('/userCall')}}">
+                      <a href="{{url('/calluser')}}">
                         <span class="text-white">
                           <i class="material-icons text-white">perm_phone_msg</i>
                           User Call
@@ -120,7 +123,7 @@
                     </a>
                   </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/contract')}}">
+                  <a href="{{url('contract')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">description</i>
                       Contract List
@@ -131,7 +134,7 @@
                   <a href="{{url('/achiveclient')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
-                      Archive Clients
+                      Archieve Clients
                     </span>
                   </a>
                 </li>
@@ -157,13 +160,13 @@
               <p>Calendar</p>
             </a>
           </li>
-          @if ( Auth::user()->hasRole('Administrator') )
+          @if (Auth::user()->name =="Administrator")
             <li class="nav-item">
               <a class="nav-link" href="{{url('users')}}">
-                  <i class="material-icons">person</i> {{ __('Users') }}
-                </a>
-              </li>
-            @endif
+                <i class="material-icons">person</i> {{ __('Users') }}
+              </a>
+            </li>
+          @endif
           <li class="nav-item ">
             <a class="nav-link" href="{{url('/location')}}">
               <i class="material-icons">location_ons</i>
@@ -232,11 +235,13 @@
     </div>
   </div>
   <!--   Core JS Files   -->
+ 
   <script src="{{asset('js/core/jquery.min.js')}}"></script>
   <script src="{{asset('js/core/popper.min.js')}}"></script>
-  <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
+  {{-- modal error --}}
+  {{-- <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script> --}}
   <script src="https://unpkg.com/default-passive-events"></script>
-  <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+  {{-- <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script> --}}
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!--  Google Maps Plugin    -->
@@ -328,7 +333,9 @@ $(".ui-datepicker-trigger").mouseover(function() {
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
   <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
   {{-- js datapicker --}}
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -440,4 +447,12 @@ $(".ui-datepicker-trigger").mouseover(function() {
       }
   });
   </script>
+  <script>
+    $(document).ready(function(){
+      $('#dashboard').click(function(
+        $('a#dashboard p span#dash').html('<span class="material-icons ml-5" id="dash">arrow_drop_up</span>');
+      ));
+    });
+  </script>
+
 </html>

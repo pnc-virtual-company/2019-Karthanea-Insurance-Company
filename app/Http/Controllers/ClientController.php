@@ -31,8 +31,8 @@ class ClientController extends Controller
      */
     public function create()
     {
-      
-        // $client = Client::all();
+       
+        // $client = Clientlist::all();
         // return view('pages.AchiveClient',compact('client'));
     }
 

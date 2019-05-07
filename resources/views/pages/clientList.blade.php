@@ -1,8 +1,10 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1>Information All The Clients Active </h1>
+        <h1> Clients Active </h1>
+
         <div class="card">
             <div class="card-body">
                 <table id="myTable" class="table table-striped table-bordered table-hover">
