@@ -16,8 +16,9 @@ class contracttypeController extends Controller
     }
         public function index()
     {
-        
-        return view('pages.contracttype');
+        $contracttype = \App\Contracttype::all();
+       
+        return view('pages.contracttype',compact('contracttype'));
     }
    
 
@@ -39,7 +40,8 @@ class contracttypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $contracttype = \App\Contracttype::create($request->all());
+        return redirect('/contracttype');
     }
 
     /**
@@ -73,7 +75,9 @@ class contracttypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $contracttype = \App\Contracttype::find($id);//select * from Post where id=$id
+        $contracttype->update($request->all());
+        return  redirect('/contracttype');
     }
 
     /**
@@ -84,6 +88,8 @@ class contracttypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $contracttype = \App\Contracttype::find($id);
+        $contracttype->delete();
+        return redirect('contracttype');
     }
 }

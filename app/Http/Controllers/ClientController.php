@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
-use App\Client;
+use App\Clientlist;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -18,27 +18,11 @@ class ClientController extends Controller
 
     public function index()
     {
-        $client = Client::all();
+
+        $client = Clientlist::all();
         return view('pages.clientList',compact('client'));
 
     }
-    public function userCall()
-    {
-//         return view('pages.userCall');
-// =======
-//         $client = Client::all();
-//         return view('pages.clientList',compact('client'));
-
-    }
-    // public function userCall()
-    // {
-    //     return view('pages.userCall');
-    // }
-    // public function achiveClient(){
-       
-    //     $client=Client::all();
-    //     return view('pages.clientList',compact('client'));
-    // }
 
     /**
      * Show the form for creating a new resource.
@@ -48,8 +32,8 @@ class ClientController extends Controller
     public function create()
     {
        
-        $client = Client::all();
-        return view('pages.AchiveClient',compact('client'));
+        // $client = Clientlist::all();
+        // return view('pages.AchiveClient',compact('client'));
     }
 
     /**
@@ -60,8 +44,10 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Client::create($request->all());
+
+        $client = Clientlist::create($request->all());
         return redirect('/client');
+
     }
 
     /**
@@ -83,8 +69,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-        // $client = Client::findOrfail($id);
-        // return view('pages.clientList',compact('client'));
+//
     }
 
     /**
@@ -96,10 +81,12 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         
-        $client = \App\Client::find($id);//select * from Post where id=$id
+        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
         $client->update($request->all());
         return  redirect('/client');
+
 
     }
 

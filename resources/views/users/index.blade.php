@@ -52,7 +52,7 @@
                                                         
                                                         <a href="{{url('users')}}/{{ $user->id }}/edit" title="@lang('edit')"><i class="material-icons">edit</i></a>
                                                         <a href="{{url('users')}}/{{ $user->id }}" title="@lang('view')"><i class="material-icons text-success">visibility</i></a>
-                                                        <a href="" aria-hidden="true" data-toggle="modal" data-target="#deleteModal" data-id="{{$user->id}}" data-title="{{$user->name}}"><i class="material-icons text-danger">delete</i></a>
+                                                        <a href="" aria-hidden="true" data-toggle="modal" title="@lang('delete')" data-target="#deleteModal" data-id="{{$user->id}}" data-title="{{$user->name}}"><i class="material-icons text-danger">delete</i></a>
                                                     
                                                     </td>
                                                 </tr>
@@ -69,8 +69,6 @@
                     </div>
                 </div>
             </div>
-    {{-- <script src="{{asset('js/app.js')}}"></script> --}}
-    
               <!-- Delete Modal -->
               <div  class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
@@ -97,7 +95,8 @@
                     </div>
                     </div>
                 </div>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="{{asset('js/app.js')}}"></script>
+          
           <script type="text/javascript">
                           $('#deleteModal').on('show.bs.modal',function(event){
                               var button=$(event.relatedTarget)

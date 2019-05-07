@@ -13,33 +13,19 @@
                         </tr>
                     </thead>
                     <tbody>
+                      @foreach ($contracttype as $item)
+                          
                       
                         <tr >
                             <td class="text-center">
-                                <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                               1
+                                <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                <a href="{{route('contracttype.update',$item->id)}}"  data-toggle="modal" data-target="#updateContractType" data-id="{{$item->id}}"  data-contracttype="{{$item->contracttype}}" ><i class="material-icons text-success">edit</i></a>
+   
+                                {{$item->id}}
                             </td>
-                            <td>Car</td>
+                            <td>{{$item->contracttype}}</td>
                         </tr>
-                        <tr >
-                            <td class="text-center">
-                                <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                               2
-                            </td>
-                            <td>Moto</td>
-                           
-                        </tr>
-                        <tr >
-                            <td class="text-center">
-                                <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                               3
-                            </td>
-                            <td>House</td>
-                           
-                        </tr>
+                        @endforeach
                     </tbody>
                    
                 </table>
@@ -63,28 +49,31 @@
                             <h5 class="modal-title" id="exampleModalLabel">Create new contract type</h5>
                           </div>
                           <div class="card-body">
+                              <form action="{{action('contracttypeController@store')}} " method="POST">
+                                  @csrf
                                 <div class="modal-body">
-                                        <form>
+                                      
                                             <div class="form-group">
                                                 <div class="row">
                                                         <label for="">Type of contract</label>
                                                         <div class="col-8">
-                                                            <input type="text" class="form-control" placeholder="type of contract">
+                                                            <input type="text" class="form-control" required name="contracttype" id="contracttype" placeholder="type of contract">
               
                 
                                                          </div>
                                                   </div>
                                              </div>
-                                        </form>
+                                       
                                 </div>
                              </div>
                              <div class="modal-footer">
 
-                                <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                <button type="submit" class="btn btn-info" >OK</button>
                                 
 
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                               </div>
+                            </form>
                         </div>
                  </div>
             </div>
@@ -105,7 +94,7 @@
                 <div class="col-4"><label for="contracttype">Type of contract</label></div>
                 <div class="col-7">
                     <div class="form-group">
-                        <input type="text" name="contracttype" id="contracttype" class="form-control">
+                        <input type="text" required name="contracttype" id="contracttype" class="form-control">
                     </div>
                 </div>
             </div>
@@ -125,28 +114,49 @@
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="exampleModalLabel">Edit contract type</h5>
-              
             </div>
+            <form action="" method="POST" id="editForm" >
+                @csrf
+                @method('PATCH')
             <div class="modal-body">
-              <form action="#" method="POST" >
+              
                   <div class="row">
                       <div class="col-4"><p>Edit of contract</p></div>
                       <div class="col-7">
                           <div class="form-group">
                           
-                              <input type="text" name="contracttype" id="" class="form-control">
+                              <input type="text" required name="contracttype" id="contracttype" class="form-control">
                           </div>
                       </div>
                     </div>
-              </form>
+              
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-info">OK</button>
+              <button type="submit" class="btn btn-info">OK</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
             </div>
+          </form>
           </div>
         </div>
       </div>
+
+
+      <script src="{{asset('js/app.js')}}"></script>
+      <script>
+              $('#updateContractType').on('show.bs.modal',function(event){
+                  var button = $(event.relatedTarget)
+                  var contracttype= button.data('contracttype')
+                  var id = button.data('id')
+                  
+                  var modal = $(this)
+                  modal.find('#contracttype').attr('value',contracttype)
+                  var url ="{{url('/contracttype')}}/"+id;
+                  $('#editForm').attr('action',url);   
+              })
+
+              
+              </script>
+      
       {{-- model delete --}}
   <div class="modal fade" id="deleteContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -156,15 +166,34 @@
               
             </div>
             <div class="modal-body">
-              <form action="#" method="POST" >
+              
                  <p class="text-danger">Are you sure that you want to delete this contract type?</p>
-              </form>
+       
             </div>
+            <form id ="deleteModal" action="" method="POST">
+                @csrf
+               @method('delete')
             <div class="modal-footer">
-              <button type="button" class="btn btn-info" >OK</button>
+                
+              <button type="submit" class="btn btn-info" >OK</button>
               <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+              
             </div>
+          </form>
           </div>
         </div>
       </div>
+
+      <script>
+         
+
+          $('#deleteContractType').on('show.bs.modal',function(event){
+            var button = $(event.relatedTarget)
+            var id = button.data('id')
+            console.log(id)
+            var modal=$(this)
+            var url="{{url('contracttype')}}/"+id;
+            $('#deleteModal').attr('action',url);
+          });
+          </script>
      @endsection
