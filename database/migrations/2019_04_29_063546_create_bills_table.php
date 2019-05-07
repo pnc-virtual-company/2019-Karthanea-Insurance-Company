@@ -15,14 +15,24 @@ class CreateBillsTable extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('status');
             $table->timestamps();
-            $table->integer('contract_id')->unsigned();
-            $table->foreign('contract_id')
-                  ->references('id')
-                  ->on('contracts')
-                  ->onDelete('cascade');
-
         });
+
+        //Insert the default admin user
+        DB::table('bills')->insert(
+            array(
+                [
+                'id' => 1,
+                'status' => 'Unpaid',
+                ],
+                [
+                'id' => 2,
+                'status' => 'Paid',
+                ]
+            )
+
+        );
     }
 
 

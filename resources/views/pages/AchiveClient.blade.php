@@ -4,34 +4,36 @@
         <h1>Information Active Client </h1>
         <div class="card">
             <div class="card-body">
-                <table id="myTable" class="table table-striped table-bordered table-hover">
-                    <thead class="bg-dark text-white">
-                        <tr>
-                            <th>Disable ID</th>
-                            <th>Clients</th>
-                            <th>Address</th>
-                            <th>Phone</th>
-                            <th>Email</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($client as $value=>$item)
-                        
-                        <tr>
-                            <td>
-                                <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
-                               
-                                <input type="checkbox" name="disable" id="disable">
-                                {{$item->id}}
-                            </td>
-                            <td>{{$item->firstname}} {{$item->lastname}} </td>
-                            <td>{{$item->address}}</td>
-                            <td>{{$item->phonenumber}}</td>
-                            <td>{{$item->email}}</td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-striped table-bordered table-hover">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>Disable ID</th>
+                                <th>Clients</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($client as $value=>$item)
+                            
+                            <tr>
+                                <td>
+                                    <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                   
+                                    <input type="checkbox" name="disable" id="disable">
+                                    {{$item->id}}
+                                </td>
+                                <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                <td>{{$item->address}}</td>
+                                <td>{{$item->phonenumber}}</td>
+                                <td>{{$item->email}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
                 <div>
                     <button type="button" class="btn text-white bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
                 </div>
