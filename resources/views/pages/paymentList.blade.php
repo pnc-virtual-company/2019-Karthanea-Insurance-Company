@@ -348,13 +348,141 @@
               })
               </script>
 
-               <!-- Modal Edit client payment-->
-          <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
-                    
+            <div class="modal fade bd-example" id="selectAddContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog ">
+                        <div class="modal-content">
+                                <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Create new contract type</h5>
+                                      </div>
+                                      <div class="card-body">
+                                            <div class="modal-body">
+                                                   
+                                                    <table id="myTable4" class="table table-striped table-bordered collapse" style="width:100%">
+                                                            <thead class="bg-dark text-white">
+                                                                <tr>
+                                                                    <th class="text-center ">ID</th>
+                                                                    <th> Contract type</th>
+                                                                     
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                              
+                                                                <tr >
+                                                                    <td class="text-center">
+                                                                        <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                                                        <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
+                                                                       1
+                                                                    </td>
+                                                                    <td>Car</td>
+                                                                </tr>
+                                                                <tr >
+                                                                    <td class="text-center">
+                                                                        <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                                                        <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
+                                                                       2
+                                                                    </td>
+                                                                    <td>Moto</td>
+                                                                   
+                                                                </tr>
+                                                                <tr >
+                                                                    <td class="text-center">
+                                                                        <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                                                        <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
+                                                                       3
+                                                                    </td>
+                                                                    <td>House</td>
+                                                                   
+                                                                </tr>
+                                                            </tbody>
+                                                           
+                                                        </table>      
+                                                
+                                          {{-- model update --}}
+                                        
+                                          <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="exampleModalLabel">Edit contract type</h5>
+                                                      
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      <form action="#" method="POST" >
+                                                          <div class="row">
+                                                              <div class="col-4"><p>Type of contract</p></div>
+                                                              <div class="col-7">
+                                                                  <div class="form-group">
+                                                                  
+                                                                      <input type="text" name="contracttype" id="" class="form-control">
+                                                                  </div>
+                                                              </div>
+                                                            </div>
+                                                      </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                        
+                                        
+                                              {{-- model delete --}}
+                                        
+                                          <div class="modal fade" id="deleteContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+                                                      
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      <form action="#" method="POST" >
+                                                         <p class="text-danger">Are you sure that you want to delete this contract type?</p>
+                                                      </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                                      <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                        
+                                                    
+                                            </div>
+                                         </div>
+                                         <div class="modal-footer">
+                                            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                          </div>
+                                    </div>
+                             </div>
+                        </div>
+                    </div>
+            
+ <!-- Modal Edit -->
+ <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="firstname">Firstname</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" name="firstname" id="name" class="form-control">
+                            </div>
+                        </div>
                     </div>
                     
                     <form action="" method="POST" id="editClient">

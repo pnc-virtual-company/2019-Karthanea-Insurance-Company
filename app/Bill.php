@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Bill extends Model
 {
     protected $fillable = [
-        'id','status', 'startdate', 'monthlybill','contract_id'
+        'id','status'
     ];
     public function contract(){
         return $this->hasMany(Contract::class);

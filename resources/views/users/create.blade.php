@@ -44,14 +44,6 @@
         </div>
     </div>
 </div>
-
+<script src="{{asset('js/app.js') }}"></script>
 @endsection
 
-@push('scripts')
-<script type="text/javascript">
-//On document ready, 
-$(function() {
-
-});
-</script>
-@endpush

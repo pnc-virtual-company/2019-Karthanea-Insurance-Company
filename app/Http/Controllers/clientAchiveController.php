@@ -39,6 +39,7 @@ class clientAchiveController extends Controller
 
         $client = Client::create($request->all());
         return redirect('/clientAchive');
+       
     }
 
     /**
@@ -76,7 +77,7 @@ class clientAchiveController extends Controller
       $client =Client::find($id);//seect * from Post where id=$id
       $client->update($request->all());
       return  redirect('/clientAchive');
-        }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -84,8 +85,9 @@ class clientAchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    // public function destroy($id)
+    // {
+    //     //
+    // }
+}
 }

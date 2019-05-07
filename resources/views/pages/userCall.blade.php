@@ -1,9 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-
         <h1>Information Of Clients Call</h1>
-
         <div class="myCalendar p-3 pr-4 float-right">
             <a href="{{url('/calendar')}}">
                 <i class="material-icons">date_range</i>
@@ -78,4 +76,5 @@
     
             </div>
           </div>
+          <script src="{{asset('js/app.js')}}"></script>
 @endsection
