@@ -8,7 +8,7 @@ class Contract extends Model
 {
 
     protected $fillable = [
-        'id','status', 'startdate', 'enddate','monthlybill','client_id','contracttype_id'
+        'id','status', 'startdate', 'enddate','monthlybill','monthlyduedate','client_id','contracttype_id'
     ];
     public function client(){
         return $this->belongsTo(Client::class,'client_id');

@@ -310,7 +310,7 @@ $(".txtDate").datepicker({
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
-    dateFormat: 'mm/dd/yy',
+    dateFormat: 'yy-mm-dd',
     
      constrainInput: true
 });
@@ -319,7 +319,7 @@ $(".startDate").datepicker({
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
-    dateFormat: 'mm/dd/yy',
+    dateFormat: 'yy-mm-dd',
     
      constrainInput: true
 });

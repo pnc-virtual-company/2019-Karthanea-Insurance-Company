@@ -22,6 +22,7 @@
                                                 <th>Start</th>
                                                  <th>End</th>
                                                 <th>Monthly bill</th>
+                                                <th>Monthly Due Date</th>
                                                 <th>Bill</th>
                                              </tr>
                                 </thead>
@@ -36,7 +37,12 @@
                                                                         {{$item->id}}
                                                                 </div>
                                                                 <div class="col-4">
-                                                                    <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->stardate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
+
+                                                                        <a href="#" class="text-center">
+                                                                                <a href="{{route('contractlist.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
+                                                                                    data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
+                                                                        </a>
+
                                                                 </div>
                                                             </div>
                                                                 
@@ -54,10 +60,10 @@
                                                             </td>
                                                             <td class="contracttype">
                                                                 <div class="row">
-                                                                    <div class="col-6">
+                                                                    <div class="col-5">
                                                                             {{$item->contracttype->contracttype}} 
                                                                     </div>
-                                                                    <div class="col-3">
+                                                                    <div class="col-2">
                                                                             <a href="#" class="text-center">
                                                                                     <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                                             </a>  
@@ -68,6 +74,7 @@
                                                             <td class="startdate">{{$item['startdate']}}</td>
                                                             <td class="enddate">{{$item['enddate']}}</td>
                                                             <td class="monthlybill">$ {{$item['monthlybill']}}</td>
+                                                            <td class="monthlyduedate"> {{$item->monthlyduedate}}</td>
                                                             <td>
                                                                 <a href="#" class="text-center">
                                                                    $
@@ -215,11 +222,25 @@
                                                 </div>
                                                 <div class="form-group ">
                                                     <div class="row">
-                                                        <div class="col-2"><label for="" >Monthly bill</label></div>
+                                                        <div class="col-5">
+                                                            <div class="row">
+                                                                    <div class="col-4"><label for="" >Monthly bill</label></div>
                                                         
-                                                        <div class="col-10">
-                                                            <input type="text" name="monthlybill" class="form-control" required>
-                                                        </div>   
+                                                                    <div class="col-6">
+                                                                            <input type="text" name="monthlybill" class="form-control" required>
+                                                                     </div>   
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-7">
+                                                                <div class="row">
+                                                                        <div class="col-4"><label for="" >Monthly Due Date</label></div>
+                                                            
+                                                                        <div class="col-6">
+                                                                                <input type="text" name="monthlyduedate" class="form-control" required>
+                                                                         </div>   
+                                                                </div>
+                                                            </div>
+                                                            
                                                     </div>
                                                 </div>
 
@@ -365,14 +386,28 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group ">
-                                                        <div class="row">
-                                                            <div class="col-2"><label for="" >Monthly bill</label></div>
-                                                            
-                                                            <div class="col-10">
-                                                                <input type="text" name="monthlybill" value="" id="monthlybill" class="form-control">
-                                                            </div>   
+                                                            <div class="row">
+                                                                <div class="col-5">
+                                                                    <div class="row">
+                                                                            <div class="col-4"><label for="" >Monthly bill</label></div>
+                                                                
+                                                                            <div class="col-6">
+                                                                                    <input type="text" name="monthlybill" id="monthlybill" class="form-control" required>
+                                                                             </div>   
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-7">
+                                                                        <div class="row">
+                                                                                <div class="col-4"><label for="" >Monthly Due Date</label></div>
+                                                                    
+                                                                                <div class="col-6">
+                                                                                        <input type="text" name="monthlyduedate"id="monthlyduedate" class="form-control" required>
+                                                                                 </div>   
+                                                                        </div>
+                                                                    </div>
+                                                                    
+                                                            </div>
                                                         </div>
-                                                    </div>
     
                                                     
                                                 </div>
@@ -400,6 +435,7 @@
             var startdate = button.data('startdate')
             console.log(status)
             var monthlybill = button.data('monthlybill')
+            var monthlyduedate = button.data('monthlyduedate')
             var client_id = button.data('client_id')
             console.log(client_id)
             var contracttype_id = button.data('contracttype_id')
@@ -410,6 +446,7 @@
             modal.find('#enddate').attr('value',enddate)
             modal.find('#startdate').attr('value',startdate)
             modal.find('#monthlybill').attr('value',monthlybill)
+            modal.find('#monthlyduedate').attr('value',monthlyduedate)
             modal.find('#client_id').attr('value',client_id)
             modal.find('#contracttype_id').attr('value',contracttype_id)
             
