@@ -57,7 +57,7 @@
                                                 <div class="row">
                                                         <label for="">Type of contract</label>
                                                         <div class="col-8">
-                                                            <input type="text" class="form-control" name="contracttype" id="contracttype" placeholder="type of contract">
+                                                            <input type="text" class="form-control" required name="contracttype" id="contracttype" placeholder="type of contract">
               
                 
                                                          </div>
@@ -94,7 +94,7 @@
                 <div class="col-4"><label for="contracttype">Type of contract</label></div>
                 <div class="col-7">
                     <div class="form-group">
-                        <input type="text" name="contracttype" id="contracttype" class="form-control">
+                        <input type="text" required name="contracttype" id="contracttype" class="form-control">
                     </div>
                 </div>
             </div>
@@ -125,7 +125,7 @@
                       <div class="col-7">
                           <div class="form-group">
                           
-                              <input type="text" name="contracttype" id="contracttype" class="form-control">
+                              <input type="text" required name="contracttype" id="contracttype" class="form-control">
                           </div>
                       </div>
                     </div>

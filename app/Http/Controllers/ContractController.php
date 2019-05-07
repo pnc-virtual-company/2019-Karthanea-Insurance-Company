@@ -45,7 +45,7 @@ class ContractController extends Controller
 
 
         $contract = Contract::create($request->all());
-        return redirect('/contractlist');
+        return redirect('/contract');
     }
 
     /**
@@ -81,7 +81,7 @@ class ContractController extends Controller
     {
         $contract = \App\Contract::find($id);//select * from Post where id=$id
         $contract->update($request->all());
-        return  redirect('contractlist');
+        return  redirect('contract');
     }
 
     /**

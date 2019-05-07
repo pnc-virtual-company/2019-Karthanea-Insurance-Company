@@ -40,9 +40,9 @@
   text-decoration: none;
 }
 
-#manageUp,#dashUp{
+/* #manageUp,#dashUp{
   display: none;
-}
+} */
 .navbar .collapse .navbar-nav .nav-item .nav-link:hover{
   background:#007bff;
   color:#ffffff;

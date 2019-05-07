@@ -37,10 +37,12 @@
                                                                         {{$item->id}}
                                                                 </div>
                                                                 <div class="col-4">
+
                                                                         <a href="#" class="text-center">
                                                                                 <a href="{{route('contractlist.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
                                                                                     data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
                                                                         </a>
+
                                                                 </div>
                                                             </div>
                                                                 
@@ -139,7 +141,7 @@
                                                                                        <option value="{{$item->id}}">{{$item->contracttype}}</option>
                                                                                        @endforeach
                                                                                    </select>
-                                                                                {{-- <input class="form-control py-2" name="id_contracttype" type="search"  id="example-search-input"> --}}
+                                                                                {{-- <input class="form-control py-2" name="contracttype_id" type="search"  id="example-search-input"> --}}
                                                                                 <span class="input-group-append">
                                                                                     <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectCreateContract" type="button" style="margin-top:0%;">
                                                                                        Select
@@ -303,7 +305,7 @@
                                                                                    <option value="{{$item->id}}">{{$item->contracttype}}</option>
                                                                                    @endforeach
                                                                                </select>
-                                                                                    {{-- <input class="form-control py-2" name="id_contracttype" type="search"  id="example-search-input"> --}}
+                                                                                    {{-- <input class="form-control py-2" name="contracttype_id" type="search"  id="example-search-input"> --}}
                                                                                     <span class="input-group-append">
                                                                                         <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectUpdateContract" type="button" style="margin-top:0%;">
                                                                                            Select
