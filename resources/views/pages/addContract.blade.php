@@ -104,13 +104,8 @@
                         <form action="{{action('ContractController@store')}} " method="POST">
                                 @csrf
                                 <div class="modal-body">
-                                    
-                                    
                                     <div class="form-group">
                                         <div class="row">
-                                                        
-                                                            
-                                            
                                                         <div class="col-2">
                                                             <label for="">Client</label>
                                                         </div>

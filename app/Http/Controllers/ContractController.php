@@ -49,7 +49,7 @@ class ContractController extends Controller
         //     $contract->tags()->attach($item);
         // }
         // $contract->save();
-        return redirect('contract');
+        return redirect('/contract');
 
     }
 
@@ -86,7 +86,7 @@ class ContractController extends Controller
     {
         $contract = \App\Contract::find($id);//select * from Post where id=$id
         $contract->update($request->all());
-        return  redirect('contract');
+        return  redirect('/contract');
     }
 
     /**

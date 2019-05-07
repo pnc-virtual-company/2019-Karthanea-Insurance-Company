@@ -90,7 +90,6 @@
                                         <td class="monthlybill">{{$item['monthlybill']}} $</td>
                                 <td>
                                     <a href="#" class="toggleBill">
-                                            {{$item['monthlybill']}}
                                         <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
                                     </a>
                                 </td>
@@ -356,47 +355,33 @@
                                       </div>
                                       <div class="card-body">
                                             <div class="modal-body">
+                                                    <div class="table-responsive">
+                                                            <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+                                                                    <thead class="bg-dark text-white">
+                                                                        <tr>
+                                                                            <th class="text-center ">ID</th>
+                                                                            <th> Contract type</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                      @foreach ($contracttype as $item)
+                                                                          
+                                                                      
+                                                                        <tr >
+                                                                            <td class="text-center">
+                                                                                <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                                                                <a href="{{route('contracttype.update',$item->id)}}"  data-toggle="modal" data-target="#updateContractType" data-id="{{$item->id}}"  data-contracttype="{{$item->contracttype}}" ><i class="material-icons text-success">edit</i></a>
                                                    
-                                                    <table id="myTable4" class="table table-striped table-bordered collapse" style="width:100%">
-                                                            <thead class="bg-dark text-white">
-                                                                <tr>
-                                                                    <th class="text-center ">ID</th>
-                                                                    <th> Contract type</th>
-                                                                     
-                                                                </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                              
-                                                                <tr >
-                                                                    <td class="text-center">
-                                                                        <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                                                        <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                                                                       1
-                                                                    </td>
-                                                                    <td>Car</td>
-                                                                </tr>
-                                                                <tr >
-                                                                    <td class="text-center">
-                                                                        <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                                                        <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                                                                       2
-                                                                    </td>
-                                                                    <td>Moto</td>
+                                                                                {{$item->id}}
+                                                                            </td>
+                                                                            <td>{{$item->contracttype}}</td>
+                                                                        </tr>
+                                                                        @endforeach
+                                                                    </tbody>
                                                                    
-                                                                </tr>
-                                                                <tr >
-                                                                    <td class="text-center">
-                                                                        <a href="#"  data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
-                                                                        <a href="#"  data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">edit</i></a>
-                                                                       3
-                                                                    </td>
-                                                                    <td>House</td>
-                                                                   
-                                                                </tr>
-                                                            </tbody>
-                                                           
-                                                        </table>      
-                                                
+                                                                </table>
+                                                          </div>
+                                    
                                           {{-- model update --}}
                                         
                                           <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -420,7 +405,7 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                                      <button type="submit" class="btn btn-info">OK</button>
                                                       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                                     </div>
                                                   </div>
@@ -443,7 +428,7 @@
                                                       </form>
                                                     </div>
                                                     <div class="modal-footer">
-                                                      <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                                      <button type="submit" class="btn btn-info">OK</button>
                                                       <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
                                                     </div>
                                                   </div>
@@ -454,7 +439,7 @@
                                             </div>
                                          </div>
                                          <div class="modal-footer">
-                                            <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
+                                            <button type="submit" class="btn btn-info">OK</button>
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                           </div>
                                     </div>
