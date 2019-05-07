@@ -11,130 +11,133 @@
         <h1>Payments</h1>
         <div class="card">
             <div class="card-body">
-                        <table id="myTables" class="table table-striped table-bordered table-hover">
-                                <thead class="bg-dark text-white">
-                                    <tr>
-                                        <th>Disable ID</th>
-                                        <th>Clients</th>
-                                        <th>Address</th>
-                                        <th>Phone</th>
-                                        <th>Email</th>
-                                        <th>Contract</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($client as $value)
-                                    <tr>
-                                        <td>
-                                            <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                            <input type="checkbox" name="disable" id="disable">
-                                            {{$value->id}}
+                <div class="table-responsive">
+                    <table id="myTables" class="table table-striped table-bordered table-hover">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>Disable ID</th>
+                                    <th>Clients</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Contract</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($client as $value)
+                                <tr>
+                                    <td>
+                                        <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
+                                        <input type="checkbox" name="disable" id="disable">
+                                        {{$value->id}}
+                                    </td>
+                                    <td>{{$value->firstname}} {{$value->lastname}}</td>
+                                    <td>{{$value->address}}</td>
+                                    <td>{{$value->phonenumber}}</td>
+                                    <td>{{$value->email}}</td>
+                                    <td>
+                                        <a href="#" class="togglePayment">
+                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                            <br>
+                        </table>
+                </div>
+                <div class="table-responsive">
+                    <table id="table2" class="table table-striped table-bordered table-hover collapse">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>ID</th>
+                                <th>Contract type</th>
+                                <th>Status</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Monthly bill</th>
+                                <th>Bills</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                @foreach ($contract as $value=>$item)
+                                <tr class="data-row">
+                                    <td class="id">
+                                        <div class="row">
+                                            <div class="col-5">
+                                                    {{$item->id}}
+                                            </div>
+                                            <div class="col-4">
+                                                <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
+                                            </div>
+                                        </div>
                                         </td>
-                                        <td>{{$value->firstname}} {{$value->lastname}}</td>
-                                        <td>{{$value->address}}</td>
-                                        <td>{{$value->phonenumber}}</td>
-                                        <td>{{$value->email}}</td>
-                                        <td>
-                                            <a href="#" class="togglePayment">
-                                                <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                                <br>
-                            </table>
-                                <table id="table2" class="table table-striped table-bordered table-hover collapse">
-                                    <thead class="bg-dark text-white">
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Contract type</th>
-                                            <th>Status</th>
-                                            <th>Start</th>
-                                            <th>End</th>
-                                            <th>Monthly bill</th>
-                                            <th>Bills</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                            @foreach ($contract as $value=>$item)
-                                            <tr class="data-row">
-                                                <td class="id">
-                                                    <div class="row">
-                                                        <div class="col-5">
-                                                                {{$item->id}}
-                                                        </div>
-                                                        <div class="col-4">
-                                                            <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
-                                                        </div>
-                                                    </div>
-                                                    </td>
-                                                    <td class="contracttype">
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                    {{$item->contracttype->contracttype}} 
-                                                            </div>
-                                                            <div class="col-3">
-                                                                    <a href="#" class="text-center">
-                                                                        <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                                                    </a>  
-                                                            </div>
-                                                        </div>
-                                                    </td>
-                                                    <td class="status">{{$item['status']}}</td>
-                                                    <td class="startdate">{{$item['startdate']}}</td>
-                                                    <td class="enddate">{{$item['enddate']}}</td>
-                                                    <td class="monthlybill">{{$item['monthlybill']}} $</td>
-                                            <td>
-                                                <a href="#" class="toggleBill">
-                                                        {{$item['monthlybill']}}
-                                                    <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-
-                                <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
-                                        <thead class="bg-dark text-white">
-                                            <tr>
-                                                <th>Month</th>
-                                                <th>Amount</th>
-                                                <th>Status</th>
-                                                <th>Due date</th>
-                                                <th>Bill</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                @foreach ($contract as $item)
-                                                <tr>
-                                                    <td>{{$item->startdate}}</td>
-                                                    <td>{{$item->monthlybill}}</td>
-                                                    <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
-                                                    <td>{{$item->enddate}}</td>
-                                                    
-                                                    <td>
+                                        <td class="contracttype">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                        {{$item->contracttype->contracttype}} 
+                                                </div>
+                                                <div class="col-3">
                                                         <a href="#" class="text-center">
                                                             <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                                @endforeach
-                                        </tbody>
-                                    </table>
-                                </table>
-                            <div>
+                                                        </a>  
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="status">{{$item['status']}}</td>
+                                        <td class="startdate">{{$item['startdate']}}</td>
+                                        <td class="enddate">{{$item['enddate']}}</td>
+                                        <td class="monthlybill">{{$item['monthlybill']}} $</td>
+                                <td>
+                                    <a href="#" class="toggleBill">
+                                            {{$item['monthlybill']}}
+                                        <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="table-responsive">
 
-                        </div>
+                </div>
+                <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>Month</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Due date</th>
+                                <th>Bill</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                @foreach ($contract as $item)
+                                <tr>
+                                    <td>{{$item->startdate}}</td>
+                                    <td>{{$item->monthlybill}}</td>
+                                    <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                    <td>{{$item->enddate}}</td>
+                                    
+                                    <td>
+                                        <a href="#" class="text-center">
+                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                @endforeach
+                        </tbody>
+                    </table>
+                </table>
+                <div>
+                </div>
                </div>
 
             </div>
         </div>
     </div>
     <script src="{{asset('js/table.js')}}"></script>
-    
-    
 {{-- payment model update status payment --}}
     <div class="modal fade" id="editPayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -149,8 +152,8 @@
                       <div class="col-6">
                           @foreach ($contract as $item)
                                 <select class=" custom-select">
-                                    <option selected>Unpaid</option>
-                                    <option value="1">Paid</option>
+                                    <option value="{{$item->bill->id}}" selected>{{$item->bill->status}}</option>
+                                    {{-- <option value="1">Paid</option> --}}
                                 </select>
                             @endforeach
                       </div>

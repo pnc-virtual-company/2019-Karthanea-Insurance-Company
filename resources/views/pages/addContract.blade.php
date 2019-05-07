@@ -13,6 +13,7 @@
         <h1>Information Of Contract</h1>
             <div class="card">
                 <div class="card-body">
+                    <div class="table-responsive">
                         <table id="myTable3" class="table table-striped table-bordered" style="width:100%">
                                 <thead class="bg-dark text-white">
                                         <tr>
@@ -78,6 +79,7 @@
                                                         @endforeach
                                 </tbody>
                             </table>
+                    </div>
                             <button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg"><i class='material-icons'>add_circle_outline</i> Add a new Contract</button>
                 </div>
             </div>
