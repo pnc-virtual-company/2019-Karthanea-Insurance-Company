@@ -108,7 +108,6 @@
                                                         
                                                         <div class="col-10">
                                                            
-                                                                <select name="client_id" id="client" class="browser-default custom-select">
                                                                 <select name="client_id" id="client_id" class="browser-default custom-select" required>
                                                                      @foreach ($client as $item)
                                                                     <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>

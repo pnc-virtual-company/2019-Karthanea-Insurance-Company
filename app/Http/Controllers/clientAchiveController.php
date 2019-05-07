@@ -32,8 +32,7 @@ class clientAchiveController extends Controller
     public function create()
     {
       
-        // $client = Client::all();
-        // return view('pages.AchiveClient',compact('client'));
+       
     }
 
     /**
@@ -46,8 +45,10 @@ class clientAchiveController extends Controller
     {
        
         $client = Clientlist::create($request->all());
+
         return redirect('/achiveclient');
        
+
 
     }
 
@@ -83,9 +84,9 @@ class clientAchiveController extends Controller
     public function update(Request $request, $id)
     {
 
-        
         $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
         $client->update($request->all());
+
         return  redirect('/achiveclient');
 
 
@@ -105,7 +106,7 @@ class clientAchiveController extends Controller
         // $client->save();
 
         // return  redirect('/achiveclient');
-        
+
 
     /**
      * Remove the specified resource from storage.

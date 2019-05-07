@@ -16,7 +16,8 @@ class CalendarController extends Controller
     }
     public function index()
     {
-        return view('pages.calendar');
+        $call = \App\Call::all();
+        return view('pages.calendar',compact('call'));
     }
 
     /**

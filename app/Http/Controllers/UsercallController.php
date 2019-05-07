@@ -1,27 +1,19 @@
 <?php
 
 namespace App\Http\Controllers;
-use Auth;
-use App\Clientlist;
+
 use Illuminate\Http\Request;
 
-class ClientController extends Controller
+class UsercallController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
-
     public function index()
     {
-
-        $client = Clientlist::all();
-        return view('pages.clientList',compact('client'));
-
+        return view('pages.userCall');
     }
 
     /**
@@ -31,9 +23,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-       
-        // $client = Clientlist::all();
-        // return view('pages.AchiveClient',compact('client'));
+        //
     }
 
     /**
@@ -44,15 +34,7 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
-        $client = Clientlist::create($request->all());
-        $checkbox=$request->checkbox;       
-        foreach($checkbox as $key=>$item){
-            $client->$item->state->attach($item); 
-        }
-        return redirect('/client');
-
+        //
     }
 
     /**
@@ -74,7 +56,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-//
+        //
     }
 
     /**
@@ -86,11 +68,7 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
-        $client->update($request->all());
-        return  redirect('/client');
-
+        //
     }
 
     /**
