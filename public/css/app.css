@@ -16,12 +16,12 @@
 }
 .nav-link #imgProfilePic{
   border-radius: 50%;
-  width:50px;
-  height:50px;
+  width:40px;
+  height:40px;
 }
 #image{
-  width: 140px;
-   height: 140px;
+  width: 150px;
+   height: 150px;
    background-color: rgb(251, 251, 251);
 }
 #submenu .list-group-item, 
@@ -40,9 +40,9 @@
   text-decoration: none;
 }
 
-#manageUp,#dashUp{
+/* #manageUp,#dashUp{
   display: none;
-}
+} */
 .navbar .collapse .navbar-nav .nav-item .nav-link:hover{
   background:#007bff;
   color:#ffffff;
@@ -59,7 +59,7 @@
   margin: 0 auto;
 }
 .main-panel .navbar{
-  padding: 8px;
+  height: 10em;
 }
 .logo img{
   width: 12em;

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Bill extends Model
 {
     protected $fillable = [
-        'id','status', 'startdate', 'monthlybill','id_contract'
+        'id','status', 'startdate', 'monthlybill','contract_id'
     ];
     public function contract(){
-        return $this->belongsTo(Contract::class,'id_contract');
+        return $this->belongsTo(Contract::class,'contract_id');
     }
 }

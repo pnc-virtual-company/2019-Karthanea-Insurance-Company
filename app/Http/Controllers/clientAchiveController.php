@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Client;
+use Auth;
+use App\Clientlist;
 use Illuminate\Http\Request;
 
 class clientAchiveController extends Controller
@@ -12,10 +12,16 @@ class clientAchiveController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $client=Client::all();
-        return view('pages.AchiveClient',compact('client'));
+
+        $client = Clientlist::all();
+        return view('pages.achiveClient',compact('client'));
+
     }
 
     /**
@@ -25,7 +31,9 @@ class clientAchiveController extends Controller
      */
     public function create()
     {
-        //
+      
+        // $client = Client::all();
+        // return view('pages.AchiveClient',compact('client'));
     }
 
     /**
@@ -36,8 +44,9 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Client::create($request->all());
+        $client = Clientlist::create($request->all());
         return redirect('/achiveclient');
+
     }
 
     /**
@@ -59,7 +68,7 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-     //
+        //
     }
 
     /**
@@ -70,9 +79,10 @@ class clientAchiveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-
-        
+    { 
+        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
+        $client->update($request->all());
+        return  redirect('/achiveclient');
     }
 
     /**

@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('auth.login');
 });
+
 // Route::get('/', function () {
     //     return view('examples.index', ['currentExample' => 'List of examples']);
     // });
@@ -79,27 +80,23 @@ Route::resource('/contracttype','contracttypeController');
 //Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
-Route::get('/client','ClientController@index');
+Route::resource('/client','ClientController');
 Route::get('/create','ClientController@create');
-// Route::get('/achiveclient','ClientController@achiveclient');
-Route::resource('/clientadd','ClientController');
 
 Route::get('/client','ClientController@index');
 Route::resource('/achiveclient','clientAchiveController');
-// Route::POST('/clientadd','clientAchiveController@store');
-
 
 Route::get('/userCall','ClientController@userCall');
 
 //Route::get('/contractlist','ContractController@index');
-Route::resource('/contractlist','ContractController');
+Route::resource('contract','ContractController');
+Route::resource('payment','paymentController');
 //Route::post('/store','ContractController@store');
 Route::get('/payment','paymentController@index');
 
 Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index');
-
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/achiveClient','ClientController@achiveClient');

@@ -22,14 +22,14 @@ class CreateContractsTable extends Migration
             $table->integer('monthlybill');
             $table->timestamps();
 
-            $table->integer('id_client')->unsigned();
-            $table->foreign('id_client')
+            $table->integer('client_id')->unsigned();
+            $table->foreign('client_id')
                   ->references('id')
                   ->on('clients')
                   ->onDelete('cascade');
             // // $table->increments('id_contracttype');
-             $table->integer('id_contracttype')->unsigned();
-             $table->foreign('id_contracttype')
+             $table->integer('contracttype_id')->unsigned();
+             $table->foreign('contracttype_id')
                         ->references('id')
                         ->on('contracttypes')
                         ->onDelete('cascade');

@@ -71,7 +71,8 @@
                     <i class="material-icons">color_lens</i>
                     <p>
                       Dashboard
-                      <span class="material-icons ml-5" id="dash">arrow_drop_down</span>
+                      <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
+                      {{-- <span class="material-icons ml-4" id="dashUp">arrow_drop_up</span> --}}
                     </p>
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
@@ -106,7 +107,7 @@
               <i class="material-icons">work</i>
               <p>Managements
                 <span class="material-icons ml-4" id="manageDown">arrow_drop_down</span>
-                <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span>
+                {{-- <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span> --}}
               </p>
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -119,7 +120,7 @@
                     </a>
                   </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/contractlist')}}">
+                  <a href="{{url('/contract')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">description</i>
                       Contract List
@@ -130,7 +131,7 @@
                   <a href="{{url('/achiveclient')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
-                      Archieve Clients
+                      Archive Clients
                     </span>
                   </a>
                 </li>
@@ -156,7 +157,7 @@
               <p>Calendar</p>
             </a>
           </li>
-          @if (Auth::user()->name=="Administrator")
+          @if ( Auth::user()->hasRole('Administrator') )
             <li class="nav-item">
               <a class="nav-link" href="{{url('users')}}">
                   <i class="material-icons">person</i> {{ __('Users') }}
@@ -308,7 +309,15 @@ $(".txtDate").datepicker({
     
      constrainInput: true
 });
-
+$(".startDate").datepicker({
+    showOn: 'button',
+    buttonText: 'Show Date',
+    buttonImageOnly: true,
+    buttonImage: '../public/images/calendar.png',
+    dateFormat: 'mm/dd/yy',
+    
+     constrainInput: true
+});
 $(".ui-datepicker-trigger").mouseover(function() {
     $(this).css('cursor', 'pointer');
 });
@@ -337,12 +346,12 @@ $(".ui-datepicker-trigger").mouseover(function() {
               label: '# of Votes',
               data: [12, 19, 3, 5, 2, 32],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
+                  'rgba(255, 99, 132, 0.7)',
+                  'rgba(54, 162, 235, 0.5)',
+                  'rgba(255, 206, 86, 0.5)',
+                  'rgba(75, 192, 192, 0.5)',
+                  'rgba(153, 102, 255, 0.5)',
+                  'rgba(255, 159, 64, 0.5)'
               ],
               borderColor: [
                   'rgba(255, 99, 132, 1)',
@@ -376,12 +385,12 @@ $(".ui-datepicker-trigger").mouseover(function() {
               label: 'of Votes',
               data: [12, 19, 3, 5, 2, 3],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
+                  'rgba(255, 99, 132, 0.5)',
+                  'rgba(54, 162, 235, 0.5)',
+                  'rgba(255, 206, 86, 0.5)',
+                  'rgba(75, 192, 192, 0.5)',
+                  'rgba(153, 102, 255, 0.5)',
+                  'rgba(255, 159, 64, 0.5)'
               ],
               borderColor: [
                   'rgba(255, 99, 132, 1)',
@@ -405,7 +414,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
       }
   });
 
-
 //PieChart
   var pie = document.getElementById('pieChart').getContext('2d');
   var pieChart = new Chart(pie, {
@@ -416,9 +424,9 @@ $(".ui-datepicker-trigger").mouseover(function() {
               label: 'Payment',
               data: [12, 19, 3],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)'
+                  'rgba(255, 99, 132, 0.5)',
+                  'rgba(54, 162, 235, 0.5)',
+                  'rgba(255, 206, 86, 0.5)'
                   
               ],
               borderColor: [
@@ -432,6 +440,7 @@ $(".ui-datepicker-trigger").mouseover(function() {
       }
   });
   </script>
+
   <script>
     $(document).ready(function(){
       $('#dashboard').click(function(

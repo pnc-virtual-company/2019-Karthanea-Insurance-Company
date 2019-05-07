@@ -21,8 +21,8 @@ class CreateCallsTable extends Migration
             $table->text('comments');
             $table->timestamps();
             
-            $table->integer('id_client')->unsigned();
-            $table->foreign('id_client')
+            $table->integer('client_id')->unsigned();
+            $table->foreign('client_id')
                   ->references('id')
                   ->on('clients')
                   ->onDelete('cascade');
