@@ -39,7 +39,7 @@
                                                                 <div class="col-4">
 
                                                                         <a href="#" class="text-center">
-                                                                                <a href="{{route('contractlist.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
+                                                                                <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
                                                                                     data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
                                                                         </a>
 
@@ -450,7 +450,7 @@
             modal.find('#client_id').attr('value',client_id)
             modal.find('#contracttype_id').attr('value',contracttype_id)
             
-            var url ="{{url('/contractlist')}}/"+id;
+            var url ="{{url('/contract')}}/"+id;
             $('#editForm').attr('action',url);   
         })
         </script>
