@@ -24,6 +24,7 @@ class paymentController extends Controller
         $contract = Contract::all();
         $contracttype = Contracttype::all();
         $bill = Bill::all();
+        
         return view('pages.paymentList',compact('client','contract','contracttype','bill' ));
     }
 
@@ -64,6 +65,8 @@ class paymentController extends Controller
     public function show($id)
     {
         $client = Client::all();
+        $bill = Bill::all();
+        $billDiff = $bill->diff($contract->bill);
         // $contract = Contract::with('contracttype')->where('id',$contracttype_id)->first();
         return view('pages.paymentList',compact('contract'));
     }
@@ -76,7 +79,11 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-       //
+       $contract = Contract::find($id);
+       $bill = Bill::all();
+       $billDiff = $bill->diff($contract->bill);
+       return view('pages.paymentList',compact('contract','bill'));
+
     }
 
     /**
@@ -90,6 +97,8 @@ class paymentController extends Controller
     {
         $contract = Contract::find($id);
         $contract->update($request->all());
+        $bill = Bill::all();
+        $billDiff = $bill->diff($contract->bill);
         return  redirect('/payment');
     }
 

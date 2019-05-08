@@ -116,7 +116,7 @@
                                 <tr>
                                     <td>{{$item->startdate}}</td>
                                     <td>{{$item->monthlybill}}</td>
-                                    <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                    <td>{{$item->bill->status}}<a href="{{route('payment.edit',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
                                     <td>{{$item->enddate}}</td>
                                     
                                     <td>
@@ -150,11 +150,16 @@
                   <div class="row">
                       <div class="col-2"><p> Status</p></div>
                       <div class="col-6">
-                          <select class=" custom-select">
-                                @foreach ($bill as $item)
-                                    <option value="{{$item->id}}" selected>{{$item->status}}</option>
-                                    @endforeach
-                                </select>
+                            <select class=" custom-select">
+                                @foreach ($contract as $item)
+                                    @if ($item->bill->id == $item->bill_id)
+                                        <option value="{{$item->bill->id}}" selected>{{$item->bill->status}}</option>
+                                    @endif
+                                    @if($item->bill->id != $item->bill_id)
+                                        <option value="{{$item->bill->id}}">{{$item->bill->status}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                       </div>
                   </div>
                   
