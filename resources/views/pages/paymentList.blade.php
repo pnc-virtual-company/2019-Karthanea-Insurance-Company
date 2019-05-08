@@ -170,8 +170,6 @@
 
 {{-- //  modelad edit a new contract --}}
 {{-- //  modelad edit a new contract --}}
-
-       
 <div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -238,7 +236,7 @@
                                                                           
                                                                         <select class="browser-default custom-select" name="status" id="status"  >
                                                                            @foreach ($contract as $item)
-                                                                           <option value="{{$item->status}}">{{$item->status}}</option>
+                                                                                <option value="{{$item->status}}">{{$item->status}}</option>
                                                                            @endforeach
                                                                             
                                                                             
@@ -317,8 +315,6 @@
             <div>
         </div>
     </div>
-           
- 
       <script src="{{asset('js/app.js')}}"></script>
       <script>
               $('#editContract').on('show.bs.modal',function(event){

@@ -234,7 +234,7 @@
   </div>
   <!--   Core JS Files   -->
   
-  {{-- <script src="{{asset('js/app.js')}}"></script> --}}
+  <script src="{{asset('js/app.js')}}"></script>
   <script src="{{asset('js/core/jquery.min.js')}}"></script>
   <script src="{{asset('js/core/popper.min.js')}}"></script>
   {{-- modal error --}}
