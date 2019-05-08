@@ -36,7 +36,7 @@
                                                                         {{$item->id}}
                                                                 </div>
                                                                 <div class="col-4">
-                                                                    <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->stardate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
+                                                                    <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
                                                                 </div>
                                                             </div>
                                                                 
@@ -108,7 +108,7 @@
                                                         
                                                         <div class="col-10">
                                                            
-                                                                <select name="client_id" id="client" class="browser-default custom-select">
+                                                                {{-- <select name="client_id" id="client" class="browser-default custom-select"> --}}
                                                                 <select name="client_id" id="client_id" class="browser-default custom-select" required>
                                                                      @foreach ($client as $item)
                                                                     <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
@@ -392,6 +392,7 @@
             </div>
         </div>
         <script src="{{asset('js/app.js')}}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
         $('#editContract').on('show.bs.modal',function(event){
             var button = $(event.relatedTarget)
@@ -414,7 +415,7 @@
             modal.find('#client_id').attr('value',client_id)
             modal.find('#contracttype_id').attr('value',contracttype_id)
             
-            var url ="{{url('/contractlist')}}/"+id;
+            var url ="{{url('/contract')}}/"+id;
             $('#editForm').attr('action',url);   
         })
         </script>

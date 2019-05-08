@@ -27,9 +27,9 @@
           start: '2019-04-16T16:00:00'
         },
         {
-          title: 'Conference',
-          start: '2019-04-11',
-          end: '2019-04-13'
+          title: 'Conference <br> Test',
+          start: '2019-04-11T16:00:00',
+          end: '2019-04-13T18:00:00'
         },
         {
           title: 'Meeting',
