@@ -42,8 +42,7 @@
                                                                                 <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
                                                                                     data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
                                                                         </a>
-
-                                                                </div>
+                                             </div>
                                                             </div>
                                                                 
                                                                
@@ -115,6 +114,7 @@
                                                         
                                                         <div class="col-10">
                                                            
+er
                                                                 <select name="client_id" id="client_id" class="browser-default custom-select" required>
                                                                      @foreach ($client as $item)
                                                                     <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
@@ -426,6 +426,7 @@
             </div>
         </div>
         <script src="{{asset('js/app.js')}}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
         $('#editContract').on('show.bs.modal',function(event){
             var button = $(event.relatedTarget)
@@ -454,7 +455,6 @@
             $('#editForm').attr('action',url);   
         })
         </script>
-
             {{-- model select contract  --}}
 
             <div class="modal fade bd-example" id="selectUpdateContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -566,9 +566,6 @@
                                          <div class="modal-footer">
 
                                             <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-
-                                         
-
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                           </div>
                                     </div>
@@ -576,10 +573,6 @@
 
                         </div>
                     </div>
-
-                    
-                   
-   
 {{-- model select contract  --}}
 
 <div class="modal fade bd-example" id="selectCreateContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
