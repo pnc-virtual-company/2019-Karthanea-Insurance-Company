@@ -2,7 +2,7 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1>Information All The Clients Active </h1>
+        <h1>Active Client Information </h1>
         <div class="card">
             <div class="card-body">
                 <table id="myTable" class="table table-striped table-bordered table-hover">
@@ -21,9 +21,8 @@
                             <td>
                                 <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                
-                                <input type="checkbox" name="checkbox" id="checkbox">
+                                <input type="checkbox" name="check" data-toggle="modal" data-target="#status">
                                 
-
                                 {{$item->id}}
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}} </td>
@@ -40,6 +39,26 @@
             </div>
         </div>
     </div>
+     <!-- Modal status -->
+     <div class="modal fade" id="status" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Do you want to chage status clients</h5>
+              <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="{{action('ClientController@update')}}" method="POST" id="editStatus">
+                @csrf
+                @method('PATCH')
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-info">OK</button>
+            </div>
+        </form>
+          </div>
+        </div>
+      </div> 
           <!-- Modal add -->
           <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -119,15 +138,11 @@
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
-                
                 </div>
-                
                 <form action="" method="POST" id="editClientList">
                     @csrf
                     @method('PATCH')
-                   
                 <div class="modal-body">
-                    
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
@@ -217,14 +232,20 @@
               var url ="{{url('/client')}}/"+ id;
               $('#editClientList').attr('action',url);   
               });
-          
 
-           if(disable.checked == true){
-                // document.getElementById('disable').innerHTML='checked';
-           } else {
+            //   $('#status').on('show.bs.modal',function (event){
+            //   var button = $(event.relatedTarget)
+            //   var state = button.data('state')
+            //   console.log(state)
+            //   var id = button.data('id')
 
-           }
-});
+            //   var modal = $(this)
+  
+            //   modal.find('#state').attr('value',state)
+  
+            //   var url ="{{url('/client')}}/"+ id;
+            //   $('#editStatus').attr('action',url);   
+            //   });
 
         </script>
 @endsection

@@ -47,10 +47,6 @@ class ClientController extends Controller
         
         
         $client = Clientlist::create($request->all());
-        $checkbox=$request->checkbox;       
-        foreach($checkbox as $key=>$item){
-            $client->$item->state->attach($item); 
-        }
         return redirect('/client');
 
     }
@@ -86,9 +82,18 @@ class ClientController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
+        
+        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id 
         $client->update($request->all());
+        foreach($client as $item){
+        if($item->state == true || $item->state == TRUE ){
+            
+            return true;
+        } else if($item->state == false || $item->state == FALSE ){
+            return false;
+        }
+        return $item;
+        }
         return  redirect('/client');
 
     }

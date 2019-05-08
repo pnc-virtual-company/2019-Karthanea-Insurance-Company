@@ -14,7 +14,7 @@ class AddStateToClientsTable extends Migration
     public function up()
     {
         Schema::table('clients', function (Blueprint $table) {
-            $table->string('state')->default('Active');
+            $table->string('state')->default('1');
         });
     }
 

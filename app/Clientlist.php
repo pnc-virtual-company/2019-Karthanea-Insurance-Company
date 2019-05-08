@@ -22,4 +22,9 @@ class Clientlist extends Model
     public function contracts(){
         return $this->hasMany(Contract::class);
     }
+    public function toggleIsActive()
+     {
+            $this->state= !$this->state;
+            return $this;
+     }
 }
