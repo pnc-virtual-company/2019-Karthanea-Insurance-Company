@@ -74,10 +74,6 @@ Route::resource('/home','PageController@index');
 
 Route::resource('/contracttype','contracttypeController');
 
-//Route::get('/contracttype','ContractController@index');
-
-
-//Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
