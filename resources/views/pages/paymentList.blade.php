@@ -137,8 +137,9 @@
         </div>
     </div>
     <script src="{{asset('js/table.js')}}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 {{-- payment model update status payment --}}
-    <div class="modal fade" id="editPayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade bd-example-modal-lg" id="editPayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -149,12 +150,11 @@
                   <div class="row">
                       <div class="col-2"><p> Status</p></div>
                       <div class="col-6">
-                          @foreach ($contract as $item)
-                                <select class=" custom-select">
-                                    <option value="{{$item->bill->id}}" selected>{{$item->bill->status}}</option>
-                                    {{-- <option value="1">Paid</option> --}}
+                          <select class=" custom-select">
+                                @foreach ($bill as $item)
+                                    <option value="{{$item->id}}" selected>{{$item->status}}</option>
+                                    @endforeach
                                 </select>
-                            @endforeach
                       </div>
                   </div>
                   
@@ -170,8 +170,6 @@
 
 {{-- //  modelad edit a new contract --}}
 {{-- //  modelad edit a new contract --}}
-
-       
 <div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -238,7 +236,7 @@
                                                                           
                                                                         <select class="browser-default custom-select" name="status" id="status"  >
                                                                            @foreach ($contract as $item)
-                                                                           <option value="{{$item->status}}">{{$item->status}}</option>
+                                                                                <option value="{{$item->status}}">{{$item->status}}</option>
                                                                            @endforeach
                                                                             
                                                                             
@@ -317,9 +315,8 @@
             <div>
         </div>
     </div>
-           
- 
       <script src="{{asset('js/app.js')}}"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
       <script>
               $('#editContract').on('show.bs.modal',function(event){
                   var button = $(event.relatedTarget)

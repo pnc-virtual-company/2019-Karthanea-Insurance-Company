@@ -2,43 +2,56 @@
 
 @extends('layout.dashboard')
 @section('content')
-    <div class="container mt-4">
-        <h1>Information Active Client </h1>
-        <div class="card">
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="myTable" class="table table-striped table-bordered table-hover">
-                        <thead class="bg-dark text-white">
-                            <tr>
-                                <th>Disable ID</th>
-                                <th>Clients</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($client as $value=>$item)
-                            
-                            <tr>
-                                <td>
-                                    <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
-                                   
-                                    <input type="checkbox" name="disable" id="disable">
-                                    {{$item->id}}
-                                </td>
-                                <td>{{$item->firstname}} {{$item->lastname}} </td>
-                                <td>{{$item->address}}</td>
-                                <td>{{$item->phonenumber}}</td>
-                                <td>{{$item->email}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <button type="button" class="btn text-white bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
-                </div>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <div> <h1>@lang('Clients Information')</h1></div>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table id="myTable" class="table table-striped table-bordered table-hover">
+                                            <thead class="bg-dark text-white">
+                                                <tr>
+                                                    <th>Disable ID</th>
+                                                    <th>Clients</th>
+                                                    <th>Address</th>
+                                                    <th>Phone</th>
+                                                    <th>Email</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach ($client as $value=>$item)
+                                                
+                                                <tr>
+                            <td>
+                                <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                               
+                                <input type="checkbox" name="disable" id="disable">
+                                {{$item->id}}
+                            </td>
+                            <td>{{$item->firstname}} {{$item->lastname}} </td>
+                            <td>{{$item->address}}</td>
+                            <td>{{$item->phonenumber}}</td>
+                            <td>{{$item->email}}</td>
+                        </tr>
+                        @endforeach
+                            </tbody>
+                        </table>
+                        <div>
+                              <button type="button" class="btn text-white bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
+                        </div>
+                     </div>
+             </div>
+         </div>
+        <!-- Modal add -->
+        <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create New Client</h5>
+                <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
             </div>
             <form method="POST" action="{{action('clientAchiveController@store')}}">
             @csrf
@@ -110,13 +123,11 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-
                 <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
             </div>
             <form action="" method="POST" id="editClientList">
                 @csrf
                 @method('PATCH')
-
                 <div class="modal-body">
                     <div class="form-group">
                             <div class="row">
@@ -158,7 +169,6 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="form-group">
                     <div class="row">
                         <div class="col-2">
@@ -178,40 +188,9 @@
         </div>
         </div>
 
-
-            </form>
-           
-              </div>
-            </div>
-          </div>
-          
-          <script src="{{asset('js/app.js')}}"></script>
-<script>
-        $('#editClient').on('show.bs.modal',function (event){
-                var button = $(event.relatedTarget)
-                var firstname = button.data('firstname')
-                var lastname = button.data('lastname')    
-                var address = button.data('address')
-                var phonenumber = button.data('phonenumber')
-                var email = button.data('email')
-               
-                var modal = $(this)
-    
-                modal.find('#firstname').attr('value',firstname)
-                modal.find('#lastname').attr('value',lastname)
-                modal.find('#address').attr('value',address)
-                modal.find('#phonenumber').attr('value',phonenumber)
-                modal.find('#email').attr('value',email)
-    
-                var url ="{{url('/achiveclient')}}/"+ id;
-                $('#editform').attr('action',url);   
-                });
-    
-    </script>
-             
 </body> 
-{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> --}}
 <script src="{{asset('js/app.js')}}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $('#editClient').on('show.bs.modal',function(event){
     var button = $(event.relatedTarget)
@@ -233,9 +212,8 @@
     modal.find('#address').attr('value',address)
     modal.find('#phonenumber').attr('value',phonenumber)
     modal.find('#email').attr('value',email)
-    var url ="{{url('/achiveclient')}}/"+ id;
+    var url ="{{url('/clientAchive')}}/"+ id;
     $('#editClientList').attr('action',url);   
     });
     </script>   
 @endsection
-

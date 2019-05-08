@@ -46,8 +46,6 @@
 
                                                                     </div>
                                                                 </div>
-                                                                
-                                                                
                                                             </td>
                                                             <td class="client">
                                                                 <div class="row">
@@ -117,8 +115,8 @@
                                                                 @endforeach
                                                             </select>
                                                             <input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
+                                            
                                                         </div>
-                                                        
                                                        
                                                 <div class="form-group ">
                                                     <div class="row">
@@ -421,8 +419,10 @@
                     <div>
             </div>
         </div>
-    <script src="{{asset('js/app.js')}}"></script>
-        <script>
+
+        <script src="{{asset('js/app.js')}}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
         $('#editContract').on('show.bs.modal',function(event){
             var button = $(event.relatedTarget)
             var status= button.data('status')
@@ -453,7 +453,6 @@
             $('#editForm').attr('action',url);   
         })
         </script>
-
             {{-- model select contract  --}}
 
             <div class="modal fade bd-example" id="selectUpdateContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -558,9 +557,6 @@
                                          <div class="modal-footer">
 
                                             <button type="button" class="btn btn-info" data-dismiss="modal">OK</button>
-
-                                         
-
                                             <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                                           </div>
                                     </div>
@@ -568,10 +564,6 @@
 
                         </div>
                     </div>
-
-                    
-                   
-   
 {{-- model select contract  --}}
 
 <div class="modal fade bd-example" id="selectCreateContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
