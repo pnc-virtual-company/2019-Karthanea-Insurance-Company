@@ -24,7 +24,7 @@
                                                 
                                                 <tr>
                             <td>
-                                <a href="{{route('achiveclient.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id}}
@@ -123,11 +123,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+
                 <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
             </div>
             <form action="" method="POST" id="editClientList">
                 @csrf
                 @method('PATCH')
+
                 <div class="modal-body">
                     <div class="form-group">
                             <div class="row">
@@ -169,6 +171,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-2">
@@ -187,6 +190,7 @@
         </form>
         </div>
         </div>
+
 </body> 
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

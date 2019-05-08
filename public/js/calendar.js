@@ -1,5 +1,6 @@
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   var calendarEl = document.getElementById('calendar');
+
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'interaction', 'dayGrid' ],
@@ -64,5 +65,6 @@
       ]
     });
 
-    calendar.render();
-  });
+
+  //   calendar.render();
+  // });

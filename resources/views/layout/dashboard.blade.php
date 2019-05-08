@@ -193,7 +193,7 @@
                   @if (Auth::user()->avatar!= null)
                     <img id="imgProfilePic" src="{{asset('storage/images/'.Auth::user()->avatar)}}">
                   @else
-                    <img id="imgProfilePic" src="{{asset('storage/images/default-avatar.png')}}">
+                    <img id="imgProfilePic" src="{{asset('storage/images/avatar.jpg')}}">
                   @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
@@ -310,7 +310,7 @@ $(".txtDate").datepicker({
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
-    dateFormat: 'mm/dd/yy',
+    dateFormat: 'yy-mm-dd',
     
      constrainInput: true
 });
@@ -319,7 +319,7 @@ $(".startDate").datepicker({
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
-    dateFormat: 'mm/dd/yy',
+    dateFormat: 'yy-mm-dd',
     
      constrainInput: true
 });

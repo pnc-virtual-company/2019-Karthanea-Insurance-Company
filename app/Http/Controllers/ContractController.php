@@ -41,13 +41,7 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'status'=>'required',
-        //     'startdate'=>'required',
-        //     'enddate'=>'required',
-        //     'monthlybill'=>'required',
-            
-        //   ]);
+        
 
 
         $contract = Contract::create($request->all());
