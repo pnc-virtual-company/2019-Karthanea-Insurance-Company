@@ -75,6 +75,14 @@ class clientAchiveController extends Controller
     {
       
       $client =Client::find($id);//seect * from Post where id=$id
+      $disable = $request->disable;
+      $disable = Client::where('status','Active')->first();
+        if ($disable.checked == true) {
+            $disable = Client::where('status','Disable')->first();
+        } else {
+            $disable = Client::where('status','Active')->first();
+        }
+        $disable = Client::where('status',$disable);
       $client->update($request->all());
       return  redirect('/clientAchive');
     }
