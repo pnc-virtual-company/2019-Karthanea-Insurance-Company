@@ -24,7 +24,7 @@
                                                 
                                                 <tr>
                             <td>
-                                <a href="{{route('achiveclient.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id}}
@@ -123,11 +123,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+
                 <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
             </div>
             <form action="" method="POST" id="editClientList">
                 @csrf
                 @method('PATCH')
+
                 <div class="modal-body">
                     <div class="form-group">
                             <div class="row">
@@ -169,6 +171,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-2">
@@ -187,6 +190,45 @@
         </form>
         </div>
         </div>
+
+
+            </form>
+           
+              </div>
+            </div>
+          </div>
+          
+          <script src="{{asset('js/app.js')}}"></script>
+<script>
+        $('#editClient').on('show.bs.modal',function (event){
+              var button = $(event.relatedTarget)
+              var firstname = button.data('firstname')
+              console.log(firstname)
+              var lastname = button.data('lastname')   
+              console.log(lastname) 
+              var address = button.data('address')
+              console.log(address)
+              var phonenumber = button.data('phonenumber')
+              console.log(phonenumber)
+              var email = button.data('email')
+              var id = button.data('id')
+             console.log(email)
+             console.log(id)
+
+              var modal = $(this)
+  
+              modal.find('#firstname').attr('value',firstname)
+              modal.find('#lastname').attr('value',lastname)
+              modal.find('#address').attr('value',address)
+              modal.find('#phonenumber').attr('value',phonenumber)
+              modal.find('#email').attr('value',email)
+  
+
+              var url ="{{url('/achiveclient')}}/"+ id;
+             
+              $('#editClientList').attr('action',url);   
+              });
+          
 
 
 </body> 
