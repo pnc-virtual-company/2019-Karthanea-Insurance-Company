@@ -2,11 +2,10 @@
 
 @extends('layout.dashboard')
 @section('content')
-<body>
     <div class="container">
         <div class="row justify-content-center">
                     <div class="col-md-12">
-                        <div> <h1>@lang('Clients Information')</h1></div>
+                        <div><h1>@lang('Clients Information')</h1></div>
                                 <div class="card">
                                     <div class="card-body">
                                         <table id="myTable" class="table table-striped table-bordered table-hover">
@@ -20,12 +19,14 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                @foreach ($client as $value=>$item)
-                                                
-                                                <tr>
+                        @foreach ($client as $value=>$item)
+                        <tr>
                             <td>
-                                <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
-                               
+                                <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" 
+                                    data-id="{{$item->id}}" data-firstname="{{$item->firstname}}"
+                                    data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" 
+                                    data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}">
+                                    <i class="material-icons text-success">edit</i></a>
                                 <input type="checkbox" name="disable" id="disable">
                                 {{$item->id}}
                             </td>
@@ -197,42 +198,6 @@
               </div>
             </div>
           </div>
-          
-          <script src="{{asset('js/app.js')}}"></script>
-<script>
-        $('#editClient').on('show.bs.modal',function (event){
-              var button = $(event.relatedTarget)
-              var firstname = button.data('firstname')
-              console.log(firstname)
-              var lastname = button.data('lastname')   
-              console.log(lastname) 
-              var address = button.data('address')
-              console.log(address)
-              var phonenumber = button.data('phonenumber')
-              console.log(phonenumber)
-              var email = button.data('email')
-              var id = button.data('id')
-             console.log(email)
-             console.log(id)
-
-              var modal = $(this)
-  
-              modal.find('#firstname').attr('value',firstname)
-              modal.find('#lastname').attr('value',lastname)
-              modal.find('#address').attr('value',address)
-              modal.find('#phonenumber').attr('value',phonenumber)
-              modal.find('#email').attr('value',email)
-  
-
-              var url ="{{url('/achiveclient')}}/"+ id;
-             
-              $('#editClientList').attr('action',url);   
-              });
-          
-
-
-</body> 
-{{-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> --}}
 <script src="{{asset('js/app.js')}}"></script>
 <script type="text/javascript">
     $('#editClient').on('show.bs.modal',function(event){
@@ -255,7 +220,7 @@
     modal.find('#address').attr('value',address)
     modal.find('#phonenumber').attr('value',phonenumber)
     modal.find('#email').attr('value',email)
-    var url ="{{url('/achiveclient')}}/"+ id;
+    var url ="{{url('/clientAchive')}}/"+ id;
     $('#editClientList').attr('action',url);   
     });
     </script>   
