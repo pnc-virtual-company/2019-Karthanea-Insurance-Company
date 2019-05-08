@@ -75,12 +75,12 @@ Route::resource('/contracttype','contracttypeController');
 
 Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
-Route::get('/create','ClientController@create');
+// Route::get('/create','ClientController@create');
 
-Route::get('/client','ClientController@index');
+// Route::get('/client','ClientController@index');
 Route::resource('/clientAchive','clientAchiveController');
 
-Route::get('/userCall','ClientController@userCall');
+// Route::get('/userCall','ClientController@userCall');
 
 Route::resource('contract','ContractController');
 Route::resource('payment','paymentController');
@@ -93,5 +93,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
 Route::post('/uploadprofile', 'ProfileController@upload');
 
-Route::get('/calluser','usercallController@index');
+// Route::get('/calluser','usercallController@index');
 
