@@ -105,36 +105,35 @@
                     </table>
                 </div>
                 <div class="table-responsive">
-
-                </div>
-                <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
-                        <thead class="bg-dark text-white">
-                            <tr>
-                                <th>Month</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-                                <th>Due date</th>
-                                <th>Bill</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                @foreach ($contract as $item)
+                    <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
+                            <thead class="bg-dark text-white">
                                 <tr>
-                                    <td>{{$item->startdate}}</td>
-                                    <td>{{$item->monthlybill}}</td>
-                                    <td>{{$item->bill->status}}<a href="{{route('payment.edit',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
-                                    <td>{{$item->enddate}}</td>
-                                    
-                                    <td>
-                                        <a href="#" class="text-center">
-                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                        </a>
-                                    </td>
+                                    <th>Month</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Due date</th>
+                                    <th>Bill</th>
                                 </tr>
-                                @endforeach
-                        </tbody>
+                            </thead>
+                            <tbody>
+                                    @foreach ($contract as $item)
+                                    <tr>
+                                        <td>{{$item->startdate}}</td>
+                                        <td>{{$item->monthlybill}}</td>
+                                        <td>{{$item->bill->status}}<a href="{{route('payment.edit',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                        <td>{{$item->enddate}}</td>
+                                        
+                                        <td>
+                                            <a href="#" class="text-center">
+                                                <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                            </tbody>
+                        </table>
                     </table>
-                </table>
+                </div>
                 <div>
                 </div>
                </div>

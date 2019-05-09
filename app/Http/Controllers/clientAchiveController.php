@@ -14,9 +14,10 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
+        $clientStatus = Client::where('status','Disable')->first();
         $client = Client::all();
         $disable = Client::where('status','Active')->first();
-        return view('pages.AchiveClient',compact('client','disable'));
+        return view('pages.AchiveClient',compact('client','disable','clientStatus'));
     }
 
     /**
@@ -36,9 +37,16 @@ class clientAchiveController extends Controller
      * @return void
      */
     public function status(Request $request, $id){
-        
+        dd($clientStatus = Client::where('status','Active'));
+        $client =Client::find($id);
         $clientStatus = Client::where('status','Active')->first();
-        $clientStatus->update($request->all());
+        if ($clientStatus.checked == true) {
+            $clientStatus = Client::where('status','Disable')->first();
+        } else {
+            $clientStatus = Client::where('status','Active')->first();
+        }
+        $clientStatus = Client::where('status',$clientStatus);
+        $clientStatus->update();
 
         return  redirect('/clientAchive');
     }
@@ -50,9 +58,14 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-
-        $client = Client::create($request->all());
         $disable = $request->disable;
+        if ($disable.checked== true) {
+            $disable = Client::where('status','Disable')->first();
+        } else {
+            $disable = Client::where('status','Active')->first();
+        }
+        $client->status = $disable;
+        $client = Client::create($request->all());
         return redirect('/clientAchive');
        
     }
@@ -90,16 +103,11 @@ class clientAchiveController extends Controller
     {
       
       $client =Client::find($id);//seect * from Post where id=$id
-      $disable = $request->disable;
+    //   $disable = $request->disable;
       
 
-      $disable = Client::where('status','Active')->first();
-        if ($disable.checked == true) {
-            $disable = Client::where('status','Disable')->first();
-        } else {
-            $disable = Client::where('status','Active')->first();
-        }
-        $disable = Client::where('status',$disable);
+    //   $disable = Client::where('status','Active')->first();
+       
       $client->update($request->all());
       return  redirect('/clientAchive');
     }
