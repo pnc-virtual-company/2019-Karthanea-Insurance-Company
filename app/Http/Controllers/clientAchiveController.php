@@ -14,6 +14,7 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
+        $client = Client::all();
         $clientStatus = Client::where('status','Disable')->first();
         $client = Client::all();
         $disable = Client::where('status','Active')->first();
@@ -105,11 +106,12 @@ class clientAchiveController extends Controller
     { 
         $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
         $client->update($request->all());
-        return  redirect('/clientAchive');
-      $client->update($request->all());
-      return  redirect('/clientAchive');
 
+        return  redirect('/clientAchive');
     }
+       
+
+
 
     /**
      * Remove the specified resource from storage.
@@ -117,8 +119,9 @@ class clientAchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+    public function destroy($id)
+    {
+        //
+    }
+
 }

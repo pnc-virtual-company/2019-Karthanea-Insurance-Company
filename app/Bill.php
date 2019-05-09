@@ -9,7 +9,8 @@ class Bill extends Model
     protected $fillable = [
         'id','status'
     ];
-    public function contract(){
+    public function contracts(){
+
         return $this->hasMany(Contract::class);
     }
 }

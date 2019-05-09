@@ -16,8 +16,6 @@
                                 </thead>
                                 <tbody>
                                   @foreach ($contracttype as $item)
-                                      
-                                  
                                     <tr >
                                         <td class="text-center">
                                             <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
@@ -64,13 +62,38 @@
                                
                             </table>
                       </div>
-
-
   @section('content')
     <div class="content">
       <div class="container-fluid">.
         <h1>Contract Type</h1>
-
+                <div class="card">
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+                                <thead class="bg-dark text-white">
+                                    <tr>
+                                        <th class="text-center ">ID</th>
+                                        <th> Contract type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($contracttype as $item)
+                                      
+                                  
+                                    <tr >
+                                        <td class="text-center">
+                                            <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                            <a href="{{route('contracttype.update',$item->id)}}"  data-toggle="modal" data-target="#updateContractType" data-id="{{$item->id}}"  data-contracttype="{{$item->contracttype}}" ><i class="material-icons text-success">edit</i></a>
+               
+                                            {{$item->id}}
+                                        </td>
+                                        <td>{{$item->contracttype}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                               
+                            </table>
+                      </div>
           <div class="card">
               <div class="card-body">
                 <table id="myTable" class="table table-striped table-bordered" style="width:100%">
@@ -96,7 +119,6 @@
                   </tbody>
                    
                 </table>
-
                 <button type="submit" class="btn bg-primary text-white" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create New contract type</button>
               </div>
             </div>
@@ -170,6 +192,7 @@
       </div>
     </div>
 {{--End model update --}}    
+
 
       <script src="{{asset('js/app.js')}}"></script>
 {{-- script update for contractType --}}

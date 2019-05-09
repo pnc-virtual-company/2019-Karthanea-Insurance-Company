@@ -19,6 +19,20 @@
                         </thead>
                         <tbody>
                             @foreach ($client as $value=>$item)
+                            <tr>
+                                <td>
+                                    <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                   
+                                    <input type="checkbox" name="checkbox" id="checkbox">
+                                    
+    
+                                    {{$item->id}}
+                                </td>
+                                <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                <td>{{$item->address}}</td>
+                                <td>{{$item->phonenumber}}</td>
+                                <td>{{$item->email}}</td>
+                            </tr>
                             @if ($item->status=='Active')
                             <tr>
                                 <td>
@@ -61,11 +75,112 @@
                         <button type="button" class="btn bg-danger text-white" data-dismiss="modal">No</button>
                     </div>
                 </div>
+                <form method="POST" action="{{action('ClientController@store')}}">
+                @csrf
+                <div class="modal-body">
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="name">Firstname</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" name="firstname" required class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="name">Lastname</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" name="lastname" required class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="address">Address</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" name="address" required class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="phone">Phone</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="number" name="phonenumber" required class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="email">E-Mail</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="email" name="email" required class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info">OK</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+              </div>
             </div>
         </div>
         <!-- Modal add -->
         <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
+                
+                </div>
+                
+                <form action="" method="POST" id="editClientList">
+                    @csrf
+                    @method('PATCH')
+                   
+                <div class="modal-body">
+                    
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="">Firstname</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" requiredname="firstname" id="firstname" value="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="">Lastname</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" required name="lastname" id="lastname" value="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="">Address</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" required name="address" id="address" value="" class="form-control">
+                                </div>
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Create New Client</h5>
@@ -144,7 +259,24 @@
                             <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
                             
                         </div>
-                        
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="">Phone</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="number" required name="phonenumber" id="phonenumber" value="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="">E-Mail</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="email" required name="email" id="email" value="" class="form-control">
+                                </div>
                         <form action="" method="POST" id="editClientList">
                             @csrf
                             @method('PATCH')

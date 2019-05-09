@@ -26,6 +26,22 @@
                             </thead>
                             <tbody>
                                 @foreach ($client as $value)
+                                <tr>
+                                    <td>
+                                        <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
+                                        <input type="checkbox" name="disable" id="disable">
+                                        {{$value->id}}
+                                    </td>
+                                    <td>{{$value->firstname}} {{$value->lastname}}</td>
+                                    <td>{{$value->address}}</td>
+                                    <td>{{$value->phonenumber}}</td>
+                                    <td>{{$value->email}}</td>
+                                    <td>
+                                        <a href="#" class="togglePayment">
+                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                        </a>
+                                    </td>
+                                </tr>
                                     @if ($value->status=='Active')
                                         <tr>
                                             <td>
@@ -105,6 +121,22 @@
                     </table>
                 </div>
                 <div class="table-responsive">
+                </div>
+                <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>Month</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>Due date</th>
+                                <th>Bill</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                                @foreach ($contract as $item)
+                                <tr>
+                                    <td>{{$item->startdate}}</td>
+                                    <td>{{$item->monthlybill}}</td>
                     <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
                             <thead class="bg-dark text-white">
                                 <tr>
@@ -120,6 +152,10 @@
                                         </a>
                                     </td>
                                 </tr>
+                                @endforeach
+                        </tbody>
+                    </table>
+                </table>
                             </thead>
                             <tbody>
                                     @foreach ($contract as $item)
@@ -201,9 +237,9 @@
                           </div>
                           <div class="card-body">
                                 <form action="" method="POST" id="editForm">
-                                    @csrf
-                                    @method('PATCH')
-                                        <div class="modal-body">
+                                        @csrf
+                                        @method('PATCH')
+                                <div class="modal-body">
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-2">
@@ -282,6 +318,21 @@
                                                                 </div>
                                                                 <div class="col-9">
                                                                     <div class="row">
+                                                                        <div class="col-3">
+                                                                              <label for="startDate">Start Date</label>
+                                                                        </div>
+                                                                        <div class="col-9">
+
+                                                                            <div class="row">
+                                                                                <div class="col-12">
+                                                                                    <input type='text' name="startdate" class='startDate ' value="" id="startdate" placeholder="mm/dd/yy"  />
+
+                                                                                </div>
+                                                                              </div>
+
+
+                                                                              </div>
+                                                                            </div>
                                                                         <div class="col-12">
                                                                             <input type='text' name="startdate" class='startDate ' value="" id="startdate" placeholder="mm/dd/yy"  />
                                                                         </div>
@@ -458,6 +509,124 @@
                         </div>
                     </div>
             
+ <!-- Modal Edit -->
+ <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="firstname">Firstname</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" name="firstname" id="name" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <form action="" method="POST" id="editClient">
+                        @csrf
+                        @method('PATCH')
+                       
+                    <div class="modal-body">
+                        
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <label for="">Firstname</label>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="text" name="firstname" id="firstname" value="" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <label for="">Lastname</label>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="text" name="lastname" id="lastname" value="" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <label for="">Address</label>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="text" name="address" id="address" value="" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <label for="">Phone</label>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="number" name="phonenumber" id="phonenumber" value="" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <label for="">E-Mail</label>
+                                    </div>
+                                    <div class="col-10">
+                                        <input type="email" name="email" id="email" value="" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-info">OK</button>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+               
+                  </div>
+                </div>
+              </div>
+              
+              <script src="{{asset('js/app.js')}}"></script>
+    <script>
+            $('#editClient').on('show.bs.modal',function (event){
+                  var button = $(event.relatedTarget)
+                  var firstname = button.data('firstname')
+                  console.log(firstname)
+                  var lastname = button.data('lastname')   
+                  console.log(lastname) 
+                  var address = button.data('address')
+                  console.log(address)
+                  var phonenumber = button.data('phonenumber')
+                  console.log(phonenumber)
+                  var email = button.data('email')
+                  var id = button.data('id')
+                 console.log(email)
+                 console.log(id)
+    
+                  var modal = $(this)
+      
+                  modal.find('#firstname').attr('value',firstname)
+                  modal.find('#lastname').attr('value',lastname)
+                  modal.find('#address').attr('value',address)
+                  modal.find('#phonenumber').attr('value',phonenumber)
+                  modal.find('#email').attr('value',email)
+      
+                  var url ="{{url('/client')}}/"+ id;
+                  $('#editClientList').attr('action',url);   
+                  });
             <!-- Modal Edit -->
             <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
