@@ -25,22 +25,24 @@
                             </thead>
                             <tbody>
                                 @foreach ($client as $value)
-                                <tr>
-                                    <td>
-                                        <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                        <input type="checkbox" name="disable" id="disable">
-                                        {{$value->id}}
-                                    </td>
-                                    <td>{{$value->firstname}} {{$value->lastname}}</td>
-                                    <td>{{$value->address}}</td>
-                                    <td>{{$value->phonenumber}}</td>
-                                    <td>{{$value->email}}</td>
-                                    <td>
-                                        <a href="#" class="togglePayment">
-                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                        </a>
-                                    </td>
-                                </tr>
+                                    @if ($value->status=='Active')
+                                        <tr>
+                                            <td>
+                                                <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
+                                                <input type="checkbox" name="disable" id="disable">
+                                                {{$value->id}}
+                                            </td>
+                                            <td>{{$value->firstname}} {{$value->lastname}}</td>
+                                            <td>{{$value->address}}</td>
+                                            <td>{{$value->phonenumber}}</td>
+                                            <td>{{$value->email}}</td>
+                                            <td>
+                                                <a href="#" class="togglePayment">
+                                                    <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             </tbody>
                             <br>

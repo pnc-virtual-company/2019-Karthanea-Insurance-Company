@@ -113,10 +113,6 @@
                                                                 @endforeach
                                                             </select>
                                                             <input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
-<<<<<<< HEAD
-=======
-                                            
->>>>>>> 939c1fc4d8afd0d18e144df23b9c17145cc4694d
                                                         </div>
                                                        
                                                 <div class="form-group ">
@@ -324,20 +320,13 @@
                                                                          <div class="col-10">
                                                                              
                                                                              <select class="browser-default custom-select" name="status" id="status"  >
-                                                                                 @foreach ($contractselect as $item)
-                                                                               <option value="{{$item->status}}">{{$item->status}}</option>
+                                                                                @foreach ($contractselect as $item)
+                                                                                    <option value="{{$item->status}}">{{$item->status}}</option>
                                                                                @endforeach
-                                                                               
-                                                                               
-                                                                               
-                                                                               
                                                                             </select>
                                                                         </div>
-                                                                        
                                                                 </div>
-                                                                
                                                             </div>   
-                                                             
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -355,12 +344,9 @@
     
                                                                                     </div>
                                                                                   </div>
-    
-                                                                                  
                                                                                 </div>
                                                                             </div>
                                                                             </div>
-                                                           
                                                                             <div class="col-6">
                                                                                 <div class="row">
                                                                   <div class="col-3">

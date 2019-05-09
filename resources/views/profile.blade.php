@@ -10,12 +10,12 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 col-sm-12 border-right text-center border-bottom">
-                            @if (auth::user()->avatar!= null)
-                                <img src="{{ asset('storage/images/'.Auth::user()->avatar)}}"
+                            @if(Auth::user()->avatar!= null)
+                                <img src="{{asset('storage/avatar/'.Auth::user()->avatar)}}"
                                  class="rounded-circle btn" id="image" alt="profile" 
                                 data-toggle="modal" data-target="#upload"/>
                             @else
-                                <img src="storage/images/default-avatar.png" class="img-circle2">
+                                <img src="storage/avatar/avatar.jpg" class="img-circle2">
                             @endif
                             <a href="#"  data-toggle="modal" data-target="#upload"><h5>Choose profile</h5>  </a>   
                         </div>
@@ -74,7 +74,7 @@
                             <button type="submit" class="btn btn-sm bg-primary text-white">Save</button>
                         </div>
                     </div>
-            </form>
+                 </form>
                 </div>
             </div>
         </div>

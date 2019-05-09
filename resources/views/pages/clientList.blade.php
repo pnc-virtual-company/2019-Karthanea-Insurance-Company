@@ -140,7 +140,7 @@
             </div>
           </div>
           <!-- Modal Edit -->
-          <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="editClientActive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
@@ -159,7 +159,7 @@
                                     <label for="">Firstname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" requiredname="firstname" id="firstname" value="" class="form-control">
+                                    <input type="text" required name="firstname" id="firstname" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -247,7 +247,5 @@
            } else {
 
            }
-});
-
         </script>
 @endsection

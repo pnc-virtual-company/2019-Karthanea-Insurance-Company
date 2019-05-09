@@ -171,7 +171,7 @@
                                     <label for="">Firstname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" name="firstname" id="firstname" value="" class="form-control">
+                                    <input type="text" name="firstname" id="firstname" value="" class="form-control" required>
                                 </div>
                             </div>
                     </div>
@@ -181,7 +181,7 @@
                                 <label for="">Lastname</label>
                             </div>
                             <div class="col-10">
-                                <input type="text" name="lastname" id="lastname" value="" class="form-control">
+                                <input type="text" name="lastname" id="lastname" value="" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                             <label for="">Address</label>
                         </div>
                         <div class="col-10">
-                            <input type="text" name="address" id="address" value="" class="form-control">
+                            <input type="text" name="address" id="address" value="" class="form-control" required>
                         </div>
                     </div>
                 </div>
@@ -201,7 +201,7 @@
                             <label for="">Phone</label>
                         </div>
                         <div class="col-10">
-                            <input type="number" name="phonenumber" id="phonenumber" value="" class="form-control">
+                            <input type="number" name="phonenumber" id="phonenumber" value="" class="form-control" required>
                         </div>
                     </div>
                 </div>
@@ -211,7 +211,7 @@
                             <label for="">E-Mail</label>
                         </div>
                         <div class="col-10">
-                            <input type="email" name="email" id="email" value="" class="form-control">
+                            <input type="email" name="email" id="email" value="" class="form-control" required>
                         </div>
                     </div>
                 </div>
@@ -252,7 +252,7 @@
     $('#editClientList').attr('action',url);   
     });
     </script>   
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         $('#disableClient').on('show.bs.modal',function(event){
         var button = $(event.relatedTarget)
         var disable = button.data('disable')
@@ -262,5 +262,5 @@
         var url ="{{url('/clientAchive')}}/"+ id;
         $('#disableClient-form').attr('action',url);   
     });
-    </script>   
+    </script>    --}}
 @endsection
