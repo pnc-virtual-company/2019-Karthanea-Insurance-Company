@@ -1,3 +1,4 @@
+{{dd($clientStatus)}}
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 @extends('layout.dashboard')
 @section('content')
@@ -8,47 +9,50 @@
                         <div> <h1>@lang('Clients Information')</h1></div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <table id="myTable" class="table table-striped table-bordered table-hover">
-                                            <thead class="bg-dark text-white">
-                                                <tr>
-                                                    <th>Disable ID</th>
-                                                    <th>Clients</th>
-                                                    <th>Address</th>
-                                                    <th>Phone</th>
-                                                    <th>Email</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach ($client as $value=>$item)
-                                                
-                                                <tr>
-                                <td>
-                                    <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
-                                    @if ($item->status=='Active')
-                                        <a href="{{route('clientAchive.update',$item->id)}}"
-                                            data-toggle="modal" data-target="#disableClient" data-status="{{$item->status}}"
-                                                onclick="event.preventDefault();
-                                                document.getElementById('disableClient-form');">
-                                            <input type="checkbox" name="disable[]" id="disable">
-                                        </a>
-                                    @else
-                                        <a href="{{route('clientAchive.update',$item->id)}}"
-                                             data-toggle="modal" data-target="#disableClient" data-status="{{$item->status}}"
-                                                onclick="event.preventDefault();
-                                                document.getElementById('disableClient-form');">
-                                            <input type="checkbox" name="disable[]" id="disable" checked>
-                                        </a>
-                                    @endif
-                                        {{$item->id}}
-                                </td>
-                            <td>{{$item->firstname}} {{$item->lastname}} </td>
-                            <td>{{$item->address}}</td>
-                            <td>{{$item->phonenumber}}</td>
-                            <td>{{$item->email}}</td>
-                        </tr>
-                        @endforeach
-                            </tbody>
-                        </table>
+                                        <div class="table-responsive">
+                                                <table id="myTable" class="table table-striped table-bordered table-hover">
+                                                    <thead class="bg-dark text-white">
+                                                        <tr>
+                                                            <th>Disable ID</th>
+                                                            <th>Clients</th>
+                                                            <th>Address</th>
+                                                            <th>Phone</th>
+                                                            <th>Email</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        @foreach ($client as $value=>$item)
+                                                        
+                                                        <tr>
+                                        <td>
+                                            <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                            @if ($item->status=='Active')
+                                                <a href="{{url('/clientStatus',$item->id)}}"
+                                                    data-toggle="modal" data-target="#disableClient" data-status="{{$item->status}}"
+                                                        onclick="event.preventDefault();
+                                                        document.getElementById('disableClient-form');">
+                                                    <input type="checkbox" name="disable[]" id="disable">
+                                                </a>
+                                            @else
+                                                <a href="{{url('/clientStatus',$item->id)}}"
+                                                    data-toggle="modal" data-target="#disableClient" data-status="{{$item->status}}"
+                                                        onclick="event.preventDefault();
+                                                        document.getElementById('disableClient-form');">
+                                                    <input type="checkbox" name="disable[]" id="disable" checked>
+                                                </a>
+                                            @endif
+                                                {{$item->id}}
+                                        </td>
+                                    <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                    <td>{{$item->address}}</td>
+                                    <td>{{$item->phonenumber}}</td>
+                                    <td>{{$item->email}}</td>
+                                </tr>
+                                @endforeach
+                                    </tbody>
+                                </table>
+
+                                        </div>
                         
                         <div>
                               <button type="button" class="btn text-white bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
@@ -66,8 +70,9 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form id="disableClient-form" action="" method="POST">
+            <form id="disableClient-form" action="{{action('clientAchiveController@status')}}" method="POST">
                 @csrf
+                @method('PATCH')
                 <div class="modal-body text-danger">
                     Are you sure that you want to disable this client?
                 </div>
@@ -161,7 +166,7 @@
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
             </div>
-            <form action="" method="POST" id="editClientList">
+            <form action="{{action('clientAchiveController@status')}}"method="POST" id="editClientList">
                 @csrf
                 @method('PATCH')
                   <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>

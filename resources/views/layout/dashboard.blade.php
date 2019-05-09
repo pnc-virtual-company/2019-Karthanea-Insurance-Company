@@ -189,7 +189,6 @@
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span><strong>{{Auth::user()->name}}</strong></span>
                   @if (Auth::user()->avatar!=null)
-                  {{-- {{dd(storage_path('app'))}} --}}
                     <img id="imgProfilePic" src="{{asset('storage/avatar/'.Auth::user()->avatar)}}">
                   @else
                     <img id="imgProfilePic" src="{{asset('storage/avatar/avatar.jpg')}}">

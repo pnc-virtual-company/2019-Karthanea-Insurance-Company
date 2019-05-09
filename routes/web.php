@@ -83,6 +83,7 @@ Route::resource('/clientAchive','clientAchiveController');
 
 // Route::get('/userCall','ClientController@userCall');
 
+Route::get('/clientStatus','clientAchiveController@status');
 Route::resource('contract','ContractController');
 Route::resource('payment','paymentController');
 
