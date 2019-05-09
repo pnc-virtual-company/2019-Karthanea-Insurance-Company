@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Contracttype;
 class contracttypeController extends Controller
 {
     /**
@@ -16,6 +16,7 @@ class contracttypeController extends Controller
     }
         public function index()
     {
+        
         $contracttype = \App\Contracttype::all();
        
         return view('pages.contracttype',compact('contracttype'));
@@ -40,6 +41,8 @@ class contracttypeController extends Controller
      */
     public function store(Request $request)
     {
+       
+       
         $contracttype = \App\Contracttype::create($request->all());
         return redirect('/contracttype');
     }
@@ -75,7 +78,7 @@ class contracttypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contracttype = \App\Contracttype::find($id);//select * from Post where id=$id
+        $contracttype = \App\Contracttype::find($id);
         $contracttype->update($request->all());
         return  redirect('/contracttype');
     }
