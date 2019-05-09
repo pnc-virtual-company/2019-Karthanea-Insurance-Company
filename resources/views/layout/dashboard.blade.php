@@ -238,13 +238,13 @@
   <script src="{{asset('js/core/jquery.min.js')}}"></script>
   <script src="{{asset('js/core/popper.min.js')}}"></script>
   {{-- modal error --}}
-  <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
+  {{-- <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script> --}}
   <script src="https://unpkg.com/default-passive-events"></script>
   <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!--  Google Maps Plugin    -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+  {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
   <!-- Chartist JS -->
   <script src="{{asset('js/plugins/chartist.min.js')}}"></script>
   <!--  Notifications Plugin    -->
@@ -351,8 +351,8 @@ $(".ui-datepicker-trigger").mouseover(function() {
               label: '# of Votes',
               data: [12, 19, 3, 5, 2, 32],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 99, 132, 0.7)',
+                  'rgba(54, 162, 235, 0.7)',
                   'rgba(255, 206, 86, 0.2)',
                   'rgba(75, 192, 192, 0.2)',
                   'rgba(153, 102, 255, 0.2)',
@@ -390,12 +390,12 @@ $(".ui-datepicker-trigger").mouseover(function() {
               label: 'of Votes',
               data: [12, 19, 3, 5, 2, 3],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
+                  'rgba(255, 99, 132, 0.7)',
+                  'rgba(54, 162, 235, 0.7)',
+                  'rgba(255, 206, 86, 0.7)',
+                  'rgba(75, 192, 192, 0.7)',
+                  'rgba(153, 102, 255, 0.7)',
+                  'rgba(255, 159, 64, 0.7)'
               ],
               borderColor: [
                   'rgba(255, 99, 132, 1)',
@@ -429,9 +429,9 @@ $(".ui-datepicker-trigger").mouseover(function() {
               label: 'Payment',
               data: [12, 19, 3],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)'
+                  'rgba(255, 99, 132, 0.7)',
+                  'rgba(54, 162, 235, 0.7)',
+                  'rgba(255, 206, 86, 0.7)'
                   
               ],
               borderColor: [
