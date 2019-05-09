@@ -79,7 +79,7 @@
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
                     <li class="list-group-item collapsed">
-                      <a href="{{url('/calluser')}}">
+                      <a href="{{url('/userCall')}}">
                         <span class="text-white">
                           <i class="material-icons text-white">perm_phone_msg</i>
                           User Call
@@ -187,11 +187,12 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span><strong>{{ Auth::user()->name}}</strong></span>
-                  @if (Auth::user()->avatar!= null)
-                    <img id="imgProfilePic" src="{{asset('storage/images/'.Auth::user()->avatar)}}">
+                  <span><strong>{{Auth::user()->name}}</strong></span>
+                  @if (Auth::user()->avatar!=null)
+                  {{-- {{dd(storage_path('app'))}} --}}
+                    <img id="imgProfilePic" src="{{asset('storage/avatar/'.Auth::user()->avatar)}}">
                   @else
-                    <img id="imgProfilePic" src="{{asset('storage/images/avatar.jpg')}}">
+                    <img id="imgProfilePic" src="{{asset('storage/avatar/avatar.jpg')}}">
                   @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">

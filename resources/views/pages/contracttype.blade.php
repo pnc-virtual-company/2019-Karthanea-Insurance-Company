@@ -4,6 +4,37 @@
     <div class="content">
       <div class="container-fluid">.
         <h1>Contract Type</h1>
+                <div class="card">
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+                                <thead class="bg-dark text-white">
+                                    <tr>
+                                        <th class="text-center ">ID</th>
+                                        <th> Contract type</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  @foreach ($contracttype as $item)
+                                      
+                                  
+                                    <tr >
+                                        <td class="text-center">
+                                            <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
+                                            <a href="{{route('contracttype.update',$item->id)}}"  data-toggle="modal" data-target="#updateContractType" data-id="{{$item->id}}"  data-contracttype="{{$item->contracttype}}" ><i class="material-icons text-success">edit</i></a>
+               
+                                            {{$item->id}}
+                                        </td>
+                                        <td>{{$item->contracttype}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                               
+                            </table>
+                      </div>
+    <div class="content">
+      <div class="container-fluid">.
+        <h1>Contract Type</h1>
 
                 <div class="card">
                     <div class="card-body">
@@ -107,9 +138,6 @@
           </div>
         </div>
    {{--End model create --}}    
-
-       
-
 {{-- model update for contractType --}}    
   <div class="modal fade" id="updateContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -142,7 +170,6 @@
       </div>
     </div>
 {{--End model update --}}    
-
 
       <script src="{{asset('js/app.js')}}"></script>
 {{-- script update for contractType --}}
@@ -189,17 +216,7 @@
           </div>
         </div>
       </div>
-
     <script src="{{asset('js/app.js')}}"></script>
-      <script>
-         
-
-{{--End model Delete for contractType --}}    
-
-ete for contractType --}}    
-
-
-
 {{-- script Delete for contractType --}}    
       <script>
           $('#deleteContractType').on('show.bs.modal',function(event){

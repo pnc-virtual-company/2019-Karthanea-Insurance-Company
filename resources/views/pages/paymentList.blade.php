@@ -25,6 +25,24 @@
                             </thead>
                             <tbody>
                                 @foreach ($client as $value)
+                                    @if ($value->status=='Active')
+                                        <tr>
+                                            <td>
+                                                <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
+                                                <input type="checkbox" name="disable" id="disable">
+                                                {{$value->id}}
+                                            </td>
+                                            <td>{{$value->firstname}} {{$value->lastname}}</td>
+                                            <td>{{$value->address}}</td>
+                                            <td>{{$value->phonenumber}}</td>
+                                            <td>{{$value->email}}</td>
+                                            <td>
+                                                <a href="#" class="togglePayment">
+                                                    <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 <tr>
                                     <td>
                                         <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
@@ -116,6 +134,7 @@
                                 <tr>
                                     <td>{{$item->startdate}}</td>
                                     <td>{{$item->monthlybill}}</td>
+                                    //<td>{{$item->bill->status}}<a href="{{route('payment.edit',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
                                     <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
                                     <td>{{$item->enddate}}</td>
                                     
@@ -150,6 +169,16 @@
                   <div class="row">
                       <div class="col-2"><p> Status</p></div>
                       <div class="col-6">
+                            <select class=" custom-select">
+                                @foreach ($contract as $item)
+                                    @if ($item->bill->id == $item->bill_id)
+                                        <option value="{{$item->bill->id}}" selected>{{$item->bill->status}}</option>
+                                    @endif
+                                    @if($item->bill->id != $item->bill_id)
+                                        <option value="{{$item->bill->id}}">{{$item->bill->status}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
                           <select class=" custom-select">
                                 @foreach ($bill as $item)
                                     <option value="{{$item->id}}" selected>{{$item->status}}</option>

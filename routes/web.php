@@ -71,6 +71,7 @@ Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
 Route::resource('/contracttype','contracttypeController');
+Route::resource('/userCall','UserCallController');
 
 
 Route::get('/location','PageController@location');

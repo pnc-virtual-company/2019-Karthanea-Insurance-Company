@@ -50,6 +50,12 @@
                                                             <td class="client">
                                                                 <div class="row">
                                                                     <div class="col-6">
+
+                                                                        {{$item->client->firstname}} {{$item->client->lastname}}
+                                                                    </div>
+                                                                    <div class="col-3">
+                                                                        <a href="#" id="edit-item"><i class="material-icons ml-5 text-info">call</i></a>
+                                                                    </div>
                                                                             {{$item->client->firstname}} {{$item->client->lastname}}
                                                                         </div>
                                                                     <div class="col-3">
@@ -60,9 +66,12 @@
                                                             <td class="contracttype">
                                                                 <div class="row">
                                                                     <div class="col-5">
-                                                                            {{$item->contracttype->contracttype}} 
+                                                                        {{$item->contracttype->contracttype}} 
                                                                     </div>
                                                                     <div class="col-2">
+                                                                        <a href="#" class="text-center">
+                                                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                                                        </a>  
                                                                             <a href="#" class="text-center">
                                                                                 <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                                             </a>  
@@ -75,6 +84,7 @@
                                                             <td class="monthlybill">$ {{$item['monthlybill']}}</td>
                                                             <td class="monthlyduedate"> {{$item->monthlyduedate}}</td>
                                                             <td>
+                                                                <a href="#" class="text-center">$</a>
                                                                 <a href="#" class="text-center">
                                                                     $
                                                                 </a>
@@ -115,9 +125,7 @@
                                                                 @endforeach
                                                             </select>
                                                             <input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
-                                            
                                                         </div>
-                                                       
                                                 <div class="form-group ">
                                                     <div class="row">
                                                         <div class="col-6">
@@ -323,6 +331,13 @@
                                                                          <div class="col-10">
                                                                              
                                                                              <select class="browser-default custom-select" name="status" id="status"  >
+                                                                                @foreach ($contractselect as $item)
+                                                                                    <option value="{{$item->status}}">{{$item->status}}</option>
+                                                                               @endforeach
+                                                                            </select>
+                                                                        </div>
+                                                                </div>
+                                                            </div>   
                                                                                  @foreach ($contractselect as $item)
                                                                                <option value="{{$item->status}}">{{$item->status}}</option>
                                                                                @endforeach
@@ -354,12 +369,14 @@
     
                                                                                     </div>
                                                                                   </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
     
                                                                                   
                                                                                 </div>
                                                                             </div>
                                                                             </div>
-                                                           
                                                                             <div class="col-6">
                                                                                 <div class="row">
                                                                   <div class="col-3">
