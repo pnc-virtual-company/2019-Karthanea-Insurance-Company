@@ -123,6 +123,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
+
+                <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
+            </div>
+            <form action="" method="POST" id="editClientList">
+                @csrf
+                @method('PATCH')
+
                   <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
                 
                 </div>
@@ -130,6 +137,7 @@
                 <form action="" method="POST" id="editClientList">
                     @csrf
                     @method('PATCH')
+
                 <div class="modal-body">
                     <div class="form-group">
                             <div class="row">
@@ -210,6 +218,23 @@
         </script>
 @endsection
 
+
+              var modal = $(this)
+  
+              modal.find('#firstname').attr('value',firstname)
+              modal.find('#lastname').attr('value',lastname)
+              modal.find('#address').attr('value',address)
+              modal.find('#phonenumber').attr('value',phonenumber)
+              modal.find('#email').attr('value',email)
+  
+              var url ="{{url('/achiveclient')}}/"+ id;
+              $('#editClientList').attr('action',url);   
+              });
+          
+
+        </script>
+@endsection
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-2">
@@ -253,9 +278,8 @@
     modal.find('#address').attr('value',address)
     modal.find('#phonenumber').attr('value',phonenumber)
     modal.find('#email').attr('value',email)
-    var url ="{{url('/achiveclient')}}/"+ id;
+    var url ="{{url('/clientAchive')}}/"+ id;
     $('#editClientList').attr('action',url);   
     });
     </script>   
 @endsection
-

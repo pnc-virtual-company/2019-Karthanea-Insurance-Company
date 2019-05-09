@@ -70,31 +70,20 @@ Route::get('examples', 'ExamplesController@index')->name('examples');
 Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
-
-
 Route::resource('/contracttype','contracttypeController');
 
 
 Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
-Route::get('/create','ClientController@create');
+// Route::get('/create','ClientController@create');
 
-
-Route::resource('/achiveclient','clientAchiveController');
-
-Route::get('/userCall','ClientController@userCall');
-// Route::get('/usercall','UsercallController');
-Route::resource('contract','ContractController');
-
-Route::get('/client','ClientController@index');
+// Route::get('/client','ClientController@index');
 Route::resource('/clientAchive','clientAchiveController');
 
-Route::get('/userCall','ClientController@userCall');
+// Route::get('/userCall','ClientController@userCall');
 
 Route::resource('contract','ContractController');
 Route::resource('payment','paymentController');
-
-Route::get('/payment','paymentController@index');
 
 Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
@@ -104,5 +93,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
 Route::post('/uploadprofile', 'ProfileController@upload');
 
-Route::get('/calluser','usercallController@index');
+// Route::get('/calluser','usercallController@index');
 

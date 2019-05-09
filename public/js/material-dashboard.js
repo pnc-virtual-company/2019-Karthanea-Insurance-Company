@@ -150,11 +150,11 @@ $(window).resize(function() {
 
 
 md = {
-  misc: {
-    navbar_menu_visible: 0,
-    active_collapse: true,
-    disabled_collapse_init: 0
-  },
+  // misc: {
+  //   navbar_menu_visible: 0,
+  //   active_collapse: true,
+  //   disabled_collapse_init: 0
+  // },
 
   checkSidebarImage: function() {
     $sidebar = $('.sidebar');
