@@ -1,5 +1,6 @@
-  document.addEventListener('DOMContentLoaded', function() {
-    var calendarEl = document.getElementById('calendar');
+  // document.addEventListener('DOMContentLoaded', function() {
+  //   var calendarEl = document.getElementById('calendar');
+
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
       plugins: [ 'interaction', 'dayGrid' ],
@@ -27,9 +28,9 @@
           start: '2019-04-16T16:00:00'
         },
         {
-          title: 'Conference',
-          start: '2019-04-11',
-          end: '2019-04-13'
+          title: 'Conference <br> Test',
+          start: '2019-04-11T16:00:00',
+          end: '2019-04-13T18:00:00'
         },
         {
           title: 'Meeting',
@@ -64,5 +65,6 @@
       ]
     });
 
-    calendar.render();
-  });
+
+  //   calendar.render();
+  // });

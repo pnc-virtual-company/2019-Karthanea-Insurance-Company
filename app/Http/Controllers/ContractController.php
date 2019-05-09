@@ -41,17 +41,11 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request,[
-        //     'status'=>'required',
-        //     'startdate'=>'required',
-        //     'enddate'=>'required',
-        //     'monthlybill'=>'required',
-            
-        //   ]);
+        
 
 
         $contract = Contract::create($request->all());
-        return redirect('/contractlist');
+        return redirect('/contract');
     }
 
     /**
@@ -87,7 +81,7 @@ class ContractController extends Controller
     {
         $contract = \App\Contract::find($id);//select * from Post where id=$id
         $contract->update($request->all());
-        return  redirect('contractlist');
+        return  redirect('contract');
     }
 
     /**

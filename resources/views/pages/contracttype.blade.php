@@ -105,9 +105,9 @@
     </div>
 {{--End model update --}}    
 
-
       <script src="{{asset('js/app.js')}}"></script>
 {{-- script update for contractType --}}
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
       <script>
               $('#updateContractType').on('show.bs.modal',function(event){
                   var button = $(event.relatedTarget)

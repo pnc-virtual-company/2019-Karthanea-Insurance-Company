@@ -334,12 +334,7 @@
                                                                 </tr>
                                                             </tbody>
                                                            
-                                                        </table>
-                                        
-                                                        
-                                                    
-                                          
-                                                
+                                                        </table>      
                                                 
                                           {{-- model update --}}
                                         

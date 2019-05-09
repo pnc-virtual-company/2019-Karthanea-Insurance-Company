@@ -74,39 +74,35 @@ Route::resource('/home','PageController@index');
 
 Route::resource('/contracttype','contracttypeController');
 
-//Route::get('/contracttype','ContractController@index');
-
-
-//Route::get('/createContract','PageController@createContractType');
 
 Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
 Route::get('/create','ClientController@create');
 
-Route::get('/client','ClientController@index');
+
 Route::resource('/achiveclient','clientAchiveController');
 
 Route::get('/userCall','ClientController@userCall');
+// Route::get('/usercall','UsercallController');
+Route::resource('contract','ContractController');
 
-//Route::get('/contractlist','ContractController@index');
+Route::get('/client','ClientController@index');
+Route::resource('/clientAchive','clientAchiveController');
+
+Route::get('/userCall','ClientController@userCall');
+
 Route::resource('contract','ContractController');
 Route::resource('payment','paymentController');
-//Route::post('/store','ContractController@store');
+
 Route::get('/payment','paymentController@index');
 
 Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
-Route::get('/chart','ChartController@index');
+Route::get('/chart','ChartController@index'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/achiveClient','ClientController@achiveClient');
 Route::resource('profile', 'ProfileController');
 Route::post('/uploadprofile', 'ProfileController@upload');
-// Route::get('/home', 'HomeController@index')->name('home');
 
-// Route::get('userProfile','AvatarController@profile');
-// Route::get('/myprofile', 'uploadController@imageUpload');
-// Route::get('userProfile','AvatarController@update_avatar');
+Route::get('/calluser','usercallController@index');
 
-
-// Route::get('/home', 'HomeController@index')->name('home');

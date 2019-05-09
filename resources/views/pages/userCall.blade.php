@@ -1,9 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-
         <h1>Information Of Clients Call</h1>
-
         <div class="myCalendar p-3 pr-4 float-right">
             <a href="{{url('/calendar')}}">
                 <i class="material-icons">date_range</i>
@@ -34,7 +32,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="#"><i class="material-icons">call</i></a>
+                                <a href="#"><i class="material-icons" title="@lang('call')" >call</i></a>
                             </td>
                         </tr>
                         <tr>
@@ -44,7 +42,7 @@
                             </td>
                             <td>Sith</td>
                             <td>
-                                <a href="#">
+                                <a href="#" title="@lang('call')">
                                     <i class="material-icons">insert_drive_file</i>
                                 </a>
                             </td>
@@ -64,7 +62,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a href="#"><i class="material-icons">call</i></a>
+                                <a href="#" title="@lang('call')" > <i class="material-icons">call</i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -77,4 +75,6 @@
     
             </div>
           </div>
+ <script src="{{asset('js/app.js')}}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 @endsection
