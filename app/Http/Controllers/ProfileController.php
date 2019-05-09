@@ -29,7 +29,7 @@ class ProfileController extends Controller
         ]);
         if($request->hasFile('profile')){
             $avatarName = request()->profile->getClientOriginalName();
-            $request->file('profile')->storeAs('public/images',$avatarName);
+            $request->file('profile')->storeAs('public/avatar',$avatarName);
             
             $user = Auth::user();
             $user->avatar = $avatarName;

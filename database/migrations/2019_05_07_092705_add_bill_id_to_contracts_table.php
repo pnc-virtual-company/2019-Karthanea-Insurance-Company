@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddStatusToBillsTable extends Migration
+class AddBillIdToContractsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddStatusToBillsTable extends Migration
      */
     public function up()
     {
-        Schema::table('bills', function (Blueprint $table) {
-            $table->string('status')->default('Unpaid');
+        Schema::table('contracts', function (Blueprint $table) {
+            $table->integer('bill_id')->unsigned();
+            $table->foreign('bill_id')
+                        ->references('id')
+                        ->on('bills')
+                        ->onDelete('cascade');
         });
     }
 
@@ -25,7 +29,7 @@ class AddStatusToBillsTable extends Migration
      */
     public function down()
     {
-        Schema::table('bills', function (Blueprint $table) {
+        Schema::table('contracts', function (Blueprint $table) {
             //
         });
     }
