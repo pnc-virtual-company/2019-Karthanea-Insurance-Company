@@ -70,14 +70,12 @@ Route::get('examples', 'ExamplesController@index')->name('examples');
 Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
-
-
 Route::resource('/contracttype','contracttypeController');
 
 
 Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
-Route::get('/create','ClientController@create');
+// Route::get('/create','ClientController@create');
 
 Route::get('/userCall','ClientController@userCall');
 // Route::get('/usercall','UsercallController');

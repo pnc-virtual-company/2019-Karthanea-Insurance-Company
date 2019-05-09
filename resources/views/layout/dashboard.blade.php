@@ -239,9 +239,9 @@
   <script src="{{asset('js/core/jquery.min.js')}}"></script>
   <script src="{{asset('js/core/popper.min.js')}}"></script>
   {{-- modal error --}}
-  <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
+  {{-- <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script> --}}
   <script src="https://unpkg.com/default-passive-events"></script>
-  <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+  {{-- <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script> --}}
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!--  Google Maps Plugin    -->
@@ -305,23 +305,39 @@
   
    $(document).ready(function() {
 
-$(".txtDate").datepicker({
+$(".startdate").datepicker({
     showOn: 'button',
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
     dateFormat: 'yy-mm-dd',
     
-     constrainInput: true
+     constrainInput: true,
+    
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() + 1);
+            $(".enddate").datepicker("option", "minDate", dt);
+        }
+     
+
+     
 });
-$(".startDate").datepicker({
+$(".enddate").datepicker({
     showOn: 'button',
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
     dateFormat: 'yy-mm-dd',
     
-     constrainInput: true
+     constrainInput: true,
+     
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() - 1);
+            $("startdate").datepicker("option", "maxDate", dt);
+        }
+    
 });
 $(".ui-datepicker-trigger").mouseover(function() {
     $(this).css('cursor', 'pointer');

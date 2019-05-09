@@ -47,10 +47,10 @@ class ClientController extends Controller
         
         
         $client = Clientlist::create($request->all());
-        $checkbox=$request->checkbox;       
-        foreach($checkbox as $key=>$item){
-            $client->$item->state->attach($item); 
-        }
+        // $checkbox=$request->checkbox;       
+        // foreach($checkbox as $key=>$item){
+        //     $client->$item->state->attach($item); 
+        // }
         return redirect('/client');
 
     }

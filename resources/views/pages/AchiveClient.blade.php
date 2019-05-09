@@ -192,16 +192,8 @@
         </div>
         </div>
 
-<<<<<<< HEAD
-
-            </form>
-           
-              </div>
-            </div>
-          </div>
-=======
 </body> 
->>>>>>> 04efe8d416c7b466f453af5ccd980849c5d91cde
+
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
