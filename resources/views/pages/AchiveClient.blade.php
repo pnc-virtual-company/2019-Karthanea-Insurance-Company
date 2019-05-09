@@ -1,3 +1,4 @@
+{{-- {{dd($disable)}}; --}}
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 @extends('layout.dashboard')
 @section('content')
@@ -25,18 +26,18 @@
                                 <td>
                                     <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                     @if ($item->status=='Active')
-                                        <a href="{{route('clientAchive.update',$item->id)}}"
+                                        <a href="{{url('/clientStatus',$item->id)}}"
                                             data-toggle="modal" data-target="#disableClient" data-status="{{$item->status}}"
                                                 onclick="event.preventDefault();
                                                 document.getElementById('disableClient-form');">
-                                            <input type="checkbox" name="disable[]" id="disable">
+                                            <input type="checkbox" name="disable[]" id="disable" checked="unchecked">
                                         </a>
                                     @else
-                                        <a href="{{route('clientAchive.update',$item->id)}}"
+                                        <a href="{{url('/clientStatus',$item->id)}}"
                                              data-toggle="modal" data-target="#disableClient" data-status="{{$item->status}}"
                                                 onclick="event.preventDefault();
                                                 document.getElementById('disableClient-form');">
-                                            <input type="checkbox" name="disable[]" id="disable" checked>
+                                            <input type="checkbox" name="disable[]" id="disable" checked="checked">
                                         </a>
                                     @endif
                                         {{$item->id}}
@@ -161,7 +162,7 @@
                 <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
             </div>
-            <form action="" method="POST" id="editClientList">
+            <form action="{{action('clientAchiveController@status')}}"method="POST" id="editClientList">
                 @csrf
                 @method('PATCH')
                 <div class="modal-body">

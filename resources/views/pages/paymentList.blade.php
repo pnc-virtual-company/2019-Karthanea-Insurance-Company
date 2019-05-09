@@ -1,5 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
+<body>
 <div class="container mt-4">
     <div class="row shadow-lg bg-light">
         <div class="col-4"><button class="btn btn-block btn-light "><i class="material-icons text-success  mr-4">call</i>  In a call</button></div>
@@ -28,7 +29,10 @@
                                     @if ($value->status=='Active')
                                         <tr>
                                             <td>
-                                                <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
+                                                <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"
+                                                        data-id="{{$value->id}}" data-firstname="{{$value->firstname}}" data-lastname="{{$value->lastname}}" data-address="{{$value->address}}" data-phonenumber="{{$value->phonenumber}}" data-email="{{$value->email}}">
+                                                        <i class="material-icons text-success">create</i>
+                                                    </a>
                                                 <input type="checkbox" name="disable" id="disable">
                                                 {{$value->id}}
                                             </td>
@@ -155,11 +159,13 @@
                             <select class=" custom-select">
                                 @foreach ($contract as $item)
                                     @if ($item->bill->id == $item->bill_id)
-                                        <option value="{{$item->bill->id}}" selected>{{$item->bill->status}}</option>
+                                        <option value="{{$item->bill_id}}" selected>{{$item->bill->status}}</option>
+                                        @if($item->bill->id != $item->bill_id)
+                                            <option value="{{$item->bill->status}}">{{$item->bill->status}}</option>
+                                        @endif
                                     @endif
-                                    @if($item->bill->id != $item->bill_id)
-                                        <option value="{{$item->bill->id}}">{{$item->bill->status}}</option>
-                                    @endif
+                                    {{-- @foreach ($bill as $value) --}}
+                                    {{-- @endforeach --}}
                                 @endforeach
                             </select>
                       </div>
@@ -185,10 +191,9 @@
                           </div>
                           <div class="card-body">
                                 <form action="" method="POST" id="editForm">
-                                        
-                                        @csrf
-                                        @method('PATCH')
-                                <div class="modal-body">
+                                    @csrf
+                                    @method('PATCH')
+                                        <div class="modal-body">
                                                 <div class="form-group">
                                                     <div class="row">
                                                         <div class="col-2">
@@ -260,24 +265,20 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="row">
-                                                            <div class="col-6">
+                                                        <div class="col-6">
+                                                            <div class="row">
+                                                                <div class="col-3">
+                                                                    <label for="startDate">Start Date</label>
+                                                                </div>
+                                                                <div class="col-9">
                                                                     <div class="row">
-                                                                        <div class="col-3">
-                                                                              <label for="startDate">Start Date</label>
+                                                                        <div class="col-12">
+                                                                            <input type='text' name="startdate" class='startDate ' value="" id="startdate" placeholder="mm/dd/yy"  />
                                                                         </div>
-                                                                        <div class="col-9">
-
-                                                                            <div class="row">
-                                                                                <div class="col-12">
-                                                                                    <input type='text' name="startdate" class='startDate ' value="" id="startdate" placeholder="mm/dd/yy"  />
-
-                                                                                </div>
-                                                                              </div>
-
-
-                                                                              </div>
-                                                                            </div>
-                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                        
                                                       <div class="col-6">
                                                           <div class="row">
@@ -369,13 +370,10 @@
                                                                     </thead>
                                                                     <tbody>
                                                                       @foreach ($contracttype as $item)
-                                                                          
-                                                                      
                                                                         <tr >
                                                                             <td class="text-center">
                                                                                 <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
                                                                                 <a href="{{route('contracttype.update',$item->id)}}"  data-toggle="modal" data-target="#updateContractType" data-id="{{$item->id}}"  data-contracttype="{{$item->contracttype}}" ><i class="material-icons text-success">edit</i></a>
-                                                   
                                                                                 {{$item->id}}
                                                                             </td>
                                                                             <td>{{$item->contracttype}}</td>
@@ -401,7 +399,6 @@
                                                               <div class="col-4"><p>Type of contract</p></div>
                                                               <div class="col-7">
                                                                   <div class="form-group">
-                                                                  
                                                                       <input type="text" name="contracttype" id="" class="form-control">
                                                                   </div>
                                                               </div>
@@ -451,125 +448,106 @@
                         </div>
                     </div>
             
- <!-- Modal Edit -->
- <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-2">
-                                <label for="firstname">Firstname</label>
-                            </div>
-                            <div class="col-10">
-                                <input type="text" name="firstname" id="name" class="form-control">
-                            </div>
+            <!-- Modal Edit -->
+            <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
+                            
                         </div>
-                    </div>
-                    
-                    <form action="" method="POST" id="editClient">
-                        @csrf
-                        @method('PATCH')
-                       
-                    <div class="modal-body">
                         
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <label for="">Firstname</label>
+                        <form action="" method="POST" id="editClientList">
+                            @csrf
+                            @method('PATCH')
+                            <div class="modal-body">
+                                
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="">Firstname</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" required name="firstname" id="firstname" value="" class="form-control">
+                                        </div>
                                     </div>
-                                    <div class="col-10">
-                                        <input type="text" name="firstname" id="firstname" value="" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="">Lastname</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" required name="lastname" id="lastname" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="">Address</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="text" required name="address" id="address" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="">Phone</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="number" required name="phonenumber" id="phonenumber" value="" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <label for="">E-Mail</label>
+                                        </div>
+                                        <div class="col-10">
+                                            <input type="email" required name="email" id="email" value="" class="form-control">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <label for="">Lastname</label>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="text" name="lastname" id="lastname" value="" class="form-control">
-                                    </div>
-                                </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-info">OK</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                             </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <label for="">Address</label>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="text" name="address" id="address" value="" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <label for="">Phone</label>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="number" name="phonenumber" id="phonenumber" value="" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="row">
-                                    <div class="col-2">
-                                        <label for="">E-Mail</label>
-                                    </div>
-                                    <div class="col-10">
-                                        <input type="email" name="email" id="email" value="" class="form-control">
-                                    </div>
-                                </div>
-                            </div>
+                        </form>
+                        
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-info">OK</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-               
-                  </div>
                 </div>
-              </div>
-              
-              <script src="{{asset('js/app.js')}}"></script>
-    <script>
-            $('#editClient').on('show.bs.modal',function (event){
-                  var button = $(event.relatedTarget)
-                  var firstname = button.data('firstname')
-                  console.log(firstname)
-                  var lastname = button.data('lastname')   
-                  console.log(lastname) 
-                  var address = button.data('address')
-                  console.log(address)
-                  var phonenumber = button.data('phonenumber')
-                  console.log(phonenumber)
-                  var email = button.data('email')
-                  var id = button.data('id')
-                 console.log(email)
-                 console.log(id)
-    
-                  var modal = $(this)
-      
-                  modal.find('#firstname').attr('value',firstname)
-                  modal.find('#lastname').attr('value',lastname)
-                  modal.find('#address').attr('value',address)
-                  modal.find('#phonenumber').attr('value',phonenumber)
-                  modal.find('#email').attr('value',email)
-      
-                  var url ="{{url('/client')}}/"+ id;
-                  $('#editClientList').attr('action',url);   
-                  });
-              
-    
+            </div>
+        </body>
+        <script src="{{asset('js/app.js')}}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script>
+        $('#editClient').on('show.bs.modal',function (event){
+            var button = $(event.relatedTarget)
+            var firstname = button.data('firstname')
+            console.log(firstname)
+            var lastname = button.data('lastname')   
+            console.log(lastname) 
+            var address = button.data('address')
+            console.log(address)
+            var phonenumber = button.data('phonenumber')
+            console.log(phonenumber)
+            var email = button.data('email')
+            var id = button.data('id')
+            console.log(email)
+            console.log(id)
+            var modal = $(this)
+            modal.find('#firstname').attr('value',firstname)
+            modal.find('#lastname').attr('value',lastname)
+            modal.find('#address').attr('value',address)
+            modal.find('#phonenumber').attr('value',phonenumber)
+            modal.find('#email').attr('value',email)
+            var url ="{{url('/client')}}/"+ id;
+            $('#editClientList').attr('action',url);   
+        });
             </script>
 @endsection

@@ -15,7 +15,8 @@ class clientAchiveController extends Controller
     public function index()
     {
         $client = Client::all();
-        return view('pages.AchiveClient',compact('client'));
+        $disable = Client::where('status','Active')->first();
+        return view('pages.AchiveClient',compact('client','disable'));
     }
 
     /**
@@ -29,6 +30,19 @@ class clientAchiveController extends Controller
     }
 
     /**
+     * Update client status function
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function status(Request $request, $id){
+        
+        $clientStatus = Client::where('status','Active')->first();
+        $clientStatus->update($request->all());
+
+        return  redirect('/clientAchive');
+    }
+    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -38,6 +52,7 @@ class clientAchiveController extends Controller
     {
 
         $client = Client::create($request->all());
+        $disable = $request->disable;
         return redirect('/clientAchive');
        
     }
@@ -76,6 +91,8 @@ class clientAchiveController extends Controller
       
       $client =Client::find($id);//seect * from Post where id=$id
       $disable = $request->disable;
+      
+
       $disable = Client::where('status','Active')->first();
         if ($disable.checked == true) {
             $disable = Client::where('status','Disable')->first();
@@ -93,8 +110,8 @@ class clientAchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+    public function destroy($id)
+    {
+        //
+    }
 }
