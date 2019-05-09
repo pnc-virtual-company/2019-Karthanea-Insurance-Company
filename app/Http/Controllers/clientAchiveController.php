@@ -36,7 +36,6 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-
         $client = Client::create($request->all());
         return redirect('/clientAchive');
        
@@ -61,7 +60,7 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-     //
+      //
     }
 
     /**
@@ -85,6 +84,10 @@ class clientAchiveController extends Controller
         $disable = Client::where('status',$disable);
       $client->update($request->all());
       return  redirect('/clientAchive');
+    { 
+        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
+        $client->update($request->all());
+        return  redirect('/clientAchive');
     }
 
     /**
