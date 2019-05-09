@@ -95,15 +95,8 @@ class clientAchiveController extends Controller
     public function update(Request $request, $id)
     {
       
-      $client =Client::find($id);//seect * from Post where id=$id
-    //   $disable = $request->disable;
-      
-
-    //   $disable = Client::where('status','Active')->first();
-       
-      $client->update($request->all());
-      return  redirect('/clientAchive');
-    { 
+      $client = Client::find($id);//seect * from Post where id=$id
+    
         $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
         $client->update($request->all());
 
@@ -119,9 +112,9 @@ class clientAchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    // public function destroy($id)
+    // {
+    //     //
+    // }
 
 }

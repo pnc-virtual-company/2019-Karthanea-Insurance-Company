@@ -21,7 +21,6 @@ class ContractController extends Controller
         $contracttype = \App\Contracttype::all();
         $client = \App\Client::all();
         $bill = Bill::all();
-        //dd($contract);
         return view('pages.addContract',compact('contractselect','contracttype','client','bill'));
     }
 

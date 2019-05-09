@@ -26,22 +26,6 @@
                             </thead>
                             <tbody>
                                 @foreach ($client as $value)
-                                <tr>
-                                    <td>
-                                        <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
-                                        <input type="checkbox" name="disable" id="disable">
-                                        {{$value->id}}
-                                    </td>
-                                    <td>{{$value->firstname}} {{$value->lastname}}</td>
-                                    <td>{{$value->address}}</td>
-                                    <td>{{$value->phonenumber}}</td>
-                                    <td>{{$value->email}}</td>
-                                    <td>
-                                        <a href="#" class="togglePayment">
-                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                        </a>
-                                    </td>
-                                </tr>
                                     @if ($value->status=='Active')
                                         <tr>
                                             <td>
@@ -137,12 +121,6 @@
                                 <tr>
                                     <td>{{$item->startdate}}</td>
                                     <td>{{$item->monthlybill}}</td>
-                    <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
-                            <thead class="bg-dark text-white">
-                                <tr>
-                                    <td>{{$item->startdate}}</td>
-                                    <td>{{$item->monthlybill}}</td>
-                                    {{-- //<td>{{$item->bill->status}}<a href="{{route('payment.edit',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td> --}}
                                     <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
                                     <td>{{$item->enddate}}</td>
                                     
@@ -154,26 +132,6 @@
                                 </tr>
                                 @endforeach
                         </tbody>
-                    </table>
-                </table>
-                            </thead>
-                            <tbody>
-                                    @foreach ($contract as $item)
-                                    <tr>
-                                        <td>{{$item->startdate}}</td>
-                                        <td>{{$item->monthlybill}}</td>
-                                        <td>{{$item->bill->status}}<a href="{{route('payment.edit',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
-                                        <td>{{$item->enddate}}</td>
-                                        
-                                        <td>
-                                            <a href="#" class="text-center">
-                                                <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                            </tbody>
-                        </table>
                     </table>
                 </div>
                 <div>
@@ -199,21 +157,17 @@
                       <div class="col-6">
                             <select class=" custom-select">
                                 @foreach ($contract as $item)
-                                    @if ($item->bill->id == $item->bill_id)
+                                    @if ($item->bill->id == $item->bill_id && $item->bill_id== $item->id)
                                         <option value="{{$item->bill_id}}" selected>{{$item->bill->status}}</option>
-                                        @if($item->bill->id != $item->bill_id)
-                                            <option value="{{$item->bill->status}}">{{$item->bill->status}}</option>
-                                        @endif
+                                    @else
+                                        @foreach ($bill as $value)
+                                            @if ($value->id != $item->bill->id)
+                                                <option value="{{$value->id}}" >{{$value->status}}</option>
+                                            @endif
+                                        @endforeach
                                     @endif
-                                    {{-- @foreach ($bill as $value) --}}
-                                    {{-- @endforeach --}}
                                 @endforeach
                             </select>
-                          <select class=" custom-select">
-                                @foreach ($bill as $item)
-                                    <option value="{{$item->id}}" selected>{{$item->status}}</option>
-                                    @endforeach
-                                </select>
                       </div>
                   </div>
                   

@@ -1,4 +1,4 @@
-{{dd($clientStatus)}}
+{{-- {{dd($clientStatus)}} --}}
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 @extends('layout.dashboard')
 @section('content')
@@ -8,36 +8,6 @@
                         <div><h1>@lang('Clients Information')</h1></div>
                                 <div class="card">
                                     <div class="card-body">
-                                        <table id="myTable" class="table table-striped table-bordered table-hover">
-                                            <thead class="bg-dark text-white">
-                                                <tr>
-                                                    <th>Disable ID</th>
-                                                    <th>Clients</th>
-                                                    <th>Address</th>
-                                                    <th>Phone</th>
-                                                    <th>Email</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                        @foreach ($client as $value=>$item)
-                        <tr>
-                            <td>
-                                <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" 
-                                    data-id="{{$item->id}}" data-firstname="{{$item->firstname}}"
-                                    data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" 
-                                    data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}">
-                                    <i class="material-icons text-success">edit</i></a>
-                                <input type="checkbox" name="disable" id="disable">
-                                {{$item->id}}
-                            </td>
-                            <td>{{$item->firstname}} {{$item->lastname}} </td>
-                            <td>{{$item->address}}</td>
-                            <td>{{$item->phonenumber}}</td>
-                            <td>{{$item->email}}</td>
-                        </tr>
-                        @endforeach
-                            </tbody>
-                        </table>
                                         <div class="table-responsive">
                                                 <table id="myTable" class="table table-striped table-bordered table-hover">
                                                     <thead class="bg-dark text-white">
@@ -253,101 +223,10 @@
             </div>
           </div>
           
-          <script src="{{asset('js/app.js')}}"></script>
-<script>
-        $('#editClient').on('show.bs.modal',function (event){
-              var button = $(event.relatedTarget)
-              var firstname = button.data('firstname')
-              console.log(firstname)
-              var lastname = button.data('lastname')   
-              console.log(lastname) 
-              var address = button.data('address')
-              console.log(address)
-              var phonenumber = button.data('phonenumber')
-              console.log(phonenumber)
-              var email = button.data('email')
-              var id = button.data('id')
-             console.log(email)
-             console.log(id)
-
-              var modal = $(this)
-  
-              modal.find('#firstname').attr('value',firstname)
-              modal.find('#lastname').attr('value',lastname)
-              modal.find('#address').attr('value',address)
-              modal.find('#phonenumber').attr('value',phonenumber)
-              modal.find('#email').attr('value',email)
-  
-              var url ="{{url('/achiveclient')}}/"+ id;
-              $('#editClientList').attr('action',url);   
-              });
-          
-
-        </script>
-@endsection
-
-
-              var modal = $(this)
-  
-              modal.find('#firstname').attr('value',firstname)
-              modal.find('#lastname').attr('value',lastname)
-              modal.find('#address').attr('value',address)
-              modal.find('#phonenumber').attr('value',phonenumber)
-              modal.find('#email').attr('value',email)
-  
-              var url ="{{url('/achiveclient')}}/"+ id;
-              $('#editClientList').attr('action',url);   
-              });
-          
-
-        </script>
-@endsection
-
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-2">
-                            <label for="">E-Mail</label>
-                        </div>
-                        <div class="col-10">
-                            <input type="email" name="email" id="email" value="" class="form-control" required>
-                        </div>
-                    </div>
-                </div>
-        </div>
-        <div class="modal-footer">
-            <button type="submit" class="btn btn-info">OK</button>
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-        </div>
-        </form>
-        </div>
-        </div>
-
-</body> 
-
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $('#editClient').on('show.bs.modal',function(event){
-        var button = $(event.relatedTarget)
-        var firstname = button.data('firstname')
-        console.log(firstname)
-        var lastname = button.data('lastname')   
-        console.log(lastname) 
-        var address = button.data('address')
-        console.log(address)
-        var phonenumber = button.data('phonenumber')
-        console.log(phonenumber)
-        var email = button.data('email')
-        var id = button.data('id')
-        console.log(email)
-        console.log(id)
-        var modal = $(this)
-        modal.find('#firstname').attr('value',firstname)
-        modal.find('#lastname').attr('value',lastname)
-        modal.find('#address').attr('value',address)
-        modal.find('#phonenumber').attr('value',phonenumber)
-        modal.find('#email').attr('value',email)
-        var url ="{{url('/clientAchive')}}/"+ id;
     var button = $(event.relatedTarget)
     var firstname = button.data('firstname')
     console.log(firstname)
