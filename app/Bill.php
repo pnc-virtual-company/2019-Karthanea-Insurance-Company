@@ -10,6 +10,7 @@ class Bill extends Model
         'id','status'
     ];
     public function contracts(){
+
         return $this->hasMany(Contract::class);
     }
 }

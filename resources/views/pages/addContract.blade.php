@@ -49,7 +49,9 @@
                                                             </td>
                                                             <td class="client">
                                                                 <div class="row">
-                                                                    <div class="col-6">
+                                                                    <div class="col-3">
+                                                                        <a href="#" id="edit-item"><i class="material-icons ml-5 text-info">call</i></a>
+                                                                    </div>
                                                                             {{$item->client->firstname}} {{$item->client->lastname}}
                                                                         </div>
                                                                     <div class="col-3">
@@ -60,9 +62,12 @@
                                                             <td class="contracttype">
                                                                 <div class="row">
                                                                     <div class="col-5">
-                                                                            {{$item->contracttype->contracttype}} 
+                                                                        {{$item->contracttype->contracttype}} 
                                                                     </div>
                                                                     <div class="col-2">
+                                                                        <a href="#" class="text-center">
+                                                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                                                        </a>  
                                                                             <a href="#" class="text-center">
                                                                                 <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                                             </a>  
@@ -75,6 +80,7 @@
                                                             <td class="monthlybill">$ {{$item['monthlybill']}}</td>
                                                             <td class="monthlyduedate"> {{$item->monthlyduedate}}</td>
                                                             <td>
+                                                                <a href="#" class="text-center">$</a>
                                                                 <a href="#" class="text-center">
                                                                     $
                                                                 </a>
@@ -104,18 +110,18 @@
                                 <div class="modal-body">
                                     <div class="form-group">
                                       <div class="row">
+                                        <div class="row">
                                                         <div class="col-2">
                                                             <label for="">Client</label>
                                                         </div>
                                                         
                                                         <div class="col-4">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+                                                        <div class="col-10">
                                                             <select name="client_id" id="client_id" class="browser-default custom-select" required>
                                                                  @foreach ($client as $item)
                                                                 <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
                                                                 @endforeach
                                                             </select>
-                                                           
-                                            
                                                         </div>
                                                         <div class="col-2">
                                                             <label for="">Bill</label>
@@ -131,7 +137,8 @@
                                                                     @endforeach$item->id
                                                                 </select>
                                                         </div>
-                                                        
+                                                            <input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
+                                                        </div>
                                                 <div class="form-group ">
                                                     <div class="row">
                                                         <div class="col-6">
@@ -148,7 +155,7 @@
                                                                                        <option value="{{$item->id}}">{{$item->contracttype}}</option>
                                                                                        @endforeach
                                                                                    </select>
-                                                                                   
+                                                                                   {{-- <input class="form-control py-2" name="contracttype_id" type="search"  id="example-search-input"> --}}
                                                                                    <span class="input-group-append">
                                                                                        <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectCreateContract" type="button" style="margin-top:0%;">
                                                                                             Select
@@ -199,7 +206,7 @@
                                                                     <div class="row">
                                                                         <div class="col-12">
                                                                             <input type='text' name="startdate" class='startdate' placeholder="mm/dd/yy"  required/>
-                                                                            
+                                                                            <input type='text' name="startdate" class='txtDate' placeholder="mm/dd/yy"  required/>
                                                                                 </div>
                                                                             </div>
                                                                             
@@ -217,6 +224,7 @@
                                                                     <div class="row">
                                                                       <div class="col-12">
                                                                             <input type='text' name="enddate" class='enddate' placeholder="mm/dd/yy"  required/>
+                                                                            <input type='text' name="enddate" class='txtDate' placeholder="mm/dd/yy"  required/>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -244,6 +252,7 @@
                                                                 
                                                                 <div class="col-6">
                                                                     <input type="text" id="monthlyduedate" name="monthlyduedate" class="form-control monthlyduedate" required>
+                                                                    <input type="text" id="monthlyduedate" name="monthlyduedate" class="form-control" required>
                                                                 </div>   
                                                             </div>
                                                             </div>
@@ -294,12 +303,7 @@
                                                                     <option value="{{$item->id}}" >{{$item->firstname}} {{$item->lastname}}</option>
                                                                     @endforeach
                                                                 </select>
-
-                                                                
                                                             </div>
-                                                            
-                                                          
-                                                            
                                                 <div class="form-group ">
                                                     <div class="row">
                                                         <div class="col-6">
@@ -370,8 +374,104 @@
                                                                             
                                                                                 </div>
                                                                             </div>
+                                                                <input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
+                                                            </div>
+                                                            <div class="form-group ">
+                                                                <div class="row">
+                                                            <div class="col-6">
+                                                                <div class="row">
+                                                                    <div class="col-2">
+                                                                        <label for="">Type</label>
+                                                                    </div>
+                                                                    
+                                                                    <div class="col-10">
+                                                                        
+                                                                            <div class="input-group">
+                                                                                <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select">
+                                                                                    @foreach ($contracttype as $item)
+                                                                                    <option value="{{$item->id}}">{{$item->contracttype}}</option>
+                                                                                    @endforeach
+                                                                                </select>
+                                                                                    {{-- <input class="form-control py-2" name="contracttype_id" type="search"  id="example-search-input"> --}}
+                                                                                    <span class="input-group-append">
+                                                                                        <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectUpdateContract" type="button" style="margin-top:0%;">
+                                                                                                Select
+                                                                                            </button>
+                                                                                        </span>
+                                                                                    </div>
+    
+                                                                                </div>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            
+                                                            <div class="col-6">
+                                                                
+                                                                <div class="row">
+                                                                    
+                                                                        <div class="col-2">
+                                                                                <label for="">Status</label>
                                                                             
-                                                                            
+                                                                            </div>
+                                                                         <div class="col-10">
+                                                                             
+                                                                             <select class="browser-default custom-select" name="status" id="status"  >
+                                                                                @foreach ($contractselect as $item)
+                                                                                    <option value="{{$item->status}}">{{$item->status}}</option>
+                                                                               @endforeach
+                                                                            </select>
+                                                                        </div>
+                                                                </div>
+                                                            </div>   
+                                                                                 @foreach ($contractselect as $item)
+                                                                               <option value="{{$item->status}}">{{$item->status}}</option>
+                                                                               @endforeach
+                                                                               
+                                                                               
+                                                                               
+                                                                               
+                                                                            </select>
+                                                                        </div>
+                                                                        
+                                                                </div>
+                                                                
+                                                            </div>   
+                                                             
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="row">
+                                                                <div class="col-6">
+                                                                        <div class="row">
+                                                                            <div class="col-3">
+                                                                                <label for="startDate">Start Date</label>
+                                                                            </div>
+                                                                            <div class="col-9">
+                                                                                
+                                                                                <div class="row">
+                                                                                    <div class="col-12">
+                                                                                        <input type='text' name="startdate" class='startDate ' value="" id="startdate" placeholder="mm/dd/yy"  />
+    
+                                                                                    </div>
+                                                                                  </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
+    
+                                                                                  
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>
+                                                                            <div class="col-6">
+                                                                                <div class="row">
+                                                                  <div class="col-3">
+                                                                      <label for="endDate">End Date</label>
+                                                                    </div>
+                                                                    <div class="col-9">
+                                                                      <div class="row">
+                                                                          <div class="col-12">
+                                                                              <input type='text' name="enddate" class='txtDate' value="" id="enddate" placeholder="mm/dd/yy"  />
+                                                                          </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -393,6 +493,10 @@
                                                               
                                                           </div>
                                                       </div>
+    
+                                                              </div>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                                     <div class="form-group ">
@@ -402,6 +506,9 @@
                                                                         <div class="col-5"><label for="" >Monthly bill</label></div>
                                                                         
                                                                             <div class="col-7">
+                                                                        <div class="col-4"><label for="" >Monthly bill</label></div>
+                                                                        
+                                                                            <div class="col-6">
                                                                                 <input type="text" name="monthlybill" id="monthlybill" class="form-control" required>
                                                                             </div>   
                                                                     </div>
@@ -412,6 +519,10 @@
                                                                         
                                                                         <div class="col-7">
                                                                             <input type="text" name="monthlyduedate" id="monthlyduedate" class="form-control monthlyduedate" required>
+                                                                        <div class="col-4"><label for="" >Monthly Due Date</label></div>
+                                                                        
+                                                                        <div class="col-6">
+                                                                            <input type="text" name="monthlyduedate" id="monthlyduedate" class="form-control" required>
                                                                         </div>   
                                                                         </div>
                                                                     </div>
