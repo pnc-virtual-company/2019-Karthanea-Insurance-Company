@@ -36,6 +36,20 @@
                                     <td>{{$item->email}}</td>
                                 </tr>
                             @endif
+                            <tr>
+                                <td>
+                                    <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                   
+                                    <input type="checkbox" name="checkbox" id="checkbox">
+                                    
+    
+                                    {{$item->id}}
+                                </td>
+                                <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                <td>{{$item->address}}</td>
+                                <td>{{$item->phonenumber}}</td>
+                                <td>{{$item->email}}</td>
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>

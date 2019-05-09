@@ -24,7 +24,6 @@ class paymentController extends Controller
         $contract = Contract::all();
         $contracttype = Contracttype::all();
         $bill = Bill::all();
-        
         return view('pages.paymentList',compact('client','contract','contracttype','bill' ));
     }
 
@@ -84,6 +83,7 @@ class paymentController extends Controller
        $billDiff = $bill->diff($contract->bill);
        return view('pages.paymentList',compact('contract','bill'));
 
+       //
     }
 
     /**

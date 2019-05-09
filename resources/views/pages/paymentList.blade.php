@@ -43,6 +43,22 @@
                                             </td>
                                         </tr>
                                     @endif
+                                <tr>
+                                    <td>
+                                        <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"><i class="material-icons text-success">create</i></a>
+                                        <input type="checkbox" name="disable" id="disable">
+                                        {{$value->id}}
+                                    </td>
+                                    <td>{{$value->firstname}} {{$value->lastname}}</td>
+                                    <td>{{$value->address}}</td>
+                                    <td>{{$value->phonenumber}}</td>
+                                    <td>{{$value->email}}</td>
+                                    <td>
+                                        <a href="#" class="togglePayment">
+                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                        </a>
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                             <br>
@@ -118,7 +134,8 @@
                                 <tr>
                                     <td>{{$item->startdate}}</td>
                                     <td>{{$item->monthlybill}}</td>
-                                    <td>{{$item->bill->status}}<a href="{{route('payment.edit',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                    //<td>{{$item->bill->status}}<a href="{{route('payment.edit',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                    <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
                                     <td>{{$item->enddate}}</td>
                                     
                                     <td>
@@ -162,6 +179,11 @@
                                     @endif
                                 @endforeach
                             </select>
+                          <select class=" custom-select">
+                                @foreach ($bill as $item)
+                                    <option value="{{$item->id}}" selected>{{$item->status}}</option>
+                                    @endforeach
+                                </select>
                       </div>
                   </div>
                   

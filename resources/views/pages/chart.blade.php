@@ -22,11 +22,16 @@
                     </div>
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-3">
-                                <select class="form-control" name="" id=""> 
+
+                            <div class="col-4">
+                                <select id="pieOption" value='DataSet' class="form-control" onChange="switchPieData();">
                                     <option value="jan">Jan,2018</option>
                                     <option value="feb">Feb,2018</option>
                                     <option value="mar">Mar,2018</option>
+                                    <!-- <option value="jan">Jan,2018</option>
+                                    <option value="feb">Feb,2018</option>
+                                    <option value="mar">Mar,2018</option>
+
                                     <option value="apr">Apr,2018</option>
                                     <option value="may">May,2018</option>
                                     <option value="jun">Jun,2018</option>
@@ -47,12 +52,15 @@
                                     <option value="sep">Sep,2019</option>
                                     <option value="oct">Oct,2019</option>
                                     <option value="nov">Nov,2019</option>
-                                    <option value="dec">Dec,2019</option>
+
+                                    <option value="dec">Dec,2019</option> -->
+
                                 </select>    
                             </div>
 
                         {{-- PieChart Element for Payment completion  --}}
-                            <div class="col-9">
+                            <div class="col-8">
+
                                 <div style="width:100%;">
                                     <canvas id="pieChart"></canvas>
                                 </div>  
@@ -75,8 +83,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-6">
-                                <select class="form-control text-warning" name="" id="">
-                                    <option value="jan">January,2018</option>
+
+                                <select id="numClientLate" value='DataSet' class="form-control" onChange="clientLate();">
+                                    <option value="5">Jan,2018</option>
+                                    <option value="2">Feb,2018</option>
+                                    <option value="4">Mar,2018</option>
+                                    <!-- <option value="jan">January,2018</option>
+
                                     <option value="feb">February,2018</option>
                                     <option value="mar">March,2018</option>
                                     <option value="apr">April,2018</option>
@@ -99,12 +112,14 @@
                                     <option value="sep">September,2019</option>
                                     <option value="oct">October,2019</option>
                                     <option value="nov">November,2019</option>
-                                    <option value="dec">December,2019</option>   
+
+                                    <option value="dec">December,2019</option>    -->
                                 </select>    
                             </div>
                             <div class="col-4">
-                                <h1 class="text-danger text-center">11</h1>
-                                <h5 class="text-warning text-center">Late Pay Bills</h5>  
+                                <h1 class="text-danger text-center" id="num">5</h1>
+                                <h5 class="text-warning text-center">Client/s Late Pay Bills</h5>  
+
                             </div>
                         </div>
                     </div>

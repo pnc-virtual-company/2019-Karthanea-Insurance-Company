@@ -164,6 +164,14 @@
             <form action="" method="POST" id="editClientList">
                 @csrf
                 @method('PATCH')
+                  <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
+                
+                </div>
+                
+                <form action="" method="POST" id="editClientList">
+                    @csrf
+                    @method('PATCH')
+
                 <div class="modal-body">
                     <div class="form-group">
                             <div class="row">
@@ -244,6 +252,23 @@
         </script>
 @endsection
 
+
+              var modal = $(this)
+  
+              modal.find('#firstname').attr('value',firstname)
+              modal.find('#lastname').attr('value',lastname)
+              modal.find('#address').attr('value',address)
+              modal.find('#phonenumber').attr('value',phonenumber)
+              modal.find('#email').attr('value',email)
+  
+              var url ="{{url('/achiveclient')}}/"+ id;
+              $('#editClientList').attr('action',url);   
+              });
+          
+
+        </script>
+@endsection
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-2">
@@ -288,6 +313,26 @@
         modal.find('#phonenumber').attr('value',phonenumber)
         modal.find('#email').attr('value',email)
         var url ="{{url('/clientAchive')}}/"+ id;
+    var button = $(event.relatedTarget)
+    var firstname = button.data('firstname')
+    console.log(firstname)
+    var lastname = button.data('lastname')   
+    console.log(lastname) 
+    var address = button.data('address')
+    console.log(address)
+    var phonenumber = button.data('phonenumber')
+    console.log(phonenumber)
+    var email = button.data('email')
+    var id = button.data('id')
+    console.log(email)
+    console.log(id)
+    var modal = $(this)
+    modal.find('#firstname').attr('value',firstname)
+    modal.find('#lastname').attr('value',lastname)
+    modal.find('#address').attr('value',address)
+    modal.find('#phonenumber').attr('value',phonenumber)
+    modal.find('#email').attr('value',email)
+    var url ="{{url('/clientAchive')}}/"+ id;
     $('#editClientList').attr('action',url);   
     });
     </script>   
