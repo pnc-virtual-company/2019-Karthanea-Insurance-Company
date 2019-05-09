@@ -36,12 +36,10 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
-=======
+
         $client = Clientlist::create($request->all());
 
         return redirect('/clientAchive');
->>>>>>> 5c321484623f8237a48c52350c765ecb261d2a63
 
         $client = Client::create($request->all());
         return redirect('/clientAchive');
@@ -67,11 +65,7 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-<<<<<<< HEAD
-     //
-=======
-        //
->>>>>>> 5c321484623f8237a48c52350c765ecb261d2a63
+
     }
 
     /**
@@ -82,18 +76,13 @@ class clientAchiveController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-<<<<<<< HEAD
     {
       
       $client =Client::find($id);//seect * from Post where id=$id
       $client->update($request->all());
       return  redirect('/clientAchive');
-=======
-    { 
-        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
-        $client->update($request->all());
-        return  redirect('/clientAchive');
->>>>>>> 5c321484623f8237a48c52350c765ecb261d2a63
+
+
     }
 
     /**

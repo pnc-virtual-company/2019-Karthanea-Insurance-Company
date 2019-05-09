@@ -123,13 +123,13 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-<<<<<<< HEAD
+
                 <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
             </div>
             <form action="" method="POST" id="editClientList">
                 @csrf
                 @method('PATCH')
-=======
+
                   <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
                 
                 </div>
@@ -137,7 +137,7 @@
                 <form action="" method="POST" id="editClientList">
                     @csrf
                     @method('PATCH')
->>>>>>> 5c321484623f8237a48c52350c765ecb261d2a63
+
                 <div class="modal-body">
                     <div class="form-group">
                             <div class="row">
@@ -179,8 +179,6 @@
                         </div>
                     </div>
                 </div>
-<<<<<<< HEAD
-=======
             </form>
            
               </div>
@@ -220,7 +218,23 @@
         </script>
 @endsection
 
->>>>>>> 5c321484623f8237a48c52350c765ecb261d2a63
+
+              var modal = $(this)
+  
+              modal.find('#firstname').attr('value',firstname)
+              modal.find('#lastname').attr('value',lastname)
+              modal.find('#address').attr('value',address)
+              modal.find('#phonenumber').attr('value',phonenumber)
+              modal.find('#email').attr('value',email)
+  
+              var url ="{{url('/achiveclient')}}/"+ id;
+              $('#editClientList').attr('action',url);   
+              });
+          
+
+        </script>
+@endsection
+
                 <div class="form-group">
                     <div class="row">
                         <div class="col-2">

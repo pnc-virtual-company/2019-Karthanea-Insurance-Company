@@ -1,14 +1,10 @@
 @extends('layout.dashboard')
-<<<<<<< HEAD
 @section('content')
 <script src="{{asset('js/app.js')}}"></script>
-=======
-  @section('content')
->>>>>>> 5c321484623f8237a48c52350c765ecb261d2a63
     <div class="content">
       <div class="container-fluid">.
         <h1>Contract Type</h1>
-<<<<<<< HEAD
+
                 <div class="card">
                     <div class="card-body">
                       <div class="table-responsive">
@@ -38,7 +34,12 @@
                             </table>
                       </div>
 
-=======
+
+  @section('content')
+    <div class="content">
+      <div class="container-fluid">.
+        <h1>Contract Type</h1>
+
           <div class="card">
               <div class="card-body">
                 <table id="myTable" class="table table-striped table-bordered" style="width:100%">
@@ -64,7 +65,7 @@
                   </tbody>
                    
                 </table>
->>>>>>> 5c321484623f8237a48c52350c765ecb261d2a63
+
                 <button type="submit" class="btn bg-primary text-white" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create New contract type</button>
               </div>
             </div>
@@ -188,14 +189,16 @@
           </div>
         </div>
       </div>
-<<<<<<< HEAD
+
     <script src="{{asset('js/app.js')}}"></script>
       <script>
          
-=======
+
 {{--End model Delete for contractType --}}    
 
->>>>>>> 5c321484623f8237a48c52350c765ecb261d2a63
+ete for contractType --}}    
+
+
 
 {{-- script Delete for contractType --}}    
       <script>
