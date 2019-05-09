@@ -113,6 +113,10 @@
                                                                 @endforeach
                                                             </select>
                                                             <input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
+<<<<<<< HEAD
+=======
+                                            
+>>>>>>> 939c1fc4d8afd0d18e144df23b9c17145cc4694d
                                                         </div>
                                                        
                                                 <div class="form-group ">

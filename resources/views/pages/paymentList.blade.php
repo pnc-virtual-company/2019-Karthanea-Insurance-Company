@@ -150,6 +150,7 @@
                   <div class="row">
                       <div class="col-2"><p> Status</p></div>
                       <div class="col-6">
+<<<<<<< HEAD
                             <select class=" custom-select">
                                 @foreach ($contract as $item)
                                     @if ($item->bill->id == $item->bill_id)
@@ -160,6 +161,13 @@
                                     @endif
                                 @endforeach
                             </select>
+=======
+                          <select class=" custom-select">
+                                @foreach ($bill as $item)
+                                    <option value="{{$item->id}}" selected>{{$item->status}}</option>
+                                    @endforeach
+                                </select>
+>>>>>>> 939c1fc4d8afd0d18e144df23b9c17145cc4694d
                       </div>
                   </div>
                   
