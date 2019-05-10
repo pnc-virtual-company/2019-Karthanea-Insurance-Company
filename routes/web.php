@@ -78,7 +78,7 @@ Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
 Route::get('/create','ClientController@create');
 
-Route::get('/userCall','ClientController@userCall');
+Route::get('/userCall','UserCallController@index');
 // Route::get('/usercall','UsercallController');
 Route::resource('contract','ContractController');
 

@@ -36,17 +36,12 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
        
         $client = Clientlist::create($request->all());
 
         return redirect('/clientAchive');
 
 
-=======
-        $client = Client::create($request->all());
-        return redirect('/clientAchive');
->>>>>>> d7a2b165434f2cfd465565b5222d58fe16c64976
     }
 
     /**
@@ -99,17 +94,13 @@ class clientAchiveController extends Controller
       $client->update($request->all());
       return  redirect('/clientAchive');
 
-<<<<<<< HEAD
         return  redirect('/clientAchive');
 
 
-
+    }
 
        
 
-=======
-    }
->>>>>>> d7a2b165434f2cfd465565b5222d58fe16c64976
 
     /**
      * Remove the specified resource from storage.
@@ -122,3 +113,5 @@ class clientAchiveController extends Controller
     //     //
     // }
 }
+}
+    
