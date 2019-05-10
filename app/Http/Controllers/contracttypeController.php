@@ -80,7 +80,7 @@ class contracttypeController extends Controller
     {
         $contracttype = \App\Contracttype::find($id);
         $contracttype->update($request->all());
-        return  redirect('/contracttype');
+        return  redirect('/contracttype'); 
     }
 
     /**

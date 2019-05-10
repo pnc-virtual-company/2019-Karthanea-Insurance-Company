@@ -12,6 +12,7 @@
         <h1>Payments</h1>
         <div class="card">
             <div class="card-body">
+                {{-- list of client --}}
                 <div class="table-responsive">
                     <table id="myTables" class="table table-striped table-bordered table-hover">
                             <thead class="bg-dark text-white">
@@ -30,7 +31,8 @@
                                         <tr>
                                             <td>
                                                 <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"
-                                                        data-id="{{$value->id}}" data-firstname="{{$value->firstname}}" data-lastname="{{$value->lastname}}" data-address="{{$value->address}}" data-phonenumber="{{$value->phonenumber}}" data-email="{{$value->email}}">
+                                                        data-id="{{$value->id}}" data-firstname="{{$value->firstname}}" data-lastname="{{$value->lastname}}" 
+                                                        data-address="{{$value->address}}" data-phonenumber="{{$value->phonenumber}}" data-email="{{$value->email}}">
                                                         <i class="material-icons text-success">create</i>
                                                     </a>
                                                 <input type="checkbox" name="disable" id="disable">
@@ -52,6 +54,7 @@
                             <br>
                         </table>
                 </div>
+                {{-- list all contract of client --}}
                 <div class="table-responsive">
                     <table id="table2" class="table table-striped table-bordered table-hover collapse">
                         <thead class="bg-dark text-white">
@@ -104,9 +107,9 @@
                         </tbody>
                     </table>
                 </div>
+                {{-- list all of client bill --}}
                 <div class="table-responsive">
-                </div>
-                <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
+                    <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
                         <thead class="bg-dark text-white">
                             <tr>
                                 <th>Month</th>
@@ -117,27 +120,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                                @foreach ($contract as $item)
-                                <tr>
-                                    <td>{{$item->startdate}}</td>
-                                    <td>{{$item->monthlybill}}</td>
-                                    <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
-                                    <td>{{$item->enddate}}</td>
-                                    
-                                    <td>
-                                        <a href="#" class="text-center">
-                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                @endforeach
+                            @foreach ($contract as $item)
+                            <tr>
+                                <td>{{$item->startdate}}</td>
+                                <td>{{$item->monthlybill}}</td>
+                                <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                <td>{{$item->enddate}}</td>
+                                
+                                <td>
+                                    <a href="#" class="text-center">
+                                        <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
+                </div>
                 <div>
                 </div>
-               </div>
-
+            </div>
+            
             </div>
         </div>
     </div>
@@ -161,7 +165,7 @@
                                         <option value="{{$item->bill_id}}" selected>{{$item->bill->status}}</option>
                                     @else
                                         @foreach ($bill as $value)
-                                            @if ($value->id != $item->bill->id)
+                                            @if ($value->id != $item->bill->id && $value->id != $item->bill_id)
                                                 <option value="{{$value->id}}" >{{$value->status}}</option>
                                             @endif
                                         @endforeach
@@ -180,7 +184,6 @@
           </div>
         </div>
       </div>
-
 {{-- //  modelad edit a new contract --}}
 {{-- //  modelad edit a new contract --}}
 <div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -250,17 +253,10 @@
                                                                            @foreach ($contract as $item)
                                                                                 <option value="{{$item->status}}">{{$item->status}}</option>
                                                                            @endforeach
-                                                                            
-                                                                            
-                                                                
-                                                                           
                                                                         </select>
                                                                      </div>
-
                                                             </div>
-
                                                             </div>   
-                                                         
                                                     </div>
                                                 </div>
                                                 <div class="form-group">

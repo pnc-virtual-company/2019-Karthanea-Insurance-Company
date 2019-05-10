@@ -39,14 +39,9 @@ class clientAchiveController extends Controller
      */
     public function status(Request $request, $id){
         $client =Client::find($id);
-        $clientStatus = Client::where('status','Active')->first();
-        if ($clientStatus.checked == true) {
-            $clientStatus = Client::where('status','Disable')->first();
-        } else {
-            $clientStatus = Client::where('status','Active')->first();
-        }
-        $clientStatus = Client::where('status',$clientStatus);
-        $clientStatus->update($client->status);
+        $clientStatus = Client::where('id',$id)->update(array('status','Disable'));
+        
+        // $clientStatus->update($client->status);
 
         return  redirect('/clientAchive');
     }
@@ -101,9 +96,8 @@ class clientAchiveController extends Controller
     public function update(Request $request, $id)
     {
       
-      $client = Client::find($id);//seect * from Post where id=$id
-    
         $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
+        $clientStatus = Clientlist::where('id',$id)->update(array('status','Disable'));
         $client->update($request->all());
 
         return  redirect('/clientAchive');

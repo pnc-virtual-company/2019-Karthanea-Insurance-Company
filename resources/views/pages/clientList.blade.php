@@ -3,7 +3,7 @@
 <body>
     
     <div class="container mt-4">
-        <h1> Clients Active </h1>
+        <h1> Client Active </h1>
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -33,7 +33,9 @@
                                     <td>{{$item->phonenumber}}</td>
                                     <td>{{$item->email}}</td>
                                 </tr>
-                            @endif
+
+                                @endif
+
                             @endforeach
                         </tbody>
                     </table>
@@ -43,160 +45,118 @@
                 </div>
             </div>
         </div>
-        <!-- Modal update client status-->
-        <div class="modal fade" id="disableClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Disable Client</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body text-danger">
-                        Are you sure that you want to disable this client?
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn bg-primary text-white">Yes</button>
-                        <button type="button" class="btn bg-danger text-white" data-dismiss="modal">No</button>
-                    </div>
-                </div>
-                <form method="POST" action="{{action('ClientController@store')}}">
-                @csrf
-                <div class="modal-body">
 
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="name">Firstname</label>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text" name="firstname" required class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="name">Lastname</label>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text" name="lastname" required class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="address">Address</label>
-                                </div>
-                                <div class="col-10">
-                                    <input type="text" name="address" required class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="phone">Phone</label>
-                                </div>
-                                <div class="col-10">
-                                    <input type="number" name="phonenumber" required class="form-control">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-2">
-                                    <label for="email">E-Mail</label>
-                                </div>
-                                <div class="col-10">
-                                    <input type="email" name="email" required class="form-control">
-                                </div>
-                            </div>
-                        </div>
+    </div>
+     <!-- Modal update client status disable-->
+    <div class="modal fade" id="disableClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+            
+              <h5 class="modal-title" id="exampleModalLabel">Disable Client</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="" method="POST" id="editStatus">
+                    @csrf
+                    @method('PATCH')
+            <div class="modal-body text-danger">
+              Are you sure that you want to disable this client?
+            </div>
+            <div class="row">
+            <div class="col-2"></div>
+                <div class="col-2">Status</div>
+                <div class="col-8">
+                
+                <select class="browser-default custom-select" name="status" id="status" required>
+                    <option   selected value="Disable">Disable</option>                                                         
+               </select>
                 </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-info">OK</button>
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+             <button type="submit" class="btn bg-primary text-white">Yes</button>
+              <button type="button" class="btn bg-danger text-white" data-dismiss="modal">No</button>
+            </div>
             </form>
-              </div>
+          </div>
+        </div>
+      </div>
+      {{-- Modal add Client --}}
+      <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Create New Client</h5>
+                <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="POST" action="{{action('clientAchiveController@store')}}">
+            @csrf
+            <div class="modal-body">
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="name">Firstname</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" name="firstname"  class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="name">Lastname</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" name="lastname"  class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="address">Address</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="text" name="address"  class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="phone">Phone</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="number" name="phonenumber"  class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-2">
+                                <label for="email">E-Mail</label>
+                            </div>
+                            <div class="col-10">
+                                <input type="email" name="email"  class="form-control">
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-info">OK</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+        </form>
             </div>
         </div>
-        <!-- Modal add -->
-        <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Create New Client</h5>
-                        <button type="button" class="close text-danger" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <form method="POST" action="{{action('ClientController@store')}}">
-                            @csrf
-                            <div class="modal-body">
-                                
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label for="name">Firstname</label>
-                                        </div>
-                                        <div class="col-10">
-                                            <input type="text" name="firstname" required class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label for="name">Lastname</label>
-                                        </div>
-                                        <div class="col-10">
-                                            <input type="text" name="lastname" required class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label for="address">Address</label>
-                                        </div>
-                                        <div class="col-10">
-                                            <input type="text" name="address" required class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label for="phone">Phone</label>
-                                        </div>
-                                        <div class="col-10">
-                                            <input type="number" name="phonenumber" required class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <label for="email">E-Mail</label>
-                                        </div>
-                                        <div class="col-10">
-                                            <input type="email" name="email" required class="form-control">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" class="btn btn-info">OK</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
+        </div>
+        </div>
+
             <!-- Modal Edit -->
             <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
@@ -299,10 +259,18 @@
                 $('#editClientList').attr('action',url);   
             });
 
-           if(disable.checked == true){
-                // document.getElementById('disable').innerHTML='checked';
-           } else {
 
-           }
+            //  $('#disableClient').on('show.bs.modal',function (event){
+            // var button = $(event.relatedTarget)
+            // var status = button.data('status')
+            // var id = button.data('id')
+            
+            // var modal = $(this)
+            // console.log(status);
+            // modal.find('#status').attr('value',status)
+            // var url ="{{url('/client')}}/"+ id;
+            // $('#editStatus').attr('action',url);   
+            // });
+          
         </script>
 @endsection

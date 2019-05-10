@@ -27,14 +27,14 @@
                                         <td>
                                             <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                             @if ($item->status=='Active')
-                                                <a href="{{url('/clientStatus',$item->id)}}"
+                                                <a href="{{route('clientAchive.update',$item->id)}}"
                                                     data-toggle="modal" data-target="#disableClient" data-status="{{$item->status}}"
                                                         onclick="event.preventDefault();
                                                         document.getElementById('disableClient-form');">
                                                     <input type="checkbox" name="disable[]" id="disable">
                                                 </a>
                                             @else
-                                                <a href="{{url('/clientStatus',$item->id)}}"
+                                                <a href="{{route('clientAchive.update',$item->id)}}"
                                                     data-toggle="modal" data-target="#disableClient" data-status="{{$item->status}}"
                                                         onclick="event.preventDefault();
                                                         document.getElementById('disableClient-form');">
@@ -70,7 +70,7 @@
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <form id="disableClient-form" action="{{action('clientAchiveController@status')}}" method="POST">
+            <form id="disableClient-form" action="" method="POST">
                 @csrf
                 @method('PATCH')
                 <div class="modal-body text-danger">
@@ -257,7 +257,7 @@
     $('#editClientList').attr('action',url);   
     });
     </script>   
-    {{-- <script type="text/javascript">
+    <script type="text/javascript">
         $('#disableClient').on('show.bs.modal',function(event){
         var button = $(event.relatedTarget)
         var disable = button.data('disable')
@@ -267,5 +267,5 @@
         var url ="{{url('/clientAchive')}}/"+ id;
         $('#disableClient-form').attr('action',url);   
     });
-    </script>    --}}
+    </script>   
 @endsection
