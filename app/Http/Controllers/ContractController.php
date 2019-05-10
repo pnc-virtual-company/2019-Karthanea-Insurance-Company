@@ -45,13 +45,8 @@ class ContractController extends Controller
     public function store(Request $request)
     {
         $contract = Contract::create($request->all());
-        // $select =$request->bills;
-        // foreach($select as $key=>$item){
-        //     $contract->tags()->attach($item);
-        // }
-        // $contract->save();
+        
         return redirect('/contract');
-
     }
 
     /**

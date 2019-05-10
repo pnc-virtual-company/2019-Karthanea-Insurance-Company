@@ -31,9 +31,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-       
-        // $client = Clientlist::all();
-        // return view('pages.AchiveClient',compact('client'));
+        //
     }
 
     /**
@@ -45,14 +43,9 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         
-        
         $client = Client::create($request->all());
-        // $checkbox=$request->checkbox;       
-        // foreach($checkbox as $key=>$item){
-        //     $client->$item->state->attach($item); 
-        // }
-        return redirect('/client');
 
+        return redirect('/client');
     }
 
     /**
@@ -74,7 +67,7 @@ class ClientController extends Controller
      */
     public function edit($id)
     {
-//
+        //
     }
 
     /**
@@ -93,6 +86,7 @@ class ClientController extends Controller
           } else {
             $client->status = 1;
           }
+        
         $client->update($request->all());
         return  redirect('/client');
 

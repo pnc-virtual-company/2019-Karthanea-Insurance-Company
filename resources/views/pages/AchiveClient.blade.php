@@ -20,16 +20,18 @@
                         @foreach ($client as $value=>$item)
                                 <tr>
                                     <td>
-                                    <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
-                                    
-                                    <a href="{{route('clientAchive.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
-                                        @if($item->status=="0")
-                                            <input type="checkbox" name="disable[]" value="disable" id="disable" checked>
-                                            @elseif($item->status=="1")
-                                            <input type="checkbox" name="disable[]" value="disable" id="disable">
+                                        @if (Auth::user()->hasRole('Administrator'))
+                                            <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                            
+                                            <a href="{{route('clientAchive.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
+                                                @if($item->status=="0")
+                                                    <input type="checkbox" name="disable[]" value="disable" id="disable" checked>
+                                                    @else
+                                                    <input type="checkbox" name="disable[]" value="disable" id="disable">
+                                                @endif
+                                            </a> 
                                         @endif
-                                    </a> 
-                                        {{$item->id}}
+                                        C00{{$item->id}}
                                     </td>
                                     <td>{{$item->firstname}} {{$item->lastname}} </td>
                                     <td>{{$item->address}}</td>
@@ -41,7 +43,9 @@
                     </table>
                 </div>
                 <div>
-                    <button type="button" class="btn text-white bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
+                    @if (Auth::user()->hasRole('Administrator'))
+                        <button type="button" class="btn text-white bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
+                    @endif
                 </div>
             </div>
         </div>
@@ -80,7 +84,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form method="POST" action="{{action('ClientController@store')}}">
+                <form method="POST" action="{{action('clientAchiveController@store')}}">
                 @csrf
                 <div class="modal-body">
 

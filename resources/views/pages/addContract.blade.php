@@ -45,18 +45,20 @@
 								<td class="id">
 									<div class="row">
 										<div class="col-5">
-                                            {{$item->id}}
+                                            CON00{{$item->id}}
                                         </div>
 										<div class="col-4">
-											<a href="#" class="text-center">
-												<a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" 
-													data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
-													data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" 
-													data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" 
-													data-enddate="{{$item->enddate}}" data-bill_id="{{$item->bill_id}}" data-toggle="modal">
-													<i class="material-icons text-success">edit</i>
+											@if (Auth::user()->hasRole('Administrator'))
+												<a href="#" class="text-center">
+													<a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" 
+														data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
+														data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" 
+														data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" 
+														data-enddate="{{$item->enddate}}" data-bill_id="{{$item->bill_id}}" data-toggle="modal">
+														<i class="material-icons text-success">edit</i>
+													</a>
 												</a>
-											</a>
+											@endif
 										</div>
 									</div>
 								</td>
@@ -97,9 +99,11 @@
 						</tbody>
 					</table>
 				</div>
-				<button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg">
-					<i class='material-icons'>add_circle_outline</i> Add a new Contract
-				</button>
+				@if (Auth::user()->hasRole('Administrator'))
+					<button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg">
+						<i class='material-icons'>add_circle_outline</i> Add a new Contract
+					</button>
+				@endif
 			</div>
 		</div>
 	</div>

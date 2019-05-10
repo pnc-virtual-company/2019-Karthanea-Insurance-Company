@@ -82,9 +82,9 @@ class clientAchiveController extends Controller
         } else {
           $client->status = 1;
         }
+        
       $client->update($request->all());
         return  redirect('/clientAchive');
-    
       }
     /**
      * Remove the specified resource from storage.
