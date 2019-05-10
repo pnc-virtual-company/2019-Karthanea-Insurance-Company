@@ -470,18 +470,6 @@
               </button>
             </div>
             <div class="modal-body">
-                <form action="#" method="POST">
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-2">
-                                <label for="firstname">Firstname</label>
-                            </div>
-                            <div class="col-10">
-                                <input type="text" name="firstname" id="name" class="form-control">
-                            </div>
-                        </div>
-                    </div>
-                    
                     <form action="" method="POST" id="editClient">
                         @csrf
                         @method('PATCH')
@@ -549,7 +537,7 @@
                 </div>
               </div>
               
-              <script src="{{asset('js/app.js')}}"></script>
+    <script src="{{asset('js/app.js')}}"></script>
     <script>
             $('#editClient').on('show.bs.modal',function (event){
                   var button = $(event.relatedTarget)

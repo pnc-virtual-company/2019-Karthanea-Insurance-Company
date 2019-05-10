@@ -41,7 +41,6 @@ class clientAchiveController extends Controller
         $client = Clientlist::create($request->all());
         return redirect('/clientAchive');
 
-
     }
 
     /**
@@ -84,8 +83,8 @@ class clientAchiveController extends Controller
         }
       $client->update($request->all());
         return  redirect('/clientAchive');
-    
-      }
+    }
+       
     /**
      * Remove the specified resource from storage.
      *
@@ -97,3 +96,4 @@ class clientAchiveController extends Controller
         //
     }
 }
+    
