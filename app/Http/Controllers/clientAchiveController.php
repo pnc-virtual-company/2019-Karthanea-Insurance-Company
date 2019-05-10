@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
+use App\Clientlist;
+use App\input;
 use Illuminate\Http\Request;
 
 class clientAchiveController extends Controller
@@ -14,11 +15,8 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        $client = Client::all();
-        $clientStatus = Client::where('status','Disable')->first();
-        $client = Client::all();
-        $disable = Client::where('status','Active')->first();
-        return view('pages.AchiveClient',compact('client','disable','clientStatus'));
+        $client = Clientlist::all();
+        return view('pages.AchiveClient',compact('client'));
     }
 
     /**
@@ -32,20 +30,6 @@ class clientAchiveController extends Controller
     }
 
     /**
-     * Update client status function
-     *
-     * @param Request $request
-     * @return void
-     */
-    public function status(Request $request, $id){
-        $client =Client::find($id);
-        $clientStatus = Client::where('id',$id)->update(array('status','Disable'));
-        
-        // $clientStatus->update($client->status);
-
-        return  redirect('/clientAchive');
-    }
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -55,9 +39,7 @@ class clientAchiveController extends Controller
     {
        
         $client = Clientlist::create($request->all());
-
         return redirect('/clientAchive');
-
 
     }
 
@@ -80,15 +62,8 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-      $client = Client::find($id);
-      $status = Client::lists('id','status');
-
-        if (is_null($client)) {
-            return Redirect::route('/clientAchive');
-        } 
-        return View::make('pages::AchiveClient',compact('client','status'))->with($status);
+      //
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -100,44 +75,25 @@ class clientAchiveController extends Controller
     public function update(Request $request, $id)
     {
       
-      $client =Client::find($id);//seect * from Post where id=$id
-      $disable = $request->disable;
-      $disable = Client::where('status','Active')->first();
-        if ($disable.checked == true) {
-            $disable = Client::where('status','Disable')->first();
+      $client = Clientlist::findOrFail($id);//seect * from Post where id=$id}
+        if($client->status == 1){
+          $client->status = 0;
         } else {
-            $disable = Client::where('status','Active')->first();
+          $client->status = 1;
         }
-        $disable = Client::where('status',$disable);
       $client->update($request->all());
-      return  redirect('/clientAchive');
-    { 
-        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
-        $client->update($request->all());
-        return  redirect('/clientAchive');
-      $client->update($request->all());
-      return  redirect('/clientAchive');
-
-        return  redirect('/clientAchive');
-
-
-    }
-
         return  redirect('/clientAchive');
     }
        
-
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
-
+    public function destroy($id)
+    {
+        //
+    }
 }
     
