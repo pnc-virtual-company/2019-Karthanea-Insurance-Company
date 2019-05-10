@@ -77,7 +77,7 @@ class contracttypeController extends Controller
     {
         $contracttype = \App\Contracttype::find($id);//select * from Post where id=$id
         $contracttype->update($request->all());
-        return  redirect('/contracttype');
+        return  redirect('/contracttype'); 
     }
 
     /**

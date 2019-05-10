@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Bill extends Model
+class Contractstatus extends Model
 {
     protected $fillable = [
         'id','status'
@@ -13,5 +13,3 @@ class Bill extends Model
         return $this->hasMany(Contract::class);
     }
 }
-
-

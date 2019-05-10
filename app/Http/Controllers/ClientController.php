@@ -87,11 +87,12 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
 
-        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
-        $client->update($request->all());
+        $clientupdate = Clientlist::findOrFail($id);//seect * from Post where id=$id
+        $clientupdate->update($request->all());
         return  redirect('/client');
 
     }
+
 
     /**
      * Remove the specified resource from storage.

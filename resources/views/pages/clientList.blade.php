@@ -1,9 +1,7 @@
-
-
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1> Clients Active </h1>
+        <h1> Client Active </h1>
 
         <div class="card">
             <div class="card-body">
@@ -19,21 +17,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($client as $value=>$item)
-                            <tr>
-                                <td>
-                                    <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
-                                   
-                                    <input type="checkbox" name="checkbox" id="checkbox">
+                        @foreach ($client as $value=>$item)
+                        @if($item->status=="Disable")
+                                <tr>
+                                    <td>
+                                    <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                     
-    
-                                    {{$item->id}}
-                                </td>
-                                <td>{{$item->firstname}} {{$item->lastname}} </td>
-                                <td>{{$item->address}}</td>
-                                <td>{{$item->phonenumber}}</td>
-                                <td>{{$item->email}}</td>
-                            </tr>
+                                    <a href="{{route('client.update',$item->id)}}" data-toggle="modal" data-target="#disableClient" data-status="{{$item->status}}" data-id="{{$item->id}}">
+                                        
+                                            <input type="checkbox"  id="" checked>
+                                            
+                                       
+                                    </a> 
+                                       
+                                        {{$item->id}}
+                                    </td>
+                                    <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                    <td>{{$item->address}}</td>
+                                    <td>{{$item->phonenumber}}</td>
+                                    <td>{{$item->email}}</td>
+                                </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -44,6 +48,41 @@
             </div>
         </div>
     </div>
+     <!-- Modal update client status disable-->
+    <div class="modal fade" id="disableClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+            
+              <h5 class="modal-title" id="exampleModalLabel">Disable Client</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <form action="" method="POST" id="editStatus">
+                    @csrf
+                    @method('PATCH')
+            <div class="modal-body text-danger">
+              Are you sure that you want to disable this client?
+            </div>
+            <div class="row">
+            <div class="col-2"></div>
+                <div class="col-2">Status</div>
+                <div class="col-8">
+                
+                <select class="browser-default custom-select" name="status" id="status" required>
+                    <option   selected value="Disable">Disable</option>                                                         
+               </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+             <button type="submit" class="btn bg-primary text-white">Yes</button>
+              <button type="button" class="btn bg-danger text-white" data-dismiss="modal">No</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
           <!-- Modal add -->
           <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -118,27 +157,23 @@
             </div>
           </div>
           <!-- Modal Edit -->
-          <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="editClientActive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
-                
                 </div>
-                
                 <form action="" method="POST" id="editClientList">
                     @csrf
                     @method('PATCH')
-                   
                 <div class="modal-body">
-                    
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
                                     <label for="">Firstname</label>
                                 </div>
                                 <div class="col-10">
-                                    <input type="text" requiredname="firstname" id="firstname" value="" class="form-control">
+                                    <input type="text" required name="firstname" id="firstname" value="" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -193,43 +228,53 @@
             </div>
           </div>
           
-          <script src="{{asset('js/app.js')}}"></script>
+          
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
-        $('#editClient').on('show.bs.modal',function (event){
-              var button = $(event.relatedTarget)
-              var firstname = button.data('firstname')
-              console.log(firstname)
-              var lastname = button.data('lastname')   
-              console.log(lastname) 
-              var address = button.data('address')
-              console.log(address)
-              var phonenumber = button.data('phonenumber')
-              console.log(phonenumber)
-              var email = button.data('email')
-              var id = button.data('id')
-             console.log(email)
-             console.log(id)
+        $('#editClientActive').on('show.bs.modal',function (event){
+            var button = $(event.relatedTarget)
+            var firstname = button.data('firstname')
+            console.log(firstname)
+            var lastname = button.data('lastname')   
+            console.log(lastname) 
+            var address = button.data('address')
+            console.log(address)
+            var phonenumber = button.data('phonenumber')
+            console.log(phonenumber)
+            var email = button.data('email')
+            var id = button.data('id')
+            console.log(email)
+            console.log(id)
+            var modal = $(this)
+            modal.find('#firstname').attr('value',firstname)
+            modal.find('#lastname').attr('value',lastname)
+            modal.find('#address').attr('value',address)
+            modal.find('#phonenumber').attr('value',phonenumber)
+            modal.find('#email').attr('value',email)
+            var url ="{{url('/client')}}/"+ id;
+            $('#editClientList').attr('action',url);   
+            });
 
-              var modal = $(this)
-  
-              modal.find('#firstname').attr('value',firstname)
-              modal.find('#lastname').attr('value',lastname)
-              modal.find('#address').attr('value',address)
-              modal.find('#phonenumber').attr('value',phonenumber)
-              modal.find('#email').attr('value',email)
-  
-              var url ="{{url('/client')}}/"+ id;
-              $('#editClientList').attr('action',url);   
-              });
+
+             $('#disableClient').on('show.bs.modal',function (event){
+            var button = $(event.relatedTarget)
+            var status = button.data('status')
+            var id = button.data('id')
+            
+            var modal = $(this)
+            console.log(status);
+            modal.find('#status').attr('value',status)
+            var url ="{{url('/client')}}/"+ id;
+            $('#editStatus').attr('action',url);   
+            });
           
 
-           if(disable.checked == true){
-                // document.getElementById('disable').innerHTML='checked';
-           } else {
-
-           }
-
-
+        
+        </script>
+         
+         
+        <script>
+        
+       
         </script>
 @endsection

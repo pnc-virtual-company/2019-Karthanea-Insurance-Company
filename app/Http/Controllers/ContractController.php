@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contract ;
 use App\Bill;
+use App\Contractstatus;
 class ContractController extends Controller
 {
     /**
@@ -19,10 +20,13 @@ class ContractController extends Controller
     {
         $contractselect = \App\Contract::all();
         $contracttype = \App\Contracttype::all();
+        $contractStatus = \App\Contractstatus::all();
+        //dd($contractStatus);
         $client = \App\Client::all();
         $bill = Bill::all();
+        
         //dd($contract);
-        return view('pages.addContract',compact('contractselect','contracttype','client','bill'));
+        return view('pages.addContract',compact('contractselect','contracttype','client','bill','contractStatus'));
     }
 
     /**
@@ -32,7 +36,7 @@ class ContractController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -80,8 +84,8 @@ class ContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contract = \App\Contract::find($id);//select * from Post where id=$id
-        $contract->update($request->all());
+        $contractupdate = \App\Contract::find($id);//select * from Post where id=$id
+        $contractupdate->update($request->all());
         return  redirect('/contract');
     }
 

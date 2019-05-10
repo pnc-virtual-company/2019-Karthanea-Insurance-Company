@@ -73,8 +73,8 @@ class clientAchiveController extends Controller
     public function update(Request $request, $id)
     {
 
-        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
-        $client->update($request->all());
+        $clientupdate = Client::findOrFail($id);//seect * from Post where id=$id
+        $clientupdate->update($request->all());
 
         return  redirect('/clientAchive');
 
