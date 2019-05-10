@@ -121,7 +121,7 @@
                     </a>
                   </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('contract')}}">
+                  <a href="{{url('/contract')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">description</i>
                       Contract List
