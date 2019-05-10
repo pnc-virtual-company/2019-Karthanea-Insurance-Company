@@ -38,7 +38,6 @@ class clientAchiveController extends Controller
      * @return void
      */
     public function status(Request $request, $id){
-        dd($clientStatus = Client::where('status','Active'));
         $client =Client::find($id);
         $clientStatus = Client::where('status','Active')->first();
         if ($clientStatus.checked == true) {
@@ -47,7 +46,7 @@ class clientAchiveController extends Controller
             $clientStatus = Client::where('status','Active')->first();
         }
         $clientStatus = Client::where('status',$clientStatus);
-        $clientStatus->update();
+        $clientStatus->update($client->status);
 
         return  redirect('/clientAchive');
     }
@@ -82,8 +81,15 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-      //
+      $client = Client::find($id);
+      $status = Client::lists('id','status');
+
+        if (is_null($client)) {
+            return Redirect::route('/clientAchive');
+        } 
+        return View::make('pages::AchiveClient',compact('client','status'))->with($status);
     }
+
 
     /**
      * Update the specified resource in storage.

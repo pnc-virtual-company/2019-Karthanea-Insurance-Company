@@ -2,10 +2,11 @@
 <link rel="stylesheet" href="{{asset('css/app.css')}}">
 @extends('layout.dashboard')
 @section('content')
+<body>
     <div class="container">
         <div class="row justify-content-center">
                     <div class="col-md-12">
-                        <div><h1>@lang('Clients Information')</h1></div>
+                        <div> <h1>@lang('Clients Information')</h1></div>
                                 <div class="card">
                                     <div class="card-body">
                                         <div class="table-responsive">
@@ -168,14 +169,6 @@
             <form action="{{action('clientAchiveController@status')}}"method="POST" id="editClientList">
                 @csrf
                 @method('PATCH')
-                  <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
-                
-                </div>
-                
-                <form action="" method="POST" id="editClientList">
-                    @csrf
-                    @method('PATCH')
-
                 <div class="modal-body">
                     <div class="form-group">
                             <div class="row">
@@ -217,36 +210,50 @@
                         </div>
                     </div>
                 </div>
-            </form>
-           
-              </div>
-            </div>
-          </div>
-          
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-2">
+                            <label for="">E-Mail</label>
+                        </div>
+                        <div class="col-10">
+                            <input type="email" name="email" id="email" value="" class="form-control" required>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-info">OK</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        </div>
+        </form>
+        </div>
+        </div>
+
+</body> 
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $('#editClient').on('show.bs.modal',function(event){
-    var button = $(event.relatedTarget)
-    var firstname = button.data('firstname')
-    console.log(firstname)
-    var lastname = button.data('lastname')   
-    console.log(lastname) 
-    var address = button.data('address')
-    console.log(address)
-    var phonenumber = button.data('phonenumber')
-    console.log(phonenumber)
-    var email = button.data('email')
-    var id = button.data('id')
-    console.log(email)
-    console.log(id)
-    var modal = $(this)
-    modal.find('#firstname').attr('value',firstname)
-    modal.find('#lastname').attr('value',lastname)
-    modal.find('#address').attr('value',address)
-    modal.find('#phonenumber').attr('value',phonenumber)
-    modal.find('#email').attr('value',email)
-    var url ="{{url('/clientAchive')}}/"+ id;
+        var button = $(event.relatedTarget)
+        var firstname = button.data('firstname')
+        console.log(firstname)
+        var lastname = button.data('lastname')   
+        console.log(lastname) 
+        var address = button.data('address')
+        console.log(address)
+        var phonenumber = button.data('phonenumber')
+        console.log(phonenumber)
+        var email = button.data('email')
+        var id = button.data('id')
+        console.log(email)
+        console.log(id)
+        var modal = $(this)
+        modal.find('#firstname').attr('value',firstname)
+        modal.find('#lastname').attr('value',lastname)
+        modal.find('#address').attr('value',address)
+        modal.find('#phonenumber').attr('value',phonenumber)
+        modal.find('#email').attr('value',email)
+        var url ="{{url('/clientAchive')}}/"+ id;
     $('#editClientList').attr('action',url);   
     });
     </script>   
