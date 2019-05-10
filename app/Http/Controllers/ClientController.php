@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use Auth;
-use App\Clientlist;
+use App\Client;
 use Illuminate\Http\Request;
 
 class ClientController extends Controller
@@ -19,7 +19,7 @@ class ClientController extends Controller
     public function index()
     {
 
-        $client = Clientlist::all();
+        $client = Client::all();
         return view('pages.clientList',compact('client'));
 
     }
@@ -46,7 +46,7 @@ class ClientController extends Controller
     {
         
         
-        $client = Clientlist::create($request->all());
+        $client = Client::create($request->all());
         // $checkbox=$request->checkbox;       
         // foreach($checkbox as $key=>$item){
         //     $client->$item->state->attach($item); 
@@ -87,12 +87,17 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
 
-        $clientupdate = Clientlist::findOrFail($id);//seect * from Post where id=$id
-        $clientupdate->update($request->all());
+        $client = Client::findOrFail($id);//seect * from Post where id=$id
+        if($client->status == 1){
+            $client->status = 0;
+          } else {
+            $client->status = 1;
+          }
+        $client->update($request->all());
         return  redirect('/client');
 
     }
-
+   
 
     /**
      * Remove the specified resource from storage.

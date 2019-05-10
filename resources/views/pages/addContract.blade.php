@@ -53,7 +53,7 @@
 													data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
 													data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" 
 													data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" 
-													data-enddate="{{$item->enddate}}" data-toggle="modal">
+													data-enddate="{{$item->enddate}}" data-bill_id="{{$item->bill_id}}" data-toggle="modal">
 													<i class="material-icons text-success">edit</i>
 												</a>
 											</a>
@@ -84,7 +84,7 @@
 										</div>
 									</div>
 								</td>
-								<td class="status">{{$item['status']}}</td>
+								<td class="status">{{$item->contractStatus['status']}}</td>
 								<td class="startdate">{{$item['startdate']}}</td>
 								<td class="enddate">{{$item['enddate']}}</td>
 								<td class="monthlybill">$ {{$item['monthlybill']}}</td>
@@ -120,7 +120,7 @@
 								<div class="col-2">
 									<label for="">Client</label>
 								</div>
-								<div class="col-4">
+								<div class="col-6">
 									<div class="col-10">
 										<select name="client_id" id="client_id" class="browser-default custom-select" required>
                                             @foreach ($client as $item)
@@ -128,20 +128,22 @@
                                             @endforeach
 										</select>
 									</div>
-                                                        {{-- 
+                                                        
 									<div class="col-2">
 										<label for="">Bill</label>
 									</div> 
-									<div class="col-4">
-										<select name="bill_id" id="bill_id" class="browser-default custom-select" value="">
-                                                                    @foreach ($bill as $item)
-                                                                    @if($item->id==1)
-                                                                    
-											<option value="{{$item->id}}" >{{$item->status}} </option>
-                                                                    @endif
-										</select>
-									</div> --}}
-									<input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
+									<div class="col-6">
+										<div class="col-6">
+											<select name="bill_id" id="bill_id" class="browser-default custom-select" value="">
+												@foreach ($bill as $item)
+													@if($item->id==1)
+														<option value="{{$item->id}}" >{{$item->status}} </option>
+													@endif
+												@endforeach
+											</select>
+										</div>
+									</div>
+									{{-- <input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required> --}}
 									</div>
 									<div class="form-group ">
 										<div class="row">
@@ -172,12 +174,15 @@
 															<label for="">Status</label>
 														</div>
 														<div class="col-10">
-															<select class="browser-default custom-select" name="status" required>
-																<option selected value="Open">Open</option>
-																<option value="To be completed">To be completed</option>
-																<option value="To be signed">To be signed</option>
-																<option value="Closed">Closed</option>
-															</select>
+																<select class="browser-default custom-select" name="status_id" id="status_id" required>
+																		@foreach ($contractStatus as $item)
+																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
+																		@endforeach
+																		
+																		{{-- <option value="To be completed">To be completed</option>
+																		<option value="To be signed">To be signed</option>
+																		<option value="Closed">Closed</option> --}}
+																	</select>
 														</div>
 													</div>
 												</div>
@@ -225,7 +230,7 @@
 													<label for="" >Monthly bill</label>
 												</div>
 												<div class="col-6">
-													<input type="text" name="monthlybill" class="form-control" required>
+													<input type="text" id="monthlybill" name="monthlybill" class="form-control" required>
 													</div>
 												</div>
 											</div>
@@ -277,14 +282,14 @@
 											<div class="col-10">
 												<select name="client_id" id="client_id" class="browser-default custom-select" value="">
 													@foreach ($contractselect as $item)
-														@if ($item->client->id == $item->client_id && $item->client->id != $item->client->id)
+														@if ($item->client_id == $item->client_id)
 															<option value="{{$item->client_id}}" selected >{{$item->client->firstname}} {{$item->client->lastname}}</option>
 														@else
-															<option value="{{$item->client->id}}" >{{$item->client->firstname}} {{$item->client->lastname}}</option>
+															<option value="{{$item->client_id}}" >{{$item->client->firstname}} {{$item->client->lastname}}</option>
 														@endif
 													@endforeach
 													@foreach ($client as $value)
-														@if ($item->client->id != $value->id && $item->client_id != $value->id)
+														@if ($item->client_id != $value->id && $item->client_id != $value->id)
 															<option value="{{$value->id}}" >{{$value->firstname}} {{$value->lastname}}</option>
 														@endif
 													@endforeach
@@ -300,16 +305,16 @@
                                                                 <div class="col-10">
                                                                     <div class="input-group ">
                                                                         <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select" required>
-																				@foreach ($contractselect as $itemData)
-																					@if ($itemData->contracttype->id == $itemData->contracttype_id && $itemData->contracttype->id != $itemData->contracttype->id)
-																						<option value="{{$itemData->contracttype->id}}" selected >{{$itemData->contracttype->contracttype}}</option>
+																				@foreach ($contractselect as $item)
+																					@if ($item->contracttype_id == $item->contracttype_id && $item->contracttype_id != $item->contracttype_id)
+																						<option value="{{$item->contracttype_id}}" selected >{{$item->contracttype->contracttype}}</option>
 																					@else
-																						<option value="{{$itemData->contracttype->id}}" >{{$itemData->contracttype->contracttype}}</option>
+																						<option value="{{$item->contracttype_id}}" >{{$item->contracttype->contracttype}}</option>
 																					@endif
 																				@endforeach
 																				
 																			@foreach ($contracttype as $value)
-																				@if ($itemData->contracttype->id != $value->id && $itemData->contracttype_id != $value->id)
+																				@if ($item->contracttype_id != $value->id && $item->contracttype_id != $value->id)
 																					<option value="{{$value->id}}" >{{$value->contracttype}}</option>
 																				@endif
 																			@endforeach
@@ -329,11 +334,14 @@
                                                                         <label for="">Status</label>
                                                                     </div>
                                                                     <div class="col-10">
-                                                                        <select class="browser-default custom-select" name="status" id="status" required>
-                                                                            <option selected value="Open">Open</option>
-                                                                            <option value="To be completed">To be completed</option>
+                                                                        <select class="browser-default custom-select" name="status_id" id="status_id" required>
+																			@foreach ($contractStatus as $item)
+																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
+																			@endforeach
+                                                                            
+                                                                            {{-- <option value="To be completed">To be completed</option>
                                                                             <option value="To be signed">To be signed</option>
-                                                                            <option value="Closed">Closed</option>
+                                                                            <option value="Closed">Closed</option> --}}
                                                                         </select>
                                                                     </div>
                                                                 </div>
