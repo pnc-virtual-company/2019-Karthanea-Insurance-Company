@@ -15,7 +15,7 @@ class CreateContractsTable extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('status');
+           
             $table->date('startdate');
             $table->date('enddate');
             $table->string('monthlyduedate');
@@ -33,6 +33,12 @@ class CreateContractsTable extends Migration
              $table->foreign('contracttype_id')
                         ->references('id')
                         ->on('contracttypes')
+                        ->onDelete('cascade');
+
+            $table->integer('contractstatus_id')->unsigned();
+            $table->foreign('contractstatus_id')
+                        ->references('id')
+                        ->on('contractstatuses')
                         ->onDelete('cascade');
         });
 

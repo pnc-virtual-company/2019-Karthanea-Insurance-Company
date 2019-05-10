@@ -28,7 +28,6 @@
                   </tbody>
                    
                 </table>
-
                 <button type="submit" class="btn bg-primary text-white" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create New contract type</button>
               </div>
             </div>
@@ -102,6 +101,7 @@
       </div>
     </div>
 {{--End model update --}}    
+
 
       <script src="{{asset('js/app.js')}}"></script>
 {{-- script update for contractType --}}

@@ -304,23 +304,39 @@
   
    $(document).ready(function() {
 
-$(".txtDate").datepicker({
+$(".startdate").datepicker({
     showOn: 'button',
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
     dateFormat: 'yy-mm-dd',
     
-     constrainInput: true
+     constrainInput: true,
+    
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() + 1);
+            $(".enddate").datepicker("option", "minDate", dt);
+        }
+     
+
+     
 });
-$(".startDate").datepicker({
+$(".enddate").datepicker({
     showOn: 'button',
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
     dateFormat: 'yy-mm-dd',
     
-     constrainInput: true
+     constrainInput: true,
+     
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() - 1);
+            $("startdate").datepicker("option", "maxDate", dt);
+        }
+    
 });
 $(".ui-datepicker-trigger").mouseover(function() {
     $(this).css('cursor', 'pointer');
@@ -398,7 +414,7 @@ $(".ui-datepicker-trigger").mouseover(function() {
                   'rgba(255, 206, 86, 0.7)',
                   'rgba(75, 192, 192, 0.7)',
                   'rgba(153, 102, 255, 0.7)',
-                  'rgba(255, 159, 64, 0.7)
+                  'rgba(255, 159, 64, 0.7)'
               ],
               borderColor: [
                   'rgba(255, 99, 132, 1)',
