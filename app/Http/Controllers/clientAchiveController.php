@@ -38,16 +38,10 @@ class clientAchiveController extends Controller
      * @return void
      */
     public function status(Request $request, $id){
-        dd($clientStatus = Client::where('status','Active'));
         $client =Client::find($id);
-        $clientStatus = Client::where('status','Active')->first();
-        if ($clientStatus.checked == true) {
-            $clientStatus = Client::where('status','Disable')->first();
-        } else {
-            $clientStatus = Client::where('status','Active')->first();
-        }
-        $clientStatus = Client::where('status',$clientStatus);
-        $clientStatus->update();
+        $clientStatus = Client::where('id',$id)->update(array('status','Disable'));
+        
+        // $clientStatus->update($client->status);
 
         return  redirect('/clientAchive');
     }
@@ -59,8 +53,12 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-        $client = Client::create($request->all());
+       
+        $client = Clientlist::create($request->all());
+
         return redirect('/clientAchive');
+
+
     }
 
     /**
@@ -82,8 +80,15 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-      //
+      $client = Client::find($id);
+      $status = Client::lists('id','status');
+
+        if (is_null($client)) {
+            return Redirect::route('/clientAchive');
+        } 
+        return View::make('pages::AchiveClient',compact('client','status'))->with($status);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -96,18 +101,31 @@ class clientAchiveController extends Controller
     {
       
       $client =Client::find($id);//seect * from Post where id=$id
-    //   $disable = $request->disable;
-      
+      $disable = $request->disable;
+      $disable = Client::where('status','Active')->first();
+        if ($disable.checked == true) {
+            $disable = Client::where('status','Disable')->first();
+        } else {
+            $disable = Client::where('status','Active')->first();
+        }
+        $disable = Client::where('status',$disable);
+      $client->update($request->all());
+      return  redirect('/clientAchive');
+    { 
+        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
+        $client->update($request->all());
+        return  redirect('/clientAchive');
+      $client->update($request->all());
+      return  redirect('/clientAchive');
+
+        return  redirect('/clientAchive');
 
 
-        $clientupdate = Client::findOrFail($id);//seect * from Post where id=$id
-        $clientupdate->update($request->all());
-
+    }
 
         return  redirect('/clientAchive');
     }
        
-
 
 
     /**
@@ -116,9 +134,10 @@ class clientAchiveController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
-    }
+    // public function destroy($id)
+    // {
+    //     //
+    // }
 
 }
+    

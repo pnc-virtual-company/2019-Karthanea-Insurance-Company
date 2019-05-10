@@ -20,12 +20,9 @@ class ContractController extends Controller
     {
         $contractselect = \App\Contract::all();
         $contracttype = \App\Contracttype::all();
-        $contractStatus = \App\Contractstatus::all();
-        //dd($contractStatus);
+        $contractStatus = Contractstatus::all();
         $client = \App\Client::all();
         $bill = Bill::all();
-        
-        //dd($contract);
         return view('pages.addContract',compact('contractselect','contracttype','client','bill','contractStatus'));
     }
 
@@ -36,7 +33,7 @@ class ContractController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**

@@ -11,11 +11,6 @@
 
                 <div class="card-body">
 
-                    <div class="row">
-                            <div class="col-md-12">
-                                <a class="btn bg-primary text-white" href="{{url('users')}}">@lang('Back to list')</a>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label for="name">@lang('Name')</label>
@@ -37,10 +32,19 @@
                         </div>
 
                 </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn bg-primary text-white" href="{{url('users')}}">@lang('Back to list')</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
 <script src="{{asset('js/app.js') }}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 @endsection
 

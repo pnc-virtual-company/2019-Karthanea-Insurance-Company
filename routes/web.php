@@ -76,14 +76,21 @@ Route::resource('/userCall','UserCallController');
 
 Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
-// Route::get('/create','ClientController@create');
+Route::get('/create','ClientController@create');
 
-// Route::get('/client','ClientController@index');
+Route::get('/userCall','UserCallController@index');
+// Route::get('/usercall','UsercallController');
+Route::resource('contract','ContractController');
+
+Route::get('/client','ClientController@index');
 Route::resource('/clientAchive','clientAchiveController');
 
 Route::get('/clientStatus','clientAchiveController@status');
 Route::resource('contract','ContractController');
 Route::resource('payment','paymentController');
+
+// Route::get('/payment','paymentController@index');
+
 Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index'); 
