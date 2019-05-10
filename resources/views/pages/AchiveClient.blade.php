@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row justify-content-center">
                     <div class="col-md-12">
-                        <div><h1>@lang('Clients Information')</h1></div>
+                        <div><h1>@lang('Client Information ')</h1></div>
                                 <div class="card">
                                     <div class="card-body">
                                         <table id="myTable" class="table table-striped table-bordered table-hover">
@@ -20,6 +20,7 @@
                                             </thead>
                                             <tbody>
                         @foreach ($client as $value=>$item)
+                        @if($item->status=="Disable")
                         <tr>
                             <td>
                                 <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" 
@@ -27,7 +28,7 @@
                                     data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" 
                                     data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}">
                                     <i class="material-icons text-success">edit</i></a>
-                                <input type="checkbox" name="disable" id="disable">
+                                <input type="checkbox" name="disable" id="disable" checked>
                                 {{$item->id}}
                             </td>
                             <td>{{$item->firstname}} {{$item->lastname}} </td>
@@ -35,6 +36,23 @@
                             <td>{{$item->phonenumber}}</td>
                             <td>{{$item->email}}</td>
                         </tr>
+                        @elseif($item->status=="Active")
+                        <tr>
+                                <td>
+                                    <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClient" 
+                                        data-id="{{$item->id}}" data-firstname="{{$item->firstname}}"
+                                        data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" 
+                                        data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}">
+                                        <i class="material-icons text-success">edit</i></a>
+                                    <input type="checkbox" name="disable" id="disable" >
+                                    {{$item->id}}
+                                </td>
+                                <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                <td>{{$item->address}}</td>
+                                <td>{{$item->phonenumber}}</td>
+                                <td>{{$item->email}}</td>
+                            </tr>
+                        @endif
                         @endforeach
                             </tbody>
                         </table>
