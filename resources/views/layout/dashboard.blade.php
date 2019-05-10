@@ -75,12 +75,11 @@
                     <p>
                       Dashboard
                       <span class="material-icons ml-5" id="dashDown">arrow_drop_down</span>
-                      {{-- <span class="material-icons ml-4" id="dashUp">arrow_drop_up</span> --}}
                     </p>
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
                     <li class="list-group-item collapsed">
-                      <a href="{{url('/calluser')}}">
+                      <a href="{{url('/userCall')}}">
                         <span class="text-white">
                           <i class="material-icons text-white">perm_phone_msg</i>
                           User Call
@@ -110,7 +109,6 @@
               <i class="material-icons">work</i>
               <p>Managements
                 <span class="material-icons ml-4" id="manageDown">arrow_drop_down</span>
-                {{-- <span class="material-icons ml-4" id="manageUp">arrow_drop_up</span> --}}
               </p>
             </a>
             <ul class="collapse list-unstyled" id="pageSubmenu">
@@ -189,11 +187,11 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span><strong>{{ Auth::user()->name}}</strong></span>
-                  @if (Auth::user()->avatar!= null)
-                    <img id="imgProfilePic" src="{{asset('storage/images/'.Auth::user()->avatar)}}">
+                  <span><strong>{{Auth::user()->name}}</strong></span>
+                  @if (Auth::user()->avatar!=null)
+                    <img id="imgProfilePic" src="{{asset('storage/avatar/'.Auth::user()->avatar)}}">
                   @else
-                    <img id="imgProfilePic" src="{{asset('storage/images/avatar.jpg')}}">
+                    <img id="imgProfilePic" src="{{asset('storage/avatar/avatar.jpg')}}">
                   @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
@@ -224,24 +222,25 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="container-fluid">
-           @yield('content')
-          </div>
+          @yield('content')
         </div>
-        <script>
+      </div>
+      <script>
         const x = new Date().getFullYear();
         let date = document.getElementById('date');
         //date.innerHTML = '&copy; ' + x + date.innerHTML;
-      </script>
+        </script>
     </div>
   </div>
   <!--   Core JS Files   -->
- 
+  
+  <script src="{{asset('js/app.js')}}"></script>
   <script src="{{asset('js/core/jquery.min.js')}}"></script>
   <script src="{{asset('js/core/popper.min.js')}}"></script>
   {{-- modal error --}}
   {{-- <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script> --}}
   <script src="https://unpkg.com/default-passive-events"></script>
-  {{-- <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script> --}}
+  <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!--  Google Maps Plugin    -->
@@ -356,7 +355,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-  
 </body>
 <script>
   //barChart
@@ -364,13 +362,14 @@ $(".ui-datepicker-trigger").mouseover(function() {
   var myChart = new Chart(line, {
       type: 'line',
       data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'jun'],
           datasets: [{
-              label: '# of Votes',
-              data: [12, 19, 3, 5, 2, 32],
+              label: 'Average of call per month for 2019 (Hours Per Month)',
+              data: [12, 9, 13, 5, 12, 10],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
+                  'rgba(255, 99, 132, 0.7)',
+
+                  'rgba(54, 162, 235, 0.7)',
                   'rgba(255, 206, 86, 0.2)',
                   'rgba(75, 192, 192, 0.2)',
                   'rgba(153, 102, 255, 0.2)',
@@ -397,23 +396,25 @@ $(".ui-datepicker-trigger").mouseover(function() {
           }
       }
   });
-
+  
+  
   //barChart
   var bar = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(bar, {
       type: 'bar',
       data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+          labels: ['Jan', 'Feb', 'Mar', 'April', 'May', 'jun'],
           datasets: [{
-              label: 'of Votes',
+              label: '2019 Payment',
               data: [12, 19, 3, 5, 2, 3],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)',
-                  'rgba(75, 192, 192, 0.2)',
-                  'rgba(153, 102, 255, 0.2)',
-                  'rgba(255, 159, 64, 0.2)'
+
+                  'rgba(255, 99, 132, 0.7)',
+                  'rgba(54, 162, 235, 0.7)',
+                  'rgba(255, 206, 86, 0.7)',
+                  'rgba(75, 192, 192, 0.7)',
+                  'rgba(153, 102, 255, 0.7)',
+                  'rgba(255, 159, 64, 0.7)
               ],
               borderColor: [
                   'rgba(255, 99, 132, 1)',
@@ -437,31 +438,74 @@ $(".ui-datepicker-trigger").mouseover(function() {
       }
   });
 
-//PieChart
+
+
+//PieChart (Persontage of customer Late payment and completion )
+  
+////Switch data with select option
+function switchPieData(){
+  var e = document.getElementById("pieOption");
+  var optionValue = e.options[e.selectedIndex].value;
+
+  if (optionValue == "jan"){
+    jan(); 
+  }else if(optionValue == "feb"){
+    feb();
+  }else if (optionValue == "mar"){
+    mar();
+  }
+}
+
+function jan(){
+  pieChart.data.datasets[0].data[0]=0.8;
+  pieChart.data.datasets[0].data[1]=0.1;
+  pieChart.update();
+}
+
+function mar(){
+  pieChart.data.datasets[0].data[0]=0.6;
+  pieChart.data.datasets[0].data[1]=0.4;
+  pieChart.update();
+}
+
+function feb(){
+  pieChart.data.datasets[0].data[0]=0.3;
+  pieChart.data.datasets[0].data[1]=0.7;
+  pieChart.update();
+}
+//end select option
+
+//Piechart script
   var pie = document.getElementById('pieChart').getContext('2d');
   var pieChart = new Chart(pie, {
       type: 'pie',
       data: {
-          labels: ['Red', 'Blue', 'Yellow'],
+          labels: ['Completed', 'Late',],
           datasets: [{
               label: 'Payment',
-              data: [12, 19, 3],
+              data: [0.8, 0.2],
               backgroundColor: [
-                  'rgba(255, 99, 132, 0.2)',
-                  'rgba(54, 162, 235, 0.2)',
-                  'rgba(255, 206, 86, 0.2)'
-                  
+                  'rgba(255, 99, 132, 0.7)',
+                  'rgba(54, 162, 235, 0.7)'
+               
               ],
               borderColor: [
                   'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)',
-                  'rgba(255, 206, 86, 1)'
+                  'rgba(54, 162, 235, 1)'
                   
               ],
               borderWidth: 0.5
           }]
       }
   });
+
+
+
+  ////Switch data with select option
+function clientLate(){
+  var num = document.getElementById('numClientLate').value;
+  document.getElementById('num').innerHTML=(num);
+}
   </script>
   <script>
     $(document).ready(function(){
@@ -470,5 +514,4 @@ $(".ui-datepicker-trigger").mouseover(function() {
       ));
     });
   </script>
-
 </html>
