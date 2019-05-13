@@ -12,11 +12,6 @@
                             
                             <div class="card-body">
                                 
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <a class="btn bg-primary text-white" href="{{url('users/create')}}">@lang('Add a new user')</a>
-                                    </div>
-                                </div>
                                 
                                 <div class="row"><div class="col-md-12">&nbsp;</div></div>
                                 
@@ -58,8 +53,17 @@
                                                 </tr>
                                             @endforeach
                                         </tbody>
+                                      
+                                        
                                         </table>
                                     
+                                    </div>
+                                    <div class="card-footer">     
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <a class="btn bg-primary text-white" href="{{url('users/create')}}">@lang('Add a new user')</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

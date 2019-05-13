@@ -18,7 +18,6 @@ class CreateContractstatusesTable extends Migration
             $table->string('status');
             $table->timestamps();
         });
-        //Insert the default admin user
         DB::table('contractstatuses')->insert(
             array(
                 [
@@ -27,19 +26,19 @@ class CreateContractstatusesTable extends Migration
                 ],
                 [
                 'id' => 2,
-                'status' => 'To Be Assign',
+                'status' => 'To be completed',
                 ],
                 [
-                'id' => 3,
-                'status' => 'To Be Complete',
+                    'id' => 3,
+                    'status' => 'To be signed',
                 ],
                 [
-                'id' => 4,
-                'status' => 'Close',
-                ]
-            )
+                    'id' => 4,
+                    'status' => 'Close',
+                    ]
 
-        );
+            )
+                );
     }
 
     /**

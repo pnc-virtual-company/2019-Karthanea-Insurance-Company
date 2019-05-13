@@ -1,6 +1,5 @@
 @extends('layout.dashboard')
 @section('content')
-
 <div class="content">
 	<div class="container mt-4">
 		<div class="row shadow-lg bg-light">
@@ -41,20 +40,20 @@
 							</tr>
 						</thead>
 						<tbody>
-                                                @foreach ($contractselect as $value=>$item)
-                                        
-                                                
-                                                
+                        @foreach ($contractselect as $item)
 							<tr class="data-row">
 								<td class="id">
 									<div class="row">
 										<div class="col-5">
-                                                                {{$item->id}}
-                                                            </div>
+                                            {{$item->id}}
+                                        </div>
 										<div class="col-4">
 											<a href="#" class="text-center">
-												<a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
-                                                                            data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal">
+												<a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" 
+													data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
+													data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" 
+													data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" 
+													data-enddate="{{$item->enddate}}" data-bill_id="{{$item->bill_id}}" data-toggle="modal">
 													<i class="material-icons text-success">edit</i>
 												</a>
 											</a>
@@ -64,8 +63,8 @@
 								<td class="client">
 									<div class="row">
 										<div class="col-6">
-                                                                        {{$item->client->firstname}} {{$item->client->lastname}}
-                                                                    </div>
+                                            {{$item->client->firstname}} {{$item->client->lastname}}
+                                        </div>
 										<div class="col-2">
 											<a href="#" id="edit-item">
 												<i class="material-icons ml-5 text-info">call</i>
@@ -76,8 +75,8 @@
 								<td class="contracttype">
 									<div class="row">
 										<div class="col-5">
-                                                                        {{$item->contracttype->contracttype}} 
-                                                                    </div>
+                                			{{$item->contracttype->contracttype}} 
+                                        </div>
 										<div class="col-2">
 											<a href="#" class="text-center">
 												<i class="material-icons text-info ml-5">insert_drive_file</i>
@@ -85,7 +84,7 @@
 										</div>
 									</div>
 								</td>
-								<td class="status">{{$item['status']}}</td>
+								<td class="status">{{$item->contractStatus['status']}}</td>
 								<td class="startdate">{{$item['startdate']}}</td>
 								<td class="enddate">{{$item['enddate']}}</td>
 								<td class="monthlybill">$ {{$item['monthlybill']}}</td>
@@ -94,8 +93,7 @@
 									<a href="#" class="text-center">$</a>
 								</td>
 							</tr>
-                                                        @endforeach
-                                                    
+                        @endforeach
 						</tbody>
 					</table>
 				</div>
@@ -106,10 +104,7 @@
 		</div>
 	</div>
 </div>
-
        {{-- modelad add a new contract --}}
-       
- 
 <div class="modal fade bd-example-modal-lg" id="Contract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
@@ -125,7 +120,7 @@
 								<div class="col-2">
 									<label for="">Client</label>
 								</div>
-								<div class="col-4">
+								<div class="col-6">
 									<div class="col-10">
 										<select name="client_id" id="client_id" class="browser-default custom-select" required>
                                             @foreach ($client as $item)
@@ -176,12 +171,15 @@
 															<label for="">Status</label>
 														</div>
 														<div class="col-10">
-															<select class="browser-default custom-select" name="status" required>
-																<option selected value="Open">Open</option>
-																<option value="To be completed">To be completed</option>
-																<option value="To be signed">To be signed</option>
-																<option value="Closed">Closed</option>
-															</select>
+																<select class="browser-default custom-select" name="status_id" id="status_id" required>
+																		@foreach ($contractStatus as $item)
+																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
+																		@endforeach
+																		
+																		{{-- <option value="To be completed">To be completed</option>
+																		<option value="To be signed">To be signed</option>
+																		<option value="Closed">Closed</option> --}}
+																	</select>
 														</div>
 													</div>
 												</div>
@@ -229,7 +227,7 @@
 													<label for="" >Monthly bill</label>
 												</div>
 												<div class="col-6">
-													<input type="text" name="monthlybill" class="form-control" required>
+													<input type="text" id="monthlybill" name="monthlybill" class="form-control" required>
 													</div>
 												</div>
 											</div>
@@ -261,7 +259,6 @@
 				</div>
 				<div>
 			</div>
-    
         {{-- //  modelad edit a new contract --}}
 			<div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-lg">
@@ -282,14 +279,14 @@
 											<div class="col-10">
 												<select name="client_id" id="client_id" class="browser-default custom-select" value="">
 													@foreach ($contractselect as $item)
-														@if ($item->client->id == $item->client_id && $item->client->id != $item->client->id)
+														@if ($item->client_id == $item->client_id)
 															<option value="{{$item->client_id}}" selected >{{$item->client->firstname}} {{$item->client->lastname}}</option>
 														@else
-															<option value="{{$item->client->id}}" >{{$item->client->firstname}} {{$item->client->lastname}}</option>
+															<option value="{{$item->client_id}}" >{{$item->client->firstname}} {{$item->client->lastname}}</option>
 														@endif
 													@endforeach
 													@foreach ($client as $value)
-														@if ($item->client->id != $value->id && $item->client_id != $value->id)
+														@if ($item->client_id != $value->id && $item->client_id != $value->id)
 															<option value="{{$value->id}}" >{{$value->firstname}} {{$value->lastname}}</option>
 														@endif
 													@endforeach
@@ -305,16 +302,16 @@
                                                                 <div class="col-10">
                                                                     <div class="input-group ">
                                                                         <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select" required>
-																				@foreach ($contractselect as $itemData)
-																					@if ($itemData->contracttype->id == $itemData->contracttype_id && $itemData->contracttype->id != $itemData->contracttype->id)
-																						<option value="{{$itemData->contracttype->id}}" selected >{{$itemData->contracttype->contracttype}}</option>
+																				@foreach ($contractselect as $item)
+																					@if ($item->contracttype_id == $item->contracttype_id && $item->contracttype_id != $item->contracttype_id)
+																						<option value="{{$item->contracttype_id}}" selected >{{$item->contracttype->contracttype}}</option>
 																					@else
-																						<option value="{{$itemData->contracttype->id}}" >{{$itemData->contracttype->contracttype}}</option>
+																						<option value="{{$item->contracttype_id}}" >{{$item->contracttype->contracttype}}</option>
 																					@endif
 																				@endforeach
 																				
 																			@foreach ($contracttype as $value)
-																				@if ($itemData->contracttype->id != $value->id && $itemData->contracttype_id != $value->id)
+																				@if ($item->contracttype_id != $value->id && $item->contracttype_id != $value->id)
 																					<option value="{{$value->id}}" >{{$value->contracttype}}</option>
 																				@endif
 																			@endforeach
@@ -334,11 +331,14 @@
                                                                         <label for="">Status</label>
                                                                     </div>
                                                                     <div class="col-10">
-                                                                        <select class="browser-default custom-select" name="status" id="status" required>
-                                                                            <option selected value="Open">Open</option>
-                                                                            <option value="To be completed">To be completed</option>
+                                                                        <select class="browser-default custom-select" name="status_id" id="status_id" required>
+																			@foreach ($contractStatus as $item)
+																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
+																			@endforeach
+                                                                            
+                                                                            {{-- <option value="To be completed">To be completed</option>
                                                                             <option value="To be signed">To be signed</option>
-                                                                            <option value="Closed">Closed</option>
+                                                                            <option value="Closed">Closed</option> --}}
                                                                         </select>
                                                                     </div>
                                                                 </div>
@@ -444,7 +444,7 @@
             modal.find('#startdate').attr('value',startdate)
             modal.find('#monthlybill').attr('value',monthlybill)
             modal.find('#monthlyduedate').attr('value',monthlyduedate)
-            modal.find('#client_id').attr('value',client_id)
+            modal.find('#client_id').attr('value',client_id) 
             modal.find('#bill_id').attr('value',bill_id)
             modal.find('#contracttype_id').attr('value',contracttype_id)
             
