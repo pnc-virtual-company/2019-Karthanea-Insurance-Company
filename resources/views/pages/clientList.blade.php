@@ -27,7 +27,7 @@
                                                 <input type="checkbox" name="disable[]" id="disable">
                                             </a>
                                         @endif
-                                        C00{{$item->id}}
+                                        CL00{{$item->id}}
                                     </td>
                                     <td>{{$item->firstname}} {{$item->lastname}} </td>
                                     <td>{{$item->address}}</td>

@@ -19,7 +19,7 @@ class ClientController extends Controller
     public function index()
     {
 
-        $client = Client::all();
+        $client = Client::all()->sortBy('id');
         return view('pages.clientList',compact('client'));
 
     }

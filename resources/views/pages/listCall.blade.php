@@ -1,4 +1,3 @@
-
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">

@@ -1,11 +1,12 @@
+{{dd($current)}}
 @extends('layout.dashboard')
 @section('content')
 <body>
 <div class="container mt-4">
     <div class="row shadow-lg bg-light">
-        <div class="col-4"><button class="btn btn-block btn-light "><i class="material-icons text-success  mr-4">call</i>  In a call</button></div>
-        <div class="col-4"><button class="btn btn-block btn-light"><i class="material-icons text-success  mr-4">access_time</i> 5min13sec</button></div>
-        <div class="col-4"><button class="btn btn-block btn-light"><i class="material-icons text-danger sm mr-4">call</i>  HANG UP</button></div>
+        <div class="col-4 col-lg-4 col-md-4 col-sm-12"><button class="btn btn-block btn-light "><i class="material-icons text-success  mr-4">call</i>  In a call</button></div>
+        <div class="col-4 col-lg-4 col-md-4 col-sm-12"><button class="btn btn-block btn-light"><i class="material-icons text-success  mr-4">access_time</i> 5min13sec</button></div>
+        <div class="col-4 col-lg-4 col-md-4 col-sm-12"><button class="btn btn-block btn-light"><i class="material-icons text-danger sm mr-4">call</i>  HANG UP</button></div>
     </div>
 </div>
     <div class="container mt-4">
@@ -15,44 +16,44 @@
                 {{-- list of client --}}
                 <div class="table-responsive">
                     <table id="myTables" class="table table-striped table-bordered table-hover">
-                            <thead class="bg-dark text-white">
-                                <tr>
-                                    <th>Disable ID</th>
-                                    <th>Clients</th>
-                                    <th>Address</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Contract</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($client as $value)
-                                    @if ($value->status=='Active')
-                                        <tr>
-                                            <td>
-                                                <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"
-                                                        data-id="{{$value->id}}" data-firstname="{{$value->firstname}}" data-lastname="{{$value->lastname}}" 
-                                                        data-address="{{$value->address}}" data-phonenumber="{{$value->phonenumber}}" data-email="{{$value->email}}">
-                                                        <i class="material-icons text-success">create</i>
-                                                    </a>
-                                                <input type="checkbox" name="disable" id="disable">
-                                                {{$value->id}}
-                                            </td>
-                                            <td>{{$value->firstname}} {{$value->lastname}}</td>
-                                            <td>{{$value->address}}</td>
-                                            <td>{{$value->phonenumber}}</td>
-                                            <td>{{$value->email}}</td>
-                                            <td>
-                                                <a href="#" class="togglePayment">
-                                                    <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                    @endif
-                                @endforeach
-                            </tbody>
-                            <br>
-                        </table>
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>Disable ID</th>
+                                <th>Clients</th>
+                                <th>Address</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                <th>Contract</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($client as $value)
+                                @if ($value->status==1)
+                                    <tr>
+                                        <td>
+                                            <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"
+                                                data-id="{{$value->id}}" data-firstname="{{$value->firstname}}" data-lastname="{{$value->lastname}}" 
+                                                data-address="{{$value->address}}" data-phonenumber="{{$value->phonenumber}}" data-email="{{$value->email}}">
+                                                <i class="material-icons text-success">create</i>
+                                            </a>
+                                            <input type="checkbox" name="disable" id="disable">
+                                            {{$value->id}}
+                                        </td>
+                                        <td>{{$value->firstname}} {{$value->lastname}}</td>
+                                        <td>{{$value->address}}</td>
+                                        <td>{{$value->phonenumber}}</td>
+                                        <td>{{$value->email}}</td>
+                                        <td>
+                                                {{-- class="togglePayment" --}}
+                                            <a href="#" class="togglePayment">
+                                                <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @endif
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
                 {{-- list all contract of client --}}
                 <div class="table-responsive">
@@ -69,44 +70,46 @@
                             </tr>
                         </thead>
                         <tbody>
-                                @foreach ($contract as $value=>$item)
-                                <tr class="data-row">
-                                    <td class="id">
-                                        <div class="row">
-                                            <div class="col-5">
-                                                    {{$item->id}}
-                                            </div>
-                                            <div class="col-4">
-                                                <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
-                                            </div>
-                                        </div>
-                                        </td>
-                                        <td class="contracttype">
+                            @foreach ($contract as $value=>$item)
+                                @if ($item->client_id == $item->client->id)
+                                    <tr class="data-row">
+                                        <td class="id">
                                             <div class="row">
-                                                <div class="col-6">
-                                                        {{$item->contracttype->contracttype}} 
+                                                <div class="col-5">
+                                                    {{$item->id}}
                                                 </div>
-                                                <div class="col-3">
+                                                <div class="col-4">
+                                                    <a href="{{route('contract.update',$item->id)}}" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
+                                                </div>
+                                            </div>
+                                            </td>
+                                            <td class="contracttype">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        {{$item->contracttype->contracttype}} 
+                                                    </div>
+                                                    <div class="col-3">
                                                         <a href="#" class="text-center">
                                                             <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                         </a>  
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="status">{{$item['status']}}</td>
-                                        <td class="startdate">{{$item['startdate']}}</td>
-                                        <td class="enddate">{{$item['enddate']}}</td>
-                                        <td class="monthlybill">{{$item['monthlybill']}} $</td>
-                                <td>
-                                    <a href="#" class="toggleBill">
-                                        <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
-                                    </a>
-                                </td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                            </td>
+                                            <td class="status">{{$item['status']}}</td>
+                                            <td class="startdate">{{$item['startdate']}}</td>
+                                            <td class="enddate">{{$item['enddate']}}</td>
+                                            <td class="monthlybill">{{$item['monthlybill']}} $</td>
+                                            <td>
+                                                <a href="#" class="toggleBill">
+                                                    <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 {{-- list all of client bill --}}
                 <div class="table-responsive">
                     <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
@@ -120,28 +123,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($contract as $item)
-                            <tr>
-                                <td>{{$item->startdate}}</td>
-                                <td>{{$item->monthlybill}}</td>
-                                <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
-                                <td>{{$item->enddate}}</td>
-                                
-                                <td>
-                                    <a href="#" class="text-center">
-                                        <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                    </a>
-                                </td>
-                            </tr>
+                            @foreach ($monthly as $item)
+                                @foreach ($item->startdate as $value)
+                                    <tr>
+                                        <td>{{$value}}</td>
+                                        <td></td>
+                                        <td><a href=""  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                        <td></td>
+                                        <td>
+                                            <a href="#" class="text-center">
+                                                <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    
+                                @endforeach
                             @endforeach
                         </tbody>
                     </table>
                 </div>
-                </div>
-                <div>
-                </div>
-            </div>
-            
             </div>
         </div>
     </div>
@@ -194,134 +194,116 @@
                           </div>
                           <div class="card-body">
                                 <form action="" method="POST" id="editForm">
-                                        @csrf
-                                        @method('PATCH')
+                                    @csrf
+                                    @method('PATCH')
                                 <div class="modal-body">
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-2">
-                                                                <label for="">Client</label>
-                                                        </div>
-                                                        <div class="col-10">
-                                                           
-                                                                <select name="client_id" id="client_id" class="browser-default custom-select" value="">
-                                                                     @foreach ($client as $value)
-                                                                    <option value="{{$value->id}}" >{{$value->firstname}} {{$value->lastname}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                        </div>
-                                                <div class="form-group ">
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <div class="row">
-                                                                <div class="col-2">
-                                                                  <label for="">Type</label>
-                                                                </div>
-
-                                                                <div class="col-10">
-
-                                                                        <div class="input-group">
-                                                                            <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select">
-                                                                                @foreach ($contracttype as $value)
-                                                                               <option value="{{$value->id}}">{{$value->contracttype}}</option>
-                                                                               @endforeach
-                                                                           </select>
-                                                                                {{-- <input class="form-control py-2" name="contracttype_id" type="search"  id="example-search-input"> --}}
-                                                                                <span class="input-group-append">
-                                                                                    <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectUpdateContract" type="button" style="margin-top:0%;">
-                                                                                       Select
-                                                                                    </button>
-                                                                                </span>
-                                                                            </div>
-
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                              
-                                                        
-                                                        <div class="col-6">
-    
-                                                            <div class="row">
-
-                                                                    <div class="col-2">
-                                                                            <label for="">Status</label>
-                                                                        
-                                                                     </div>
-                                                                     <div class="col-10">
-                                                                          
-                                                                        <select class="browser-default custom-select" name="status" id="status"  >
-                                                                           @foreach ($contract as $item)
-                                                                                <option value="{{$item->status}}">{{$item->status}}</option>
-                                                                           @endforeach
-                                                                        </select>
-                                                                     </div>
-                                                            </div>
-                                                            </div>   
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-2">
+                                                    <label for="">Client</label>
+                                            </div>
+                                            <div class="col-10">
+                                                <select name="client_id" id="client_id" class="browser-default custom-select" value="">
+                                                     @foreach ($client as $value)
+                                                    <option value="{{$value->id}}" >{{$value->firstname}} {{$value->lastname}}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-2">
+                                                      <label for="">Type</label>
                                                     </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="row">
-                                                        <div class="col-6">
-                                                            <div class="row">
-                                                                <div class="col-3">
-                                                                    <label for="startDate">Start Date</label>
-                                                                </div>
-                                                                <div class="col-9">
-                                                                    <div class="row">
-                                                                        <div class="col-3">
-                                                                              <label for="startDate">Start Date</label>
-                                                                        </div>
-                                                                        <div class="col-9">
-
-                                                                            <div class="row">
-                                                                                <div class="col-12">
-                                                                                    <input type='text' name="startdate" class='startDate ' value="" id="startdate" placeholder="mm/dd/yy"  />
-
-                                                                                </div>
-                                                                              </div>
-
-
-                                                                              </div>
-                                                                            </div>
-                                                                        <div class="col-12">
-                                                                            <input type='text' name="startdate" class='startDate ' value="" id="startdate" placeholder="mm/dd/yy"  />
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+                                                    <div class="col-10">
+                                                        <div class="input-group">
+                                                            <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select">
+                                                                @foreach ($contracttype as $value)
+                                                               <option value="{{$value->id}}">{{$value->contracttype}}</option>
+                                                               @endforeach
+                                                            </select>
+                                                            <span class="input-group-append">
+                                                                <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectUpdateContract" type="button" style="margin-top:0%;">
+                                                                   Select
+                                                                </button>
+                                                            </span>
                                                         </div>
-                                                       
-                                                      <div class="col-6">
-                                                          <div class="row">
-                                                              <div class="col-3">
-                                                                    <label for="endDate">End Date</label>
-                                                              </div>
-                                                              <div class="col-9">
-                                                                  <div class="row">
-                                                                      <div class="col-12">
-                                                                            <input type='text' name="enddate" class='txtDate' value="" id="enddate" placeholder="mm/dd/yy"  />
-                                                                      </div>
-                                                                    </div>
-                                                                    </div>
-                                                                  </div>
-                                                              </div>
-
-                                                          </div>
-                                                      </div>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group ">
-                                                    <div class="row">
-                                                        <div class="col-2"><label for="" >Monthly bill</label></div>
-                                                        
-                                                        <div class="col-10">
-                                                            <input type="text" name="monthlybill" value="" id="monthlybill" class="form-control">
-                                                        </div>   
                                                     </div>
                                                 </div>
                                             </div>
-                                        
+                                            <div class="col-6">
+                                                <div class="row">
+                                                        <div class="col-2">
+                                                            <label for="">Status</label>
+                                                        </div>
+                                                        <div class="col-10">
+                                                        <select class="browser-default custom-select" name="status" id="status"  >
+                                                            @foreach ($contract as $item)
+                                                                <option value="{{$item->status}}">{{$item->status}}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>   
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="row">
+                                                    <div class="col-3">
+                                                        <label for="startDate">Start Date</label>
+                                                    </div>
+                                                    <div class="col-9">
+                                                        <div class="row">
+                                                            <div class="col-3">
+                                                                  <label for="startDate">Start Date</label>
+                                                            </div>
+                                                            <div class="col-9">
+                                                                <div class="row">
+                                                                    <div class="col-12">
+                                                                        <input type='text' name="startdate" class='startDate ' value="" id="startdate" placeholder="mm/dd/yy"  />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <input type='text' name="startdate" class='startDate ' value="" id="startdate" placeholder="mm/dd/yy"  />
+                                                        </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          <div class="col-6">
+                                              <div class="row">
+                                                  <div class="col-3">
+                                                        <label for="endDate">End Date</label>
+                                                  </div>
+                                                  <div class="col-9">
+                                                      <div class="row">
+                                                          <div class="col-12">
+                                                                <input type='text' name="enddate" class='txtDate' value="" id="enddate" placeholder="mm/dd/yy"  />
+                                                          </div>
+                                                        </div>
+                                                        </div>
+                                                      </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <div class="col-2"><label for="" >Monthly bill</label></div>
+                                            
+                                            <div class="col-10">
+                                                <input type="text" name="monthlybill" value="" id="monthlybill" class="form-control">
+                                            </div>   
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
                             <div class="modal-footer mr-5">
                                 <button type="submit" class="btn bg-info "><i class='material-icons'>check</i> Save Contract</button>
                                 <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cancel</button>
@@ -360,7 +342,7 @@
                   
                   var url ="{{url('/contract')}}/"+id;
                   $('#editForm').attr('action',url);   
-              })
+              });
               </script>
 
             <div class="modal fade bd-example" id="selectAddContract"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -550,7 +532,7 @@
               </div>
               
               <script src="{{asset('js/app.js')}}"></script>
-    <script>
+        <script>
             $('#editClient').on('show.bs.modal',function (event){
                   var button = $(event.relatedTarget)
                   var firstname = button.data('firstname')
@@ -577,7 +559,7 @@
                   var url ="{{url('/client')}}/"+ id;
                   $('#editClientList').attr('action',url);   
                   });
-            <!-- Modal Edit -->
+            //  Modal Edit
             <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -654,6 +636,8 @@
         </body>
         <script src="{{asset('js/app.js')}}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script>
         $('#editClient').on('show.bs.modal',function (event){
             var button = $(event.relatedTarget)
@@ -679,4 +663,26 @@
             $('#editClientList').attr('action',url);   
         });
             </script>
+
+    // <script LANGUAGE="JavaScript">
+        // function getClientContract(){
+    //         $clientContractTable = '<table id="table2" class="table table-striped table-bordered table-hover collapse"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead>';
+    //         $.ajax({
+    //             url : ,
+    //             data: url,
+    //             dataType : 'json'
+            
+    //         })
+    //         .done(function(data){
+    //             $clientContractTable+='<tbody>';
+    //                 for(var i = 0; i<data[]){
+                        
+    //                 }
+    //             })
+    //             .fail(function(error){
+                    
+    //             })
+    //             console.log(data);
+    //         }
+    // </script>
 @endsection
