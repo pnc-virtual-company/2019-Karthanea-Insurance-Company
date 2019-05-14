@@ -7,6 +7,7 @@ use \App\Client;
 use \App\Bill;
 use \App\Contract;
 use \App\ContractType;
+use \App\Contractstatus;
 class paymentController extends Controller
 {
     /**
@@ -24,27 +25,16 @@ class paymentController extends Controller
         $contract = Contract::all();
         $contracttype = Contracttype::all();
         $bill = Bill::all();
-        // $monthly = Contract::select()->whereRaw('? between startdate and enddate', [date('Y-m-d')])->get();
-        $from = date('Y-m-d' . $contract, time()); //need a space after dates.
-        $to = date('Y-m-d' . $contract, time());
-
-        for($i = 1 ; $i<13;$i++){
-            $current = Contract::where('id',$this->$i)
-                ->whereBetween('startdate', array($from, $to))->first();
-        
-            return $current;
-            //     $monthly[$i] = Contract::whereMonth('startdate',$i)->get();
-        //     return $monthly;            
-        }
-        return view('pages.paymentList',compact('client','contract','contracttype','bill','current'));
+        $contractStatus = Contractstatus::all();
+        return view('pages.paymentList',compact('client','contract','contracttype','bill','contractStatus'));
     }
 
-    public function listCContract($id)
-    {
-        $clientContract = Client::find($id);
-        $clientContract->client;
-        return view('pages.paymentList', compact('clientContract'));
-    }
+    // public function listCContract($id)
+    // {
+    //     $clientContract = Client::find($id);
+    //     $clientContract->client;
+    //     return view('pages.paymentList', compact('clientContract'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -75,11 +65,11 @@ class paymentController extends Controller
      */
     public function show($id)
     {
-        $client = Client::all();
-        $bill = Bill::all();
-        $billDiff = $bill->diff($contract->bill);
-        // $contract = Contract::with('contracttype')->where('id',$contracttype_id)->first();
-        return view('pages.paymentList',compact('contract'));
+
+        $client = Client::find($id);
+        $contract = Contract::all();
+        $contractStatus = Contractstatus::all();
+        return view('pages.paymentList',compact('contract','client'));
     }
 
     /**

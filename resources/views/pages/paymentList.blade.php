@@ -1,4 +1,3 @@
-{{dd($current)}}
 @extends('layout.dashboard')
 @section('content')
 <body>
@@ -31,7 +30,7 @@
                                 @if ($value->status==1)
                                     <tr>
                                         <td>
-                                            <a href="{{route('client.update',$value->id)}}" data-toggle="modal" data-target="#editClient"
+                                            <a href="#" data-toggle="modal" data-target="#editClient"
                                                 data-id="{{$value->id}}" data-firstname="{{$value->firstname}}" data-lastname="{{$value->lastname}}" 
                                                 data-address="{{$value->address}}" data-phonenumber="{{$value->phonenumber}}" data-email="{{$value->email}}">
                                                 <i class="material-icons text-success">create</i>
@@ -45,7 +44,7 @@
                                         <td>{{$value->email}}</td>
                                         <td>
                                                 {{-- class="togglePayment" --}}
-                                            <a href="#" class="togglePayment">
+                                            <a  href="{{route('payment.show',$value->id)}}" id="toggleContractTable">
                                                 <i class="material-icons text-info ml-5">insert_drive_file</i>
                                             </a>
                                         </td>
@@ -57,7 +56,8 @@
                 </div>
                 {{-- list all contract of client --}}
                 <div class="table-responsive">
-                    <table id="table2" class="table table-striped table-bordered table-hover collapse">
+                    <div class="tableClientContract"></div>
+                    {{-- <table id="table2" class="table table-striped table-bordered table-hover d-none">
                         <thead class="bg-dark text-white">
                             <tr>
                                 <th>ID</th>
@@ -69,8 +69,8 @@
                                 <th>Bills</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach ($contract as $value=>$item)
+                        <tbody> --}}
+                            {{-- @foreach ($contract as $value=>$item)
                                 @if ($item->client_id == $item->client->id)
                                     <tr class="data-row">
                                         <td class="id">
@@ -106,7 +106,7 @@
                                             </td>
                                         </tr>
                                     @endif
-                                @endforeach
+                                @endforeach --}}
                             </tbody>
                         </table>
                     </div>
@@ -123,22 +123,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($monthly as $item)
-                                @foreach ($item->startdate as $value)
-                                    <tr>
-                                        <td>{{$value}}</td>
-                                        <td></td>
-                                        <td><a href=""  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
-                                        <td></td>
-                                        <td>
-                                            <a href="#" class="text-center">
-                                                <i class="material-icons text-info ml-5">insert_drive_file</i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    
-                                @endforeach
-                            @endforeach
+                            {{-- @foreach ($contract as $item)
+                                <tr>
+                                    <td>{{$item->startdate}}</td>
+                                    <td>{{$item->monthlyduedate}}</td>
+                                    <td>{{$item->enddate}}<a href=""  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                                    <td>{{$item->contractStatus->status}}</td>
+                                    <td>
+                                        ${{$item->monthlybill}}
+                                        <a href="#" class="text-center">
+                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach --}}
                         </tbody>
                     </table>
                 </div>
@@ -160,7 +158,7 @@
                       <div class="col-2"><p> Status</p></div>
                       <div class="col-6">
                             <select class=" custom-select">
-                                @foreach ($contract as $item)
+                                {{-- @foreach ($contract as $item)
                                     @if ($item->bill->id == $item->bill_id && $item->bill_id== $item->id)
                                         <option value="{{$item->bill_id}}" selected>{{$item->bill->status}}</option>
                                     @else
@@ -170,7 +168,7 @@
                                             @endif
                                         @endforeach
                                     @endif
-                                @endforeach
+                                @endforeach --}}
                             </select>
                       </div>
                   </div>
@@ -624,53 +622,75 @@
         </body>
         <script src="{{asset('js/app.js')}}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script>
-        $('#editClient').on('show.bs.modal',function (event){
-            var button = $(event.relatedTarget)
-            var firstname = button.data('firstname')
-            console.log(firstname)
-            var lastname = button.data('lastname')   
-            console.log(lastname) 
-            var address = button.data('address')
-            console.log(address)
-            var phonenumber = button.data('phonenumber')
-            console.log(phonenumber)
-            var email = button.data('email')
-            var id = button.data('id')
-            console.log(email)
-            console.log(id)
-            var modal = $(this)
-            modal.find('#firstname').attr('value',firstname)
-            modal.find('#lastname').attr('value',lastname)
-            modal.find('#address').attr('value',address)
-            modal.find('#phonenumber').attr('value',phonenumber)
-            modal.find('#email').attr('value',email)
-            var url ="{{url('/client')}}/"+ id;
-            $('#editClientList').attr('action',url);   
-        });
-            </script>
-
-    // <script LANGUAGE="JavaScript">
-        // function getClientContract(){
-    //         $clientContractTable = '<table id="table2" class="table table-striped table-bordered table-hover collapse"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead>';
-    //         $.ajax({
-    //             url : ,
-    //             data: url,
-    //             dataType : 'json'
-            
-    //         })
-    //         .done(function(data){
-    //             $clientContractTable+='<tbody>';
-    //                 for(var i = 0; i<data[]){
-                        
-    //                 }
-    //             })
-    //             .fail(function(error){
+            $('#editClient').on('show.bs.modal',function (event){
+                var button = $(event.relatedTarget)
+                var firstname = button.data('firstname')
+                console.log(firstname)
+                var lastname = button.data('lastname')   
+                console.log(lastname) 
+                var address = button.data('address')
+                console.log(address)
+                var phonenumber = button.data('phonenumber')
+                console.log(phonenumber)
+                var email = button.data('email')
+                var id = button.data('id')
+                console.log(email)
+                console.log(id)
+                var modal = $(this)
+                modal.find('#firstname').attr('value',firstname)
+                modal.find('#lastname').attr('value',lastname)
+                modal.find('#address').attr('value',address)
+                modal.find('#phonenumber').attr('value',phonenumber)
+                modal.find('#email').attr('value',email)
+                var url ="{{url('/client')}}/"+ id;
+                $('#editClientList').('action',url);   
+            });
+        </script>
+        <script>
+        $(document).ready(function(){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#toggleContractTable').click(function(e){
+                e.preventDefault();
+                function getClientContract(){
+                    $.ajax({
+                        url : baseUrl+" {{ ('/payment.show') }} ",
+                        // data:{'id': id},
+                        method: 'POST',
+                        dataType : 'json'
                     
-    //             })
-    //             console.log(data);
-    //         }
-    // </script>
+                    })
+                    .done(displayData)
+                    .fail(displayError)
+                    }
+                    function displayData(data) {
+                        console.log(data);
+                        var clientContractTable = '<table  class="table table-striped table-bordered table-hover collapse"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead><tbody>';
+                        for(var i = 0; i < data.length; i++) {
+                            clientContractTable += '<tr><td>' + data[i].status +"</td><td> "
+                                                +data[i].startdate +"</td><td>"
+                                                +data[i].enddate +'</td><td>'
+                                                +data[i].monthlybill +'</td>'
+                                                +'<td> <a href="#" class="toggleBill"> <i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i> </a> </td> </tr>';
+                        }
+                        clientContractTable += '</tbody>';
+                        $("#tableClientContract").append(clientContractTable);
+                        // $("#body").removeClass('loading');
+                    }
+                    function displayError(error){
+                        // $("#body").removeClass('loading');
+                        $("#error").html('Sorry, there was an error: ' + error.statusText + " (" + error.status + ")")
+                        .css('color','red');
+                    }
+                    // getMessage();
+                    console.log(displayData);
+            })
+        })
+        </script>
 @endsection
