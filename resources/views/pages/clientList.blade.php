@@ -17,15 +17,16 @@
                         </thead>
                         <tbody>
                         @foreach ($client as $item)
-                            @if ($item->status=='1')
+                            @if ($item->status== 1)
                                 <tr>
                                     <td>
-                                        <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
-                                    
-                                        <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
-                                            <input type="checkbox" name="disable[]" id="disable">
-                                        </a>
-                                        {{$item->id}}
+                                        @if (Auth::user()->hasRole('Administrator'))
+                                            <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                            <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
+                                                <input type="checkbox" name="disable[]" id="disable">
+                                            </a>
+                                        @endif
+                                        CL00{{$item->id}}
                                     </td>
                                     <td>{{$item->firstname}} {{$item->lastname}} </td>
                                     <td>{{$item->address}}</td>
@@ -38,7 +39,9 @@
                     </table>
                 </div>
                 <div>
-                    <button type="button" class="btn text-white bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
+                    @if (Auth::user()->hasRole('Administrator'))
+                        <button type="button" class="btn text-white bg-primary" data-toggle="modal" data-target="#createClient"><i class="material-icons">control_point</i> Create Client</button>
+                    @endif
                 </div>
             </div>
         </div>
@@ -66,7 +69,7 @@
             </form>
           </div>
         </div>
-      </div>
+      </div>    
           <!-- Modal add -->
           <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

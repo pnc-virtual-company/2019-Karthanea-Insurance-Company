@@ -158,7 +158,7 @@
               <p>Calendar</p>
             </a>
           </li>
-          @if (Auth::user()->name =="Administrator")
+          @if (Auth::user()->hasRole('Administrator'))
             <li class="nav-item">
               <a class="nav-link" href="{{url('users')}}">
                 <i class="material-icons">person</i> {{ __('Users') }}

@@ -15,7 +15,7 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        $client = Clientlist::all();
+        $client = Clientlist::all()->sortBy('id');
         return view('pages.AchiveClient',compact('client'));
     }
 
@@ -51,7 +51,9 @@ class clientAchiveController extends Controller
      */
     public function show($id)
     {
-        //
+      $clientContract = Contract::find($id);
+
+      return view('pages.paymentList','clientContract');
     }
 
     /**
@@ -81,6 +83,7 @@ class clientAchiveController extends Controller
         } else {
           $client->status = 1;
         }
+        
       $client->update($request->all());
         return  redirect('/clientAchive');
     }

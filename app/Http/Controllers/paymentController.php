@@ -24,7 +24,19 @@ class paymentController extends Controller
         $contract = Contract::all();
         $contracttype = Contracttype::all();
         $bill = Bill::all();
-        return view('pages.paymentList',compact('client','contract','contracttype','bill' ));
+        // $monthly = Contract::select()->whereRaw('? between startdate and enddate', [date('Y-m-d')])->get();
+        $from = date('Y-m-d' . $contract, time()); //need a space after dates.
+        $to = date('Y-m-d' . $contract, time());
+
+        for($i = 1 ; $i<13;$i++){
+            $current = Contract::where('id',$this->$i)
+                ->whereBetween('startdate', array($from, $to))->first();
+        
+            return $current;
+            //     $monthly[$i] = Contract::whereMonth('startdate',$i)->get();
+        //     return $monthly;            
+        }
+        return view('pages.paymentList',compact('client','contract','contracttype','bill','current'));
     }
 
     public function listCContract($id)
