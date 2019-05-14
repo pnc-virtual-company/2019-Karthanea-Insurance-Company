@@ -1,5 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
+
     <div class="container mt-4">
         <h1> Information Client </h1>
 
@@ -218,6 +219,7 @@
           <script src="{{asset('js/app.js')}}"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
+
         $('#editClientActive').on('show.bs.modal',function (event){
             var button = $(event.relatedTarget)
             var firstname = button.data('firstname')
