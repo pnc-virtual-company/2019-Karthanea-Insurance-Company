@@ -78,7 +78,7 @@
                                 			{{$item->contracttype->contracttype}} 
                                         </div>
 										<div class="col-2">
-												<a href="" ><i class="material-icons text-success">description</i></a>
+												<a href="{{ url('pdf') }}" ><i class="material-icons text-success">description</i></a>
 										</div>
 										
 									</div>
@@ -101,6 +101,7 @@
 				<button type="button" class="btn bg-primary ml-3 text-white btn-md" data-toggle="modal" data-target=".bd-example-modal-lg">
 					<i class='material-icons'>add_circle_outline</i> Add a new Contract
 				</button>
+				
 			</div>
 		</div>
 	</div>

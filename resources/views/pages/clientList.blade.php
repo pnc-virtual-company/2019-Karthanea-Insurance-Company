@@ -23,7 +23,7 @@
                                     <td>
                                         <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                     
-                                        <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
+                                        <a href="{{route('clientDisable.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
                                             <input type="checkbox" name="disable[]" id="disable">
                                         </a>
                                         {{$item->id}}
@@ -48,7 +48,7 @@
      <div class="modal fade" id="disableClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <form action="{{route('client.update',$item->id)}}" method="POST" id="editstatus">
+            <form action="" method="POST" id="editstatus">
                 @csrf
                 @method('PATCH')
                 <div class="modal-header">
@@ -244,7 +244,7 @@
             var button = $(event.relatedTarget)
             var id = button.data('id')
             var modal = $(this)
-            var url ="{{url('/client')}}/"+ id;
+            var url ="{{url('clientDisable')}}/"+ id;
             $('#editstatus').attr('action',url);   
             });
         </script>
