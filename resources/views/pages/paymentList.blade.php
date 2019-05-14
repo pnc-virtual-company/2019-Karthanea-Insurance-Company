@@ -669,11 +669,11 @@
                 }
             });
             $('#toggleContractTable').click(function(e){
-                var id = $(this).val();
+                e.preventDefault();
                 function getClientContract(){
                     $.ajax({
-                        url : baseUrl+" {{ ('/payment.show') }} " ,
-                        // data:{'id': id} 
+                        url : baseUrl+" {{ ('/payment.show') }} ",
+                        // data:{'id': id},
                         method: 'POST',
                         dataType : 'json'
                     
@@ -682,9 +682,10 @@
                     .fail(displayError)
                     }
                     function displayData(data) {
+                        console.log(data);
                         var clientContractTable = '<table  class="table table-striped table-bordered table-hover collapse"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead><tbody>';
                         for(var i = 0; i < data.length; i++) {
-                            clientContractTable += '<tr><td>' + data[i].status_id +"</td><td> "
+                            clientContractTable += '<tr><td>' + data[i].status +"</td><td> "
                                                 +data[i].startdate +"</td><td>"
                                                 +data[i].enddate +'</td><td>'
                                                 +data[i].monthlybill +'</td>'
