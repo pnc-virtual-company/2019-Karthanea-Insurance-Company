@@ -53,7 +53,7 @@
 													data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
 													data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" 
 													data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" 
-													data-enddate="{{$item->enddate}}" data-toggle="modal">
+													 data-bill_id="{{$item->bill_id}}" data-toggle="modal">
 													<i class="material-icons text-success">edit</i>
 												</a>
 											</a>
@@ -74,21 +74,22 @@
 								</td>
 								<td class="contracttype">
 									<div class="row">
-										<div class="col-5">
+										<div class="col-6">
                                 			{{$item->contracttype->contracttype}} 
                                         </div>
 										<div class="col-2">
-											<a href="#" class="text-center">
-												<i class="material-icons text-info ml-5">insert_drive_file</i>
-											</a>
+												<a href="" ><i class="material-icons text-success">description</i></a>
 										</div>
+										
 									</div>
+									
 								</td>
-								<td class="status">{{$item['status']}}</td>
-								<td class="startdate">{{$item['startdate']}}</td>
-								<td class="enddate">{{$item['enddate']}}</td>
+								
+								<td class="status">{{$item->contractStatus['status']}}</td>
+								<td class="enddate">{{$item->startdate}}</td>
+								<td class="enddate">{{$item->enddate}}</td>
 								<td class="monthlybill">$ {{$item['monthlybill']}}</td>
-								<td class="monthlyduedate"> {{$item->monthlyduedate}}</td>
+								<td class="monthlyduedate"> {{$item->monthlyduedate}}th</td>
 								<td>
 									<a href="#" class="text-center">$</a>
 								</td>
@@ -120,42 +121,46 @@
 								<div class="col-2">
 									<label for="">Client</label>
 								</div>
-								<div class="col-4">
-									<div class="col-10">
+								
+									<div class="col-4">
 										<select name="client_id" id="client_id" class="browser-default custom-select" required>
-                                            @foreach ($client as $item)
+											@foreach ($client as $item)
+												@if($item->status ==1)
 											    <option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
-                                            @endforeach
+												@endif
+												@endforeach
 										</select>
 									</div>
-                                                        {{-- 
+                                                        
 									<div class="col-2">
 										<label for="">Bill</label>
 									</div> 
-									<div class="col-4">
-										<select name="bill_id" id="bill_id" class="browser-default custom-select" value="">
-                                                                    @foreach ($bill as $item)
-                                                                    @if($item->id==1)
-                                                                    
-											<option value="{{$item->id}}" >{{$item->status}} </option>
-                                                                    @endif
-										</select>
-									</div> --}}
-									<input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
+									
+										<div class="col-4">
+											<select name="bill_id" id="bill_id" class="browser-default custom-select" value="">
+												@foreach ($bill as $item)
+													@if($item->id==1)
+														<option value="{{$item->id}}" >{{$item->status}} </option>
+													@endif
+												@endforeach
+											</select>
+										</div>
+								
+									</div>
+									
 									</div>
 									<div class="form-group ">
 										<div class="row">
-											<div class="col-6">
-												<div class="row">
+											
 													<div class="col-2">
 														<label for="">Type</label>
 													</div>
-													<div class="col-10">
+													<div class="col-4">
 														<div class="input-group ">
 															<select name="contracttype_id" id="" class="browser-default custom-select" required>
                                                                 @foreach ($contracttype as $item)
                                                                     <option value="{{$item->id}}">{{$item->contracttype}}</option>
-                                                                @endforeach
+                                                               @endforeach
 															</select>
 																<span class="input-group-append">
 																	<button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectCreateContract" type="button" style="margin-top:0%;">
@@ -164,85 +169,59 @@
 																</span>
 															</div>
 														</div>
-													</div>
-												</div>
-												<div class="col-6">
-													<div class="row">
+													
+												
 														<div class="col-2">
 															<label for="">Status</label>
 														</div>
-														<div class="col-10">
-															<select class="browser-default custom-select" name="status" required>
-																<option selected value="Open">Open</option>
-																<option value="To be completed">To be completed</option>
-																<option value="To be signed">To be signed</option>
-																<option value="Closed">Closed</option>
-															</select>
+														<div class="col-4">
+																<select class="browser-default custom-select" name="status_id" id="status_id" required>
+																		@foreach ($contractStatus as $item)
+																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
+																		@endforeach
+																</select>
 														</div>
-													</div>
-												</div>
+													
 											</div>
 										</div>
 										<div class="form-group">
 											<div class="row">
-												<div class="col-6">
-													<div class="row">
-														<div class="col-3">
-															<label for="endDate">Start Date</label>
+												        <div class="col-2">
+															<label for="startdate">Start Date</label>
 														</div>
-														<div class="col-9">
-															<div class="row">
-																<div class="col-12">
-																	<input type='text' name="startdate" class='startdate' placeholder="mm/dd/yy"  required/>
-																</div>
-															</div>
+														<div class="col-4">
+															<input type='text' name="startdate" class='startdate' placeholder="mm/dd/yy"  required/>
 														</div>
-													</div>
-												</div>
-												<div class="col-6">
-													<div class="row">
-														<div class="col-3">
-															<label for="endDate">End Date</label>
+												
+														<div class="col-2">
+															<label for="enddate">End Date</label>
 														</div>
-														<div class="col-9">
-															<div class="row">
-																<div class="col-12">
-																	<input type='text' name="enddate" class='enddate' placeholder="mm/dd/yy"  required/>
-																</div>
-															</div>
+														<div class="col-4">
+															<input type='text' name="enddate" class='enddate' placeholder="mm/dd/yy"  required/>
 														</div>
-													</div>
-												</div>
 											</div>
 										</div>
-									</div>
-								</div>
+									
 								<div class="form-group ">
 									<div class="row">
-										<div class="col-5">
-											<div class="row">
-												<div class="col-4">
+										
+												<div class="col-2">
 													<label for="" >Monthly bill</label>
 												</div>
-												<div class="col-6">
-													<input type="text" name="monthlybill" class="form-control" required>
-													</div>
+												<div class="col-4">
+													<input type="text" id="monthlybill" name="monthlybill" class="form-control" required>
 												</div>
-											</div>
-											<div class="col-7">
-												<div class="row">
-													<div class="col-4">
-														<label for="" >Monthly Due Date</label>
-													</div>
-													<div class="col-6">
-														<input type="text" id="monthlyduedate" name="monthlyduedate" class="form-control monthlyduedate" required>
-														</div>
-													</div>
+										
+												<div class="col-2">
+													<label for="" >Monthly Due Date</label>
+												</div>
+												<div class="col-4">
+													<input type="text" id="monthlyduedate" name="monthlyduedate" class="form-control monthlyduedate" required>
 												</div>
 											</div>
 										</div>
-									</div>
 								</div>
+								
 								<div class="modal-footer mr-5">
 									<button type="submit" class="btn bg-info ">
 										<i class='material-icons'>check</i> Save Contract
@@ -255,7 +234,6 @@
 						</div>
 					</div>
 				</div>
-				<div>
 			</div>
         {{-- //  modelad edit a new contract --}}
 			<div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -269,134 +247,47 @@
                             @csrf
                             @method('PATCH')
 								<div class="modal-body">
-									<div class="form-group">
-										<div class="row">
-											<div class="col-2">
-												<label for="">Client</label>
-											</div>
-											<div class="col-10">
-												<select name="client_id" id="client_id" class="browser-default custom-select" value="">
-													@foreach ($contractselect as $item)
-														@if ($item->client->id == $item->client_id && $item->client->id != $item->client->id)
-															<option value="{{$item->client_id}}" selected >{{$item->client->firstname}} {{$item->client->lastname}}</option>
-														@else
-															<option value="{{$item->client->id}}" >{{$item->client->firstname}} {{$item->client->lastname}}</option>
-														@endif
-													@endforeach
-													@foreach ($client as $value)
-														@if ($item->client->id != $value->id && $item->client_id != $value->id)
-															<option value="{{$value->id}}" >{{$value->firstname}} {{$value->lastname}}</option>
-														@endif
-													@endforeach
-												</select>
-											</div>
+									
                                             <div class="form-group ">
                                                     <div class="row">
-                                                        <div class="col-6">
-                                                            <div class="row">
-                                                                <div class="col-2">
-                                                                    <label for="">Type</label>
-                                                                </div>
-                                                                <div class="col-10">
-                                                                    <div class="input-group ">
-                                                                        <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select" required>
-																				@foreach ($contractselect as $itemData)
-																					@if ($itemData->contracttype->id == $itemData->contracttype_id && $itemData->contracttype->id != $itemData->contracttype->id)
-																						<option value="{{$itemData->contracttype->id}}" selected >{{$itemData->contracttype->contracttype}}</option>
-																					@else
-																						<option value="{{$itemData->contracttype->id}}" >{{$itemData->contracttype->contracttype}}</option>
-																					@endif
-																				@endforeach
-																				
-																			@foreach ($contracttype as $value)
-																				@if ($itemData->contracttype->id != $value->id && $itemData->contracttype_id != $value->id)
-																					<option value="{{$value->id}}" >{{$value->contracttype}}</option>
-																				@endif
-																			@endforeach
+												          <div class="col-2">
+                                                                <label for="">Status</label>
+                                                            </div>
+                                                                <div class="col-4">
+                                                                        <select class="browser-default custom-select" name="status_id" id="status_id" required>
+																		 @foreach ($contractStatus as $item)
+																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
+																		 @endforeach
+                                                                           
                                                                         </select>
-                                                                            <span class="input-group-append">
-                                                                                <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectCreateContract" type="button" style="margin-top:0%;">
-                                                                                    Select
-                                                                                </button>
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <div class="row">
-                                                                    <div class="col-2">
-                                                                        <label for="">Status</label>
-                                                                    </div>
-                                                                    <div class="col-10">
-                                                                        <select class="browser-default custom-select" name="status" id="status" required>
-                                                                            <option selected value="Open">Open</option>
-                                                                            <option value="To be completed">To be completed</option>
-                                                                            <option value="To be signed">To be signed</option>
-                                                                            <option value="Closed">Closed</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <div class="row">
-                                                            <div class="col-6">
-                                                                <div class="row">
-                                                                    <div class="col-3">
-                                                                        <label for="endDate">Start Date</label>
-                                                                    </div>
-                                                                    <div class="col-9">
-                                                                        <div class="row">
-                                                                            <div class="col-12">
-                                                                                <input type='text' name="startdate" id="startdate" class='startdate' placeholder="mm/dd/yy"  required/>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <div class="row">
-                                                                    <div class="col-3">
+																</div>
+																	<div class="col-2">
                                                                         <label for="endDate">End Date</label>
-                                                                    </div>
-                                                                    <div class="col-9">
-                                                                        <div class="row">
-                                                                            <div class="col-12">
-                                                                                <input type='text' name="enddate" id="enddate" class='enddate' placeholder="mm/dd/yy"  required/>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+																 	</div>
+																	<div class="col-4">
+																		<input type='text' name="enddate" id="enddate" class='enddate' placeholder="mm/dd/yy"  required/>
+																	</div>
+																	
+                                                               
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </div>
+                        
+                                            
                                             <div class="form-group ">
                                                 <div class="row">
-                                                    <div class="col-5">
-                                                        <div class="row">
-                                                            <div class="col-4">
+                                                            <div class="col-2">
                                                                 <label for="" >Monthly bill</label>
                                                             </div>
-                                                            <div class="col-6">
+                                                            <div class="col-4">
                                                                 <input type="text" name="monthlybill" id="monthlybill" class="form-control" required>
-                                                                </div>
                                                             </div>
-                                                        </div>
-                                                        <div class="col-7">
-                                                            <div class="row">
-                                                                <div class="col-4">
+                                                              <div class="col-2">
                                                                     <label for="" >Monthly Due Date</label>
                                                                 </div>
-                                                                <div class="col-6">
+                                                                <div class="col-4">
                                                                     <input type="text" id="monthlyduedate" name="monthlyduedate" class="form-control monthlyduedate" required>
-                                                                    </div>
                                                                 </div>
-                                                            </div>
-                                                        </div>
+                                                       </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -416,7 +307,7 @@
                         </div>
 				<script src="{{asset('js/app.js')}}"></script>
 				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-				<script>
+				<script> 
         $('#editContract').on('show.bs.modal',function(event){
             var button = $(event.relatedTarget)
             var status= button.data('status')
