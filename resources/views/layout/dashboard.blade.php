@@ -303,7 +303,7 @@
 <script>
   
    $(document).ready(function() {
-
+    
 $(".startdate").datepicker({
     showOn: 'button',
     buttonText: 'Show Date',
@@ -317,9 +317,10 @@ $(".startdate").datepicker({
             var dt = new Date(selected);
             dt.setDate(dt.getDate() + 1);
             $(".enddate").datepicker("option", "minDate", dt);
+           
         }
      
-
+        
      
 });
 $(".enddate").datepicker({

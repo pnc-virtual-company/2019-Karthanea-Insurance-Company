@@ -98,3 +98,6 @@ Route::get('/chart','ChartController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
 Route::post('/uploadprofile', 'ProfileController@upload');
+Route::get('/admin/addContract',function(){
+    return view('pages.addContract');
+});
