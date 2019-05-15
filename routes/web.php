@@ -92,3 +92,6 @@ Route::get('/chart','ChartController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
 Route::post('/uploadprofile', 'ProfileController@upload');
+
+Route::get('/payments','PaymentsController@index');
+Route::get('/payments/read-data','PaymentsController@readData');

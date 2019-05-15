@@ -63,13 +63,14 @@ class paymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
 
         $client = Client::find($id);
-        $contract = Contract::all();
+        $clientContract = Contract::all();
+        // $client->clientContract = $client->contract->toArray();
         $contractStatus = Contractstatus::all();
-        return view('pages.paymentList',compact('contract','client'));
+        return view('pages.clientContract',compact('client','clientContract'));
     }
 
     /**
