@@ -520,40 +520,38 @@
     <script src="{{asset('js/app.js')}}"></script>
     <script>
             $('#editClient').on('show.bs.modal',function (event){
-                  var button = $(event.relatedTarget)
-                  var firstname = button.data('firstname')
-                  console.log(firstname)
-                  var lastname = button.data('lastname')   
-                  console.log(lastname) 
-                  var address = button.data('address')
-                  console.log(address)
-                  var phonenumber = button.data('phonenumber')
-                  console.log(phonenumber)
-                  var email = button.data('email')
-                  var id = button.data('id')
-                 console.log(email)
-                 console.log(id)
+                var button = $(event.relatedTarget)
+                var firstname = button.data('firstname')
+                console.log(firstname)
+                var lastname = button.data('lastname')   
+                console.log(lastname) 
+                var address = button.data('address')
+                console.log(address)
+                var phonenumber = button.data('phonenumber')
+                console.log(phonenumber)
+                var email = button.data('email')
+                var id = button.data('id')
+                console.log(email)
+                console.log(id)
     
-                  var modal = $(this)
-      
-                  modal.find('#firstname').attr('value',firstname)
-                  modal.find('#lastname').attr('value',lastname)
-                  modal.find('#address').attr('value',address)
-                  modal.find('#phonenumber').attr('value',phonenumber)
-                  modal.find('#email').attr('value',email)
-      
-                  var url ="{{url('/client')}}/"+ id;
-                  $('#editClientList').attr('action',url);   
-                  });
+                var modal = $(this)
+    
+                modal.find('#firstname').attr('value',firstname)
+                modal.find('#lastname').attr('value',lastname)
+                modal.find('#address').attr('value',address)
+                modal.find('#phonenumber').attr('value',phonenumber)
+                modal.find('#email').attr('value',email)
+    
+                var url ="{{url('/client')}}/"+ id;
+                $('#editClientList').attr('action',url);   
+            });
             //  Modal Edit
             <div class="modal fade" id="editClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
-                            
                         </div>
-                        
                         <form action="" method="POST" id="editClientList">
                             @csrf
                             @method('PATCH')
