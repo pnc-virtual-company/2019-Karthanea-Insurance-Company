@@ -223,7 +223,10 @@
       <div class="content">
         <div class="container-fluid">
           @yield('content')
+
+          {{-- @yield('script') --}}
         </div>
+        
       </div>
       <script>
         const x = new Date().getFullYear();
