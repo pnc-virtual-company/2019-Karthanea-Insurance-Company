@@ -21,9 +21,6 @@ class paymentController extends Controller
         $contractStatus = \App\Contractstatus::all();
         $contracttype = Contracttype::all();
         $bill = Bill::all();
-
-
-        
         return view('pages.paymentList',compact('contractStatus','client','contract','contracttype','bill' ));
     
     
