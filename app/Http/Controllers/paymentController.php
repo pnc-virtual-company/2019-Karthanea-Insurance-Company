@@ -99,9 +99,6 @@ class paymentController extends Controller
         //
     }
 
-
-
-
     public function listCContract($id)
     {
         $clientContract = Client::find($id);
