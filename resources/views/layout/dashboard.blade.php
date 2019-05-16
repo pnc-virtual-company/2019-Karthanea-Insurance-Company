@@ -21,6 +21,7 @@
   <script src="{{asset('js/chart.js')}}"></script>
 
   <!-- link calendar -->
+
   <link href="{{asset('packages/core/main.css')}}" rel='stylesheet' />
   <link href="{{asset('packages/daygrid/main.css')}}" rel='stylesheet' />
   
@@ -29,13 +30,9 @@
   <script src="{{asset('packages/daygrid/main.js')}}"></script>
   <script src="{{asset('js/calendar.js')}}"></script>
 
+
   
-  <script src="{{asset('packages/core/main.js')}}'"></script>
-  <script src="{{asset('packages/interaction/main.js')}}"></script>
-  <script src="{{asset('packages/daygrid/main.js')}}"></script>
-  <script src="{{asset('js/calendar.js')}}"></script>
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
- 
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
   <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
   <script src="{{asset('js/jquery.dataTypes.min.js')}}"></script>
@@ -51,7 +48,7 @@
   <!-- CSS Files -->
 
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
- <!-- CSS Just for demo purpose, don't include it in your project --> 
+  {{-- <!-- CSS Just for demo purpose, don't include it in your project --> --}}
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
@@ -85,7 +82,7 @@
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
                     <li class="list-group-item collapsed">
-                      <a href="{{url('/userCall')}}">
+                      <a href="{{url('/calluser')}}">
                         <span class="text-white">
                           <i class="material-icons text-white">perm_phone_msg</i>
                           User Call
@@ -127,7 +124,7 @@
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('/contract')}}">
+                  <a href="{{url('contract')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">description</i>
                       Contract List
@@ -138,7 +135,7 @@
                   <a href="{{url('/clientAchive')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
-                      Archive Clients
+                      Archieve Clients
                     </span>
                   </a>
                 </li>
@@ -193,11 +190,11 @@
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span><strong>{{Auth::user()->name}}</strong></span>
-                  @if (Auth::user()->avatar!=null)
+                  <span><strong>{{ Auth::user()->name}}</strong></span>
+                  @if (Auth::user()->avatar!= null)
                     <img id="imgProfilePic" src="{{asset('storage/avatar/'.Auth::user()->avatar)}}">
                   @else
-                    <img id="imgProfilePic" src="{{asset('storage/avatar/avatar.jpg')}}">
+                    <img id="imgProfilePic" src="{{asset('storage/avatar/default-avatar.png')}}">
                   @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdownMenuLink">
@@ -240,19 +237,20 @@
   </div>
   <!--   Core JS Files   -->
   
-  <!-- <script src="{{asset('js/app.js')}}"></script> -->
+  <script src="{{asset('js/app.js')}}"></script>
   <script src="{{asset('js/core/jquery.min.js')}}"></script>
   <script src="{{asset('js/core/popper.min.js')}}"></script>
+
 
   {{-- modal error --}}
   <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
 
   <script src="https://unpkg.com/default-passive-events"></script>
-  <!-- <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script> -->
+  <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!--  Google Maps Plugin    -->
- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> 
+  {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
   <!-- Chartist JS -->
   <script src="{{asset('js/plugins/chartist.min.js')}}"></script>
   <!--  Notifications Plugin    -->
@@ -307,7 +305,7 @@
 
 </script>
 {{-- Link datepicker --}}
- <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script>
   
    $(document).ready(function() {
@@ -342,7 +340,7 @@ $(".enddate").datepicker({
         onSelect: function (selected) {
             var dt = new Date(selected);
             dt.setDate(dt.getDate() - 1);
-            $("startdate").datepicker("option", "maxDate", dt);
+            $(".startdate").datepicker("option", "maxDate", dt);
         }
     
 });
@@ -352,8 +350,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
 
 });
     </script>
-
-
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
 
@@ -376,7 +372,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
               data: [12, 9, 13, 5, 12, 10],
               backgroundColor: [
                   'rgba(255, 99, 132, 0.7)',
-
                   'rgba(54, 162, 235, 0.7)',
                   'rgba(255, 206, 86, 0.2)',
                   'rgba(75, 192, 192, 0.2)',
@@ -416,7 +411,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
               label: '2019 Payment',
               data: [12, 19, 3, 5, 2, 3],
               backgroundColor: [
-
                   'rgba(255, 99, 132, 0.7)',
                   'rgba(54, 162, 235, 0.7)',
                   'rgba(255, 206, 86, 0.7)',
@@ -446,6 +440,8 @@ $(".ui-datepicker-trigger").mouseover(function() {
       }
   });
 
+
+
 //PieChart (Persontage of customer Late payment and completion )
   
 ////Switch data with select option
@@ -461,6 +457,7 @@ function switchPieData(){
     mar();
   }
 }
+
 function jan(){
   pieChart.data.datasets[0].data[0]=0.8;
   pieChart.data.datasets[0].data[1]=0.1;
@@ -492,7 +489,7 @@ function feb(){
               backgroundColor: [
                   'rgba(255, 99, 132, 0.7)',
                   'rgba(54, 162, 235, 0.7)'
-               
+                  
               ],
               borderColor: [
                   'rgba(255, 99, 132, 1)',
