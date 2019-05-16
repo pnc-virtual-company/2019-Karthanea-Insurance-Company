@@ -226,7 +226,7 @@
 
           {{-- @yield('script') --}}
         </div>
-        
+        {{-- @stack('scripts') --}}
       </div>
       <script>
         const x = new Date().getFullYear();

@@ -21,21 +21,13 @@ class paymentController extends Controller
 
     public function index()
     {
-        $client = Client::all();
-        $contract = Contract::all();
-        $contracttype = Contracttype::all();
-        $bill = Bill::all();
-        $contractStatus = Contractstatus::all();
-        return view('pages.paymentList',compact('client','contract','contracttype','bill','contractStatus'));
+        $client = Client::where('status',1)
+                ->select('*')
+                ->get();
+        // dd($client);
+        return view("pages.payments",compact('client'));
+        // return view('pages.paymentList',compact('client'));
     }
-
-    // public function listCContract($id)
-    // {
-    //     $clientContract = Client::find($id);
-    //     $clientContract->client;
-    //     return view('pages.paymentList', compact('clientContract'));
-    // }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -63,14 +55,14 @@ class paymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function showData(Request $request)
     {
-
-        $client = Client::find($id);
         $clientContract = Contract::all();
-        // $client->clientContract = $client->contract->toArray();
-        $contractStatus = Contractstatus::all();
-        return view('pages.clientContract',compact('client','clientContract'));
+        // $clientContract = Contract::where('client_id','=',$request->id)->first();
+        return response()->json($clientContract);
+        
+    //    return view('pages.paymentList',compact("clientContract"));
+
     }
 
     /**
@@ -81,6 +73,7 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
+
        $contract = Contract::find($id);
        $bill = Bill::all();
        $billDiff = $bill->diff($contract->bill);

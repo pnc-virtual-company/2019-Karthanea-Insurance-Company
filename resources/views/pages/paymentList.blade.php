@@ -1,5 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <body>
 <div class="container mt-4">
     <div class="row shadow-lg bg-light">
@@ -14,20 +15,20 @@
             <div class="card-body">
                 {{-- list of client --}}
                 <div class="table-responsive">
-                    <table id="myTables" class="table table-striped table-bordered table-hover">
-                        <thead class="bg-dark text-white">
-                            <tr>
-                                <th>Disable ID</th>
-                                <th>Clients</th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>Email</th>
-                                <th>Contract</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($client as $value)
-                                @if ($value->status==1)
+                    <div id="clientHasContract">
+                        <table id="myTables" class="table table-striped table-bordered table-hover">
+                            <thead class="bg-dark text-white">
+                                <tr>
+                                    <th>Disable ID</th>
+                                    <th>Clients</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Contract</th>
+                                </tr>
+                            </thead>
+                             <tbody>
+                                @foreach ($client as $value)
                                     <tr>
                                         <td>
                                             <a href="#" data-toggle="modal" data-target="#editClient"
@@ -42,19 +43,74 @@
                                         <td>{{$value->address}}</td>
                                         <td>{{$value->phonenumber}}</td>
                                         <td>{{$value->email}}</td>
-                                        <td>
-                                                {{-- class="togglePayment" --}}
-                                            <a  href="{{route('payment.show',$value->id)}}" id="toggleContractTable">
+                                        <td> 
+                                            <a  href="{{route('payment.show',$value->id)}}" id="toggleContractTable" class="togglePayment">
                                                 <i class="material-icons text-info ml-5">insert_drive_file</i>
                                             </a>
                                         </td>
                                     </tr>
-                                @endif
-                            @endforeach
-                        </tbody>
-                    </table>
+                                @endforeach
+                            </tbody> 
+                        </table>
+                    </div>
                 </div>
-                
+                {{-- list all contract of client --}}
+            <div class="table-responsive">
+                <div id="tableClientContract">
+                    <table id="table2" class="table table-striped table-bordered table-hover collapse">
+                        <thead class="bg-dark text-white">
+                            <tr>
+                                <th>ID</th>
+                                <th>Contract type</th>
+                                <th>Status</th>
+                                <th>Start</th>
+                                <th>End</th>
+                                <th>Monthly bill</th>
+                                <th>Bills</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- @foreach ($clientContract as $item)
+                                @if ($item->client_id == $item->client->id)
+                                        <tr class="data-row">
+                                            <td class="id">
+                                                <div class="row">
+                                                    <div class="col-5">
+                                                        {{$item->id}}
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <a href="" data-toggle="modal" data-target="#editContract" data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" data-contracttype_id="{{$item->contracttype_id}}" data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" data-enddate="{{$item->enddate}}" data-toggle="modal"><i class="material-icons text-success">edit</i></a>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="contracttype">
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        {{$item->contracttype->contracttype}} 
+                                                    </div>
+                                                    <div class="col-3">
+                                                        <a href="#" class="text-center">
+                                                            <i class="material-icons text-info ml-5">insert_drive_file</i>
+                                                        </a>  
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td class="status">{{$item->contractStatus->status}}</td>
+                                            <td class="startdate">{{$item->startdate}}</td>
+                                            <td class="enddate">{{$item->enddate}}</td>
+                                            <td class="monthlybill">{{$item->monthlybill}} $</td>
+                                            <td>
+                                                <a href="#" class="toggleBill">
+                                                    <i  class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach --}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 {{-- list all of client bill --}}
                 <div class="table-responsive">
                     <table  id="myTabless" class="table table-striped table-bordered table-hover collapse">
@@ -146,11 +202,11 @@
                                                     <label for="">Client</label>
                                             </div>
                                             <div class="col-10">
-                                                <select name="client_id" id="client_id" class="browser-default custom-select" value="">
+                                                {{-- <select name="client_id" id="client_id" class="browser-default custom-select" value="">
                                                      @foreach ($client as $value)
                                                     <option value="{{$value->id}}" >{{$value->firstname}} {{$value->lastname}}</option>
                                                     @endforeach
-                                                </select>
+                                                </select> --}}
                                             </div>
                                     <div class="form-group ">
                                         <div class="row">
@@ -161,11 +217,11 @@
                                                     </div>
                                                     <div class="col-10">
                                                         <div class="input-group">
-                                                            <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select">
+                                                            {{-- <select name="contracttype_id" id="contracttype_id" class="browser-default custom-select">
                                                                 @foreach ($contracttype as $value)
                                                                <option value="{{$value->id}}">{{$value->contracttype}}</option>
                                                                @endforeach
-                                                            </select>
+                                                            </select> --}}
                                                             <span class="input-group-append">
                                                                 <button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectUpdateContract" type="button" style="margin-top:0%;">
                                                                    Select
@@ -181,11 +237,11 @@
                                                             <label for="">Status</label>
                                                         </div>
                                                         <div class="col-10">
-                                                        <select class="browser-default custom-select" name="status" id="status"  >
+                                                        {{-- <select class="browser-default custom-select" name="status" id="status"  >
                                                             @foreach ($contract as $item)
                                                                 <option value="{{$item->status}}">{{$item->status}}</option>
                                                             @endforeach
-                                                        </select>
+                                                        </select> --}}
                                                     </div>
                                                 </div>
                                             </div>   
@@ -305,7 +361,7 @@
                                                                         </tr>
                                                                     </thead>
                                                                     <tbody>
-                                                                      @foreach ($contracttype as $item)
+                                                                      {{-- @foreach ($contracttype as $item)
                                                                         <tr >
                                                                             <td class="text-center">
                                                                                 <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
@@ -314,7 +370,7 @@
                                                                             </td>
                                                                             <td>{{$item->contracttype}}</td>
                                                                         </tr>
-                                                                        @endforeach
+                                                                        @endforeach --}}
                                                                     </tbody>
                                                                    
                                                                 </table>
@@ -563,10 +619,13 @@
                 </div>
             </div>
         </body>
+
+
         <script src="{{asset('js/app.js')}}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+        <script src="http://demo.itsolutionstuff.com/plugin/jquery.js"></script>
         <script>
             $('#editClient').on('show.bs.modal',function (event){
                 var button = $(event.relatedTarget)
@@ -591,49 +650,5 @@
                 var url ="{{url('/client')}}/"+ id;
                 $('#editClientList').('action',url);   
             });
-        </script>
-        <script>
-        $(document).ready(function(){
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $('#toggleContractTable').click(function(e){
-                e.preventDefault();
-                function getClientContract(){
-                    $.ajax({
-                        url : baseUrl+" {{ ('/payment.show') }} ",
-                        // data:{'id': id},
-                        method: 'POST',
-                        dataType : 'json'
-                    
-                    })
-                    .done(displayData)
-                    .fail(displayError)
-                    }
-                    function displayData(data) {
-                        console.log(data);
-                        var clientContractTable = '<table  class="table table-striped table-bordered table-hover collapse"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead><tbody>';
-                        for(var i = 0; i < data.length; i++) {
-                            clientContractTable += '<tr><td>' + data[i].status +"</td><td> "
-                                                +data[i].startdate +"</td><td>"
-                                                +data[i].enddate +'</td><td>'
-                                                +data[i].monthlybill +'</td>'
-                                                +'<td> <a href="#" class="toggleBill"> <i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i> </a> </td> </tr>';
-                        }
-                        clientContractTable += '</tbody>';
-                        $("#tableClientContract").append(clientContractTable);
-                        // $("#body").removeClass('loading');
-                    }
-                    function displayError(error){
-                        // $("#body").removeClass('loading');
-                        $("#error").html('Sorry, there was an error: ' + error.statusText + " (" + error.status + ")")
-                        .css('color','red');
-                    }
-                    // getMessage();
-                    console.log(displayData);
-            })
-        })
         </script>
 @endsection
