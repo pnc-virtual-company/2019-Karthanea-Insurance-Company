@@ -11,6 +11,7 @@
 
                 <div class="card-body">
 
+
                         <div class="form-group">
                             <label for="name">@lang('Name')</label>
                             <input type="text" class="form-control" name="name" readonly value="{!! $user->name !!}">
@@ -32,16 +33,20 @@
 
                 </div>
                 <div class="card-footer">
+
                         <div >
                                 <a href="{{url('users')}}" class="btn bg-info text-white">Back To List</a>
                                 
                         </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 @endsection
 
