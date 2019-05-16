@@ -37,6 +37,7 @@
             </div>
           </div>
         </div>
+      
 {{-- model create for contractType --}}    
         <div class="modal fade bd-example"  id="createContractType"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
           <div class="modal-dialog ">

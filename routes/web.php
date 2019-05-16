@@ -75,7 +75,6 @@ Route::resource('contract','ContractController');
 
 Route::resource('/client','ClientController');
 
-
 Route::resource('/clientAchive','clientAchiveController');
 
 Route::resource('contract','ContractController');
