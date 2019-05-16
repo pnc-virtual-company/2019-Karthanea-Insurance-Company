@@ -73,7 +73,6 @@ Route::resource('/home','PageController@index');
 Route::resource('/contracttype','contracttypeController');
 Route::resource('/userCall','UserCallController');
 
-
 Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
 // Route::get('/create','ClientController@create');
@@ -83,6 +82,7 @@ Route::resource('/clientAchive','clientAchiveController');
 Route::get('/clientStatus','clientAchiveController@status');
 Route::resource('contract','ContractController');
 Route::resource('payment','paymentController');
+Route::post('payment','paymentController@client');
 Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index'); 
@@ -90,6 +90,3 @@ Route::get('/chart','ChartController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
 Route::post('/uploadprofile', 'ProfileController@upload');
-
-Route::get('/payments','PaymentsController@index');
-Route::get('/payments/read-data','PaymentsController@readData');
