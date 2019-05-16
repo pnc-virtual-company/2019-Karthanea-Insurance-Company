@@ -77,14 +77,14 @@ class clientAchiveController extends Controller
     {
       
       $client = Clientlist::findOrFail($id);//seect * from Post where id=$id}
-        // if($client->status == 1){
-        //   $client->status = 0;
-        // } else {
-        //   $client->status = 1;
-        // }
+
+        if($client->status == 1){
+          $client->status = 0;
+        } else {
+          $client->status = 1;
+        }
       $client->update($request->all());
         return  redirect('/clientAchive');
-
     
       }
 

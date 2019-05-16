@@ -21,13 +21,16 @@
   <script src="{{asset('js/chart.js')}}"></script>
 
   <!-- link calendar -->
-  <link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
-  <link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
+
+  <link href="{{asset('packages/core/main.css')}}" rel='stylesheet' />
+  <link href="{{asset('packages/daygrid/main.css')}}" rel='stylesheet' />
   
-  <script src='{{asset('packages/core/main.js')}}'></script>
-  <script src='{{asset('packages/interaction/main.js')}}'></script>
-  <script src='{{asset('packages/daygrid/main.js')}}'></script>
-  <script src='{{asset('js/calendar.js')}}'></script>
+  <script src="{{asset('packages/core/main.js')}}"></script>
+  <script src="{{asset('packages/interaction/main.js')}}"></script>
+  <script src="{{asset('packages/daygrid/main.js')}}"></script>
+  <script src="{{asset('js/calendar.js')}}"></script>
+
+
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -119,7 +122,7 @@
                     Contract Type
                       </span>
                     </a>
-                  </li>
+                </li>
                 <li class="list-group-item collapsed">
                   <a href="{{url('contract')}}">
                     <span class="text-white">
@@ -237,8 +240,11 @@
   <script src="{{asset('js/app.js')}}"></script>
   <script src="{{asset('js/core/jquery.min.js')}}"></script>
   <script src="{{asset('js/core/popper.min.js')}}"></script>
+
+
   {{-- modal error --}}
-  {{-- <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script> --}}
+  <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
+
   <script src="https://unpkg.com/default-passive-events"></script>
   <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
   <!-- Place this tag in your head or just before your close body tag. -->
