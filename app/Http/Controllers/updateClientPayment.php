@@ -7,7 +7,7 @@ use \App\Client;
 use \App\Contract;
 use \App\Contracttype;
 use \App\Bill;
-class paymentController extends Controller
+class updateClientPayment extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +21,7 @@ class paymentController extends Controller
         $contractStatus = \App\Contractstatus::all();
         $contracttype = Contracttype::all();
         $bill = Bill::all();
-
-
-        
         return view('pages.paymentList',compact('contractStatus','client','contract','contracttype','bill' ));
-    
-    
-    
     }
 
     /**
@@ -89,9 +83,9 @@ class paymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $bill = \App\Contract::findOrFail($id);
-        $bill->update($request->all());
-        return  redirect('/payment');
+        $client = \App\Client::findOrFail($id);
+        $client->update($request->all());
+        return  redirect('/updateClient');
     }
 
     /**

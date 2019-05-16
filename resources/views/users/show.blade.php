@@ -33,11 +33,12 @@
 
                 </div>
                 <div class="card-footer">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <a class="btn bg-primary text-white" href="{{url('users')}}">@lang('Back to list')</a>
+
+                        <div >
+                                <a href="{{url('users')}}" class="btn bg-info text-white">Back To List</a>
+                                <input type="submit" class="btn bg-primary text-white" value="Save" />
                         </div>
-                    </div>
+
                 </div>
             </div>
         </div>

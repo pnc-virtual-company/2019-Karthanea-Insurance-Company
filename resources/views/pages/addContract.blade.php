@@ -67,7 +67,7 @@
 										<div class="col-6">
                                             {{$item->client->firstname}} {{$item->client->lastname}}
                                         </div>
-										<div class="col-2">
+										<div class="col-1">
 											<a href="#" id="edit-item">
 												<i class="material-icons ml-5 text-info">call</i>
 											</a>
@@ -79,7 +79,7 @@
 										<div class="col-6">
                                 			{{$item->contracttype->contracttype}} 
                                         </div>
-										<div class="col-2">
+										<div class="col-1">
 												<a href="{{ url('pdf') }}" ><i class="material-icons text-success">description</i></a>
 										</div>
 										
@@ -88,8 +88,8 @@
 								</td>
 
 								
-								<td class="status">{{$item->contractStatus['status']}}</td>
-								<td class="enddate">{{$item->startdate}}</td>
+								<td class="status">{{$item->contractStatus->status}}</td>
+								<td class="startdate">{{$item->startdate}}</td>
 								<td class="enddate">{{$item->enddate}}</td>
 
 								<td class="monthlybill">$ {{$item['monthlybill']}}</td>
@@ -174,7 +174,7 @@
                                                                @endforeach
 															</select>
 																<span class="input-group-append">
-																	<button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectCreateContract" type="button" style="margin-top:0%;">
+																	<button class="btn btn-outline-secondary bg-info text-white" data-toggle="modal" data-target="#selectContractType" type="button" style="margin-top:0%;">
                                                                         Select
                                                                     </button>
 																</span>
@@ -356,5 +356,53 @@
             $('#editForm').attr('action',url);   
         });
         </script>
-            
+			{{-- contracttype --}}
+		  
+  <div class="modal fade" id="selectContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Select the type</h5>
+			  </div>
+				
+				<div class="modal-body">            
+				 <div class="form-group">
+						 <div class="table-responsive">
+										  <div class="contener">
+										<table id="myTable" class="table table-striped table-bordered" style="width:100%">
+												<thead class="bg-dark text-white">
+													<tr>
+														<th class="text-center ">ID</th>
+														<th> Contract type</th>
+													</tr>
+												</thead>
+												<tbody>
+												  @foreach ($contracttype as $item)
+													<tr >
+														<td class="text-center">
+															
+							   
+															{{$item->id}}
+														</td>
+														<td>{{$item->contracttype}}</td>
+													</tr>
+													@endforeach
+												</tbody>
+											   
+											</table>
+										</div>
+									  </div>
+							 </div>
+						
+	
+						</div>
+				
+				<div class="modal-footer">
+				  <button type="submit" class="btn btn-info" data-dismiss="modal">OK</button>
+				  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+				</div>
+			  </div>
+			  </div>
+			</div>
+		 
 @endsection

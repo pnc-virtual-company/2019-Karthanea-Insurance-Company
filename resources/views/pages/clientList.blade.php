@@ -1,7 +1,7 @@
 @@extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1> Client Active </h1>
+        <h1> Active Client  </h1>
 
         <div class="card">
             <div class="card-body">
