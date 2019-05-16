@@ -75,15 +75,19 @@ Route::resource('contract','ContractController');
 
 Route::resource('/client','ClientController');
 
+
 Route::resource('/clientAchive','clientAchiveController');
 
 Route::resource('contract','ContractController');
 Route::resource('payment','paymentController');
 
 Route::resource('/call','callController');
+
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
+
 Route::post('/uploadprofile', 'ProfileController@upload');
+

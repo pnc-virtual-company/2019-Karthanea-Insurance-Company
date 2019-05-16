@@ -1,7 +1,9 @@
+
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
         <h1> Client Active </h1>
+
 
         <div class="card">
             <div class="card-body">
@@ -21,11 +23,13 @@
                             @if ($item->status=='1')
                                 <tr>
                                     <td>
+
                                         <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" 
                                         data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" 
                                         data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                     
                                         <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
+
                                             <input type="checkbox" name="disable[]" id="disable">
                                         </a>
                                         {{$item->id}}
@@ -50,8 +54,10 @@
      <div class="modal fade" id="disableClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
+
             <form action="{{route('client.update',$item->id)}}" method="POST" id="editstatus">
                 @csrf 
+
                 @method('PATCH')
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Disable Client</h5>
@@ -217,7 +223,9 @@
           
           <script src="{{asset('js/app.js')}}"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
     <script>
+
        $('#editClientActive').on('show.bs.modal',function (event){
             var button = $(event.relatedTarget)
             var firstname = button.data('firstname')
@@ -252,6 +260,7 @@
                     $('#editstatus').attr('action',url); 
                     });
                 });
+
             });
         </script>
 @endsection

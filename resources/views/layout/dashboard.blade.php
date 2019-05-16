@@ -28,8 +28,14 @@
   <script src="{{asset('packages/interaction/main.js')}}"></script>
   <script src="{{asset('packages/daygrid/main.js')}}"></script>
   <script src="{{asset('js/calendar.js')}}"></script>
+
   
+  <script src="{{asset('packages/core/main.js')}}'"></script>
+  <script src="{{asset('packages/interaction/main.js')}}"></script>
+  <script src="{{asset('packages/daygrid/main.js')}}"></script>
+  <script src="{{asset('js/calendar.js')}}"></script>
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
+ 
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
   <script src="{{asset('js/jquery-3.3.1.js')}}"></script>
   <script src="{{asset('js/jquery.dataTypes.min.js')}}"></script>
@@ -45,7 +51,7 @@
   <!-- CSS Files -->
 
   <link href="{{asset('css/material-dashboard.css?v=2.1.0')}}" rel="stylesheet" />
-  {{-- <!-- CSS Just for demo purpose, don't include it in your project --> --}}
+ <!-- CSS Just for demo purpose, don't include it in your project --> 
   <link href="{{asset('demo/demo.css')}}" rel="stylesheet" />
   <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
@@ -121,7 +127,7 @@
                     </a>
                 </li>
                 <li class="list-group-item collapsed">
-                  <a href="{{url('contract')}}">
+                  <a href="{{url('/contract')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">description</i>
                       Contract List
@@ -132,7 +138,7 @@
                   <a href="{{url('/clientAchive')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
-                      Archieve Clients
+                      Archive Clients
                     </span>
                   </a>
                 </li>
@@ -189,7 +195,6 @@
                 <a class="nav-link" href="javscript:void(0)" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span><strong>{{Auth::user()->name}}</strong></span>
                   @if (Auth::user()->avatar!=null)
-                  {{-- {{dd(storage_path('app'))}} --}}
                     <img id="imgProfilePic" src="{{asset('storage/avatar/'.Auth::user()->avatar)}}">
                   @else
                     <img id="imgProfilePic" src="{{asset('storage/avatar/avatar.jpg')}}">
@@ -235,17 +240,19 @@
   </div>
   <!--   Core JS Files   -->
   
-  <script src="{{asset('js/app.js')}}"></script>
+  <!-- <script src="{{asset('js/app.js')}}"></script> -->
   <script src="{{asset('js/core/jquery.min.js')}}"></script>
   <script src="{{asset('js/core/popper.min.js')}}"></script>
+
   {{-- modal error --}}
   <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
+
   <script src="https://unpkg.com/default-passive-events"></script>
-  <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
+  <!-- <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script> -->
   <!-- Place this tag in your head or just before your close body tag. -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!--  Google Maps Plugin    -->
-  {{-- <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> --}}
+ <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script> 
   <!-- Chartist JS -->
   <script src="{{asset('js/plugins/chartist.min.js')}}"></script>
   <!--  Notifications Plugin    -->
@@ -305,23 +312,39 @@
   
    $(document).ready(function() {
 
-$(".txtDate").datepicker({
+$(".startdate").datepicker({
     showOn: 'button',
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
     dateFormat: 'yy-mm-dd',
     
-     constrainInput: true
+     constrainInput: true,
+    
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() + 1);
+            $(".enddate").datepicker("option", "minDate", dt);
+        }
+     
+
+     
 });
-$(".startDate").datepicker({
+$(".enddate").datepicker({
     showOn: 'button',
     buttonText: 'Show Date',
     buttonImageOnly: true,
     buttonImage: '../public/images/calendar.png',
     dateFormat: 'yy-mm-dd',
     
-     constrainInput: true
+     constrainInput: true,
+     
+        onSelect: function (selected) {
+            var dt = new Date(selected);
+            dt.setDate(dt.getDate() - 1);
+            $("startdate").datepicker("option", "maxDate", dt);
+        }
+    
 });
 $(".ui-datepicker-trigger").mouseover(function() {
     $(this).css('cursor', 'pointer');
@@ -399,7 +422,7 @@ $(".ui-datepicker-trigger").mouseover(function() {
                   'rgba(255, 206, 86, 0.7)',
                   'rgba(75, 192, 192, 0.7)',
                   'rgba(153, 102, 255, 0.7)',
-                  'rgba(255, 159, 64, 0.7)
+                  'rgba(255, 159, 64, 0.7)'
               ],
               borderColor: [
                   'rgba(255, 99, 132, 1)',
@@ -423,8 +446,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
       }
   });
 
-
-
 //PieChart (Persontage of customer Late payment and completion )
   
 ////Switch data with select option
@@ -440,7 +461,6 @@ function switchPieData(){
     mar();
   }
 }
-
 function jan(){
   pieChart.data.datasets[0].data[0]=0.8;
   pieChart.data.datasets[0].data[1]=0.1;

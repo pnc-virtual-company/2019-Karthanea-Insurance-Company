@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Clientlist;
-use App\input;
 use Illuminate\Http\Request;
-
-class clientAchiveController extends Controller
+use \App\Client;
+use \App\Contract;
+use \App\Contracttype;
+use \App\Bill;
+class updateClientPayment extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,12 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        $client = Clientlist::all();
-        return view('pages.AchiveClient',compact('client'));
+        $client = Client::all();
+        $contract = Contract::all();
+        $contractStatus = \App\Contractstatus::all();
+        $contracttype = Contracttype::all();
+        $bill = Bill::all();
+        return view('pages.paymentList',compact('contractStatus','client','contract','contracttype','bill' ));
     }
 
     /**
@@ -37,11 +42,7 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $client = Clientlist::create($request->all());
-        return redirect('/clientAchive');
-
-
+        //
     }
 
     /**
@@ -52,7 +53,11 @@ class clientAchiveController extends Controller
      */
     public function show($id)
     {
-        //
+        // $client = Client::all();
+        // $bill = Bill::all();
+        // $billDiff = $bill->diff($contract->bill);
+        // // $contract = Contract::with('contracttype')->where('id',$contracttype_id)->first();
+        // return view('pages.paymentList',compact('contract'));
     }
 
     /**
@@ -63,7 +68,10 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-      //
+    //     $contract = Contract::find($id);
+    //    $bill = Bill::all();
+    //    $billDiff = $bill->diff($contract->bill);
+    //    return view('pages.paymentList',compact('contract','bill'));
     }
 
     /**
@@ -75,18 +83,10 @@ class clientAchiveController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
-      $client = Clientlist::findOrFail($id);//seect * from Post where id=$id}
-
-        if($client->status == 1){
-          $client->status = 0;
-        } else {
-          $client->status = 1;
-        }
-      $client->update($request->all());
-        return  redirect('/clientAchive');
-    
-      }
+        $client = \App\Client::findOrFail($id);
+        $client->update($request->all());
+        return  redirect('/updateClient');
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -98,5 +98,16 @@ class clientAchiveController extends Controller
     {
         //
     }
-}
+
+
+
+
+    public function listCContract($id)
+    {
+        $clientContract = Client::find($id);
+        $clientContract->client;
+        return view('pages.paymentList', compact('clientContract'));
+    }
+
     
+}

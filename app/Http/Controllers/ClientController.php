@@ -32,8 +32,8 @@ class ClientController extends Controller
     public function create()
     {
        
-        // $client = Clientlist::all();
-        // return view('pages.AchiveClient',compact('client'));
+        $client = Client::all();
+        return view('pages.clientList',compact('client'));
     }
 
     /**
@@ -67,8 +67,17 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit( $id)
     {
+// $client = Client::findOrFail($id);//seect * from Post where id=$id
+//         if($client->status == 1){
+//             $client->status = 0;
+//           } else {
+//             $client->status = 1;
+//           }
+//        $client->update($request->all());
+//         return  redirect('/client');
+
 
     }
 
@@ -83,21 +92,14 @@ class ClientController extends Controller
     {
 
         $client = Client::findOrFail($id);//seect * from Post where id=$id
-        $client->update($request->all());
-        return  redirect('/client');
 
-    }
-    
-    public function updatestatus(Request $request, $id)
-    {
-
-        $client = Client::findOrFail($id);//seect * from Post where id=$id
-        if($client->status == 1){
-            $client->status = 0;
-          } else {
-            $client->status = 1;
-            $client->update($request->all());
-          }
+        // if($client->status == 1){
+        //     $client->status = 0;
+        //     $client->update($request->all());
+        //   } else {
+        //     $client->status = 1;
+        //     $client->update($request->all());
+        //   }
         $client->update($request->all());
         return  redirect('/client');
 

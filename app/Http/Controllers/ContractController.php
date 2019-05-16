@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contract ;
 use App\Bill;
+use App\Contractstatus;
+use  PDF;
 class ContractController extends Controller
 {
     /**
@@ -19,10 +21,13 @@ class ContractController extends Controller
     {
         $contractselect = \App\Contract::all();
         $contracttype = \App\Contracttype::all();
+        $contractStatus = \App\Contractstatus::all();
         $client = \App\Client::all();
         $bill = Bill::all();
-        //dd($contract);
-        return view('pages.addContract',compact('contractselect','contracttype','client','bill'));
+        // $pdf = PDF::loadView('pages.addContract');
+        // $pdf->save('contract.pdf');
+        
+        return view('pages.addContract',compact('contractselect','contracttype','client','bill','contractStatus'));
     }
 
     /**
@@ -44,11 +49,6 @@ class ContractController extends Controller
     public function store(Request $request)
     {
         $contract = Contract::create($request->all());
-        // $select =$request->bills;
-        // foreach($select as $key=>$item){
-        //     $contract->tags()->attach($item);
-        // }
-        // $contract->save();
         return redirect('/contract');
 
     }
@@ -84,8 +84,8 @@ class ContractController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contract = \App\Contract::find($id);//select * from Post where id=$id
-        $contract->update($request->all());
+        $contractupdate = \App\Contract::find($id);//select * from Post where id=$id
+        $contractupdate->update($request->all());
         return  redirect('/contract');
     }
 
@@ -99,4 +99,24 @@ class ContractController extends Controller
     {
         //
     }
+    // public function export_pdf()
+    // {
+    //     $contractselect = \App\Contract::all();
+    //     $contracttype = \App\Contracttype::all();
+    //     $contractStatus = \App\Contractstatus::all();
+    //     $client = \App\Client::all();
+    //     $bill = Bill::all();
+    //   // Fetch all customers from database
+    //   //$data = Contract::get();
+  
+    //   // Send data to the view using loadView function of PDF facade
+    //   $pdf = PDF::loadView('pages.addContract');
+  
+    //   // If you want to store the generated pdf to the server then you can use the store function
+    //   $pdf->save('contract.pdf');
+  
+    //   // Finally, you can download the file using download function
+    //   return $pdf->download('contracts.pdf',compact('contractselect','contracttype','client','bill','contractStatus'));
+    // }
+
 }

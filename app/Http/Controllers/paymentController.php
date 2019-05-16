@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Client;
-use \App\Bill;
 use \App\Contract;
-use \App\ContractType;
+use \App\Contracttype;
+use \App\Bill;
 class paymentController extends Controller
 {
     /**
@@ -14,24 +14,14 @@ class paymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $client = Client::all();
         $contract = Contract::all();
+        $contractStatus = \App\Contractstatus::all();
         $contracttype = Contracttype::all();
         $bill = Bill::all();
-        return view('pages.paymentList',compact('client','contract','contracttype','bill' ));
-    }
-
-    public function listCContract($id)
-    {
-        $clientContract = Client::find($id);
-        $clientContract->client;
-        return view('pages.paymentList', compact('clientContract'));
+        return view('pages.paymentList',compact('contractStatus','client','contract','contracttype','bill' ));
     }
 
     /**
@@ -63,11 +53,11 @@ class paymentController extends Controller
      */
     public function show($id)
     {
-        $client = Client::all();
-        $bill = Bill::all();
-        $billDiff = $bill->diff($contract->bill);
-        // $contract = Contract::with('contracttype')->where('id',$contracttype_id)->first();
-        return view('pages.paymentList',compact('contract'));
+        // $client = Client::all();
+        // $bill = Bill::all();
+        // $billDiff = $bill->diff($contract->bill);
+        // // $contract = Contract::with('contracttype')->where('id',$contracttype_id)->first();
+        // return view('pages.paymentList',compact('contract'));
     }
 
     /**
@@ -78,12 +68,10 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-       $contract = Contract::find($id);
-       $bill = Bill::all();
-       $billDiff = $bill->diff($contract->bill);
-       return view('pages.paymentList',compact('contract','bill'));
-
-       //
+    //     $contract = Contract::find($id);
+    //    $bill = Bill::all();
+    //    $billDiff = $bill->diff($contract->bill);
+    //    return view('pages.paymentList',compact('contract','bill'));
     }
 
     /**
@@ -95,10 +83,8 @@ class paymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contract = Contract::find($id);
-        $contract->update($request->all());
-        $bill = Bill::all();
-        $billDiff = $bill->diff($contract->bill);
+        $bill = \App\Contract::findOrFail($id);
+        $bill->update($request->all());
         return  redirect('/payment');
     }
 
@@ -112,4 +98,13 @@ class paymentController extends Controller
     {
         //
     }
+
+    public function listCContract($id)
+    {
+        $clientContract = Client::find($id);
+        $clientContract->client;
+        return view('pages.paymentList', compact('clientContract'));
+    }
+
+    
 }
