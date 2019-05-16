@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Client;
+use App\Clientlist;
+use App\input;
 use Illuminate\Http\Request;
 
 class clientAchiveController extends Controller
@@ -14,7 +15,7 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        $client = Client::all();
+        $client = Clientlist::all();
         return view('pages.AchiveClient',compact('client'));
     }
 
@@ -36,17 +37,11 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-<<<<<<< HEAD
        
         $client = Clientlist::create($request->all());
-
         return redirect('/clientAchive');
 
 
-=======
-        $client = Client::create($request->all());
-        return redirect('/clientAchive');
->>>>>>> d7a2b165434f2cfd465565b5222d58fe16c64976
     }
 
     /**
@@ -81,44 +76,24 @@ class clientAchiveController extends Controller
     public function update(Request $request, $id)
     {
       
-      $client =Client::find($id);//seect * from Post where id=$id
-      $disable = $request->disable;
-      $disable = Client::where('status','Active')->first();
-        if ($disable.checked == true) {
-            $disable = Client::where('status','Disable')->first();
+      $client = Clientlist::findOrFail($id);//seect * from Post where id=$id}
+        if($client->status == 1){
+          $client->status = 0;
         } else {
-            $disable = Client::where('status','Active')->first();
+          $client->status = 1;
         }
-        $disable = Client::where('status',$disable);
       $client->update($request->all());
-      return  redirect('/clientAchive');
-    { 
-        $client = Clientlist::findOrFail($id);//seect * from Post where id=$id
-        $client->update($request->all());
         return  redirect('/clientAchive');
-      $client->update($request->all());
-      return  redirect('/clientAchive');
-
-<<<<<<< HEAD
-        return  redirect('/clientAchive');
-
-
-
-
-       
-
-=======
-    }
->>>>>>> d7a2b165434f2cfd465565b5222d58fe16c64976
-
+    
+      }
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    // public function destroy($id)
-    // {
-    //     //
-    // }
+    public function destroy($id)
+    {
+        //
+    }
 }

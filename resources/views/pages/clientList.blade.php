@@ -1,9 +1,7 @@
-
-
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1> Clients Active </h1>
+        <h1> Client Active </h1>
 
         <div class="card">
             <div class="card-body">
@@ -19,13 +17,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($client as $value=>$item)
-                            @if ($item->status=='Active')
+                        @foreach ($client as $value=>$item)
+                            @if ($item->status=='1')
                                 <tr>
                                     <td>
-                                        <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                        <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" 
+                                        data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" 
+                                        data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                     
-                                        <a href="{{route('client.update',$item->id)}}" data-toggle="modal" data-target="#disableClient">
+                                        <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
                                             <input type="checkbox" name="disable[]" id="disable">
                                         </a>
                                         {{$item->id}}
@@ -47,22 +47,26 @@
         </div>
     </div>
      <!-- Modal update client status-->
-    <div class="modal fade" id="disableClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+     <div class="modal fade" id="disableClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Disable Client</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
+            <form action="{{route('client.update',$item->id)}}" method="POST" id="editstatus">
+                @csrf 
+                @method('PATCH')
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Disable Client</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             <div class="modal-body text-danger">
               Are you sure that you want to disable this client?
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn bg-primary text-white">Yes</button>
-              <button type="button" class="btn bg-danger text-white" data-dismiss="modal">No</button>
+                <button type="button" class="btn bg-danger text-white" data-dismiss="modal">No</button>
             </div>
+            </form>
           </div>
         </div>
       </div>
@@ -213,8 +217,8 @@
           
           <script src="{{asset('js/app.js')}}"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script>
-        $('#editClient').on('show.bs.modal',function (event){
+    <script>
+       $('#editClientActive').on('show.bs.modal',function (event){
             var button = $(event.relatedTarget)
             var firstname = button.data('firstname')
             console.log(firstname)
@@ -235,14 +239,19 @@
             modal.find('#phonenumber').attr('value',phonenumber)
             modal.find('#email').attr('value',email)
             var url ="{{url('/client')}}/"+ id;
-            $('#editClientList').attr('action',url);   
+            $('#editClientList').attr('action',url);
             });
-          
 
-           if(disable.checked == true){
-                // document.getElementById('disable').innerHTML='checked';
-           } else {
-
-           }
+            $(document).ready(fuction() {
+                $('#disableClient').click(function() {
+                    $('#disableClient').on('show.bs.modal',function (event){
+                    var button = $(event.relatedTarget)
+                    var id = button.data('id')
+                    var modal = $(this)
+                    var url ="{{url('/client')}}/"+ id;
+                    $('#editstatus').attr('action',url); 
+                    });
+                });
+            });
         </script>
 @endsection

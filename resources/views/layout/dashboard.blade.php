@@ -21,13 +21,13 @@
   <script src="{{asset('js/chart.js')}}"></script>
 
   <!-- link calendar -->
-  <link href='{{asset('packages/core/main.css')}}' rel='stylesheet' />
-  <link href='{{asset('packages/daygrid/main.css')}}' rel='stylesheet' />
+  <link href="{{asset('packages/core/main.css')}}" rel='stylesheet' />
+  <link href="{{asset('packages/daygrid/main.css')}}" rel='stylesheet' />
   
-  <script src='{{asset('packages/core/main.js')}}'></script>
-  <script src='{{asset('packages/interaction/main.js')}}'></script>
-  <script src='{{asset('packages/daygrid/main.js')}}'></script>
-  <script src='{{asset('js/calendar.js')}}'></script>
+  <script src="{{asset('packages/core/main.js')}}"></script>
+  <script src="{{asset('packages/interaction/main.js')}}"></script>
+  <script src="{{asset('packages/daygrid/main.js')}}"></script>
+  <script src="{{asset('js/calendar.js')}}"></script>
   
   <link rel="stylesheet" href="{{asset('css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{asset('css/dataTable.bootstrap4.min.css')}}">
@@ -119,7 +119,7 @@
                     Contract Type
                       </span>
                     </a>
-                  </li>
+                </li>
                 <li class="list-group-item collapsed">
                   <a href="{{url('contract')}}">
                     <span class="text-white">

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Client;
+use App\Call;
 class callController extends Controller
 {
     /**
@@ -16,7 +17,10 @@ class callController extends Controller
     }
     public function index()
     {
-        return view('pages.listCall');
+        $client = Client::all();
+        $call = Call::all();
+        return view('pages.listCall',compact('client'),compact('call'));
+        
     }
 
     /**
@@ -37,7 +41,8 @@ class callController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = Call::create($request->all());
+        return redirect('/call');
     }
 
     /**
@@ -71,7 +76,9 @@ class callController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $client = Call::findOrFail($id);//seect * from Post where id=$id
+        $client->update($request->all());
+        return  redirect('/call');
     }
 
     /**
@@ -82,6 +89,6 @@ class callController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }
