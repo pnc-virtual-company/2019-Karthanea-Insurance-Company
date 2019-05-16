@@ -7,7 +7,7 @@ use \App\Client;
 use \App\Contract;
 use \App\Contracttype;
 use \App\Bill;
-class paymentController extends Controller
+class generateMonthPaymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,18 +16,13 @@ class paymentController extends Controller
      */
     public function index()
     {
+        
         $client = Client::all();
-        $contract = Contract::all();
-        $contractStatus = \App\Contractstatus::all();
+        $contractPayment = Contract::all();
+        
         $contracttype = Contracttype::all();
         $bill = Bill::all();
-
-
-        
-        return view('pages.paymentList',compact('contractStatus','client','contract','contracttype','bill' ));
-    
-    
-    
+        return view('pages.paymentList',compact('client','contractPayment','contracttype','bill' ));
     }
 
     /**
@@ -59,11 +54,7 @@ class paymentController extends Controller
      */
     public function show($id)
     {
-        // $client = Client::all();
-        // $bill = Bill::all();
-        // $billDiff = $bill->diff($contract->bill);
-        // // $contract = Contract::with('contracttype')->where('id',$contracttype_id)->first();
-        // return view('pages.paymentList',compact('contract'));
+        //
     }
 
     /**
@@ -74,10 +65,7 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-    //     $contract = Contract::find($id);
-    //    $bill = Bill::all();
-    //    $billDiff = $bill->diff($contract->bill);
-    //    return view('pages.paymentList',compact('contract','bill'));
+        //
     }
 
     /**
@@ -89,9 +77,10 @@ class paymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $bill = \App\Contract::findOrFail($id);
-        $bill->update($request->all());
-        return  redirect('/payment');
+        $contractPayment = Contract::find($id);
+        $contractPayment->update($request->all());
+        // $billDiff = $bill->diff($contract->bill);
+        return  redirect('/generateDate');
     }
 
     /**
@@ -104,16 +93,4 @@ class paymentController extends Controller
     {
         //
     }
-
-
-
-
-    public function listCContract($id)
-    {
-        $clientContract = Client::find($id);
-        $clientContract->client;
-        return view('pages.paymentList', compact('clientContract'));
-    }
-
-    
 }

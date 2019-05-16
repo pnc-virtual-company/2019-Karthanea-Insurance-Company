@@ -11,12 +11,6 @@
 
                 <div class="card-body">
 
-                    <div class="row">
-                            <div class="col-md-12">
-                                <a class="btn bg-primary text-white" href="{{url('users')}}">@lang('Back to list')</a>
-                            </div>
-                        </div>
-
                         <div class="form-group">
                             <label for="name">@lang('Name')</label>
                             <input type="text" class="form-control" name="name" readonly value="{!! $user->name !!}">
@@ -36,6 +30,12 @@
                             </select>
                         </div>
 
+                </div>
+                <div class="card-footer">
+                        <div >
+                                <a href="{{url('users')}}" class="btn bg-info text-white">Back To List</a>
+                                <input type="submit" class="btn bg-primary text-white" value="Save" />
+                        </div>
                 </div>
             </div>
         </div>

@@ -18,9 +18,10 @@
                                   @foreach ($contracttype as $item)
                                     <tr >
                                         <td class="text-center">
+                                          @if (Auth::user()->hasRole('Administrator'))
                                             <a href="#deleteContractType" data-id="{{$item->id}}" data-contracttype="{{$item->contracttype}}" data-toggle="modal" data-target="#deleteContractType"><i class="material-icons text-danger">delete</i></a>
                                             <a href="{{route('contracttype.update',$item->id)}}"  data-toggle="modal" data-target="#updateContractType" data-id="{{$item->id}}"  data-contracttype="{{$item->contracttype}}" ><i class="material-icons text-success">edit</i></a>
-               
+                                          @endif
                                             {{$item->id}}
                                         </td>
                                         <td>{{$item->contracttype}}</td>
