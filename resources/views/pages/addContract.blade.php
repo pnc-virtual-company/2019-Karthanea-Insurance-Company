@@ -53,7 +53,9 @@
 													data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
 													data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" 
 													data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" 
+
 													 data-bill_id="{{$item->bill_id}}" data-toggle="modal">
+
 													<i class="material-icons text-success">edit</i>
 												</a>
 											</a>
@@ -84,10 +86,12 @@
 									</div>
 									
 								</td>
+
 								
 								<td class="status">{{$item->contractStatus->status}}</td>
 								<td class="startdate">{{$item->startdate}}</td>
 								<td class="enddate">{{$item->enddate}}</td>
+
 								<td class="monthlybill">$ {{$item['monthlybill']}}</td>
 								<td class="monthlyduedate"> {{$item->monthlyduedate}}th</td>
 								<td>
@@ -122,8 +126,10 @@
 								<div class="col-2">
 									<label for="">Client</label>
 								</div>
+
 								
 									<div class="col-4">
+
 										<select name="client_id" id="client_id" class="browser-default custom-select" required>
 											@foreach ($client as $item)
 												@if($item->status ==1)
@@ -136,8 +142,10 @@
 									<div class="col-2">
 										<label for="">Bill</label>
 									</div> 
+
 									
 										<div class="col-4">
+
 											<select name="bill_id" id="bill_id" class="browser-default custom-select" value="">
 												@foreach ($bill as $item)
 													@if($item->id==1)
@@ -146,9 +154,11 @@
 												@endforeach
 											</select>
 										</div>
+
 								
 									</div>
 									
+
 									</div>
 									<div class="form-group ">
 										<div class="row">
@@ -176,11 +186,14 @@
 															<label for="">Status</label>
 														</div>
 														<div class="col-4">
+
 																<select class="browser-default custom-select" name="status_id" id="status_id" required>
 																		@foreach ($contractStatus as $item)
 																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
 																		@endforeach
+
 																</select>
+
 														</div>
 													
 											</div>
@@ -209,8 +222,10 @@
 												<div class="col-2">
 													<label for="" >Monthly bill</label>
 												</div>
+
 												<div class="col-4">
 													<input type="text" id="monthlybill" name="monthlybill" class="form-control" required>
+
 												</div>
 										
 												<div class="col-2">
@@ -248,6 +263,7 @@
                             @csrf
                             @method('PATCH')
 								<div class="modal-body">
+
 									
                                             <div class="form-group ">
                                                     <div class="row">
@@ -260,6 +276,7 @@
 																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
 																		 @endforeach
                                                                            
+
                                                                         </select>
 																</div>
 																	<div class="col-2">

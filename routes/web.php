@@ -15,14 +15,10 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-// Route::get('/', function () {
-    //     return view('examples.index', ['currentExample' => 'List of examples']);
-    // });
 Auth::routes();
 Route::get('activate/{token}', 'Auth\RegisterController@activate')
     ->name('activate');
 Route::get('users/profile','UserController@profile');
-// Route::get('users/export','UserController@export');
 Route::resource('users','UserController');
 
 /*=============================================================================
@@ -66,36 +62,31 @@ Route::get('examples', 'ExamplesController@index')->name('examples');
 /*
 =============================================================================*/
 
-//Route::get('/createContract','PageController@createContractType');
-Route::get('/openNewCall','PageController@OpenNewCall');
 Route::resource('/home','PageController@index');
 
 Route::resource('/contracttype','contracttypeController');
 Route::resource('/userCall','UserCallController');
 
-
 Route::get('/location','PageController@location');
+
+Route::get('/create','ClientController@create');
+
+Route::resource('contract','ContractController');
+
 Route::resource('/client','ClientController');
 
 Route::resource('/clientAchive','clientAchiveController');
 
-Route::get('/clientStatus','clientAchiveController@status');
 Route::resource('contract','ContractController');
 Route::resource('payment','paymentController');
-Route::get('/call','callController@index');
+
+Route::resource('/call','callController');
+
 Route::get('/calendar','CalendarController@index');
 Route::get('/chart','ChartController@index'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
-Route::resource('clientDisable', 'disableClientActiveController');
-Route::resource('clientUnable', 'unableClientController');
-Route::resource('updateClient', 'updateClientPayment');
-Route::resource('updateContract', 'updateContractPayment');
+
 Route::post('/uploadprofile', 'ProfileController@upload');
-Route::get('/admin/addContract',function(){
-    return view('pages.addContract');
-});
- Route::get('/note','NotesController@index');
- Route::get('/pdf','NotesController@pdf');
- //Route::get('/pdf','NotesController@pdf');
+

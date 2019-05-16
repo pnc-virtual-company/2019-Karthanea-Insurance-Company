@@ -1,9 +1,9 @@
 @extends('layout.dashboard')
-@section('content')
-<script src="{{asset('js/app.js')}}"></script>
+  @section('content')
     <div class="content">
       <div class="container-fluid">.
         <h1>Contract Type</h1>
+
                 <div class="card">
                     <div class="card-body">
                       <div class="table-responsive">
@@ -31,6 +31,7 @@
                                
                             </table>
                       </div>
+
                 <button type="submit" class="btn bg-primary text-white" data-toggle="modal" data-target="#createContractType"><i class="material-icons">control_point</i> Create New contract type</button>
               </div>
             </div>
@@ -161,5 +162,6 @@
             $('#deleteModal').attr('action',url);
           });
           </script>
-{{-- End script Delete --}}
-     @endsection
+<!-- {{-- End script Delete --} -->
+ @endsection
+     
