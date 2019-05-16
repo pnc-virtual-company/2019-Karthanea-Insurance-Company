@@ -16,7 +16,7 @@
                 {{-- list of client --}}
                 <div class="table-responsive">
                     <div id="clientHasContract">
-                        {{-- <table id="myTables" class="table table-striped table-bordered table-hover">
+                        <table id="myTables" class="table table-striped table-bordered table-hover">
                             <thead class="bg-dark text-white">
                                 <tr>
                                     <th>Disable ID</th>
@@ -26,8 +26,8 @@
                                     <th>Email</th>
                                     <th>Contract</th>
                                 </tr>
-                            </thead> --}}
-                            {{-- <tbody>
+                            </thead>
+                             <tbody>
                                 @foreach ($client as $value)
                                     <tr>
                                         <td>
@@ -50,7 +50,7 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                            </tbody> --}}
+                            </tbody> 
                         </table>
                     </div>
                 </div>
@@ -666,46 +666,44 @@
             });
         </script>
 
-        <script>
-        $(document).ready(function(){
-            var token = " {{ Session::token() }} ";
-            var url = "{{ URL::Route('payment.index') }} ";
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-                function getClientContract(){
-                    $.ajax({
-                        url : url,
-                        method: "GET",
-                    })
-                    .done(displayData)
-                    .fail(displayError)
-                }
-            function displayData(clients) {
-                console.log(clients);
-                var clientContractTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Disable ID</th> <th>Clients</th> <th>Address</th> <th>Phone</th> <th>Email</th> <th>Contract</th> </tr> </thead> <body>';
-                for(var i = 0; i < data.length; i++) {
-                    clientContractTable += '<tr><input type="checkbox" name="disable" id="disable"><td>' + clients[i].id +"</td><td>"
-                                        +clients[i].firstname + clients[i].lastname +"</td><td>"
-                                        +clients[i].address +'</td><td>'
-                                        +clients[i].phonenumber +'</td><td>'
-                                        +clients[i].email +'</td>'
-                                        +'<td> <a href="#" class="toggleBill"> <i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i> </a> </td> </tr>';
-                }
-                clientContractTable += '</tbody>';
-                $("#clientHasContract").append(clientContractTable);
-                // $("#body").removeClass('loading');   
-                alert(data);
-            }
-            function displayError(error){
-                // $("#body").removeClass('loading');
-                $("#error").html('Sorry, there was an error: ' + error.statusText + " (" + error.status + ")")
-                .css('color','red');
-                alert(url);
-            }
-            getClientContract();
-        });
-        </script>
+        // <script>
+        // $(document).ready(function(){
+        //     var token = " {{ Session::token() }} ";
+        //     var url = "{{ URL::Route('payment.index') }} ";
+        //     $.ajaxSetup({
+        //         headers: {
+        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        //         }
+        //     });
+        //         function getClientContract(){
+        //             $.ajax({
+        //                 url : url,
+        //                 method: "GET",
+        //             })
+        //             .done(displayData)
+        //             .fail(displayError)
+        //         }
+        //     function displayData(data) {
+        //         var clientContractTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Disable ID</th> <th>Clients</th> <th>Address</th> <th>Phone</th> <th>Email</th> <th>Contract</th> </tr> </thead> <body>';
+        //         // console.log("successfully");
+        //         // for(var i = 0; i < data.length; i++) {
+        //         //     clientContractTable += i '<tr><input type="checkbox" name="disable" id="disable"><td>' + data[i].id +"</td><td>"
+        //         //                         +data[i].firstname + data[i].lastname +"</td><td>"
+        //         //                         +data[i].address +'</td><td>'
+        //         //                         +data[i].phonenumber +'</td><td>'
+        //         //                         +data[i].email +'</td>'
+        //         //                         +'<td> <a href="#" class="toggleBill"> <i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i> </a> </td> </tr>';
+        //         // }
+        //         // clientContractTable += '</tbody>';
+        //         // $("#myTables").append(clientContractTable);
+        //         alert("Successfully");
+        //     }
+        //     function displayError(error){
+        //         $("#error").html('Sorry, there was an error: ' + error.statusText + " (" + error.status + ")")
+        //         .css('color','red');
+        //         alert(url);
+        //     }
+        //     getClientContract();
+        // });
+        // </script>
 @endsection

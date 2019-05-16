@@ -24,9 +24,8 @@ class paymentController extends Controller
         $client = Client::where('status',1)
                 ->select('*')
                 ->get();
-        $client = response($client);
         // dd($client);
-        return view("pages.paymentList",compact('client'));
+        return view("pages.payments",compact('client'));
         // return view('pages.paymentList',compact('client'));
     }
     /**
@@ -56,16 +55,11 @@ class paymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,$id)
+    public function showData(Request $request)
     {
-        $client = Client::find($id);
-        $clientContract= Contract::where('client_id',$id)
-                        ->select('*')
-                        ->get();
+        $clientContract= Contract::all();
+        return response()->json($clientContract);
         
-        $view = view("pages.paymentList",compact('clientContract'))->render();
-        
-        return response()->json(['html'=>$view]);
     //    return view('pages.paymentList',compact("clientContract"));
 
     }
