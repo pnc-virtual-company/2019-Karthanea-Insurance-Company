@@ -1,4 +1,4 @@
-@extends('layout.dashboard')
+@@extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
         <h1> Active Client  </h1>
