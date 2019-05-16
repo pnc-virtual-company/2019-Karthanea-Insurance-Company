@@ -130,10 +130,20 @@
                               
                             @foreach ($contract as $item)       
                             <tr>
-                                <td>{{$item->startdate}}</td>
-                                <td>{{$item->monthlybill}}</td>
+                                <td>
+                                        {{$item->startdate}}
+{{--                                         
+                                        @foreach ($period as $dt) 
+                                        <p>{{$dt->format("m-Y") . PHP_EOL}}</p>
+                                        @endforeach    --}}
+                                        
+                                           
+                                </td>
+                                
                                 <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-id="{{$item->id}}" data-bill_id="{{$item->bill_id}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
-                                <td>{{$item->enddate}}</td>
+                                <td>
+                                       {{$item->enddate}}
+                                </td>
                                 
                                 <td>
                                     <a href="#" class="text-center">
@@ -141,7 +151,9 @@
                                     </a>
                                 </td>
                             </tr>
+                           
                             @endforeach
+                            
                         </tbody>
                     </table>
                 </div>
