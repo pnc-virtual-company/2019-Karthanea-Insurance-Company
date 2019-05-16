@@ -438,8 +438,6 @@ $(".ui-datepicker-trigger").mouseover(function() {
       }
   });
 
-
-
 //PieChart (Persontage of customer Late payment and completion )
   
 ////Switch data with select option
@@ -455,7 +453,6 @@ function switchPieData(){
     mar();
   }
 }
-
 function jan(){
   pieChart.data.datasets[0].data[0]=0.8;
   pieChart.data.datasets[0].data[1]=0.1;
