@@ -130,7 +130,7 @@
                                             @endforeach
 										</select>
 									</div>
-                                    {{--<div class="col-2">
+                                    <div class="col-2">
 										<label for="">Bill</label>
 										</div>
 										<div class="col-4">
@@ -139,9 +139,9 @@
 												@if($item->id==1)
 													<option value="{{$item->id}}" >{{$item->status}} </option>
 												@endif
-                                            @endforeach$item->id
+                                            @endforeach
 										</select>
-									</div> --}}
+									</div>
 									<input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
 									</div>
 									<div class="form-group ">
@@ -173,11 +173,11 @@
 															<label for="">Status</label>
 														</div>
 														<div class="col-10">
-																<select class="browser-default custom-select" name="status_id" id="status_id" required>
-																		@foreach ($contractStatus as $item)
-																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
-																		@endforeach
-																	</select>
+															<select class="browser-default custom-select" name="status_id" id="status_id" required>
+																@foreach ($contractStatus as $item)
+																	<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
+																@endforeach
+															</select>
 														</div>
 													</div>
 												</div>

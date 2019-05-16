@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contract ;
+use App\Client ;
 use App\Bill;
-use App\Contractstatus;
+use App\ContractStatus;
+use App\Contracttype;
 class ContractController extends Controller
 {
     /**
@@ -18,10 +20,10 @@ class ContractController extends Controller
     }
     public function index()
     {
-        $contractselect = \App\Contract::all();
-        $contracttype = \App\Contracttype::all();
-        $contractStatus = \App\Contractstatus::all();
-        $client = \App\Client::all();
+        $contractselect = Contract::all();
+        $contracttype = Contracttype::all();
+        $contractStatus = ContractStatus::all();
+        $client = Client::all();
         $bill = Bill::all();
         return view('pages.addContract',compact('contractselect','contracttype','client','bill','contractStatus'));
     }

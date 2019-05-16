@@ -68,7 +68,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @foreach ($contract as $item)
+                            @foreach ($contract as $item)
                                 <tr>
                                     <td>{{$item->startdate}}</td>
                                     <td>{{$item->monthlyduedate}}</td>
@@ -81,7 +81,7 @@
                                         </a>
                                     </td>
                                 </tr>
-                            @endforeach --}}
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -103,7 +103,7 @@
                       <div class="col-2"><p> Status</p></div>
                       <div class="col-6">
                             <select class=" custom-select">
-                                {{-- @foreach ($contract as $item)
+                                @foreach ($contract as $item)
                                     @if ($item->bill->id == $item->bill_id && $item->bill_id== $item->id)
                                         <option value="{{$item->bill_id}}" selected>{{$item->bill->status}}</option>
                                     @else
@@ -113,7 +113,7 @@
                                             @endif
                                         @endforeach
                                     @endif
-                                @endforeach --}}
+                                @endforeach
                             </select>
                       </div>
                   </div>
