@@ -24,9 +24,8 @@ class paymentController extends Controller
         $client = Client::where('status',1)
                 ->select('*')
                 ->get();
-        // dd($client);
-        return view("pages.payments",compact('client'));
-        // return view('pages.paymentList',compact('client'));
+        $contract = Contract::all();
+        return view("pages.paymentList",compact('client','contract'));
     }
     /**
      * Show the form for creating a new resource.
@@ -57,12 +56,16 @@ class paymentController extends Controller
      */
     public function showData(Request $request)
     {
+        // $clientContract = Contract::where('client_id', $request->id)
+        // ->select('*')
+        // ->get();
+        $client=Client::all();
         $clientContract = Contract::all();
-        // $clientContract = Contract::where('client_id','=',$request->id)->first();
-        return response()->json($clientContract);
-        
-    //    return view('pages.paymentList',compact("clientContract"));
 
+        $data['contracts']=$clientContract;
+
+        return response()->json($data);
+        
     }
 
     /**
