@@ -40,7 +40,7 @@
                                                         <td>{{$value->phonenumber}}</td>
                                                         <td>{{$value->email}}</td>
                                                         <td> 
-                                                            <a  href="#" id="toggleContractTable" 
+                                                            <a  href="#" class="toggleContractTable" 
                                                             onclick="clientDetail({{$value->id}})" >
                                                             <i class="material-icons text-info ml-5">insert_drive_file</i>
                                                         </a>
@@ -95,39 +95,26 @@
 
             success:function(data){
                 var clientContractTable = '<table id="table2" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
+                for(var j = 0; j <data['type'].length;j++){}
+                for(var k = 0; k <data['status'].length;k++){}
                 for(var i = 0; i <data['contracts'].length; i++) {
-                    if(data.contracts[i].client_id == id){
+                    if(data.contracts[i].client_id == id && data.type[i].id == data.contracts[i].contracttype_id ){
                         clientContractTable +='<tr> <td class=" text-center"> CO00' + data.contracts[i].id +'</td><td>'
-                                            +data.contracts[i].contracttype_id+"</td><td>"
-                                            +data.contracts[i].status_id +'</td><td>'
+                                            +data.type[i].contracttype+"</td><td>"
+                                            +data.status[i].status +'</td><td>'
                                             +data.contracts[i].startdate +'</td><td>'
                                             +data.contracts[i].enddate +'</td><td>'
                                             +data.contracts[i].monthlybill +'</td>'
-                                            +'<td> <a href="#" > <i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">system_update_alt</i></i> </a> </td> </tr>';
+                                            +'<td> <a href="#" > <i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">arrow_drop_down</i></i> </a> </td> </tr>';
                     }
                 }
                 clientContractTable += '</tbody></table>';
-                $("#clientHasContract").append(clientContractTable);
+                $("#tableClientContract").html(clientContractTable);
             },
             error:function(){
                 alert("Data Not Founded.");
             },
         });
-        console.log(url);
     }
 </script>
-{{-- <script>
-        $(document).ready(function(){
-            var state = true;
-            $('.togglePayment').click(function (){
-                if(clientDetail(id).clicked==state ){
-                    document.getElementById('table2').style.display="inline-block";
-                    return state=false;
-                }else if(clientDetail(id).clicked==state){
-                    document.getElementById('table2').style.display="none";
-                    return state=true;
-                }
-        });
-            });
-</script> --}}
 @endsection

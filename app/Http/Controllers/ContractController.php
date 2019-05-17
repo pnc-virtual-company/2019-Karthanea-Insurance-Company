@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Contract ;
 use App\Client ;
 use App\Bill;
-use App\ContractStatus;
+use App\Contractstatus;
 use App\Contracttype;
 class ContractController extends Controller
 {
@@ -22,7 +22,7 @@ class ContractController extends Controller
     {
         $contractselect = Contract::all();
         $contracttype = Contracttype::all();
-        $contractStatus = ContractStatus::all();
+        $contractStatus = Contractstatus::all();
         $client = Client::all();
         $bill = Bill::all();
         return view('pages.addContract',compact('contractselect','contracttype','client','bill','contractStatus'));

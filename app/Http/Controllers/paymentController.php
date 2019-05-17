@@ -61,8 +61,11 @@ class paymentController extends Controller
         // ->get();
         $client=Client::all();
         $clientContract = Contract::all();
-
         $data['contracts']=$clientContract;
+        $contractStatus = Contractstatus::all();
+        $data['status']= $contractStatus;
+        $contractType = ContractType::all();
+        $data['type'] = $contractType;
 
         return response()->json($data);
         
