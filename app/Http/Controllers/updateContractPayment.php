@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Client;
 use \App\Contract;
 use \App\Contracttype;
+use \App\Contractstatus;
 use \App\Bill;
 class updateContractPayment extends Controller
 {
@@ -19,7 +20,7 @@ class updateContractPayment extends Controller
         $client = Client::all();
         $contract = Contract::all();
         //dd($contract);
-        $contractStatus = \App\Contractstatus::all();
+        $contractStatus = Contractstatus::all();
         $contracttype = Contracttype::all();
         $bill = Bill::all();
         return view('pages.paymentList',compact('contractStatus','client','contract','contracttype','bill' ));
