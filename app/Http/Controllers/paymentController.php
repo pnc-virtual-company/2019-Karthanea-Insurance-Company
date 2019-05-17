@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use \App\Client;
 use \App\Contract;
 use \App\Contracttype;
+use \App\Contractstatus;
 use \App\Bill;
 use DateTime;
 use DateInterval;

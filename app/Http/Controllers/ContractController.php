@@ -21,7 +21,7 @@ class ContractController extends Controller
     {
         $contractselect = \App\Contract::all();
         $contracttype = \App\Contracttype::all();
-        $contractStatus = \App\Contractstatus::all();
+        $contractStatus = Contractstatus::all();
         $client = \App\Client::all();
         $bill = Bill::all();
         // $pdf = PDF::loadView('pages.addContract');

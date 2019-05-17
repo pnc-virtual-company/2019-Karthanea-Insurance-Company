@@ -1,4 +1,4 @@
-# Karthanea Insurace  
+# Karthanea Insurance  
 *Karthanea* is an application that helps insurace companies to keep record of their customers, contracts and call history. It is mainly used to find information about the client, its contracts and invoices. The application helps to keep record if the phone calls allowing to know about previouse conversations.
 ## Feature
    - Login 

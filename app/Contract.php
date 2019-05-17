@@ -20,7 +20,7 @@ class Contract extends Model
         return $this->belongsTo(Contracttype::class,'contracttype_id');
     }
     public function contractStatus(){
-        return $this->belongsTo(Contractstatus::class,'status_id');
+        return $this->belongsTo(ContractStatus::class,'status_id');
     }
 }
 
