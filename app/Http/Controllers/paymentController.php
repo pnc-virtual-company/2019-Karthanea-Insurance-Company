@@ -26,22 +26,22 @@ class paymentController extends Controller
     // }
         $client = Client::all();
         $contract = Contract::all();
-        //$contract1 = Contract::find(1);
+        $contract1 = Contract::find(1);
         $contractStatus = \App\Contractstatus::all();
         $contracttype = Contracttype::all();
         $bill = Bill::all();
         //dd($contract1);
 
-    //     $start    = new DateTime($contract1->startdate);
-    //    // $start->modify('first day of this month');
-    //     $end      = new DateTime($contract1->enddate);
-    //     //dd($contract1->enddate);
-    //     $end->modify('first day of next month');
-    //     $interval = DateInterval::createFromDateString('1 month');
+        $start    = new DateTime($contract1->startdate);
+       // $start->modify('first day of this month');
+        $end      = new DateTime($contract1->enddate);
+        //dd($contract1->enddate);
+        $end->modify('first day of next month');
+        $interval = DateInterval::createFromDateString('1 month');
+        //$interval = DateInterval::createFromDateString('1 day');
+        $period   = new DatePeriod($start, $interval, $end);
         
-    //     $period   = new DatePeriod($start, $interval, $end);
-        
-        return view('pages.paymentList',compact('contractStatus','client','contract','contracttype','bill' ));
+        return view('pages.paymentList',compact('start','end','period','contractStatus','client','contract','contracttype','bill' ));
     }
 
     /**
