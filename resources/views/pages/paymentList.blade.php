@@ -128,23 +128,28 @@
                         </thead>
                         <tbody>
                               
-                            @foreach ($contract as $item)       
+                            @foreach ($contract as $item) 
+                            @foreach ($period as $dt)      
                             <tr>
-                                <td>
-                                        {{$item->startdate}}
-{{--                                         
-                                        @foreach ($period as $dt) 
-                                        <p>{{$dt->format("m-Y") . PHP_EOL}}</p>
-                                        @endforeach    --}}
+                               
+                                        {{-- {{$item->startdate}} --}}
+                                        
+                                       
+                                        <td> 
+                                        {{$dt->format("M,Y") . PHP_EOL}}
+                                      </td>
+                                          
                                         
                                            
+                                <td>
+                                    {{$item->monthlybill}}
                                 </td>
                                 
                                 <td>{{$item->bill->status}}<a href="{{route('payment.update',$item->id)}}"  data-id="{{$item->id}}" data-bill_id="{{$item->bill_id}}"  data-toggle="modal" data-target="#editPayment"><i class="material-icons text-success">edit</i></a></td>
+                               
                                 <td>
-                                       {{$item->enddate}}
+                                    {{$dt->format("d-m-Y") . PHP_EOL}}
                                 </td>
-                                
                                 <td>
                                     <a href="#" class="text-center">
                                         <i class="material-icons text-info ml-5">insert_drive_file</i>
@@ -153,7 +158,7 @@
                             </tr>
                            
                             @endforeach
-                            
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
