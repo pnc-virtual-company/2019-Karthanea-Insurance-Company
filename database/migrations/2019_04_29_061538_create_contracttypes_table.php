@@ -18,6 +18,28 @@ class CreateContracttypesTable extends Migration
             $table->string('contracttype');
             $table->timestamps();
         });
+
+        DB::table('contracttypes')->insert(
+            array(
+                [
+                    'id' => 1,
+                    'contracttype' => 'Motor',
+                ],
+                [
+                    'id' => 2,
+                    'contracttype' => 'Car',
+                ],
+                [
+                    'id' => 3,
+                    'contracttype' => 'House',
+                ],
+                [
+                    'id' => 4,
+                    'contracttype' => 'Bike Cycle',
+                    ]
+
+            )
+                );
     }
 
 

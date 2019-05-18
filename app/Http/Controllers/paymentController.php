@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Client;
 use \App\Contract;
+use \App\ContractType;
+use \App\Contractstatus;
 use \App\Contracttype;
 use \App\Contractstatus;
 use \App\Bill;
@@ -20,6 +22,12 @@ class paymentController extends Controller
      */
     public function index()
     {
+        $client = Client::where('status',1)
+                ->select('*')
+                ->get();
+        $contract = Contract::all();
+        return view("pages.paymentList",compact('client','contract'));
+    }
        
     // foreach ($period as $dt) {
     //     echo $dt->format("m-Y") . PHP_EOL."</br>";
@@ -89,8 +97,36 @@ class paymentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function showData(Request $request)
     {
+        // $clientContract = Contract::where('client_id', $request->id)
+        // ->select('*')
+        // ->get();
+        $client=Client::all();
+        $clientContract = Contract::all();
+        $data['contracts']=$clientContract;
+        $contractStatus = Contractstatus::all();
+        $data['status']= $contractStatus;
+        $contractType = ContractType::all();
+        $data['type'] = $contractType;
+
+        return response()->json($data);
+        
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+
+       $contract = Contract::find($id);
+       $bill = Bill::all();
+       $billDiff = $bill->diff($contract->bill);
+       return view('pages.paymentList',compact('contract','bill'));
     //     $client = Client::all();
     //     $contract = Contract::all();
     //     $contract1 = Contract::find(1);
@@ -110,7 +146,6 @@ class paymentController extends Controller
         
     //     return view('pages.paymentList',compact('period','start','end','contractStatus','client','contract','contracttype','bill' ));
     // }
-
     // /**
     //  * Show the form for editing the specified resource.
     //  *

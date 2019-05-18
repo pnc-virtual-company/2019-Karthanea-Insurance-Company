@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Contract ;
+use App\Client ;
 use App\Bill;
 use App\Contractstatus;
+use App\Contracttype;
 use  PDF;
 class ContractController extends Controller
 {
@@ -19,6 +21,10 @@ class ContractController extends Controller
     }
     public function index()
     {
+        $contractselect = Contract::all();
+        $contracttype = Contracttype::all();
+        $contractStatus = Contractstatus::all();
+        $client = Client::all();
         $contractselect = \App\Contract::all();
         $contracttype = \App\Contracttype::all();
         $contractStatus = Contractstatus::all();
@@ -49,8 +55,8 @@ class ContractController extends Controller
     public function store(Request $request)
     {
         $contract = Contract::create($request->all());
+        
         return redirect('/contract');
-
     }
 
     /**

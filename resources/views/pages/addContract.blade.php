@@ -45,7 +45,7 @@
 								<td class="id">
 									<div class="row">
 										<div class="col-5">
-                                            {{$item->id}}
+                                            C00{{$item->id}}
                                         </div>
 										<div class="col-4">
 											<a href="#" class="text-center">
@@ -69,7 +69,7 @@
                                         </div>
 										<div class="col-1">
 											<a href="#" id="edit-item">
-												<i class="material-icons ml-5 text-info">call</i>
+												<i class="material-icons ml-2 text-info">call</i>
 											</a>
 										</div>
 									</div>
@@ -126,8 +126,14 @@
 								<div class="col-2">
 									<label for="">Client</label>
 								</div>
-
-								
+								<div class="col-12">
+									<div class="col-12">
+										<select name="client_id" id="client_id" class="browser-default custom-select" required>
+											@foreach ($client as $item)
+												@if ($item->status==1)
+											    	<option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
+												@endif
+                       @endforeach
 									<div class="col-4">
 
 										<select name="client_id" id="client_id" class="browser-default custom-select" required>
@@ -138,14 +144,21 @@
 												@endforeach
 										</select>
 									</div>
-                                                        
-									<div class="col-2">
+                                    <div class="col-2">
 										<label for="">Bill</label>
-									</div> 
-
-									
+										</div>
 										<div class="col-4">
-
+										<select name="bill_id" id="bill_id" class="browser-default custom-select" value="">
+                                            @foreach ($bill as $item)
+												@if($item->id==1)
+													<option value="{{$item->id}}" >{{$item->status}} </option>
+												@endif
+                                            @endforeach
+										</select>
+									</div>
+									<input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
+									</div> 
+										<div class="col-4">
 											<select name="bill_id" id="bill_id" class="browser-default custom-select" value="">
 												@foreach ($bill as $item)
 													@if($item->id==1)
@@ -157,8 +170,6 @@
 
 								
 									</div>
-									
-
 									</div>
 									<div class="form-group ">
 										<div class="row">
@@ -168,7 +179,7 @@
 													</div>
 													<div class="col-4">
 														<div class="input-group ">
-															<select name="contracttype_id" id="" class="browser-default custom-select" required>
+															<select name="contracttype_id" id="" class="browser-default custom-select disabled" required>
                                                                 @foreach ($contracttype as $item)
                                                                     <option value="{{$item->id}}">{{$item->contracttype}}</option>
                                                                @endforeach
@@ -185,6 +196,12 @@
 														<div class="col-2">
 															<label for="">Status</label>
 														</div>
+														<div class="col-10">
+															<select class="browser-default custom-select" name="status_id" id="status_id" required>
+																@foreach ($contractStatus as $item)
+																	<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
+																@endforeach
+															</select>
 														<div class="col-4">
 
 																<select class="browser-default custom-select" name="status_id" id="status_id" required>
@@ -193,9 +210,7 @@
 																		@endforeach
 
 																</select>
-
 														</div>
-													
 											</div>
 										</div>
 										<div class="form-group">

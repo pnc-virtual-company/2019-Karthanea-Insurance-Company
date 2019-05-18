@@ -1,10 +1,7 @@
-
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
         <h1> Client Active </h1>
-
-
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -19,6 +16,22 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($client as $item)
+                                @if ($item->status== 1)
+                                    <tr>
+                                        <td>
+                                            <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                            <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
+                                                <input type="checkbox" name="disable[]" id="disable">
+                                            </a>
+                                            CL00{{$item->id}}
+                                        </td>
+                                        <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                        <td>{{$item->address}}</td>
+                                        <td>{{$item->phonenumber}}</td>
+                                        <td>{{$item->email}}</td>
+                                    </tr>
+                                @endif
                         @foreach ($client as $value=>$item)
                             @if ($item->status=='1')
                                 <tr>
@@ -54,10 +67,10 @@
      <div class="modal fade" id="disableClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-
+            <form action="" method="POST" id="editstatus">
+                @csrf
             <form action="{{route('client.update',$item->id)}}" method="POST" id="editstatus">
                 @csrf 
-
                 @method('PATCH')
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Disable Client</h5>
@@ -75,7 +88,7 @@
             </form>
           </div>
         </div>
-      </div>
+      </div>    
           <!-- Modal add -->
           <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
