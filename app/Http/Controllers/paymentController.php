@@ -4,10 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \App\Client;
-use \App\Bill;
 use \App\Contract;
 use \App\ContractType;
 use \App\Contractstatus;
+use \App\Contracttype;
+use \App\Contractstatus;
+use \App\Bill;
+use DateTime;
+use DateInterval;
+use DatePeriod;
 class paymentController extends Controller
 {
     /**
@@ -15,10 +20,6 @@ class paymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $client = Client::where('status',1)
@@ -27,6 +28,30 @@ class paymentController extends Controller
         $contract = Contract::all();
         return view("pages.paymentList",compact('client','contract'));
     }
+       
+    // foreach ($period as $dt) {
+    //     echo $dt->format("m-Y") . PHP_EOL."</br>";
+    // }
+        $client = Client::all();
+        $contract = Contract::all();
+        $contract1 = Contract::find(1);
+        $contractStatus = \App\Contractstatus::all();
+        $contracttype = Contracttype::all();
+        $bill = Bill::all();
+        //dd($contract1);
+
+        $start    = new DateTime($contract1->startdate);
+       // $start->modify('first day of this month');
+        $end      = new DateTime($contract1->enddate);
+        //dd($contract1->enddate);
+        $end->modify('first day of next month');
+        $interval = DateInterval::createFromDateString('1 month');
+        //$interval = DateInterval::createFromDateString('1 day');
+        $period   = new DatePeriod($start, $interval, $end);
+        
+        return view('pages.paymentList',compact('start','end','period','contractStatus','client','contract','contracttype','bill' ));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -43,10 +68,28 @@ class paymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+    //     $client = Client::all();
+    //     $contract = Contract::all();
+    //     $contract1 = Contract::find(1);
+    //     $contractStatus = \App\Contractstatus::all();
+    //     $contracttype = Contracttype::all();
+    //     $bill = Bill::all();
+    //     //dd($contract1);
+
+    //     $start    = new DateTime($contract1->startdate);
+    //    // $start->modify('first day of this month');
+    //     $end      = new DateTime($contract1->enddate);
+    //     //dd($contract1->enddate);
+    //     $end->modify('first day of next month');
+    //     $interval = DateInterval::createFromDateString('1 month');
+        
+    //     $period   = new DatePeriod($start, $interval, $end);
+        
+    //     return view('pages.paymentList',compact('period','start','end','contractStatus','client','contract','contracttype','bill' ));
     }
+
 
     /**
      * Display the specified resource.
@@ -84,8 +127,37 @@ class paymentController extends Controller
        $bill = Bill::all();
        $billDiff = $bill->diff($contract->bill);
        return view('pages.paymentList',compact('contract','bill'));
+    //     $client = Client::all();
+    //     $contract = Contract::all();
+    //     $contract1 = Contract::find(1);
+    //     $contractStatus = \App\Contractstatus::all();
+    //     $contracttype = Contracttype::all();
+    //     $bill = Bill::all();
+    //     //dd($contract1);
 
-       //
+    //     $start    = new DateTime($contract1->startdate);
+    //    // $start->modify('first day of this month');
+    //     $end      = new DateTime($contract1->enddate);
+    //     //dd($contract1->enddate);
+    //     $end->modify('first day of next month');
+    //     $interval = DateInterval::createFromDateString('1 month');
+        
+    //     $period   = new DatePeriod($start, $interval, $end);
+        
+    //     return view('pages.paymentList',compact('period','start','end','contractStatus','client','contract','contracttype','bill' ));
+    // }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit($id)
+    // {
+    // //     $contract = Contract::find($id);
+    // //    $bill = Bill::all();
+    // //    $billDiff = $bill->diff($contract->bill);
+    // //    return view('pages.paymentList',compact('contract','bill'));
     }
 
     /**
@@ -97,10 +169,8 @@ class paymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contract = Contract::find($id);
-        $contract->update($request->all());
-        $bill = Bill::all();
-        $billDiff = $bill->diff($contract->bill);
+        $bill = \App\Contract::findOrFail($id);
+        $bill->update($request->all());
         return  redirect('/payment');
     }
 
@@ -114,4 +184,13 @@ class paymentController extends Controller
     {
         //
     }
+
+    public function listCContract($id)
+    {
+        $clientContract = Client::find($id);
+        $clientContract->client;
+        return view('pages.paymentList', compact('clientContract'));
+    }
+
+    
 }

@@ -90,3 +90,14 @@ Route::get('/chart','ChartController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
 Route::post('/uploadprofile', 'ProfileController@upload');
+Route::resource('clientDisable', 'disableClientActiveController');
+Route::resource('clientUnable', 'unableClientController');
+Route::resource('updateClient', 'updateClientPayment');
+Route::resource('updateContract', 'updateContractPayment');
+Route::post('/uploadprofile', 'ProfileController@upload');
+Route::get('/admin/addContract',function(){
+    return view('pages.addContract');
+});
+ Route::get('/note','NotesController@index');
+ Route::get('/pdf','NotesController@pdf');
+ //Route::get('/pdf','NotesController@pdf');

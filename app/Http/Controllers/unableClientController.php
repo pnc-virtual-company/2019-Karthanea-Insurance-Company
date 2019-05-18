@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Clientlist;
-use App\input;
 use Illuminate\Http\Request;
 
-class clientAchiveController extends Controller
+class unableClientController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        $client = Clientlist::all()->sortBy('id');
-        return view('pages.AchiveClient',compact('client'));
+        //
     }
 
     /**
@@ -37,11 +34,7 @@ class clientAchiveController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $client = Clientlist::create($request->all());
-        return redirect('/clientAchive');
-
-
+        //
     }
 
     /**
@@ -52,9 +45,7 @@ class clientAchiveController extends Controller
      */
     public function show($id)
     {
-      $clientContract = Contract::find($id);
-
-      return view('pages.paymentList','clientContract');
+        //
     }
 
     /**
@@ -65,7 +56,7 @@ class clientAchiveController extends Controller
      */
     public function edit($id)
     {
-      //
+        //
     }
 
     /**
@@ -77,19 +68,17 @@ class clientAchiveController extends Controller
      */
     public function update(Request $request, $id)
     {
-      
-      $client = Clientlist::findOrFail($id);//seect * from Post where id=$id}
-
+         $client = \App\Clientlist::findOrFail($id);//seect * from Post where id=$id
         if($client->status == 1){
-          $client->status = 0;
-        } else {
-          $client->status = 1;
-        }
-        
-      $client->update($request->all());
+            $client->status = 0;
+            //$client->update($request->all());
+          } else {
+            $client->status = 1;
+            //$client->update($request->all());
+          }
+        $client->update($request->all());
         return  redirect('/clientAchive');
-    
-      }
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -102,4 +91,3 @@ class clientAchiveController extends Controller
         //
     }
 }
-    
