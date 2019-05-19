@@ -56,9 +56,7 @@ class paymentController extends Controller
      */
     public function showData(Request $request)
     {
-        // $clientContract = Contract::where('client_id', $request->id)
-        // ->select('*')
-        // ->get();
+        
         $client=Client::all();
         $clientContract = Contract::all();
         $data['contracts']=$clientContract;
@@ -72,6 +70,16 @@ class paymentController extends Controller
     }
 
     /**
+     * show bill table of client
+     */
+    public function showBill(Request $request)
+    {
+        $bills = Bill::all();
+        $json['bills'] = $bills;
+
+        return response()->json($data);
+    }
+    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -79,13 +87,11 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-
        $contract = Contract::find($id);
        $bill = Bill::all();
        $billDiff = $bill->diff($contract->bill);
-       return view('pages.paymentList',compact('contract','bill'));
 
-       //
+       return view('pages.paymentList',compact('contract','bill'));
     }
 
     /**
@@ -101,6 +107,7 @@ class paymentController extends Controller
         $contract->update($request->all());
         $bill = Bill::all();
         $billDiff = $bill->diff($contract->bill);
+        
         return  redirect('/payment');
     }
 
