@@ -95,8 +95,8 @@
 
             success:function(data){
                 var clientContractTable = '<table id="table2" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
-                for(var j = 0; j <data['type'].length;j++){}
                 for(var k = 0; k <data['status'].length;k++){}
+                for(var j = 0; j <data['type'].length;j++){}
                 for(var i = 0; i <data['contracts'].length; i++) {
                     if(data.contracts[i].client_id == id && data.type[i].id == data.contracts[i].contracttype_id ){
                         clientContractTable +='<tr> <td class=" text-center"> CO00' + data.contracts[i].id +'</td><td>'
