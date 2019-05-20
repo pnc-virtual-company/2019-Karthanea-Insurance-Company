@@ -18,14 +18,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($client as $value=>$item)
+                        @foreach ($client as $item)
                                 <tr>
                                     <td>
                                     <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
-                                    
-
-                                    <a href="{{route('clientAchive.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
-
                                         @if($item->status=="0")
                                             <input type="checkbox" name="disable[]" value="disable" id="disable" checked>
                                             @elseif($item->status=="1")
@@ -53,7 +49,7 @@
     <div class="modal fade" id="disableClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <form action="{{route('clientAchive.update',$item->id)}}" method="POST" id="editstatus">
+            <form action="" method="POST" id="editstatus">
                 @csrf
                 @method('PATCH')
                 <div class="modal-header">
@@ -90,7 +86,6 @@
                 <form method="POST" action="{{action('ClientController@store')}}">
                 @csrf
                 <div class="modal-body">
-
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">

@@ -172,7 +172,7 @@
                 <form action="" method="POST" id="editClientList">
                     @csrf
                     @method('PATCH')
-                <div class="modal-body">
+                    <div class="modal-body">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">

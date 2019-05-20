@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Clientlist;
 use App\input;
+use App\Contract;
 use Illuminate\Http\Request;
 
 class clientAchiveController extends Controller
@@ -15,7 +16,7 @@ class clientAchiveController extends Controller
      */
     public function index()
     {
-        $client = Clientlist::all()->sortBy('id');
+        $client = Clientlist::all();
         return view('pages.AchiveClient',compact('client'));
     }
 
