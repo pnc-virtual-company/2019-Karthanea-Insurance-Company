@@ -39,12 +39,10 @@ class paymentController extends Controller
     {
         $contract = Contract::find($id);
         $bills = Bill::all();
-        //dd($contract1);
 
         $start    = new DateTime($contract->startdate);
        // $start->modify('first day of this month');
         $end      = new DateTime($contract->enddate);
-        //dd($contract1->enddate);
       
         $interval = DateInterval::createFromDateString('1 month');
         //$interval = DateInterval::createFromDateString('1 day');
