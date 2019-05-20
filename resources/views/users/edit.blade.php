@@ -31,17 +31,18 @@
                             @endforeach
                             </select>
                         </div>
-                        <div class="float-right">
+                        <div >
                                 <a href="{{url('users')}}" class="btn bg-info text-white">Back To List</a>
                                 <input type="submit" class="btn bg-primary text-white" value="Save" />
-                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<script src="{{asset('js/app.js') }}"></script>
+
+<script src="{{asset('js/app.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 @endsection

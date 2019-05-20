@@ -14,7 +14,7 @@ class Clientlist extends Model
         'address',
         'phonenumber',
         'email',
-        'state'
+        'status'      
     ];
     public function calls(){
         return $this->hasMany(Call::class);
