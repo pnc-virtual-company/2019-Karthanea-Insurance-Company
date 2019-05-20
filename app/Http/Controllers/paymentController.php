@@ -27,19 +27,6 @@ class paymentController extends Controller
         $contract = Contract::all();
         return view("pages.paymentList",compact('client','contract'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showBill(Request $request)
-    {
-        $bill = Bill::all();
-
-        $bills['bill']= $bill;
-
-        return response()->json($bills);
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -47,9 +34,25 @@ class paymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        $contract = Contract::find($id);
+        $bills = Bill::all();
+        //dd($contract1);
+
+        $start    = new DateTime($contract->startdate);
+       // $start->modify('first day of this month');
+        $end      = new DateTime($contract->enddate);
+        //dd($contract1->enddate);
+      
+        $interval = DateInterval::createFromDateString('1 month');
+        //$interval = DateInterval::createFromDateString('1 day');
+        $period   = new DatePeriod($start, $interval, $end);
+        
+        dd($bills);
+        // $bills = Bill::create($request->all());
+
+        return redirect('/payment');
     }
 
     /**
@@ -60,9 +63,7 @@ class paymentController extends Controller
      */
     public function showData(Request $request)
     {
-        // $clientContract = Contract::where('client_id', $request->id)
-        // ->select('*')
-        // ->get();
+        
         $client=Client::all();
         $clientContract = Contract::all();
         $data['contracts']=$clientContract;
@@ -70,11 +71,23 @@ class paymentController extends Controller
         $data['status']= $contractStatus;
         $contractType = ContractType::all();
         $data['type'] = $contractType;
+        $bill = Bill::all();
+        $data['bills'] = $bill;
 
         return response()->json($data);
         
     }
 
+    /**
+     * show bill table of client
+     */
+    public function showBill(Request $request)
+    {
+        $bills = Bill::all();
+        $json['bills'] = $bills;
+
+        return response()->json($json);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -83,13 +96,11 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-
        $contract = Contract::find($id);
        $bill = Bill::all();
        $billDiff = $bill->diff($contract->bill);
-       return view('pages.paymentList',compact('contract','bill'));
 
-       //
+       return view('pages.paymentList',compact('contract','bill'));
     }
 
     /**
@@ -105,6 +116,7 @@ class paymentController extends Controller
         $contract->update($request->all());
         $bill = Bill::all();
         $billDiff = $bill->diff($contract->bill);
+        
         return  redirect('/payment');
     }
 

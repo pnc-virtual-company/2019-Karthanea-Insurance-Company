@@ -72,7 +72,7 @@
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
+<script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
 <script>
     function clientDetail(id){
         var url = "{{ url('payment/showData') }}";
@@ -82,60 +82,43 @@
             data: {_token: "{{csrf_token()}}",id:id},
 
             success:function(data){
+                var billTable = '<table id="myTabless" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
                 var clientContractTable = '<table id="table2" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
-                for(var k = 0; k <data['status'].length;k++){}
                 for(var j = 0; j <data['type'].length;j++){}
+                for(var k = 0; k <data['status'].length;k++){}
                 for(var i = 0; i <data['contracts'].length; i++) {
-                    if(data.contracts[i].client_id == id && data.type[i].id == data.contracts[i].contracttype_id ){
+                    if(data.contracts[i].client_id == id ){
                         clientContractTable +='<tr> <td class=" text-center"> CO00' + data.contracts[i].id +'</td><td>'
                                             +data.type[i].contracttype+"</td><td>"
                                             +data.status[i].status +'</td><td>'
                                             +data.contracts[i].startdate +'</td><td>'
                                             +data.contracts[i].enddate +'</td><td>'
                                             +data.contracts[i].monthlybill +'</td>'
-                                            +'<td> <a href="#" onclick="showBill(data.contracts[i].id)" id="showBill"><i class="material-icons text-info ml-5 ">attach_money<i class="material-icons">arrow_drop_down</i></i></a></td></tr>';
+                                            +'<td> <a href="#"><i class="material-icons text-info ml-5 ">attach_money<i class="material-icons">arrow_drop_down</i></i></a></td></tr>';
                     }
                 }
                 clientContractTable += '</tbody></table>';
                 $("#tableClientContract").html(clientContractTable);
+                // show bill table of contract
+                for(var i = 0; i <data['bills'].length; i++) {
+                    var monthbill = new Date(data.bills[i].month);
+                    var month = ["January", "February", "March", "April", "May", "June",
+                    "July", "August", "September", "October", "November", "December"][monthbill.getMonth()];
+                    var getMonthBill = month + ',' + monthbill.getFullYear();
+                    billTable +='<tr> <td class=" text-center">' + getMonthBill +'</td><td>'
+                                        +data.bills[i].amount+"</td><td>"
+                                        +data.bills[i].billStatus_id+"</td><td>"
+                                        +data.bills[i].duedate+"</td>"
+                                        +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+                    }
+                billTable +='</tbody></table>';
+                $("#showBill").html(billTable);
+
             },
             error:function(){
                 alert("Data Not Founded.");
             },
         });
     }
-</script>
-<script>
-    $(document).ready(function(){
-        function showBill(id){ 
-            alert('Hello');
-            var url = "{{ url('payment/showBill') }}";
-        $.ajax({
-            type: "GET",
-            url: url,
-            data: {_token: "{{csrf_token()}}",id:id},
-
-            success:function(data){
-                var contractBill = '<table id="myTabless" class="table table-striped table-bordered table-hover d-none"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
-                for(var i = 0; i <data['bill'].length; i++) {
-                    // if(data.contracts[i].client_id == id && data.type[i].id == data.contracts[i].contracttype_id ){
-                    //     contractBill +='<tr> <td class=" text-center"> CO00' + data.contracts[i].id +'</td><td>'
-                    //                         +data.bills[i].contracttype+"</td><td>"
-                    //                         +data.bills[i].status +'</td><td>'
-                    //                         +data.bills[i].startdate +'</td><td>'
-                    //                         +data.bills[i].enddate +'</td><td>'
-                    //                         +data.bills[i].monthlybill +'</td>'
-                    //                         +'<td> <a href="#" onclick="showBill()" id="showBill"><i class="material-icons text-info ml-5 ">attach_money<i class="material-icons">arrow_drop_down</i></i></a></td></tr>';
-                    // }
-                }
-                contractBill += '</tbody></table>';
-                $("#showBill").html(contractBill);
-                },
-                error:function(){
-                    alert("Data Not Founded.");
-                },
-            });
-        });
-    });
 </script>
 @endsection
