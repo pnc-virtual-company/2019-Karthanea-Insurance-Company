@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Client;
 use \App\Bill;
+use \App\BillStatus;
 use \App\Contract;
 use \App\ContractType;
 use \App\Contractstatus;
@@ -73,6 +74,8 @@ class paymentController extends Controller
         $data['type'] = $contractType;
         $bill = Bill::all();
         $data['bills'] = $bill;
+        $billStatus = BillStatus::all();
+        $data['states'] = $billStatus;
 
         return response()->json($data);
         
@@ -83,10 +86,10 @@ class paymentController extends Controller
      */
     public function showBill(Request $request)
     {
-        $bills = Bill::all();
-        $json['bills'] = $bills;
+        // $bills = Bill::all();
+        // $json['bills'] = $bills;
 
-        return response()->json($json);
+        // return response()->json($json);
     }
     /**
      * Show the form for editing the specified resource.
