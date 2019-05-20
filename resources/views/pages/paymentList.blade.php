@@ -59,20 +59,7 @@
                     </div>
                     {{-- list all of client bill --}}
                     <div class="table-responsive">
-                        <table  id="myTabless" class="table table-striped table-bordered table-hover d-none">
-                            <thead class="bg-dark text-white">
-                                <tr>
-                                    <th>Month</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                    <th>Due date</th>
-                                    <th>Bill</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-                            </tbody>
-                            </table>
+                        <div id="showBill"></div>
                         </div>
                     </div>
                 </div>
@@ -84,6 +71,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
 <script>
     function clientDetail(id){
@@ -105,7 +93,7 @@
                                             +data.contracts[i].startdate +'</td><td>'
                                             +data.contracts[i].enddate +'</td><td>'
                                             +data.contracts[i].monthlybill +'</td>'
-                                            +'<td> <a href="#" > <i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">arrow_drop_down</i></i> </a> </td> </tr>';
+                                            +'<td> <a href="#" onclick="showBill(data.contracts[i].id)" id="showBill"><i class="material-icons text-info ml-5 ">attach_money<i class="material-icons">arrow_drop_down</i></i></a></td></tr>';
                     }
                 }
                 clientContractTable += '</tbody></table>';
@@ -116,5 +104,38 @@
             },
         });
     }
+</script>
+<script>
+    $(document).ready(function(){
+        function showBill(id){ 
+            alert('Hello');
+            var url = "{{ url('payment/showBill') }}";
+        $.ajax({
+            type: "GET",
+            url: url,
+            data: {_token: "{{csrf_token()}}",id:id},
+
+            success:function(data){
+                var contractBill = '<table id="myTabless" class="table table-striped table-bordered table-hover d-none"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
+                for(var i = 0; i <data['bill'].length; i++) {
+                    // if(data.contracts[i].client_id == id && data.type[i].id == data.contracts[i].contracttype_id ){
+                    //     contractBill +='<tr> <td class=" text-center"> CO00' + data.contracts[i].id +'</td><td>'
+                    //                         +data.bills[i].contracttype+"</td><td>"
+                    //                         +data.bills[i].status +'</td><td>'
+                    //                         +data.bills[i].startdate +'</td><td>'
+                    //                         +data.bills[i].enddate +'</td><td>'
+                    //                         +data.bills[i].monthlybill +'</td>'
+                    //                         +'<td> <a href="#" onclick="showBill()" id="showBill"><i class="material-icons text-info ml-5 ">attach_money<i class="material-icons">arrow_drop_down</i></i></a></td></tr>';
+                    // }
+                }
+                contractBill += '</tbody></table>';
+                $("#showBill").html(contractBill);
+                },
+                error:function(){
+                    alert("Data Not Founded.");
+                },
+            });
+        });
+    });
 </script>
 @endsection

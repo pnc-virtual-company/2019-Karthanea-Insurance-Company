@@ -32,9 +32,13 @@ class paymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function showBill(Request $request)
     {
-        //
+        $bill = Bill::all();
+
+        $bills['bill']= $bill;
+
+        return response()->json($bills);
     }
 
     /**
