@@ -8,19 +8,21 @@ class Contract extends Model
 {
 
     protected $fillable = [
-        'id','startdate', 'enddate','monthlyduedate','monthlybill','client_id','contracttype_id','bill_id','status_id'
+        'id','startdate', 'enddate','monthlyduedate','monthlybill','client_id','contracttype_id','status_id'
     ];
     public function client(){
         return $this->belongsTo(Client::class,'client_id');
     }
-    public function bill(){ 
-        return $this->belongsTo(Bill::class,'bill_id');
-    }
+    
     public function contracttype(){
         return $this->belongsTo(Contracttype::class,'contracttype_id');
     }
     public function contractStatus(){
         return $this->belongsTo(ContractStatus::class,'status_id');
     }
+    public function bill(){
+        return $this->hasOne(Bill::class);
+    }
+
 }
 

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddBillIdToContractsTable extends Migration
+class AddContractIdToBillsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class AddBillIdToContractsTable extends Migration
      */
     public function up()
     {
-        Schema::table('contracts', function (Blueprint $table) {
-            $table->integer('bill_id')->unsigned();
-            $table->foreign('bill_id')
-                        ->references('id')
-                        ->on('bills')
-                        ->onDelete('cascade');
+        Schema::table('bills', function (Blueprint $table) {
+            $table->integer('contract_id')->unsigned();
+            $table->foreign('contract_id')
+            ->references('id')
+            ->on('contracts')
+            ->onDelete('cascade');
         });
     }
 
@@ -29,7 +29,7 @@ class AddBillIdToContractsTable extends Migration
      */
     public function down()
     {
-        Schema::table('contracts', function (Blueprint $table) {
+        Schema::table('bills', function (Blueprint $table) {
             //
         });
     }
