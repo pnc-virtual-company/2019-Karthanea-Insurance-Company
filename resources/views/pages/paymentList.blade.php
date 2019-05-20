@@ -106,11 +106,11 @@
                                             +data.contracts[i].enddate +'</td><td>'
                                             +data.contracts[i].monthlybill +'</td>'
                                             +'<td> <a href="#" onclick="showBill()" id="bill" value="(data.contracts[i].id)"> <i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">arrow_drop_down</i></i> </a> </td> </tr>';
-                alert(data.contracts[i].id);
                     }
                 }
                 clientContractTable += '</tbody></table>';
                 $("#tableClientContract").html(clientContractTable);
+                alert(data.contracts[i].id);
             },
             error:function(){
                 alert("Data Not Founded.");
@@ -121,7 +121,6 @@
 <script>
     var billId = document.getElementById('bill').value();
     function showBill(billId){
-        alert(billId);
         // alert('successfull');
         var url = "{{ url('payment/showBill') }}";
         $.ajax({
