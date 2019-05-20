@@ -108,9 +108,9 @@
                         var month = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"][monthbill.getMonth()];
                         var getMonthBill = month + ',' + monthbill.getFullYear();
-                        if(data.bills[i].contract_id == data.contracts[i].id && data.bills[i].billStatus_id == data.states[k].id){
-                            billTable +='<tr> <td class=" text-center">' + getMonthBill +'</td><td>'
-                                                +data.bills[i].amount+"</td><td>"+'<i class="material-icons text-success ml-3 mr-5">create</i>'
+                        if(data.bills[i].billStatus_id == data.states[k].id){
+                            billTable +='<tr><td class=" text-center">' + getMonthBill +'</td><td>'
+                                                +data.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
                                                 +data.states[k].status+"</td><td>"
                                                 +data.bills[i].duedate+"</td>"
                                                 +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';

@@ -38,7 +38,12 @@ class paymentController extends Controller
     public function store(Request $request,$id)
     {
         $contract = Contract::find($id);
-        $bills = Bill::all();
+        $billDate = new Bill;
+
+        $startdate = $request->startdate;
+        $enddate= $request->enddate;
+        $amountBill = $request->monthlybill;
+        $monthDue= $request->monthlyduedate;
 
         $start    = new DateTime($contract->startdate);
        // $start->modify('first day of this month');
@@ -48,7 +53,13 @@ class paymentController extends Controller
         //$interval = DateInterval::createFromDateString('1 day');
         $period   = new DatePeriod($start, $interval, $end);
         
-        dd($bills);
+        foreach($period as $data){
+            $billDate->month = $start;
+            $billDate->duedate= $end;
+            $billDate->amount= $amountBill;
+
+            $billDate->save();
+        }
         // $bills = Bill::create($request->all());
 
         return redirect('/payment');

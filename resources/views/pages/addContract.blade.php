@@ -35,7 +35,7 @@
 								<th>Start</th>
 								<th>End</th>
 								<th>Monthly bill</th>
-								<th>Monthly Due Date</th>
+								<th>Due Date</th>
 								<th>Bill</th>
 							</tr>
 						</thead>
@@ -45,7 +45,7 @@
 								<td class="id">
 									<div class="row">
 										<div class="col-5">
-                                            C00{{$item->id}}
+                                            {{$item->id}}
                                         </div>
 										<div class="col-4">
 											<a href="#" class="text-center">
@@ -88,7 +88,7 @@
 								<td class="startdate">{{$item['startdate']}}</td>
 								<td class="enddate">{{$item['enddate']}}</td>
 								<td class="monthlybill">$ {{$item['monthlybill']}}</td>
-								<td class="monthlyduedate"> {{$item->monthlyduedate}}</td>
+								<td class="monthlyduedate"> {{$item->monthlyduedate}} th</td>
 								<td>
 									<a href="#" class="text-center">$</a>
 								</td>
@@ -246,21 +246,22 @@
 									<button type="submit" class="btn bg-info" >
 										<i class='material-icons'>check</i> Save Contract
 									</button>
-									<button type="button" class="btn bg-danger float-left" data-dismiss="modal">
+									<button type="button" class="btn bg-danger float-left" onclick="event.preventDefault();
+									document.getElementById('paymeny-form').submit();" data-dismiss="modal">
 										<i class='material-icons'>close</i> Cancel
 									</button>
-									{{-- onclick="event.preventDefault();
-									document.getElementById('paymeny-form').submit();" --}}
+									
 								</div>
+							</form>
+							<form id="paymeny-form" action="{{action('paymentController@store')}}" method="POST" style="display: none;">
+								@csrf
+								@method('POST')
 							</form>
 						</div>
 					</div>
 				</div>
 				<div>
 			</div>
-			{{-- <form id="paymeny-form" action="{{action('paymentController@store')}}" method="POST" style="display: none;">
-				@csrf
-			</form> --}}
         {{-- //  modelad edit a new contract --}}
 			<div class="modal fade bd-example-modal-lg" id="editContract" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-lg">
