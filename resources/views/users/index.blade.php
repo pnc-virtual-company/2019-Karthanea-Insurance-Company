@@ -11,7 +11,7 @@
                         <div class="card">
                             
                             <div class="card-body">
-                                
+
                                 
                                 <div class="row"><div class="col-md-12">&nbsp;</div></div>
                                 
@@ -56,7 +56,7 @@
                                       
                                         
                                         </table>
-                                    
+                                        
                                     </div>
                                     <div class="card-footer">     
                                         <div class="row">
@@ -67,6 +67,13 @@
                                     </div>
                                 </div>
                             </div>
+                          <div class="card-footer">
+                                <div class="row">
+                                        <div class="col-md-12">
+                                            <a class="btn bg-primary text-white" href="{{url('users/create')}}"><i class="material-icons">control_point</i> @lang('Add a new user')</a>
+                                        </div>
+                                    </div>
+                          </div>
                             
                         </div>
                         
@@ -92,15 +99,15 @@
                         @method('DELETE')
                             
                         <div class="modal-footer">
+                            <button type="submit" class="btn btn-sm btn-info">OK</button>
                             <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Cancel</button>
-                            <button type="submit" class="btn btn-sm btn-primary">OK</button>
                         </div>
                     </form>
                     </div>
                     </div>
                 </div>
-    <script src="{{asset('js/app.js')}}"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+                <script src="{{asset('js/app.js')}}"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
           <script type="text/javascript">
                           $('#deleteModal').on('show.bs.modal',function(event){

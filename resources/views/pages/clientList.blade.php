@@ -32,6 +32,27 @@
                                         <td>{{$item->email}}</td>
                                     </tr>
                                 @endif
+                        @foreach ($client as $value=>$item)
+                            @if ($item->status=='1')
+                                <tr>
+                                    <td>
+
+                                        <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" 
+                                        data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" 
+                                        data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                    
+                                        <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
+
+                                            <input type="checkbox" name="disable[]" id="disable">
+                                        </a>
+                                        {{$item->id}}
+                                    </td>
+                                    <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                    <td>{{$item->address}}</td>
+                                    <td>{{$item->phonenumber}}</td>
+                                    <td>{{$item->email}}</td>
+                                </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -48,6 +69,8 @@
           <div class="modal-content">
             <form action="" method="POST" id="editstatus">
                 @csrf
+            <form action="{{route('client.update',$item->id)}}" method="POST" id="editstatus">
+                @csrf 
                 @method('PATCH')
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Disable Client</h5>
@@ -213,7 +236,9 @@
           
           <script src="{{asset('js/app.js')}}"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script>
+
+    <script>
+
        $('#editClientActive').on('show.bs.modal',function (event){
             var button = $(event.relatedTarget)
             var firstname = button.data('firstname')
@@ -238,12 +263,17 @@
             $('#editClientList').attr('action',url);
             });
 
-            $('#disableClient').on('show.bs.modal',function (event){
-            var button = $(event.relatedTarget)
-            var id = button.data('id')
-            var modal = $(this)
-            var url ="{{url('/client')}}/"+ id;
-            $('#editstatus').attr('action',url);   
+            $(document).ready(fuction() {
+                $('#disableClient').click(function() {
+                    $('#disableClient').on('show.bs.modal',function (event){
+                    var button = $(event.relatedTarget)
+                    var id = button.data('id')
+                    var modal = $(this)
+                    var url ="{{url('/client')}}/"+ id;
+                    $('#editstatus').attr('action',url); 
+                    });
+                });
+
             });
         </script>
 @endsection

@@ -60,7 +60,6 @@
                     {{-- list all of client bill --}}
                     <div class="table-responsive">
                         <div id="showBill"></div>
-                        </div>
                     </div>
                 </div>
             </div>

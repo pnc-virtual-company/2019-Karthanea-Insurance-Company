@@ -9,6 +9,9 @@ use \App\BillStatus;
 use \App\Contract;
 use \App\ContractType;
 use \App\Contractstatus;
+use DateTime;
+use DateInterval;
+use DatePeriod;
 class paymentController extends Controller
 {
     /**
@@ -16,10 +19,6 @@ class paymentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function __construct(){
-        $this->middleware('auth');
-    }
-
     public function index()
     {
         $client = Client::where('status',1)
@@ -27,6 +26,16 @@ class paymentController extends Controller
                 ->get();
         $contract = Contract::all();
         return view("pages.paymentList",compact('client','contract'));
+    }
+       
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -64,6 +73,7 @@ class paymentController extends Controller
 
         return redirect('/payment');
     }
+
 
     /**
      * Display the specified resource.
@@ -113,6 +123,37 @@ class paymentController extends Controller
        $billDiff = $bill->diff($contract->bill);
 
        return view('pages.paymentList',compact('contract','bill'));
+    //     $client = Client::all();
+    //     $contract = Contract::all();
+    //     $contract1 = Contract::find(1);
+    //     $contractStatus = \App\Contractstatus::all();
+    //     $contracttype = Contracttype::all();
+    //     $bill = Bill::all();
+    //     //dd($contract1);
+
+    //     $start    = new DateTime($contract1->startdate);
+    //    // $start->modify('first day of this month');
+    //     $end      = new DateTime($contract1->enddate);
+    //     //dd($contract1->enddate);
+    //     $end->modify('first day of next month');
+    //     $interval = DateInterval::createFromDateString('1 month');
+        
+    //     $period   = new DatePeriod($start, $interval, $end);
+        
+    //     return view('pages.paymentList',compact('period','start','end','contractStatus','client','contract','contracttype','bill' ));
+    // }
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  int  $id
+    //  * @return \Illuminate\Http\Response
+    //  */
+    // public function edit($id)
+    // {
+    // //     $contract = Contract::find($id);
+    // //    $bill = Bill::all();
+    // //    $billDiff = $bill->diff($contract->bill);
+    // //    return view('pages.paymentList',compact('contract','bill'));
     }
 
     /**
@@ -128,7 +169,8 @@ class paymentController extends Controller
         $contract->update($request->all());
         $bill = Bill::all();
         $billDiff = $bill->diff($contract->bill);
-        
+        $bill = \App\Contract::findOrFail($id);
+        $bill->update($request->all());
         return  redirect('/payment');
     }
 
@@ -142,4 +184,13 @@ class paymentController extends Controller
     {
         //
     }
+
+    public function listCContract($id)
+    {
+        $clientContract = Client::find($id);
+        $clientContract->client;
+        return view('pages.paymentList', compact('clientContract'));
+    }
+
+    
 }
