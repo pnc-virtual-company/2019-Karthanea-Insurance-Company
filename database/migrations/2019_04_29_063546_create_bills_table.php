@@ -15,24 +15,12 @@ class CreateBillsTable extends Migration
     {
         Schema::create('bills', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('status');
+            $table->date('month');
+            $table->integer('amount');
+            $table->date('duedate');
             $table->timestamps();
+
         });
-
-        //Insert the default admin user
-        DB::table('bills')->insert(
-            array(
-                [
-                'id' => 1,
-                'status' => 'Unpaid',
-                ],
-                [
-                'id' => 2,
-                'status' => 'Paid',
-                ]
-            )
-
-        );
     }
 
 

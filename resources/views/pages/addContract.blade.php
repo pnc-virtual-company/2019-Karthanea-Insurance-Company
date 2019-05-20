@@ -35,7 +35,7 @@
 								<th>Start</th>
 								<th>End</th>
 								<th>Monthly bill</th>
-								<th>Monthly Due Date</th>
+								<th>Due Date</th>
 								<th>Bill</th>
 							</tr>
 						</thead>
@@ -45,7 +45,7 @@
 								<td class="id">
 									<div class="row">
 										<div class="col-5">
-                                            C00{{$item->id}}
+                                            {{$item->id}}
                                         </div>
 										<div class="col-4">
 											<a href="#" class="text-center">
@@ -88,7 +88,7 @@
 								<td class="startdate">{{$item['startdate']}}</td>
 								<td class="enddate">{{$item['enddate']}}</td>
 								<td class="monthlybill">$ {{$item['monthlybill']}}</td>
-								<td class="monthlyduedate"> {{$item->monthlyduedate}}</td>
+								<td class="monthlyduedate"> {{$item->monthlyduedate}} th</td>
 								<td>
 									<a href="#" class="text-center">$</a>
 								</td>
@@ -134,15 +134,14 @@
 										<label for="">Bill</label>
 										</div>
 										<div class="col-4">
-										<select name="bill_id" id="bill_id" class="browser-default custom-select" value="">
-                                            @foreach ($bill as $item)
+										<select name="billStatus_id" id="billStatus_id" class="browser-default custom-select" value="">
+                                            @foreach ($billStatus as $item)
 												@if($item->id==1)
 													<option value="{{$item->id}}" >{{$item->status}} </option>
 												@endif
                                             @endforeach
 										</select>
 									</div>
-									<input type="number" value="1" class="form-control d-none" name="bill_id" id="bill_id" required>
 									</div>
 									<div class="form-group ">
 										<div class="row">
@@ -193,7 +192,7 @@
 														<div class="col-9">
 															<div class="row">
 																<div class="col-12">
-																	<input type='text' name="startdate" class='startdate' placeholder="mm/dd/yy"  required/>
+																	<input type='text' name="startdate" id="start" class='startdate' placeholder="mm/dd/yy"  required/>
 																</div>
 															</div>
 														</div>
@@ -225,17 +224,17 @@
 													<label for="" >Monthly bill</label>
 												</div>
 												<div class="col-6">
-													<input type="text" id="monthlybill" name="monthlybill" class="form-control" required>
+													<input type="text" value="" name="monthlybill" class="form-control" required>
 													</div>
 												</div>
 											</div>
 											<div class="col-7">
 												<div class="row">
 													<div class="col-4">
-														<label for="" >Monthly Due Date</label>
+														<label for="" >Monthly</label>
 													</div>
 													<div class="col-6">
-														<input type="text" id="monthlyduedate" name="monthlyduedate" class="form-control monthlyduedate" required>
+														<input type="text" name="monthlyduedate" class="form-control" required>
 														</div>
 													</div>
 												</div>
@@ -244,13 +243,19 @@
 									</div>
 								</div>
 								<div class="modal-footer mr-5">
-									<button type="submit" class="btn bg-info ">
+									<button type="submit" class="btn bg-info" >
 										<i class='material-icons'>check</i> Save Contract
 									</button>
-									<button type="button" class="btn bg-danger float-left" data-dismiss="modal">
+									<button type="button" class="btn bg-danger float-left" onclick="event.preventDefault();
+									document.getElementById('paymeny-form').submit();" data-dismiss="modal">
 										<i class='material-icons'>close</i> Cancel
 									</button>
+									
 								</div>
+							</form>
+							<form id="paymeny-form" action="{{action('paymentController@store')}}" method="POST" style="display: none;">
+								@csrf
+								@method('POST')
 							</form>
 						</div>
 					</div>
@@ -450,5 +455,14 @@
             $('#editForm').attr('action',url);   
         });
         </script>
-            
+        <script>
+			// $(document).ready(function(){
+				var monthStart = $('#start').val();
+				var month = $('#monthBill').val();
+				function addBill(){
+					month = monthStart;
+					alert(month);
+				}
+			// });
+		</script>
 @endsection

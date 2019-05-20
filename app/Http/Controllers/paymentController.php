@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use \App\Client;
 use \App\Bill;
+use \App\BillStatus;
 use \App\Contract;
 use \App\ContractType;
 use \App\Contractstatus;
@@ -27,15 +28,6 @@ class paymentController extends Controller
         $contract = Contract::all();
         return view("pages.paymentList",compact('client','contract'));
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -43,9 +35,34 @@ class paymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        $contract = Contract::find($id);
+        $billDate = new Bill;
+
+        $startdate = $request->startdate;
+        $enddate= $request->enddate;
+        $amountBill = $request->monthlybill;
+        $monthDue= $request->monthlyduedate;
+
+        $start    = new DateTime($contract->startdate);
+       // $start->modify('first day of this month');
+        $end      = new DateTime($contract->enddate);
+      
+        $interval = DateInterval::createFromDateString('1 month');
+        //$interval = DateInterval::createFromDateString('1 day');
+        $period   = new DatePeriod($start, $interval, $end);
+        
+        foreach($period as $data){
+            $billDate->month = $start;
+            $billDate->duedate= $end;
+            $billDate->amount= $amountBill;
+
+            $billDate->save();
+        }
+        // $bills = Bill::create($request->all());
+
+        return redirect('/payment');
     }
 
     /**
@@ -64,6 +81,10 @@ class paymentController extends Controller
         $data['status']= $contractStatus;
         $contractType = ContractType::all();
         $data['type'] = $contractType;
+        $bill = Bill::all();
+        $data['bills'] = $bill;
+        $billStatus = BillStatus::all();
+        $data['states'] = $billStatus;
 
         return response()->json($data);
         
@@ -74,10 +95,10 @@ class paymentController extends Controller
      */
     public function showBill(Request $request)
     {
-        $bills = Bill::all();
-        $json['bills'] = $bills;
+        // $bills = Bill::all();
+        // $json['bills'] = $bills;
 
-        return response()->json($data);
+        // return response()->json($json);
     }
     /**
      * Show the form for editing the specified resource.

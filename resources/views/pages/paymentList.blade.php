@@ -59,20 +59,7 @@
                     </div>
                     {{-- list all of client bill --}}
                     <div class="table-responsive">
-                        <table  id="myTabless" class="table table-striped table-bordered table-hover d-none">
-                            <thead class="bg-dark text-white">
-                                <tr>
-                                    <th>Month</th>
-                                    <th>Amount</th>
-                                    <th>Status</th>
-                                    <th>Due date</th>
-                                    <th>Bill</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-                            </tbody>
-                            </table>
+                        <div id="showBill"></div>
                         </div>
                     </div>
                 </div>
@@ -84,7 +71,8 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
 <script>
     function clientDetail(id){
         var url = "{{ url('payment/showData') }}";
@@ -94,9 +82,8 @@
             data: {_token: "{{csrf_token()}}",id:id},
 
             success:function(data){
+                var billTable = '<table id="myTabless" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
                 var clientContractTable = '<table id="table2" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
-                for(var k = 0; k <data['status'].length;k++){}
-                for(var j = 0; j <data['type'].length;j++){}
                 for(var i = 0; i <data['contracts'].length; i++) {
                     if(data.contracts[i].client_id == id && data.type[i].id == data.contracts[i].contracttype_id ){
                         clientContractTable +='<tr> <td class=" text-center"> CO00' + data.contracts[i].id +'</td><td>'
@@ -110,29 +97,29 @@
                 }
                 clientContractTable += '</tbody></table>';
                 $("#tableClientContract").html(clientContractTable);
-                alert(data.contracts[i].id);
+                // show bill table of contract
+                for(var i = 0; i <data['bills'].length; i++) {
+                    for(var k = 0; k <data['states'].length; k++) {
+                        var monthbill = new Date(data.bills[i].month);
+                        var month = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"][monthbill.getMonth()];
+                        var getMonthBill = month + ',' + monthbill.getFullYear();
+                        if(data.bills[i].billStatus_id == data.states[k].id){
+                            billTable +='<tr><td class=" text-center">' + getMonthBill +'</td><td>'
+                                                +data.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
+                                                +data.states[k].status+"</td><td>"
+                                                +data.bills[i].duedate+"</td>"
+                                                +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+                        }
+                    }
+                }
+                billTable +='</tbody></table>';
+                $("#showBill").html(billTable);
+
             },
             error:function(){
                 alert("Data Not Founded.");
             },
-        });
-    }
-</script>
-<script>
-    var billId = document.getElementById('bill').value();
-    function showBill(billId){
-        // alert('successfull');
-        var url = "{{ url('payment/showBill') }}";
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: {_token: "{{csrf_token()}}",id:id},
-        success:function(json){
-            alert('Hello');
-        },
-        error:function(){
-            alert('Unsuccessful');
-        }
         });
     }
 </script>
