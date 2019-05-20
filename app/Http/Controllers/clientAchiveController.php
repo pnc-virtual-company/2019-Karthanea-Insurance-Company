@@ -40,6 +40,7 @@ class clientAchiveController extends Controller
     {
        
         $client = Clientlist::create($request->all());
+
         return redirect('/clientAchive');
 
 

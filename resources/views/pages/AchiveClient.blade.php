@@ -83,7 +83,7 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <form method="POST" action="{{action('ClientController@store')}}">
+                <form method="POST" action="{{action('clientAchiveController@store')}}">
                 @csrf
                 <div class="modal-body">
                         <div class="form-group">
