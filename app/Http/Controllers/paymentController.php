@@ -41,16 +41,7 @@ class paymentController extends Controller
     public function store(Request $request)
     {
         $contract = Contract::all();
-        $billDate = new Bill;
-        $start    = new DateTime($contract->startdate);
-        $end      = new DateTime($contract->enddate);
-        $interval = DateInterval::createFromDateString('1 month');
-        $period   = new DatePeriod($start, $interval, $end);
         
-        foreach($period as $dt){ 
-           $billDate= $dt->format("Y-m") . PHP_EOL; 
-
-        }
         return redirect('/payment');
     }
 
@@ -135,19 +126,22 @@ class paymentController extends Controller
 
 
         // Start insert Bill
-        $insertedContractID = " bla bla";
+        // $insertedContractID = " bla bla";
+        $billDate = new Bill();
         $start_date = $request->input('month');
-        $end_date = '2015-06-30';
+        $end_date = $request->input('duedate');
         while (strtotime($start_date) <= strtotime($end_date)) {
             // Month
             $start_date = date ("Y-m-d", strtotime("+1 month", strtotime($start_date)));
-
+            $billDate->month->$request->start_date;
             // Due Date
-            $dueDate = "start_date + day of Monthly Due Date";
-            echo $start_date."<br>";
+            // $dueDate = "start_date + day of Monthly Due Date";
+            $billDate->duedate->$request->end_date;
+            // echo $start_date."<br>";
+
+            $billDate->save();
         }
-
-
+        return redirect('/payment');
     }
     /**
      * Update the specified resource in storage.
