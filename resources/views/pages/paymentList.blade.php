@@ -85,7 +85,6 @@
             data: {_token: "{{csrf_token()}}",id:id},
 
             success:function(data){
-                var billTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
                 var clientContractTable = '<table id="myTabless" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <data['contracts'].length; i++) {
                     if(data.contracts[i].client_id == id && data.type[i].id == data.contracts[i].contracttype_id ){
@@ -95,26 +94,42 @@
                                             +data.contracts[i].startdate +'</td><td>'
                                             +data.contracts[i].enddate +'</td><td>'
                                             +data.contracts[i].monthlybill +'</td>'
-                                            +'<td> <a href="#" onclick="showBill()" id="bill" value="(data.contracts[i].id)"> <i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">arrow_drop_down</i></i> </a> </td> </tr>';
+                                            +'<td> <a href="#" onclick="showBillData('+data.contracts[i].id+')"><i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">arrow_drop_down</i></i> </a> </td> </tr>';
                     }
                 }
                 clientContractTable += '</tbody></table>';
                 $("#tableClientContract").html(clientContractTable);
+            },
+            error:function(){
+                alert("Data Not Founded.");
+            },
+        });
+    }
+</script>
+<script>
+    function showBillData(id){
+        var url = "{{ url('payment/showBill') }}";
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: {_token: "{{csrf_token()}}",id:id},
                 // show bill table of contract
-                for(var i = 0; i <data['bills'].length; i++) {
-                    for(var k = 0; k <data['states'].length; k++) {
-                        var monthbill = new Date(data.bills[i].month);
+                success:function(json){
+                var billTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
+                for(var i = 0; i <json['bills'].length; i++) {
+                    for(var k = 0; k <json['states'].length; k++) {
+                        var monthbill = new Date(json.bills[i].month);
                         var month = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"][monthbill.getMonth()];
                         var getMonthBill = month + ',' + monthbill.getFullYear();
-                        var startdate= data.bills[i].month;
-                        var enddate = data.bills[i].duedate;
+                        var startdate= json.bills[i].month;
+                        var enddate = json.bills[i].duedate;
                         for(var t = startdate; t<= enddate; t++){
-                            if(data.bills[i].billStatus_id == data.states[k].id){
+                            if(json.bills[i].billStatus_id == json.states[k].id && json.bills[i].contract_id == id){
                                 billTable +='<tr><td class=" text-center">' + getMonthBill +'</td><td>'
-                                                    +data.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
-                                                    +data.states[k].status+"</td><td>"
-                                                    +data.bills[i].duedate+"</td>"
+                                                    +json.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
+                                                    +json.states[k].status+"</td><td>"
+                                                    +json.bills[i].duedate+"</td>"
                                                     +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
                             }
                         }
@@ -122,12 +137,12 @@
                 }
                 billTable +='</tbody></table>';
                 $("#showBill").html(billTable);
-                console.log(data);
             },
             error:function(){
-                alert("Data Not Founded.");
+                alert(error);
             },
         });
     }
+
 </script>
 @endsection

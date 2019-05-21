@@ -63,8 +63,6 @@ class paymentController extends Controller
         $data['type'] = $contractType;
         $bill = Bill::all();
         $data['bills'] = $bill;
-        $billStatus = BillStatus::all();
-        $data['states'] = $billStatus;
 
         return response()->json($data);
         
@@ -75,10 +73,12 @@ class paymentController extends Controller
      */
     public function showBill(Request $request)
     {
-        // $bills = Bill::all();
-        // $json['bills'] = $bills;
+        $bills = Bill::all();
+        $billStatus = BillStatus::all();
+        $json['states'] = $billStatus;
+        $json['bills'] = $bills;
 
-        // return response()->json($json);
+        return response()->json($json);
     }
     /**
      * Show the form for editing the specified resource.
