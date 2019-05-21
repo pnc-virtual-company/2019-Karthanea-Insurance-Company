@@ -31,6 +31,7 @@ class ClientController extends Controller
      */
     public function create()
     {
+       
         $client = Client::all();
         return view('pages.clientList',compact('client'));
     }
@@ -44,9 +45,14 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         
+        
         $client = Client::create($request->all());
-
+        // $checkbox=$request->checkbox;       
+        // foreach($checkbox as $key=>$item){
+        //     $client->$item->state->attach($item); 
+        // }
         return redirect('/client');
+
     }
 
     /**
@@ -77,7 +83,6 @@ class ClientController extends Controller
 //        $client->update($request->all());
 //         return  redirect('/client');
 
-
     }
 
     /**
@@ -91,12 +96,6 @@ class ClientController extends Controller
     {
 
         $client = Client::findOrFail($id);//seect * from Post where id=$id
-        if($client->status == 1){
-            $client->status = 0;
-          } else {
-            $client->status = 1;
-          }
-        
         // if($client->status == 1){
         //     $client->status = 0;
         //     $client->update($request->all());
@@ -108,6 +107,8 @@ class ClientController extends Controller
         return  redirect('/client');
 
     }
+   
+
     /**
      * Remove the specified resource from storage.
      *
@@ -116,6 +117,6 @@ class ClientController extends Controller
      */
     public function destroy($id)
     {
-        
+        //
     }
 }

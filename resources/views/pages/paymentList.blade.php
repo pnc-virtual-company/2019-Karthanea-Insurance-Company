@@ -16,21 +16,21 @@
                     {{-- list of client --}}
                     <div class="table-responsive">
                         <div id="clientHasContract">
-                            <table id="myTables" class="table table-striped table-bordered table-hover">
+                            <table id="myTable1" class="table table-striped table-bordered table-hover">
                                 <thead class="bg-dark text-white">
                                     <tr>
                                         <th>Disable ID</th>
                                         <th>Clients</th>
                                         <th>Address</th>
                                         <th>Phone</th>
-                                        <th>Email</th>
+                                        <th>email</th>
                                         <th>Contract</th>
                                     </tr>
                                 </thead>
                                  <tbody>
                                     @foreach ($client as $value)
                                         @foreach ($contract as $item)
-                                            @if ($value->id == $item->client_id)
+                                         @if ($value->id == $item->client_id)
                                                 <tr>
                                                     <td class="text-center">
                                                         CL00{{$value->id}}
@@ -38,7 +38,9 @@
                                                         <td>{{$value->firstname}} {{$value->lastname}}</td>
                                                         <td>{{$value->address}}</td>
                                                         <td>{{$value->phonenumber}}</td>
-                                                        <td>{{$value->email}}</td>
+                                                        <td>{{$value->email}}
+                                                        
+                                                        </td>
                                                         <td> 
                                                             <a  href="#" class="toggleContractTable" 
                                                             onclick="clientDetail({{$value->id}})" >
@@ -46,7 +48,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                            @endif
+                                            @endif  
                                         @endforeach
                                     @endforeach
                                 </tbody> 
@@ -61,12 +63,14 @@
                     <div class="table-responsive">
                         <div id="showBill"></div>
                     </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/table.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
@@ -81,8 +85,8 @@
             data: {_token: "{{csrf_token()}}",id:id},
 
             success:function(data){
-                var billTable = '<table id="myTabless" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
-                var clientContractTable = '<table id="table2" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
+                var billTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
+                var clientContractTable = '<table id="myTabless" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <data['contracts'].length; i++) {
                     if(data.contracts[i].client_id == id && data.type[i].id == data.contracts[i].contracttype_id ){
                         clientContractTable +='<tr> <td class=" text-center"> CO00' + data.contracts[i].id +'</td><td>'
@@ -103,18 +107,22 @@
                         var month = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"][monthbill.getMonth()];
                         var getMonthBill = month + ',' + monthbill.getFullYear();
-                        if(data.bills[i].billStatus_id == data.states[k].id){
-                            billTable +='<tr><td class=" text-center">' + getMonthBill +'</td><td>'
-                                                +data.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
-                                                +data.states[k].status+"</td><td>"
-                                                +data.bills[i].duedate+"</td>"
-                                                +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+                        var startdate= data.bills[i].month;
+                        var enddate = data.bills[i].duedate;
+                        for(var t = startdate; t<= enddate; t++){
+                            if(data.bills[i].billStatus_id == data.states[k].id){
+                                billTable +='<tr><td class=" text-center">' + getMonthBill +'</td><td>'
+                                                    +data.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
+                                                    +data.states[k].status+"</td><td>"
+                                                    +data.bills[i].duedate+"</td>"
+                                                    +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+                            }
                         }
                     }
                 }
                 billTable +='</tbody></table>';
                 $("#showBill").html(billTable);
-
+                console.log(data);
             },
             error:function(){
                 alert("Data Not Founded.");

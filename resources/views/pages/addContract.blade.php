@@ -1,5 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
+<body>
 <div class="content">
 	<div class="container mt-4">
 		<div class="row shadow-lg bg-light">
@@ -53,9 +54,7 @@
 													data-id="{{$item->id}}" data-status="{{$item->status}}" data-startdate="{{$item->startdate}}" 
 													data-contracttype_id="{{$item->contracttype_id}}" data-monthlyduedate="{{$item->monthlyduedate}}" 
 													data-enddate="{{$item->enddate}}" data-monthlybill="{{$item->monthlybill}}" data-client_id="{{$item->client_id}}" 
-
 													 data-bill_id="{{$item->bill_id}}" data-toggle="modal">
-
 													<i class="material-icons text-success">edit</i>
 												</a>
 											</a>
@@ -69,7 +68,7 @@
                                         </div>
 										<div class="col-1">
 											<a href="#" id="edit-item">
-												<i class="material-icons ml-2 text-info">call</i>
+												<i class="material-icons ml-5 text-info">call</i>
 											</a>
 										</div>
 									</div>
@@ -80,13 +79,12 @@
                                 			{{$item->contracttype->contracttype}} 
                                         </div>
 										<div class="col-1">
-												<a href="{{ url('pdf') }}" ><i class="material-icons text-success">description</i></a>
+											<a href="{{ url('pdf') }}" ><i class="material-icons text-success">description</i></a>
 										</div>
 										
 									</div>
 									
 								</td>
-
 								
 								<td class="status">{{$item->contractStatus->status}}</td>
 								<td class="startdate">{{$item->startdate}}</td>
@@ -124,16 +122,8 @@
 								<div class="col-2">
 									<label for="">Client</label>
 								</div>
-								<div class="col-12">
-									<div class="col-12">
-										<select name="client_id" id="client_id" class="browser-default custom-select" required>
-											@foreach ($client as $item)
-												@if ($item->status==1)
-											    	<option value="{{$item->id}}">{{$item->firstname}} {{$item->lastname}}</option>
-												@endif
-                       @endforeach
+								
 									<div class="col-4">
-
 										<select name="client_id" id="client_id" class="browser-default custom-select" required>
 											@foreach ($client as $item)
 												@if($item->status ==1)
@@ -142,18 +132,23 @@
 												@endforeach
 										</select>
 									</div>
-                                    <div class="col-2">
+                                                        
+									<div class="col-2">
 										<label for="">Bill</label>
-										</div>
+									</div> 
+									
 										<div class="col-4">
-										<select name="billStatus_id" id="billStatus_id" class="browser-default custom-select" value="">
-                                            @foreach ($billStatus as $item)
-												@if($item->id==1)
-													<option value="{{$item->id}}" >{{$item->status}} </option>
-												@endif
-                                            @endforeach
-										</select>
+											<select name="bill_id" id="bill_id" class="browser-default custom-select" value="">
+												@foreach ($billStatus as $item)
+													@if($item->id==1)
+														<option value="{{$item->id}}" >{{$item->status}} </option>
+													@endif
+												@endforeach
+											</select>
+										</div>
+								
 									</div>
+									
 									</div>
 									<div class="form-group ">
 										<div class="row">
@@ -163,7 +158,7 @@
 													</div>
 													<div class="col-4">
 														<div class="input-group ">
-															<select name="contracttype_id" id="" class="browser-default custom-select disabled" required>
+															<select name="contracttype_id" class="browser-default custom-select" required>
                                                                 @foreach ($contracttype as $item)
                                                                     <option value="{{$item->id}}">{{$item->contracttype}}</option>
                                                                @endforeach
@@ -180,21 +175,14 @@
 														<div class="col-2">
 															<label for="">Status</label>
 														</div>
-														<div class="col-10">
-															<select class="browser-default custom-select" name="status_id" id="status_id" required>
-																@foreach ($contractStatus as $item)
-																	<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
-																@endforeach
-															</select>
 														<div class="col-4">
-
 																<select class="browser-default custom-select" name="status_id" id="status_id" required>
 																		@foreach ($contractStatus as $item)
 																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
 																		@endforeach
-
 																</select>
 														</div>
+													
 											</div>
 										</div>
 										<div class="form-group">
@@ -221,23 +209,8 @@
 												<div class="col-2">
 													<label for="" >Monthly bill</label>
 												</div>
-												<div class="col-6">
-													<input type="text" value="" name="monthlybill" class="form-control" required>
-													</div>
-												</div>
-											</div>
-											<div class="col-7">
-												<div class="row">
-													<div class="col-4">
-														<label for="" >Monthly</label>
-													</div>
-													<div class="col-6">
-														<input type="text" name="monthlyduedate" class="form-control" required>
-														</div>
-													</div>
 												<div class="col-4">
 													<input type="text" id="monthlybill" name="monthlybill" class="form-control" required>
-
 												</div>
 										
 												<div class="col-2">
@@ -251,19 +224,14 @@
 								</div>
 								
 								<div class="modal-footer mr-5">
-									<button type="submit" class="btn bg-info" >
+									<button type="submit" id="addData"  class="btn bg-info ">
 										<i class='material-icons'>check</i> Save Contract
 									</button>
-									<button type="button" class="btn bg-danger float-left" onclick="event.preventDefault();
-									document.getElementById('paymeny-form').submit();" data-dismiss="modal">
+									<button type="button" class="btn bg-danger float-left" data-dismiss="modal">
 										<i class='material-icons'>close</i> Cancel
 									</button>
 									
 								</div>
-							</form>
-							<form id="paymeny-form" action="{{action('paymentController@store')}}" method="POST" style="display: none;">
-								@csrf
-								@method('POST')
 							</form>
 						</div>
 					</div>
@@ -281,7 +249,6 @@
                             @csrf
                             @method('PATCH')
 								<div class="modal-body">
-
 									
                                             <div class="form-group ">
                                                     <div class="row">
@@ -294,7 +261,6 @@
 																			<option name="status_id" id="status_id" selected value="{{$item->id}}">{{$item->status}}</option>
 																		 @endforeach
                                                                            
-
                                                                         </select>
 																</div>
 																	<div class="col-2">
@@ -374,17 +340,6 @@
             $('#editForm').attr('action',url);   
         });
         </script>
-        <script>
-			// $(document).ready(function(){
-				var monthStart = $('#start').val();
-				var month = $('#monthBill').val();
-				function addBill(){
-					month = monthStart;
-					alert(month);
-				}
-			// });
-		</script>
-@endsection
 			{{-- contracttype --}}
 		  
   <div class="modal fade" id="selectContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -420,12 +375,9 @@
 											   
 											</table>
 										</div>
-									  </div>
+									</div>
 							 </div>
-						
-	
 						</div>
-				
 				<div class="modal-footer">
 				  <button type="submit" class="btn btn-info" data-dismiss="modal">OK</button>
 				  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -433,5 +385,33 @@
 			  </div>
 			  </div>
 			</div>
-		 
+		</body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		 <script>
+			$("#addData").click(function() {
+				var url = 'payment/addData';
+				$.ajax({
+					type: 'post',
+					url: url,
+					data: {
+						'_token': $('input[name=_token]').val(),
+						'month': $('input[name=startdate]').val(),
+						'amount': $('input[name=monthlybill]').val(),
+						'duedate': $('input[name=monthlyduedate]').val(),
+					},
+					success: function(data) {
+						alert('successfull');
+						// if ((data.errors)){
+						// $('.error').removeClass('hidden');
+						// 	$('.error').text(data.errors.name);
+						// }
+						// else {
+						// 	$('.error').addClass('hidden');
+						// 	$('#table').append("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.name + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
+						// }
+					}
+					console.log(url);
+				});
+			});
+		 </script>
 @endsection

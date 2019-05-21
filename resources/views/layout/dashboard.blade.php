@@ -246,7 +246,7 @@
 
 
   {{-- modal error --}}
-  <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
+  {{-- <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script> --}}
 
   <script src="https://unpkg.com/default-passive-events"></script>
   <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
@@ -264,26 +264,6 @@
   <script src="{{asset('demo/demo.js')}}"></script>
   <script>
     //fade Bill
-    $(document).ready(function(){
-        $(".toggleBill").click(function(){
-          $("#myTabless").fadeToggle("slow");
-      });
-    });
-
-    //fade payment
-    $(document).ready(function(){
-      $(".togglePayment").click(function(){
-        $("#table2").fadeToggle("slow");
-      });
-    });
-    
-    //fade table call
-    $(document).ready(function(){
-      $(".toggleCallHistory").click(function(){
-        $("#myTable2").fadeToggle("slow");
-      });
-    });
-
     $(document).ready(function() {
       md.initDashboardPageCharts();
       $('#example').DataTable();                
