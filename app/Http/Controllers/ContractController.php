@@ -10,6 +10,9 @@ use App\BillStatus;
 use App\Contractstatus;
 use App\Contracttype;
 use  PDF;
+use DateTime;
+use DateInterval;
+use DatePeriod;
 class ContractController extends Controller
 {
     /**
@@ -63,11 +66,15 @@ class ContractController extends Controller
         // End date
         $end_date = $contract->enddate;
         $billStatusId = 1;
-        // dd($contractId);
-        while (strtotime($start_date) <= strtotime($end_date)) {
+        // get start date and end date
+        $begin = new DateTime( "$start_date" );
+        $end   = new DateTime( "$end_date" );
+        
+        for($i = $begin; $i <= $end; $i->modify('+1 month')){
+            
             $billDate = new Bill();
-            $start_date = date ("Y-m-d", strtotime("+1 month", strtotime($start_date)));
-            $due_date = date ("Y-m-$dueDate", strtotime("+1 month", strtotime($start_date)));
+            $start_date=$i->format("Y-m-d");
+            $due_date=$i->format("Y-m-$dueDate");
             $billDate->month = $start_date;
             $billDate->amount = $amount;
             $billDate->duedate = $due_date;
@@ -76,7 +83,6 @@ class ContractController extends Controller
 
             $billDate->save();
         }
-
         return redirect('/contract');
     }
 

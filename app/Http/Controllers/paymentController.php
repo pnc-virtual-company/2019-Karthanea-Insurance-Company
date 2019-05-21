@@ -28,7 +28,6 @@ class paymentController extends Controller
         
         $contract = Contract::all();
         $client = Client::where('status',1)
-                ->groupBy('id')
                 ->get();
         return view("pages.paymentList",compact('client','contract'));
     }
