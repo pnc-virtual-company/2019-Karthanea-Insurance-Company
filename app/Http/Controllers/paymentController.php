@@ -35,9 +35,9 @@ class paymentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
-        $contract = Contract::find($id);
+        $contract = Contract::find();
         $billDate = new Bill;
 
         $startdate = $request->startdate;
@@ -60,6 +60,7 @@ class paymentController extends Controller
 
             $billDate->save();
         }
+        dd($period);
         // $bills = Bill::create($request->all());
 
         return redirect('/payment');

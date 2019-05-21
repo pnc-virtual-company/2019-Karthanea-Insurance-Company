@@ -258,26 +258,6 @@
   <script src="{{asset('demo/demo.js')}}"></script>
   <script>
     //fade Bill
-    $(document).ready(function(){
-        $(".toggleBill").click(function(){
-          $("#myTabless").fadeToggle("slow");
-      });
-    });
-
-    //fade payment
-    $(document).ready(function(){
-      $(".togglePayment").click(function(){
-        $("#table2").fadeToggle("slow");
-      });
-    });
-    
-    //fade table call
-    $(document).ready(function(){
-      $(".toggleCallHistory").click(function(){
-        $("#myTable2").fadeToggle("slow");
-      });
-    });
-
     $(document).ready(function() {
       md.initDashboardPageCharts();
       $('#example').DataTable();                

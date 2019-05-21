@@ -16,7 +16,7 @@
                     {{-- list of client --}}
                     <div class="table-responsive">
                         <div id="clientHasContract">
-                            <table id="myTables" class="table table-striped table-bordered table-hover">
+                            <table id="myTable1" class="table table-striped table-bordered table-hover">
                                 <thead class="bg-dark text-white">
                                     <tr>
                                         <th>Disable ID</th>
@@ -60,7 +60,7 @@
                     {{-- list all of client bill --}}
                     <div class="table-responsive">
                         <div id="showBill"></div>
-                        </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -68,6 +68,7 @@
     </div>
 </div>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/table.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
@@ -82,8 +83,8 @@
             data: {_token: "{{csrf_token()}}",id:id},
 
             success:function(data){
-                var billTable = '<table id="myTabless" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
-                var clientContractTable = '<table id="table2" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
+                var billTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
+                var clientContractTable = '<table id="myTabless" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <data['contracts'].length; i++) {
                     for(var j = 0; j <data['type'].length;j++){
                         for(var k = 0; k <data['status'].length;k++){
@@ -119,7 +120,6 @@
                 }
                 billTable +='</tbody></table>';
                 $("#showBill").html(billTable);
-
             },
             error:function(){
                 alert("Data Not Founded.");
