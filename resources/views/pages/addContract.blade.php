@@ -36,7 +36,7 @@
 								<th>Start</th>
 								<th>End</th>
 								<th>Monthly bill</th>
-								<th>Due Date</th>
+								{{-- <th>Due Date</th> --}}
 								<th>Bill</th>
 							</tr>
 						</thead>
@@ -89,7 +89,7 @@
 								<td class="status">{{$item->contractStatus->status}}</td>
 								<td class="startdate">{{$item->startdate}}</td>
 								<td class="enddate">{{$item->enddate}}</td>
-								<td class="monthlyduedate"> {{$item->monthlyduedate}} th</td>
+								<td class="monthlyduedate"> {{$item->monthlyduedate}}</td>
 								<td>
 									<a href="#" class="text-center">$</a>
 								</td>
@@ -224,7 +224,7 @@
 								</div>
 								
 								<div class="modal-footer mr-5">
-									<button type="submit" id="addData"  class="btn bg-info ">
+									<button type="submit" onclick="addData()" class="btn bg-info ">
 										<i class='material-icons'>check</i> Save Contract
 									</button>
 									<button type="button" class="btn bg-danger float-left" data-dismiss="modal">
@@ -269,8 +269,6 @@
 																	<div class="col-4">
 																		<input type='text' name="enddate" id="enddate" class='enddate' placeholder="mm/dd/yy"  required/>
 																	</div>
-																	
-                                                               
                                                         </div>
                                                     </div>
                         
@@ -306,112 +304,84 @@
                                 </div>
                             </div>
                             <div>
-                        </div>
-				<script src="{{asset('js/app.js')}}"></script>
-				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-				<script> 
-        $('#editContract').on('show.bs.modal',function(event){
-            var button = $(event.relatedTarget)
-            var status= button.data('status')
-           
-            var enddate = button.data('enddate')
-            var startdate = button.data('startdate')
-            console.log(status)
-            var monthlybill = button.data('monthlybill')
-            var monthlyduedate = button.data('monthlyduedate')
-            var client_id = button.data('client_id')
-            var bill_id = button.data('bill_id')
-            console.log(client_id)
-            console.log(bill_id)
-            var contracttype_id = button.data('contracttype_id')
-            var id = button.data('id')
-            var modal = $(this)
-            modal.find('#status').attr('value',status)
-           
-            modal.find('#enddate').attr('value',enddate)
-            modal.find('#startdate').attr('value',startdate)
-            modal.find('#monthlybill').attr('value',monthlybill)
-            modal.find('#monthlyduedate').attr('value',monthlyduedate)
-            modal.find('#client_id').attr('value',client_id) 
-            modal.find('#bill_id').attr('value',bill_id)
-            modal.find('#contracttype_id').attr('value',contracttype_id)
-            
-            var url ="{{url('/contract')}}/"+id;
-            $('#editForm').attr('action',url);   
-        });
-        </script>
-			{{-- contracttype --}}
-		  
-  <div class="modal fade" id="selectContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-		  <div class="modal-content">
-			  <div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Select the type</h5>
-			  </div>
-				
-				<div class="modal-body">            
-				 <div class="form-group">
-						 <div class="table-responsive">
-										  <div class="contener">
-										<table id="myTable" class="table table-striped table-bordered" style="width:100%">
-												<thead class="bg-dark text-white">
-													<tr>
-														<th class="text-center ">ID</th>
-														<th> Contract type</th>
-													</tr>
-												</thead>
-												<tbody>
-												  @foreach ($contracttype as $item)
-													<tr >
-														<td class="text-center">
-															
-							   
-															{{$item->id}}
-														</td>
-														<td>{{$item->contracttype}}</td>
-													</tr>
-													@endforeach
-												</tbody>
-											   
-											</table>
+							</div>
+							<div class="modal fade" id="selectContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content">
+										<div class="modal-header">
+										  <h5 class="modal-title" id="exampleModalLabel">Select the type</h5>
 										</div>
-									</div>
-							 </div>
-						</div>
-				<div class="modal-footer">
-				  <button type="submit" class="btn btn-info" data-dismiss="modal">OK</button>
-				  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-				</div>
-			  </div>
-			  </div>
-			</div>
-		</body>
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-		 <script>
-			$("#addData").click(function() {
-				var url = 'payment/addData';
-				$.ajax({
-					type: 'post',
-					url: url,
-					data: {
-						'_token': $('input[name=_token]').val(),
-						'month': $('input[name=startdate]').val(),
-						'amount': $('input[name=monthlybill]').val(),
-						'duedate': $('input[name=monthlyduedate]').val(),
-					},
-					success: function(data) {
-						alert('successfull');
-						// if ((data.errors)){
-						// $('.error').removeClass('hidden');
-						// 	$('.error').text(data.errors.name);
-						// }
-						// else {
-						// 	$('.error').addClass('hidden');
-						// 	$('#table').append("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.name + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
-						// }
-					}
-					console.log(url);
-				});
-			});
-		 </script>
+										  
+										  <div class="modal-body">            
+										   <div class="form-group">
+												   <div class="table-responsive">
+																	<div class="contener">
+																  <table id="myTable" class="table table-striped table-bordered" style="width:100%">
+																		  <thead class="bg-dark text-white">
+																			  <tr>
+																				  <th class="text-center ">ID</th>
+																				  <th> Contract type</th>
+																			  </tr>
+																		  </thead>
+																		  <tbody>
+																			@foreach ($contracttype as $item)
+																			  <tr >
+																				  <td class="text-center">
+																					  
+														 
+																					  {{$item->id}}
+																				  </td>
+																				  <td>{{$item->contracttype}}</td>
+																			  </tr>
+																			  @endforeach
+																		  </tbody>
+																		 
+																	  </table>
+																  </div>
+															  </div>
+													   </div>
+												  </div>
+										  <div class="modal-footer">
+											<button type="submit" class="btn btn-info" data-dismiss="modal">OK</button>
+											<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+										  </div>
+										</div>
+										</div>
+									  </div>
+
+								  </body>
+<script src="{{asset('js/app.js')}}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+<script> 
+$('#editContract').on('show.bs.modal',function(event){
+    var button = $(event.relatedTarget)
+    var status= button.data('status')
+   
+    var enddate = button.data('enddate')
+    var startdate = button.data('startdate')
+    console.log(status)
+    var monthlybill = button.data('monthlybill')
+    var monthlyduedate = button.data('monthlyduedate')
+    var client_id = button.data('client_id')
+    var bill_id = button.data('bill_id')
+    console.log(client_id)
+    console.log(bill_id)
+    var contracttype_id = button.data('contracttype_id')
+    var id = button.data('id')
+    var modal = $(this)
+    modal.find('#status').attr('value',status)
+   
+    modal.find('#enddate').attr('value',enddate)
+    modal.find('#startdate').attr('value',startdate)
+    modal.find('#monthlybill').attr('value',monthlybill)
+    modal.find('#monthlyduedate').attr('value',monthlyduedate)
+    modal.find('#client_id').attr('value',client_id) 
+    modal.find('#bill_id').attr('value',bill_id)
+    modal.find('#contracttype_id').attr('value',contracttype_id)
+    
+    var url ="{{url('/contract')}}/"+id;
+    $('#editForm').attr('action',url);   
+});
+</script>
 @endsection
