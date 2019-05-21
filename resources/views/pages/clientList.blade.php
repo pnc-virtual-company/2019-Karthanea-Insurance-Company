@@ -1,7 +1,8 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1> Client Active </h1>
+        <h1> Active Client  </h1>
+
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -16,22 +17,23 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($client as $item)
-                                @if ($item->status== 1)
-                                    <tr>
-                                        <td>
-                                            <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
-                                            <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
-                                                <input type="checkbox" name="disable[]" id="disable">
-                                            </a>
-                                            CL00{{$item->id}}
-                                        </td>
-                                        <td>{{$item->firstname}} {{$item->lastname}} </td>
-                                        <td>{{$item->address}}</td>
-                                        <td>{{$item->phonenumber}}</td>
-                                        <td>{{$item->email}}</td>
-                                    </tr>
-                                @endif
+                        @foreach ($client as $value=>$item)
+                            @if ($item->status=='1')
+                                <tr>
+                                    <td>
+                                        <a href="{{route('client.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                    
+                                        <a href="{{route('clientDisable.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
+                                            <input type="checkbox" name="disable[]" id="disable">
+                                        </a>
+                                        {{$item->id}}
+                                    </td>
+                                    <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                    <td>{{$item->address}}</td>
+                                    <td>{{$item->phonenumber}}</td>
+                                    <td>{{$item->email}}</td>
+                                </tr>
+                            @endif
                             @endforeach
                         </tbody>
                     </table>
@@ -65,7 +67,7 @@
             </form>
           </div>
         </div>
-      </div>    
+      </div>
           <!-- Modal add -->
           <div class="modal fade" id="createClient" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -242,7 +244,7 @@
             var button = $(event.relatedTarget)
             var id = button.data('id')
             var modal = $(this)
-            var url ="{{url('/client')}}/"+ id;
+            var url ="{{url('clientDisable')}}/"+ id;
             $('#editstatus').attr('action',url);   
             });
         </script>

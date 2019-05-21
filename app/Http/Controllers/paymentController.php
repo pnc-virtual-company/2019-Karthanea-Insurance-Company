@@ -37,7 +37,7 @@ class paymentController extends Controller
      */
     public function store(Request $request)
     {
-        $contract = Contract::find();
+        $contract = Contract::all();
         $billDate = new Bill;
 
         $startdate = $request->startdate;

@@ -21,7 +21,7 @@ class Contract extends Model
         return $this->belongsTo(Contractstatus::class,'status_id');
     }
     public function bill(){
-        return $this->hasOne(Bill::class);
+        return $this->hasMany(Bill::class);
     }
 
 }

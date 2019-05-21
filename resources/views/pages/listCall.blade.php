@@ -22,32 +22,27 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @foreach ($client as $value=>$item)
+                            @if ($item->status=='1')
                                 <tr>
                                     <td>
-                                        <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
-                                        <input type="checkbox" name="disable" id="disable">
-                                        2
+                                    <a href="{{route('call.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                    <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
+                                        <input type="checkbox" name="disable[]" id="disable">
+                                    </a>
+                                        {{$item->id}}
                                     </td>
-                                    <td>Li</td>
+                                    <td>{{$item->firstname}} {{$item->lastname}} </td>
                                     <td ><a class="toggleCallHistory" href="#"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
                                     <td><i class="material-icons text-primary text-center">call</i></td>
                                 </tr>
-                                <tr>
-                                        <td>
-                                            <a href="#" data-toggle="modal" data-target="#updateContractType"><i class="material-icons text-success">create</i></a>
-                                            <input type="checkbox" name="disable" id="disable">
-                                            2
-                                        </td>
-                                        <td>Li</td>
-                                        <td ><a class="toggleCallHistory" href="#"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
-                                        <td><i class="material-icons text-primary text-center">call</i></td>
-                                    </tr>
+                             @endif
+                            @endforeach
                             </tbody>
                             <br>
                         </table>
                 </div>
                 <div class="table-responsive">
-
                     <table id="myTable2" class="table table-striped table-bordered table-hover collapse">
                         <thead class="bg-dark text-white">
                             <tr>
@@ -59,56 +54,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach ($call as $value=>$data)
                             <tr>
                                 <td>
-                                    <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                    1
+                                    <a href="{{route('call.update',$data->id)}}" data-id="{{$data->id}}" data-date="{{$data->date}}" data-callOperator="{{$data->callOperator}}" 
+                                    data-duration="{{$data->duration}}" data-comments="{{$data->comments}}" data-client_id="{{$data->client_id}}" 
+                                    data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
+                                    {{$data->id}}
                                 </td>
-                                <td>14/08/2019</td>
-                                <td>Pinau</td>
-                                <td>24min13sec</td>
-                                <td>car contract review</td>
+                                <td>{{$data->date}}</td>
+                                <td>{{$data->callOperator}}</td>
+                                <td>{{$data->duration}}</td>
+                                <td>{{$data->comments}}</td>
                             </tr>
-                            <tr>
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                        1
-                                    </td>
-                                    <td>14/08/2019</td>
-                                    <td>Pinau</td>
-                                    <td>24min13sec</td>
-                                    <td>car contract review</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                        1
-                                    </td>
-                                    <td>14/08/2019</td>
-                                    <td>Pinau</td>
-                                    <td>24min13sec</td>
-                                    <td>car contract review</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                        1
-                                    </td>
-                                    <td>14/08/2019</td>
-                                    <td>Pinau</td>
-                                    <td>24min13sec</td>
-                                    <td>car contract review</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <a href="#" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                        1
-                                    </td>
-                                    <td>14/08/2019</td>
-                                    <td>Pinau</td>
-                                    <td>24min13sec</td>
-                                <td>car contract review</td>
-                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -123,156 +82,214 @@
     <div class="modal fade bd-example-modal-lg" id="openNewCall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-                <div class="modal-header">
+            <form method="POST" action="{{action('callController@store')}}">
+            @csrf
+            <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">New call<i class='material-icons ml-3 text-success'>call</i></h5>
                       </div>
                       <div class="card-body">
                             <div class="modal-body">
-                                    <form>
-                                        <div class="form-group">
+                                <div class="form-group">
+                                    <div class="row">
+                                        <label for="">Client id</label>
+                                        <div class="col-10">
+                                        <input type="number" name="client_id" class="form-control">
+                                    </div>
+                                 </div>
+                                </div>
+                                    <div class="form-group ">
+                                        <div class="row">
+                                            <label for="" >Call Operator</label>
+                                        <div class="col-4">
+                                            <input type="text" name="callOperator" class="form-control">
+                                        </div> 
+                                            <label for="" >Duration</label>
+                                        <div class="col-4">
+                                            <input type="text" name="duration" class="form-control">
+                                        </div>    
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-6">
                                             <div class="row">
-                                                    <label for="">Client</label>
-                                                    <div class="col-10">
-                                                    <input type="text" class="form-control">
-
-                                                    </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group ">
-                                                <div class="row">
-                                                        <label for="" >Call Operator</label>
-                                                        <div class="col-4">
-                                                            <input type="text" class="form-control">
-                                                        </div> 
-                                                        <label for="" >Duration</label>
-                                                        <div class="col-4">
-                                                            <input type="text" class="form-control">
-                                                        </div>    
+                                                <div class="col-3">
+                                                    <label for="endDate">Start Date</label>
                                                 </div>
-                                        </div>
-
-                                        <div class="form-group">
-
-                                                <div class="row">
-                                                        <div class="col-6">
-                                                                <div class="row">
-                                                                    <div class="col-3">
-                                                                          <label for="endDate">Start Date</label>
-                                                                    </div>
-                                                                    <div class="col-9">
-                                                                        <div class="row">
-                                                                            <div class="col-12">
-                                                                                  <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
-                                                                            </div>
-                                                                          </div>
-                                                                          </div>
-                                                                        </div>
-                                                                    </div>
-                                                   
-                                                  
-                                                      </div>
-                                                  </div>
-                                                
-
-                                        <div class="form-group">
-                                                <div class="row">
-                                                        <label for="">Comments</label>
-                                                        <div class="col-10">
-                                                       <textarea name="" id="" cols="50" class="form-control"></textarea>
-    
+                                                <div class="col-9">
+                                                    <div class="row">
+                                                        <div class="col-12">
+                                                            <input type='text' name="date" class='txtDate' placeholder="mm/dd/yy"/>
                                                         </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            
-                                      </form>
-                              </div>
-                      </div>
-                      <div class="modal-footer mr-5">
-                                <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Call</button>
-                                <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                                        </div> 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                <div class="row">
+                                    <label for="">Comments</label>
+                                <div class="col-10">
+                                    <textarea name="comments" id="" cols="50" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>  
                     </div>
+                </div>
+                <div class="modal-footer mr-5">
+                    <button type="submit" class="btn bg-info "><i class='material-icons'>check</i> Save Call</button>
+                    <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                </div>
+            </form>
         </div>
     </div>
     </div> 
  
       </div>
         {{-- modal edit call  --}}
-      <div class="modal fade bd-edit-modal-lg" id="openNewCall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal fade bd-edit-modal-lg" id="editCall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                            <div class="modal-header">
+                        <form action="{{route('call.update',$data->id)}}" method="POST" id="formEditCall">
+                        <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">New call<i class='material-icons ml-3 text-success'>call</i></h5>
                                   </div>
                                   <div class="card-body">
-                                        <div class="modal-body">
-                                                <form>
-                                                    <div class="form-group">
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <div class="row">
+                                                <label for="">Client</label>
+                                                    <div class="col-10">
+                                                        <input type="text" class="form-control" name="client_id" id="client_id" value=""> 
+                                                    </div>
+                                                 </div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="row">
+                                                        <label for="callOperator" >Call Operator</label>
+                                                    <div class="col-4">
+                                                        <input type="string" class="form-control" name="callOperator" id="callOperator" value="">
+                                                    </div> 
+                                                        <label for="" >Duration</label>
+                                                    <div class="col-4">
+                                                        <input type="text" class="form-control"name="duration" id="duration" value="" >
+                                                    </div>    
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="row">
+                                                    <div class="col-6">
                                                         <div class="row">
-                                                                <label for="">Client</label>
-                                                                <div class="col-10">
-                                                                <input type="text" class="form-control">
-            
-                                                                </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group ">
-                                                            <div class="row">
-                                                                    <label for="" >Call Operator</label>
-                                                                    <div class="col-4">
-                                                                        <input type="text" class="form-control">
-                                                                    </div> 
-                                                                    <label for="" >Duration</label>
-                                                                    <div class="col-4">
-                                                                        <input type="text" class="form-control">
-                                                                    </div>    
+                                                            <div class="col-3">
+                                                                <label for="endDate">Start Date</label>
                                                             </div>
-                                                    </div>
-            
-                                                    <div class="form-group">
-            
-                                                            <div class="row">
-                                                                    <div class="col-6">
-                                                                            <div class="row">
-                                                                                <div class="col-3">
-                                                                                      <label for="endDate">Start Date</label>
-                                                                                </div>
-                                                                                <div class="col-9">
-                                                                                    <div class="row">
-                                                                                        <div class="col-12">
-                                                                                              <input type='text' class='txtDate' placeholder="mm/dd/yy"  />
-                                                                                        </div>
-                                                                                      </div>
-                                                                                      </div>
-                                                                                    </div>
-                                                                                </div>
-                                                               
-                                                              
-                                                                  </div>
-                                                              </div>
-                                                            
-            
-                                                    <div class="form-group">
-                                                            <div class="row">
-                                                                    <label for="">Comments</label>
-                                                                    <div class="col-10">
-                                                                   <textarea name="" id="" cols="50" class="form-control"></textarea>
-                
-                                                                    </div>
+                                                        <div class="col-9">
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <input type='text' name="date" id="date" class='txtDate' placeholder="mm/dd/yy"  />
                                                             </div>
                                                         </div>
-                                                        
-                                                  </form>
-                                          </div>
-                                  </div>
-                                  <div class="modal-footer mr-5">
-                                            <button type="button" class="btn bg-info "><i class='material-icons'>check</i> Save Call</button>
-                                            <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="row">
+                                                 <label for="">Comments</label>
+                                                <div class="col-10">
+                                            <textarea type="text" cols="50" id="comments" class="form-control"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer mr-5">
+                            <button type="submit" class="btn bg-info "><i class='material-icons'>check</i> Save Call</button>
+                            <button type="button" class="btn bg-danger float-left" data-dismiss="modal"><i class='material-icons'>close</i> Cencel</button>
+                        </div>
+                        </form>
                     </div>
                 </div>
                 </div> 
-             
+          </div>
+          <div class="modal fade" id="editClientActive" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
+                </div>
+                <form action="" method="POST" id="editClientList">
+                    @csrf
+                    @method('PATCH')
+                <div class="modal-body">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="">Firstname</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" required name="firstname" id="firstname" value="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-2">
+                                    <label for="">Lastname</label>
+                                </div>
+                                <div class="col-10">
+                                    <input type="text" required name="lastname" id="lastname" value="" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-info">OK</button>
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                </div>
+            </form>
+              </div>
+            </div>
           </div>
           <script src="{{asset('js/app.js')}}"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+          <script>
+       $('#editClientActive').on('show.bs.modal',function (event){
+            var button = $(event.relatedTarget)
+            var firstname = button.data('firstname')
+            var lastname = button.data('lastname')  
+            var id = button.data('id')
+            console.log(id)
+            var modal = $(this)
+            modal.find('#firstname').attr('value',firstname)
+            modal.find('#lastname').attr('value',lastname)
+            var url ="{{url('/call')}}/"+ id;
+            $('#editClientList').attr('action',url);
+            });
+
+            $('#editCall').on('show.bs.modal',function (event){
+            var button = $(event.relatedTarget)
+            var date = button.data('date')
+            console.log(date)
+            var callOperator = button.data('callOperator')   
+            console.log(callOperator) 
+            var duration = button.data('duration')
+            console.log(duration)
+            var comments = button.data('comments')
+            console.log(comments)
+            var client_id = button.data('client_id')
+            var id = button.data('id')
+            console.log(id)
+            var modal = $(this)
+            modal.find('#date').attr('value',date)
+            modal.find('#callOperator').attr('value',callOperator)
+            modal.find('#duration').attr('value',duration)
+            modal.find('#comments').attr('value',comments)
+            modal.find('#client_id').attr('value',client_id)
+            var url ="{{url('/call')}}/"+ id;
+            $('#formEditCall').attr('action',url);
+            });
+        </script>
 @endsection 

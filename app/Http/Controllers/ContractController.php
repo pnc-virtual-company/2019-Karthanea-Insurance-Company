@@ -8,6 +8,7 @@ use App\Client ;
 use App\BillStatus;
 use App\Contractstatus;
 use App\Contracttype;
+use  PDF;
 class ContractController extends Controller
 {
     /**
@@ -25,6 +26,9 @@ class ContractController extends Controller
         $contractStatus = Contractstatus::all();
         $client = Client::all();
         $billStatus = BillStatus::all();
+        // $pdf = PDF::loadView('pages.addContract');
+        // $pdf->save('contract.pdf');
+        
         return view('pages.addContract',compact('contractselect','contracttype','client','billStatus','contractStatus'));
     }
 
@@ -97,4 +101,24 @@ class ContractController extends Controller
     {
         //
     }
+    // public function export_pdf()
+    // {
+    //     $contractselect = \App\Contract::all();
+    //     $contracttype = \App\Contracttype::all();
+    //     $contractStatus = \App\Contractstatus::all();
+    //     $client = \App\Client::all();
+    //     $bill = Bill::all();
+    //   // Fetch all customers from database
+    //   //$data = Contract::get();
+  
+    //   // Send data to the view using loadView function of PDF facade
+    //   $pdf = PDF::loadView('pages.addContract');
+  
+    //   // If you want to store the generated pdf to the server then you can use the store function
+    //   $pdf->save('contract.pdf');
+  
+    //   // Finally, you can download the file using download function
+    //   return $pdf->download('contracts.pdf',compact('contractselect','contracttype','client','bill','contractStatus'));
+    // }
+
 }
