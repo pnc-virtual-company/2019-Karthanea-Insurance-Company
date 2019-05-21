@@ -23,14 +23,14 @@
                                         <th>Clients</th>
                                         <th>Address</th>
                                         <th>Phone</th>
-                                        <th>Email</th>
+                                        <th>email</th>
                                         <th>Contract</th>
                                     </tr>
                                 </thead>
                                  <tbody>
                                     @foreach ($client as $value)
                                         @foreach ($contract as $item)
-                                            @if ($value->id == $item->client_id)
+                                         @if ($value->id == $item->client_id)
                                                 <tr>
                                                     <td class="text-center">
                                                         CL00{{$value->id}}
@@ -38,7 +38,9 @@
                                                         <td>{{$value->firstname}} {{$value->lastname}}</td>
                                                         <td>{{$value->address}}</td>
                                                         <td>{{$value->phonenumber}}</td>
-                                                        <td>{{$value->email}}</td>
+                                                        <td>{{$value->email}}
+                                                        
+                                                        </td>
                                                         <td> 
                                                             <a  href="#" class="toggleContractTable" 
                                                             onclick="clientDetail({{$value->id}})" >
@@ -46,7 +48,7 @@
                                                         </a>
                                                     </td>
                                                 </tr>
-                                            @endif
+                                            @endif  
                                         @endforeach
                                     @endforeach
                                 </tbody> 
@@ -109,17 +111,22 @@
                         var month = ["January", "February", "March", "April", "May", "June",
                         "July", "August", "September", "October", "November", "December"][monthbill.getMonth()];
                         var getMonthBill = month + ',' + monthbill.getFullYear();
-                        if(data.bills[i].billStatus_id == data.states[k].id){
-                            billTable +='<tr><td class=" text-center">' + getMonthBill +'</td><td>'
-                                                +data.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
-                                                +data.states[k].status+"</td><td>"
-                                                +data.bills[i].duedate+"</td>"
-                                                +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+                        var startdate= data.bills[i].month;
+                        var enddate = data.bills[i].duedate;
+                        for(var t = startdate; t<= enddate; t++){
+                            if(data.bills[i].billStatus_id == data.states[k].id){
+                                billTable +='<tr><td class=" text-center">' + getMonthBill +'</td><td>'
+                                                    +data.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
+                                                    +data.states[k].status+"</td><td>"
+                                                    +data.bills[i].duedate+"</td>"
+                                                    +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+                            }
                         }
                     }
                 }
                 billTable +='</tbody></table>';
                 $("#showBill").html(billTable);
+                console.log(data);
             },
             error:function(){
                 alert("Data Not Founded.");

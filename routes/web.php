@@ -84,6 +84,7 @@ Route::get('/clientStatus','clientAchiveController@status');
 Route::resource('payment','paymentController');
 Route::post('payment/showData','paymentController@showData');
 Route::post('payment/showBill','paymentController@showBill');
+Route::post('payment/addData','paymentController@addData');
 Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
 // Route::get('/chart','ChartController@index'); 

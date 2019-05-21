@@ -9,6 +9,9 @@ use \App\BillStatus;
 use \App\Contract;
 use \App\ContractType;
 use \App\Contractstatus;
+use DateTime;
+use DateInterval;
+use DatePeriod;
 class paymentController extends Controller
 {
     /**
@@ -22,10 +25,10 @@ class paymentController extends Controller
 
     public function index()
     {
+        $contract = Contract::all();
         $client = Client::where('status',1)
                 ->select('*')
                 ->get();
-        $contract = Contract::all();
         return view("pages.paymentList",compact('client','contract'));
     }
 
@@ -39,30 +42,15 @@ class paymentController extends Controller
     {
         $contract = Contract::all();
         $billDate = new Bill;
-
-        $startdate = $request->startdate;
-        $enddate= $request->enddate;
-        $amountBill = $request->monthlybill;
-        $monthDue= $request->monthlyduedate;
-
         $start    = new DateTime($contract->startdate);
-       // $start->modify('first day of this month');
         $end      = new DateTime($contract->enddate);
-      
         $interval = DateInterval::createFromDateString('1 month');
-        //$interval = DateInterval::createFromDateString('1 day');
         $period   = new DatePeriod($start, $interval, $end);
         
-        foreach($period as $data){
-            $billDate->month = $start;
-            $billDate->duedate= $end;
-            $billDate->amount= $amountBill;
+        foreach($period as $dt){ 
+           $billDate= $dt->format("Y-m") . PHP_EOL; 
 
-            $billDate->save();
         }
-        dd($period);
-        // $bills = Bill::create($request->all());
-
         return redirect('/payment');
     }
 
@@ -116,6 +104,30 @@ class paymentController extends Controller
        return view('pages.paymentList',compact('contract','bill'));
     }
 
+    public function addData(Request $request)
+    {
+        $bills = array(
+                'startdate' => 'required|alpha_num',
+                'monthlybill' => 'required|alpha_num',
+                'enddate' => 'required|alpha_num',
+        );
+        // $validator = Validator::make(Input::all(), $bills);
+        // if ($validator->fails()) {
+        //     return Response::json(array(
+
+        //             'errors' => $validator->getMessageBag()->toArray(),
+        //     ));
+        // } else {
+            // while ($data->month = $request->startdate <= $data->duedate = $request->enddate) {
+                $data = new Bill();
+                $data->month = $request->startdate;
+                $data->amount = $request->monthlybill;
+                $data->duedate = $request->enddate;
+                $data->save();
+            // }
+            // return response()->json($data);
+        // }
+    }
     /**
      * Update the specified resource in storage.
      *

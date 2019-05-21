@@ -1,5 +1,6 @@
 @extends('layout.dashboard')
 @section('content')
+<body>
 <div class="content">
 	<div class="container mt-4">
 		<div class="row shadow-lg bg-light">
@@ -78,7 +79,7 @@
                                 			{{$item->contracttype->contracttype}} 
                                         </div>
 										<div class="col-1">
-												<a href="{{ url('pdf') }}" ><i class="material-icons text-success">description</i></a>
+											<a href="{{ url('pdf') }}" ><i class="material-icons text-success">description</i></a>
 										</div>
 										
 									</div>
@@ -158,7 +159,7 @@
 													</div>
 													<div class="col-4">
 														<div class="input-group ">
-															<select name="contracttype_id" id="" class="browser-default custom-select" required>
+															<select name="contracttype_id" class="browser-default custom-select" required>
                                                                 @foreach ($contracttype as $item)
                                                                     <option value="{{$item->id}}">{{$item->contracttype}}</option>
                                                                @endforeach
@@ -224,19 +225,14 @@
 								</div>
 								
 								<div class="modal-footer mr-5">
-									<button type="submit" class="btn bg-info ">
+									<button type="submit" id="addData"  class="btn bg-info ">
 										<i class='material-icons'>check</i> Save Contract
 									</button>
-									<button type="button" class="btn bg-danger float-left" onclick="event.preventDefault();
-									document.getElementById('paymeny-form').submit();" data-dismiss="modal">
+									<button type="button" class="btn bg-danger float-left" data-dismiss="modal">
 										<i class='material-icons'>close</i> Cancel
 									</button>
 									
 								</div>
-							</form>
-							<form id="paymeny-form" action="{{action('paymentController@store')}}" method="POST" style="display: none;">
-								@csrf
-								@method('POST')
 							</form>
 						</div>
 					</div>
@@ -380,12 +376,9 @@
 											   
 											</table>
 										</div>
-									  </div>
+									</div>
 							 </div>
-						
-	
 						</div>
-				
 				<div class="modal-footer">
 				  <button type="submit" class="btn btn-info" data-dismiss="modal">OK</button>
 				  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
@@ -393,5 +386,33 @@
 			  </div>
 			  </div>
 			</div>
-		 
+		</body>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+		 <script>
+			$("#addData").click(function() {
+				var url = 'payment/addData';
+				$.ajax({
+					type: 'post',
+					url: url,
+					data: {
+						'_token': $('input[name=_token]').val(),
+						'month': $('input[name=startdate]').val(),
+						'amount': $('input[name=monthlybill]').val(),
+						'duedate': $('input[name=monthlyduedate]').val(),
+					},
+					success: function(data) {
+						alert('successfull');
+						// if ((data.errors)){
+						// $('.error').removeClass('hidden');
+						// 	$('.error').text(data.errors.name);
+						// }
+						// else {
+						// 	$('.error').addClass('hidden');
+						// 	$('#table').append("<tr class='item" + data.id + "'><td>" + data.id + "</td><td>" + data.name + "</td><td><button class='edit-modal btn btn-info' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-edit'></span> Edit</button> <button class='delete-modal btn btn-danger' data-id='" + data.id + "' data-name='" + data.name + "'><span class='glyphicon glyphicon-trash'></span> Delete</button></td></tr>");
+						// }
+					}
+					console.log(url);
+				});
+			});
+		 </script>
 @endsection
