@@ -86,7 +86,7 @@ Route::post('payment/showData','paymentController@showData');
 Route::post('payment/showBill','paymentController@showBill');
 Route::get('/call','callController@index');
 Route::get('/calendar','CalendarController@index');
-Route::get('/chart','ChartController@index'); 
+// Route::get('/chart','ChartController@index'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
@@ -95,10 +95,12 @@ Route::resource('clientDisable', 'disableClientActiveController');
 Route::resource('clientUnable', 'unableClientController');
 Route::resource('updateClient', 'updateClientPayment');
 Route::resource('updateContract', 'updateContractPayment');
+Route::resource('chart', 'ChartPaymentController');
 Route::post('/uploadprofile', 'ProfileController@upload');
+Route::get('/note','NotesController@index');
+ Route::get('/pdf','NotesController@pdf');
+ //Route::get('/pdf','NotesController@pdf');
 Route::get('/admin/addContract',function(){
     return view('pages.addContract');
 });
- Route::get('/note','NotesController@index');
- Route::get('/pdf','NotesController@pdf');
- //Route::get('/pdf','NotesController@pdf');
+ 

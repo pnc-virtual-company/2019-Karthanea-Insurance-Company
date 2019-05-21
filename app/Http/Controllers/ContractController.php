@@ -25,11 +25,11 @@ class ContractController extends Controller
         $contracttype = Contracttype::all();
         $contractStatus = Contractstatus::all();
         $client = Client::all();
-        $bill = Bill::all();
+        $billStatus = BillStatus::all();
         // $pdf = PDF::loadView('pages.addContract');
         // $pdf->save('contract.pdf');
         
-        return view('pages.addContract',compact('contractselect','contracttype','client','bill','contractStatus'));
+        return view('pages.addContract',compact('contractselect','contracttype','client','billStatus','contractStatus'));
     }
 
     /**

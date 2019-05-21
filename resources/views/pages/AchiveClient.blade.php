@@ -1,8 +1,7 @@
 @extends('layout.dashboard')
 @section('content')
     <div class="container mt-4">
-        <h1> Information Client </h1>
-
+        <h1>  Client Information </h1>
 
         <div class="card">
             <div class="card-body">
@@ -23,9 +22,7 @@
                                     <td>
                                     <a href="{{route('clientAchive.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
                                     
-
-                                    <a href="{{route('clientAchive.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
-
+                                    <a href="" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
                                         @if($item->status=="0")
                                             <input type="checkbox" name="disable[]" value="disable" id="disable" checked>
                                             @elseif($item->status=="1")
@@ -57,17 +54,13 @@
                 @csrf
                 @method('PATCH')
                 <div class="modal-header">
-
-                    <h5 class="modal-title" id="exampleModalLabel">Disable Client</h5>
-
+                    <h5 class="modal-title" id="exampleModalLabel">unable Client</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
             <div class="modal-body text-danger">
-
-              Are you sure that you want to disable this client?
-
+              Are you sure that you want to unable this client?
             </div>
             <div class="modal-footer">
                 <button type="submit" class="btn bg-primary text-white">Yes</button>
@@ -225,7 +218,6 @@
           <script src="{{asset('js/app.js')}}"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
-
         $('#editClientActive').on('show.bs.modal',function (event){
             var button = $(event.relatedTarget)
             var firstname = button.data('firstname')
@@ -254,9 +246,7 @@
             var button = $(event.relatedTarget)
             var id = button.data('id')
             var modal = $(this)
-
-            var url ="{{url('/clientAchive')}}/"+ id;
-
+            var url ="{{url('/clientUnable')}}/"+ id;
             $('#editstatus').attr('action',url);   
             });
         </script>
