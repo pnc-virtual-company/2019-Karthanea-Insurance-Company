@@ -87,14 +87,18 @@
             success:function(data){
                 var clientContractTable = '<table id="myTabless" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <data['contracts'].length; i++) {
-                    if(data.contracts[i].client_id == id && data.type[i].id == data.contracts[i].contracttype_id ){
-                        clientContractTable +='<tr> <td class=" text-center"> CO00' + data.contracts[i].id +'</td><td>'
-                                            +data.type[i].contracttype+"</td><td>"
-                                            +data.status[i].status +'</td><td>'
-                                            +data.contracts[i].startdate +'</td><td>'
-                                            +data.contracts[i].enddate +'</td><td>'
-                                            +data.contracts[i].monthlybill +'</td>'
-                                            +'<td> <a href="#" onclick="showBillData('+data.contracts[i].id+')"><i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">arrow_drop_down</i></i> </a> </td> </tr>';
+                    for(var j = 0; j<data['type'].length;j++){
+                        for(var k = 0; k<data['status'].length;k++){
+                            if(data.contracts[i].client_id == id && data.type[j].id == data.contracts[i].contracttype_id && data.status[k].id == data.contracts[i].status_id){
+                                clientContractTable +='<tr> <td class=" text-center"> CO00' + data.contracts[i].id +'</td><td>'
+                                                    +data.type[j].contracttype+"</td><td>"
+                                                    +data.status[k].status +'</td><td>'
+                                                    +data.contracts[i].startdate +'</td><td>'
+                                                    +data.contracts[i].enddate +'</td><td>'
+                                                    +data.contracts[i].monthlybill +'</td>'
+                                                    +'<td> <a href="#" onclick="showBillData('+data.contracts[i].id+')"><i class="material-icons text-info ml-5 ">attach_money <i class="material-icons">arrow_drop_down</i></i> </a> </td> </tr>';
+                            }
+                        }
                     }
                 }
                 clientContractTable += '</tbody></table>';
@@ -126,7 +130,7 @@
                         var enddate = json.bills[i].duedate;
                         for(var t = startdate; t<= enddate; t++){
                             if(json.bills[i].billStatus_id == json.states[k].id && json.bills[i].contract_id == id){
-                                billTable +='<tr><td class=" text-center">' + getMonthBill +'</td><td>'
+                                billTable +='<tr><td>' + getMonthBill +'</td><td>'
                                                     +json.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
                                                     +json.states[k].status+"</td><td>"
                                                     +json.bills[i].duedate+"</td>"

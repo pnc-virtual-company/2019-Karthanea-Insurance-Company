@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Contract ;
 use App\Client ;
+use App\Bill ;
 use App\BillStatus;
 use App\Contractstatus;
 use App\Contracttype;
@@ -51,7 +52,31 @@ class ContractController extends Controller
     public function store(Request $request)
     {
         $contract = Contract::create($request->all());
-        
+
+        // get contract id
+        $contractId = $contract->id;
+        // Start date
+        $start_date = $contract->startdate;
+        $dueDate = $contract->monhtlyduedate;
+        // amount of monthly bill of contract
+        $amount = $contract->monthlybill;
+        // End date
+        $end_date = $contract->enddate;
+        $billStatusId = 1;
+        // dd($contractId);
+        while (strtotime($start_date) <= strtotime($end_date)) {
+            $billDate = new Bill();
+            $start_date = date ("Y-m-d", strtotime("+1 month", strtotime($start_date)));
+            $due_date = date ("Y-m-d", strtotime("+1 month", strtotime($start_date)));
+            $billDate->month = $start_date;
+            $billDate->amount = $amount;
+            $billDate->duedate = $due_date;
+            $billDate->contract_id = $contractId;
+            $billDate->billStatus_id = $billStatusId;
+
+            $billDate->save();
+        }
+
         return redirect('/contract');
     }
 

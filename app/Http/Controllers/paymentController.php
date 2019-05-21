@@ -27,7 +27,6 @@ class paymentController extends Controller
     {
         $contract = Contract::all();
         $client = Client::where('status',1)
-                ->select('*')
                 ->get();
         return view("pages.paymentList",compact('client','contract'));
     }
@@ -41,7 +40,15 @@ class paymentController extends Controller
     public function store(Request $request)
     {
         $contract = Contract::all();
-        
+        $billDate = new Bill();
+        // Start date
+        $start_date = $request->input('startdate');
+        // End date
+        $end_date = $request->input('enddate');
+
+        while (strtotime($start_date) <= strtotime($end_date)) {
+            $start_date = date ("Y-mmm", strtotime("+1 month", strtotime($start_date)));
+        }
         return redirect('/payment');
     }
 

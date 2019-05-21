@@ -36,7 +36,7 @@
 								<th>Start</th>
 								<th>End</th>
 								<th>Monthly bill</th>
-								<th>Due Date</th>
+								{{-- <th>Due Date</th> --}}
 								<th>Bill</th>
 							</tr>
 						</thead>
@@ -89,7 +89,7 @@
 								<td class="status">{{$item->contractStatus->status}}</td>
 								<td class="startdate">{{$item->startdate}}</td>
 								<td class="enddate">{{$item->enddate}}</td>
-								<td class="monthlyduedate"> {{$item->monthlyduedate}} th</td>
+								<td class="monthlyduedate"> {{$item->monthlyduedate}}</td>
 								<td>
 									<a href="#" class="text-center">$</a>
 								</td>
@@ -382,28 +382,5 @@ $('#editContract').on('show.bs.modal',function(event){
     var url ="{{url('/contract')}}/"+id;
     $('#editForm').attr('action',url);   
 });
-</script>
-<script>
-	function addData() {
-		alert('url');
-		var url = 'payment/addData';
-		$.ajax({
-			type: 'post',
-			url: url,
-			data: {
-				'_token': $('input[name=_token]').val(),
-				'month': $('input[name=startdate]').val(),
-				'amount': $('input[name=monthlybill]').val(),
-				'duedate': $('input[name=monthlyduedate]').val(),
-			},
-			success: function(data) {
-				alert('successfull');
-			}
-			error:function(){
-				alert('Not Found');
-				console.log(url);
-			}
-		});
-	});
 </script>
 @endsection
