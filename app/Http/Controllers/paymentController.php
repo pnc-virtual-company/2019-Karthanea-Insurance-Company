@@ -25,8 +25,10 @@ class paymentController extends Controller
 
     public function index()
     {
+        
         $contract = Contract::all();
         $client = Client::where('status',1)
+                ->groupBy('id')
                 ->get();
         return view("pages.paymentList",compact('client','contract'));
     }
@@ -95,61 +97,11 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-       $contract = Contract::find($id);
-       $bill = Bill::all();
-       $billDiff = $bill->diff($contract->bill);
-
-       return view('pages.paymentList',compact('contract','bill'));
+        $
+        $billStatus = Bill::all();
+       return view('pages.paymentList',compact('billStatus'));
     }
 
-    public function addData(Request $request)
-    {
-        // $bills = array(
-        //         'startdate' => 'required|alpha_num',
-        //         'monthlybill' => 'required|alpha_num',
-        //         'enddate' => 'required|alpha_num',
-        // );
-        // $validator = Validator::make(Input::all(), $bills);
-        // if ($validator->fails()) {
-        //     return Response::json(array(
-
-        //             'errors' => $validator->getMessageBag()->toArray(),
-        //     ));
-        // } else {
-            // while ($data->month = $request->startdate <= $data->duedate = $request->enddate) {
-                // $data = new Bill();
-                // $data->month = $request->startdate;
-                // $data->amount = $request->monthlybill;
-                // $data->duedate = $request->enddate;
-                // $data->save();
-            // }
-            // return response()->json($data);
-        // }
-
-        // Do a validation
-        // Getting data
-
-        // Inser data to Contract table and then get last id inserted
-
-
-        // Start insert Bill
-        // $insertedContractID = " bla bla";
-        $billDate = new Bill();
-        $start_date = $request->input('month');
-        $end_date = $request->input('duedate');
-        while (strtotime($start_date) <= strtotime($end_date)) {
-            // Month
-            $start_date = date ("Y-m-d", strtotime("+1 month", strtotime($start_date)));
-            $billDate->month->$request->start_date;
-            // Due Date
-            // $dueDate = "start_date + day of Monthly Due Date";
-            $billDate->duedate->$request->end_date;
-            // echo $start_date."<br>";
-
-            $billDate->save();
-        }
-        return redirect('/payment');
-    }
     /**
      * Update the specified resource in storage.
      *
@@ -159,11 +111,8 @@ class paymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $contract = Contract::find($id);
-        $contract->update($request->all());
-        $bill = Bill::all();
-        $billDiff = $bill->diff($contract->bill);
-        
+        $billStatus = BillStatus::find($id);
+        $billStatus->update($request->status);
         return  redirect('/payment');
     }
 

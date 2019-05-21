@@ -57,7 +57,7 @@ class ContractController extends Controller
         $contractId = $contract->id;
         // Start date
         $start_date = $contract->startdate;
-        $dueDate = $contract->monhtlyduedate;
+        $dueDate = $contract->monthlyduedate;
         // amount of monthly bill of contract
         $amount = $contract->monthlybill;
         // End date
@@ -67,7 +67,7 @@ class ContractController extends Controller
         while (strtotime($start_date) <= strtotime($end_date)) {
             $billDate = new Bill();
             $start_date = date ("Y-m-d", strtotime("+1 month", strtotime($start_date)));
-            $due_date = date ("Y-m-d", strtotime("+1 month", strtotime($start_date)));
+            $due_date = date ("Y-m-$dueDate", strtotime("+1 month", strtotime($start_date)));
             $billDate->month = $start_date;
             $billDate->amount = $amount;
             $billDate->duedate = $due_date;

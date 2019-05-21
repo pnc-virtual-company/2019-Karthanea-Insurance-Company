@@ -69,6 +69,38 @@
         </div>
     </div>
 </div>
+<!-- Modal Edit contract type-->
+<div class="modal fade" id="editContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <form action="">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="row">
+                          <div class="col-3">
+                              <label for="">Bill Status:</label>
+                          </div>
+                          <div class="col-9">
+                              <select class="custom-select" name="" id="">
+                                  <option value="Unpaid" selected>Unpaid</option>
+                                  <option value="Paid">Paid</option>
+                              </select>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn text-white bg-primary">Save</button>
+                        <button type="button" class="btn text-white bg-danger" data-dismiss="modal">No</button>
+                    </div>
+              </form>
+          </div>
+        </div>
+      </div>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/table.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -123,15 +155,15 @@
                 for(var i = 0; i <json['bills'].length; i++) {
                     for(var k = 0; k <json['states'].length; k++) {
                         var monthbill = new Date(json.bills[i].month);
-                        var month = ["January", "February", "March", "April", "May", "June",
-                        "July", "August", "September", "October", "November", "December"][monthbill.getMonth()];
+                        var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+                        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][monthbill.getMonth()];
                         var getMonthBill = month + ',' + monthbill.getFullYear();
                         var startdate= json.bills[i].month;
                         var enddate = json.bills[i].duedate;
                         for(var t = startdate; t<= enddate; t++){
                             if(json.bills[i].billStatus_id == json.states[k].id && json.bills[i].contract_id == id){
                                 billTable +='<tr><td>' + getMonthBill +'</td><td>'
-                                                    +json.bills[i].amount+"</td><td>"+'<a href="#"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
+                                                    +json.bills[i].amount+'</td><td><a href="#" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
                                                     +json.states[k].status+"</td><td>"
                                                     +json.bills[i].duedate+"</td>"
                                                     +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
