@@ -25,11 +25,13 @@ class paymentController extends Controller
 
     public function index()
     {
-        
         $contract = Contract::all();
+        $billStatus = Bill::all();
+        $bills = Bill::all();
         $client = Client::where('status',1)
                 ->get();
-        return view("pages.paymentList",compact('client','contract'));
+
+        return view("pages.paymentList",compact('client','contract','billStatus','bills'));
     }
 
     /**
@@ -41,15 +43,7 @@ class paymentController extends Controller
     public function store(Request $request)
     {
         $contract = Contract::all();
-        $billDate = new Bill();
-        // Start date
-        $start_date = $request->input('startdate');
-        // End date
-        $end_date = $request->input('enddate');
-
-        while (strtotime($start_date) <= strtotime($end_date)) {
-            $start_date = date ("Y-mmm", strtotime("+1 month", strtotime($start_date)));
-        }
+        
         return redirect('/payment');
     }
 
@@ -96,9 +90,9 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-        $
-        $billStatus = Bill::all();
-       return view('pages.paymentList',compact('billStatus'));
+        $bills = Bill::find($id);
+        $statusBill = BillStatus::all();
+       return view('pages.paymentList',compact('bills','statusBill'));
     }
 
     /**
@@ -110,8 +104,8 @@ class paymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $billStatus = BillStatus::find($id);
-        $billStatus->update($request->status);
+        $bills = Bill::find($id);
+        $bills->update($request->billStatus_id);
         return  redirect('/payment');
     }
 

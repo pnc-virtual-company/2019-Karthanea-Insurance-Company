@@ -72,35 +72,43 @@
 <!-- Modal Edit contract type-->
 <div class="modal fade" id="editContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <form action="">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                      <div class="row">
-                          <div class="col-3">
-                              <label for="">Bill Status:</label>
-                          </div>
-                          <div class="col-9">
-                              <select class="custom-select" name="" id="">
-                                  <option value="Unpaid" selected>Unpaid</option>
-                                  <option value="Paid">Paid</option>
-                              </select>
-                          </div>
-                      </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn text-white bg-primary">Save</button>
-                        <button type="button" class="btn text-white bg-danger" data-dismiss="modal">No</button>
-                    </div>
-              </form>
-          </div>
+            <div class="modal-content">
+                <form action="{{route('payment.update',$item->id)}}" id="editBillStatus">
+                        @csrf
+                        @method('PATCH')
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="">Bill Status:</label>
+                                </div>
+                                <div class="col-9">
+                                    <select class="custom-select" name="billStatus_id" id="billStatus_id">
+                                        @foreach ($bills as $item)
+                                            @if ($item->billStatus->id == $item->billStatus_id)
+                                                <option value="{{$item->billStatus_id}}" selected>{{$item->billStatus->status}}</option>
+                                            @endif
+                                            @if ($item->billStatus->id!=$item->billStatus_id)
+                                                <option value="{{$item->billStatus_id}}">{{$item->billStatus->status}}</option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn text-white bg-primary">Save</button>
+                            <button type="button" class="btn text-white bg-danger" data-dismiss="modal">No</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-      </div>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/table.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -163,7 +171,7 @@
                         for(var t = startdate; t<= enddate; t++){
                             if(json.bills[i].billStatus_id == json.states[k].id && json.bills[i].contract_id == id){
                                 billTable +='<tr><td>' + getMonthBill +'</td><td>'
-                                                    +json.bills[i].amount+'</td><td><a href="#" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
+                                                    +json.bills[i].amount+'</td><td><a href="#" id="getBillId" data-id="'+json.bills[i].id+'" data-billStatus_id="'+json.bills[i].billStatus_id+'" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
                                                     +json.states[k].status+"</td><td>"
                                                     +json.bills[i].duedate+"</td>"
                                                     +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
@@ -181,4 +189,18 @@
     }
 
 </script>
+<script>
+    $('#getBillId').on('show.bs.modal',function(event){
+        alert('Hello');
+          var button = $(event.relatedTarget)
+          var billStatus_id= button.data('billStatus_id')
+          var id = button.data('id')
+          
+          var modal = $(this)
+          modal.find('#billStatus_id').attr('value',billStatus_id)
+          var url ="{{url('/payment')}}/"+id;
+          $('#editBillStatus').attr('action',url);   
+    }) 
+</script>
+
 @endsection
