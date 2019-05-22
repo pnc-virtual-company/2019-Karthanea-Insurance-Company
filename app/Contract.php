@@ -18,10 +18,10 @@ class Contract extends Model
         return $this->belongsTo(Contracttype::class,'contracttype_id');
     }
     public function contractStatus(){
-        return $this->belongsTo(ContractStatus::class,'status_id');
+        return $this->belongsTo(Contractstatus::class,'status_id');
     }
     public function bill(){
-        return $this->hasOne(Bill::class);
+        return $this->hasMany(Bill::class);
     }
 
 }

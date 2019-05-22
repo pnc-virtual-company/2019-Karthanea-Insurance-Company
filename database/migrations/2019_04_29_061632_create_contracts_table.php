@@ -17,7 +17,7 @@ class CreateContractsTable extends Migration
             $table->increments('id');
             $table->date('startdate');
             $table->date('enddate');
-            $table->string('monthlyduedate');
+            $table->integer('monthlyduedate');
             $table->integer('monthlybill');
             
             $table->timestamps();
