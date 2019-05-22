@@ -73,8 +73,10 @@
 <div class="modal fade" id="editContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <form action="">
-                  <div class="modal-header">
+                <form action="" id="editBillStatus">
+                    @csrf
+                    @method('PATCH')
+                    <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
@@ -86,9 +88,9 @@
                               <label for="">Bill Status:</label>
                           </div>
                           <div class="col-9">
-                              <select class="custom-select" name="" id="">
-                                  <option value="Unpaid" selected>Unpaid</option>
-                                  <option value="Paid">Paid</option>
+                              <select class="custom-select" name="billStatus_id" id="billStatus_id">
+                                <option value="Unpaid" selected>Unpaid</option>
+                                <option value="Paid">Paid</option>
                               </select>
                           </div>
                       </div>
@@ -142,6 +144,7 @@
         });
     }
 </script>
+
 <script>
     function showBillData(id){
         var url = "{{ url('payment/showBill') }}";
@@ -151,6 +154,7 @@
             data: {_token: "{{csrf_token()}}",id:id},
                 // show bill table of contract
                 success:function(json){
+                   
                 var billTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <json['bills'].length; i++) {
                     for(var k = 0; k <json['states'].length; k++) {
@@ -163,10 +167,10 @@
                         for(var t = startdate; t<= enddate; t++){
                             if(json.bills[i].billStatus_id == json.states[k].id && json.bills[i].contract_id == id){
                                 billTable +='<tr><td>' + getMonthBill +'</td><td>'
-                                                    +json.bills[i].amount+'</td><td><a href="#" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
+                                                    +json.bills[i].amount+'</td><td><a href="#" id="getBillId" data-id="'+json.bills[i].id+'" data-billStatus_id="'+json.bills[i].billStatus_id+'" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
                                                     +json.states[k].status+"</td><td>"
                                                     +json.bills[i].duedate+"</td>"
-                                                    +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+                                                    +'<td> <a href="{{'paymentpdf'}}" id="js-download" class="exportPDF"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
                             }
                         }
                     }
@@ -181,4 +185,44 @@
     }
 
 </script>
+
+<script>
+   /* DOUBLE CLICK ROW */
+    $datatable.find(".exportPDF").on("click", function() {
+    let data = table.row(this).data();
+
+    $.ajax({
+        url: '{{url("paymentpdf")}}',
+        type: "get",
+        contentType: false,
+        processData: false,
+        cache: false,
+
+        beforeSend: function() {
+        console.log("double click beforeSend...");
+        },
+
+        success: function() {
+        console.log("DOUBLE CLICK ROW: success...");
+        }
+    });
+    });
+</script>
+{{-- <script>
+$(document).on("click", "#js-download", function(e) {
+
+e.preventDefault();
+
+$.ajax({
+    url: '',
+    data: $("#js-pdf-form").serialize(),
+    success:function(data) {
+        console.log(data)
+    },
+    error:function() {
+    }
+});
+
+});
+</script> --}}
 @endsection

@@ -25,11 +25,12 @@ class paymentController extends Controller
 
     public function index()
     {
-        
         $contract = Contract::all();
+        $billStatus = Bill::all();
         $client = Client::where('status',1)
                 ->get();
-        return view("pages.paymentList",compact('client','contract'));
+
+        return view("pages.paymentList",compact('client','contract','billStatus'));
     }
 
     /**
@@ -41,15 +42,7 @@ class paymentController extends Controller
     public function store(Request $request)
     {
         $contract = Contract::all();
-        $billDate = new Bill();
-        // Start date
-        $start_date = $request->input('startdate');
-        // End date
-        $end_date = $request->input('enddate');
-
-        while (strtotime($start_date) <= strtotime($end_date)) {
-            $start_date = date ("Y-mmm", strtotime("+1 month", strtotime($start_date)));
-        }
+        
         return redirect('/payment');
     }
 
@@ -96,8 +89,7 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-        $
-        $billStatus = Bill::all();
+        $billStatus = Bill::find($id);
        return view('pages.paymentList',compact('billStatus'));
     }
 
@@ -110,11 +102,29 @@ class paymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $billStatus = BillStatus::find($id);
-        $billStatus->update($request->status);
+        $billStatus = Bill::find($id);
+        $billStatus->update($request->billStatus_id);
         return  redirect('/payment');
     }
 
+    public function exportPDF(){
+        \Response::macro('attachment', function ($content) {
+
+            $rand = mt_rand(11111, 99999);
+
+            $filename = 'download-' . "{$rand}" . '.pdf';
+
+            $headers = [
+                'Content-type'        => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="' . $filename .
+                    '"',
+                'Content-Transfer-Encoding' => 'Binary"',
+            ];
+
+            return \Response::make($content, 200, $headers);
+
+        });
+    }
     /**
      * Remove the specified resource from storage.
      *

@@ -119,6 +119,7 @@ class ContractController extends Controller
     {
         $contractupdate = \App\Contract::find($id);//select * from Post where id=$id
         $contractupdate->update($request->all());
+        
         return  redirect('/contract');
     }
 
