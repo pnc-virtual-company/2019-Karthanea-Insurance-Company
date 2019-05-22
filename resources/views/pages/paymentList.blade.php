@@ -89,7 +89,10 @@
                           </div>
                           <div class="col-9">
                               <select class="custom-select" name="billStatus_id" id="billStatus_id">
-                                  <option value=""></option>
+
+                                <option value="Unpaid" selected>Unpaid</option>
+                                <option value="Paid">Paid</option>
+
                               </select>
                           </div>
                       </div>
@@ -143,6 +146,7 @@
         });
     }
 </script>
+
 <script>
     function showBillData(id){
         var url = "{{ url('payment/showBill') }}";
@@ -152,6 +156,7 @@
             data: {_token: "{{csrf_token()}}",id:id},
                 // show bill table of contract
                 success:function(json){
+
                 var billTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <json['bills'].length; i++) {
                     for(var k = 0; k <json['states'].length; k++) {
@@ -167,7 +172,9 @@
                                                     +json.bills[i].amount+'</td><td><a href="#" id="getBillId" data-id="'+json.bills[i].id+'" data-billStatus_id="'+json.bills[i].billStatus_id+'" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
                                                     +json.states[k].status+"</td><td>"
                                                     +json.bills[i].duedate+"</td>"
-                                                    +'<td> <a href="#"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+
+                                                    +'<td> <a href="{{'paymentpdf'}}" id="js-download" class="exportPDF"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+
                             }
                         }
                     }
@@ -181,18 +188,47 @@
         });
     }
 
+
 </script>
+
 <script>
-    $('#getBillId').on('show.bs.modal',function(event){
-          var button = $(event.relatedTarget)
-          var billStatus_id= button.data('billStatus_id')
-          var id = button.data('id')
-          
-          var modal = $(this)
-          modal.find('#billStatus_id').attr('value',billStatus_id)
-          var url ="{{url('/payment')}}/"+id;
-          $('#editBillStatus').attr('action',url);   
-    }) 
+   /* DOUBLE CLICK ROW */
+    $datatable.find(".exportPDF").on("click", function() {
+    let data = table.row(this).data();
+
+    $.ajax({
+        url: '{{url("paymentpdf")}}',
+        type: "get",
+        contentType: false,
+        processData: false,
+        cache: false,
+
+        beforeSend: function() {
+        console.log("double click beforeSend...");
+        },
+
+        success: function() {
+        console.log("DOUBLE CLICK ROW: success...");
+        }
+    });
+    });
 </script>
+{{-- <script>
+$(document).on("click", "#js-download", function(e) {
+
+e.preventDefault();
+
+$.ajax({
+    url: '',
+    data: $("#js-pdf-form").serialize(),
+    success:function(data) {
+        console.log(data)
+    },
+    error:function() {
+    }
+});
+
+});
+</script> --}}
 
 @endsection
