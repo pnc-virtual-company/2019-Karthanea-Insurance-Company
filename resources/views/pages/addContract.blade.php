@@ -89,7 +89,9 @@
 								<td class="status">{{$item->contractStatus->status}}</td>
 								<td class="startdate">{{$item->startdate}}</td>
 								<td class="enddate">{{$item->enddate}}</td>
+
 								<td class="monthlyduedate"> {{$item->monthlyduedate}}th</td>
+
 								<td>
 									<a href="#" class="text-center">$</a>
 								</td>
