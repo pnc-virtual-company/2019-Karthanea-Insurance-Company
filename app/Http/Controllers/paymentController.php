@@ -26,7 +26,7 @@ class paymentController extends Controller
     public function index()
     {
         $contract = Contract::all();
-        $billStatus = Bill::all();
+        $billStatus = BillStatus::all();
         $bills = Bill::all();
         $client = Client::where('status',1)
                 ->get();
@@ -105,7 +105,8 @@ class paymentController extends Controller
     public function update(Request $request, $id)
     {
         $bills = Bill::find($id);
-        $bills->update($request->billStatus_id);
+        $billStatus= BillStatus::all();
+        $bills->update($request->all());
         return  redirect('/payment');
     }
 

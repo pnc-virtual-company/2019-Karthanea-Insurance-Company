@@ -110,6 +110,7 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
       <script>
               $('#updateContractType').on('show.bs.modal',function(event){
+                console.log('show hi');
                   var button = $(event.relatedTarget)
                   var contracttype= button.data('contracttype')
                   var id = button.data('id')
