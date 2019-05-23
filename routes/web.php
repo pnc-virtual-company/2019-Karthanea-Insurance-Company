@@ -100,6 +100,8 @@ Route::resource('chart', 'ChartPaymentController');
 Route::post('/uploadprofile', 'ProfileController@upload');
 Route::get('/note','NotesController@index');
  Route::get('/pdf','NotesController@pdf');
+ Route::get('/notepayment','PaymentPdfController@index');
+ Route::get('/paymentpdf','PaymentPdfController@pdf');
  //Route::get('/pdf','NotesController@pdf');
 Route::get('/admin/addContract',function(){
     return view('pages.addContract');

@@ -85,7 +85,9 @@
 								<td class="status">{{$item->contractStatus->status}}</td>
 								<td class="startdate">{{$item->startdate}}</td>
 								<td class="enddate">{{$item->enddate}}</td>
-								<td class="monthlyduedate"> {{$item->monthlyduedate}}</td>
+
+								<td class="monthlyduedate"> {{$item->monthlyduedate}}th</td>
+
 								<td>
 									<a href="#" class="text-center">$</a>
 								</td>
@@ -213,7 +215,7 @@
 													<label for="" >Monthly Due Date</label>
 												</div>
 												<div class="col-4">
-													<input type="text" id="monthlyduedate" name="monthlyduedate" class="form-control monthlyduedate" required>
+													<input type="number" id="monthlyduedate" name="monthlyduedate" class="form-control monthlyduedate" required>
 												</div>
 											</div>
 										</div>
@@ -281,7 +283,7 @@
                                                                     <label for="" >Monthly Due Date</label>
                                                                 </div>
                                                                 <div class="col-4">
-                                                                    <input type="text" id="monthlyduedate" name="monthlyduedate" class="form-control monthlyduedate" required>
+                                                                    <input type="number" id="monthlyduedate" name="monthlyduedate" class="form-control monthlyduedate" required>
                                                                 </div>
                                                        </div>
                                                     </div>
