@@ -73,15 +73,15 @@
 <div class="modal fade" id="editContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
-                <form action="{{route('payment.update',$item->id)}}" id="editBillStatus">
-                        @csrf
-                        @method('PATCH')
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                                        <form action="" id="editBillStatus" method="POST">
+                                                @csrf
+                                                @method('PATCH')
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-3">
@@ -89,15 +89,9 @@
                                 </div>
                                 <div class="col-9">
                                     <select class="custom-select" name="billStatus_id" id="billStatus_id">
-                                        @foreach ($bills as $item)
-                                            @if ($item->billStatus->id == $item->billStatus_id)
-                                                <option value="{{$item->billStatus_id}}" selected>{{$item->billStatus->status}}</option>
-                                            @endif
-                                            @if ($item->billStatus->id!=$item->billStatus_id)
-                                                <option value="{{$item->billStatus_id}}">{{$item->billStatus->status}}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
+                                        <option value="1">Unpaid</option>
+                                        <option value="2">Paid</option>
+                                     </select>
                                 </div>
                             </div>
                         </div>
@@ -140,14 +134,14 @@
               </form>
           </div>
         </div>
-<script src="{{asset('js/app.js')}}"></script>
-<script src="{{asset('js/table.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="{{asset('js/table.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
 <script>
+    console.log('show')
     function clientDetail(id){
         var url = "{{ url('payment/showData') }}";
         $.ajax({
@@ -156,7 +150,7 @@
             data: {_token: "{{csrf_token()}}",id:id},
 
             success:function(data){
-                var clientContractTable = '<table id="myTabless" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
+                var clientContractTable = '<table id="myTable2" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <data['contracts'].length; i++) {
                     for(var j = 0; j<data['type'].length;j++){
                         for(var k = 0; k<data['status'].length;k++){
@@ -183,6 +177,7 @@
 </script>
 
 <script>
+    console.log('show2')
     function showBillData(id){
         var url = "{{ url('payment/showBill') }}";
         $.ajax({
@@ -191,7 +186,6 @@
             data: {_token: "{{csrf_token()}}",id:id},
                 // show bill table of contract
                 success:function(json){
-
                 var billTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <json['bills'].length; i++) {
                     for(var k = 0; k <json['states'].length; k++) {
@@ -204,7 +198,7 @@
                         for(var t = startdate; t<= enddate; t++){
                             if(json.bills[i].billStatus_id == json.states[k].id && json.bills[i].contract_id == id){
                                 billTable +='<tr><td>' + getMonthBill +'</td><td>'
-                                                    +json.bills[i].amount+'</td><td><a href="#" id="getBillId" data-id="'+json.bills[i].id+'" data-billStatus_id="'+json.bills[i].billStatus_id+'" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
+                                                    +json.bills[i].amount+'</td><td><a href="#"  class="getBillId" data-id="'+json.bills[i].id+'" data-bsid="'+json.bills[i].billStatus_id+'" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
                                                     +json.states[k].status+"</td><td>"
                                                     +json.bills[i].duedate+"</td>"
 
@@ -213,6 +207,7 @@
                             }
                         }
                     }
+                    // alert(json.bills[i].id);
                 }
                 billTable +='</tbody></table>';
                 $("#showBill").html(billTable);
@@ -225,6 +220,18 @@
 
 
 </script>
-
-
+<script src="{{asset('js/app.js')}}"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script>
+    $('#editContractType').on('show.bs.modal',function(event){
+          var button = $(event.relatedTarget)
+          var billStatus_id= button.data('billStatus_id')
+          var id = button.data('id')
+          console.log(id);
+          var modal = $(this)
+          modal.find('#billStatus_id').attr('value',billStatus_id)
+          var url ="{{url('payment')}}/"+id;
+          $('#editBillStatus').attr('action',url);   
+    });
+</script>
 @endsection

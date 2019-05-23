@@ -85,6 +85,7 @@ Route::resource('payment','paymentController');
 Route::post('payment/showData','paymentController@showData');
 Route::post('payment/showBill','paymentController@showBill');
 Route::post('payment/addData','paymentController@addData');
+// Route::post('payment/updateStatus','paymentController@updateStatus');
 Route::resource('/call','callController');
 Route::get('/calendar','CalendarController@index');
 // Route::get('/chart','ChartController@index'); 
