@@ -25,8 +25,10 @@
 
                             <div class="col-4">
                                 <select id="pieOption" value='DataSet' class="form-control" onChange="switchPieData();">
-                                    @foreach ($bill as $item)
-                                    <option value="{{$item->id}}">{{$item->month}}</option>
+                                   
+                                   
+                                    <option value="{{$item->id}}">{{}}</option>
+                                   
                                     @endforeach
                                    
 
