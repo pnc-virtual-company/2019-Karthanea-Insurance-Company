@@ -98,5 +98,3 @@
 </html>
 
 @endsection 
-
-pull mk bat code nh os aling Akrok men
