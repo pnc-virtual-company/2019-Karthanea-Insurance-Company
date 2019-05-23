@@ -10,7 +10,7 @@
         </div>
     </div>
         <div class="container mt-4">
-            <h1>Payments</h1>
+            <h1>Payments Information</h1>
             <div class="card">
                 <div class="card-body">
                     {{-- list of client --}}
@@ -226,56 +226,5 @@
 
 </script>
 
-<script>
-   /* DOUBLE CLICK ROW */
-    $datatable.find(".exportPDF").on("click", function() {
-    let data = table.row(this).data();
 
-    $.ajax({
-        url: '{{url("paymentpdf")}}',
-        type: "get",
-        contentType: false,
-        processData: false,
-        cache: false,
-
-        beforeSend: function() {
-        console.log("double click beforeSend...");
-        },
-
-        success: function() {
-        console.log("DOUBLE CLICK ROW: success...");
-        }
-    });
-    });
-</script>
-<script>
-    $('#getBillId').on('show.bs.modal',function(event){
-        alert('Hello');
-          var button = $(event.relatedTarget)
-          var billStatus_id= button.data('billStatus_id')
-          var id = button.data('id')
-          
-          var modal = $(this)
-          modal.find('#billStatus_id').attr('value',billStatus_id)
-          var url ="{{url('/payment')}}/"+id;
-          $('#editBillStatus').attr('action',url);   
-    }) 
-</script>
-{{-- <script>
-$(document).on("click", "#js-download", function(e) {
-
-e.preventDefault();
-
-$.ajax({
-    url: '',
-    data: $("#js-pdf-form").serialize(),
-    success:function(data) {
-        console.log(data)
-    },
-    error:function() {
-    }
-});
-
-});
-</script> --}}
 @endsection

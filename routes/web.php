@@ -75,7 +75,7 @@ Route::resource('/userCall','UserCallController');
 Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
 
-Route::get('/userCall','UserCallController@index');
+// Route::get('/userCall','UserCallController@index');
 Route::resource('/contract','ContractController');
 
 Route::resource('/clientAchive','clientAchiveController');
@@ -85,7 +85,7 @@ Route::resource('payment','paymentController');
 Route::post('payment/showData','paymentController@showData');
 Route::post('payment/showBill','paymentController@showBill');
 Route::post('payment/addData','paymentController@addData');
-Route::get('/call','callController@index');
+Route::resource('/call','callController');
 Route::get('/calendar','CalendarController@index');
 // Route::get('/chart','ChartController@index'); 
 
@@ -98,12 +98,15 @@ Route::resource('updateClient', 'updateClientPayment');
 Route::resource('updateContract', 'updateContractPayment');
 Route::resource('chart', 'ChartPaymentController');
 Route::post('/uploadprofile', 'ProfileController@upload');
+
+//export pdf file 
 Route::get('/note','NotesController@index');
- Route::get('/pdf','NotesController@pdf');
- Route::get('/notepayment','PaymentPdfController@index');
- Route::get('/paymentpdf','PaymentPdfController@pdf');
+Route::get('/pdf','NotesController@pdf');
+Route::get('/notepayment','PaymentPdfController@index');
+Route::get('/paymentpdf','PaymentPdfController@pdf');
  //Route::get('/pdf','NotesController@pdf');
 Route::get('/admin/addContract',function(){
     return view('pages.addContract');
 });
+//Route::get('/download/{id?}', 'PaymentPdfController@download')->name('Documento.download');
  
