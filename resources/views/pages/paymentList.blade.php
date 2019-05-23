@@ -10,7 +10,7 @@
         </div>
     </div>
         <div class="container mt-4">
-            <h1>Payments</h1>
+            <h1>Payments Information</h1>
             <div class="card">
                 <div class="card-body">
                     {{-- list of client --}}
@@ -186,43 +186,5 @@
 
 </script>
 
-<script>
-   /* DOUBLE CLICK ROW */
-    $datatable.find(".exportPDF").on("click", function() {
-    let data = table.row(this).data();
 
-    $.ajax({
-        url: '{{url("paymentpdf")}}',
-        type: "get",
-        contentType: false,
-        processData: false,
-        cache: false,
-
-        beforeSend: function() {
-        console.log("double click beforeSend...");
-        },
-
-        success: function() {
-        console.log("DOUBLE CLICK ROW: success...");
-        }
-    });
-    });
-</script>
-{{-- <script>
-$(document).on("click", "#js-download", function(e) {
-
-e.preventDefault();
-
-$.ajax({
-    url: '',
-    data: $("#js-pdf-form").serialize(),
-    success:function(data) {
-        console.log(data)
-    },
-    error:function() {
-    }
-});
-
-});
-</script> --}}
 @endsection

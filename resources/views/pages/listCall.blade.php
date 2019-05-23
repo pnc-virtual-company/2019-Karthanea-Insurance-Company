@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="container mt-4">
-        <h1>Information Of Calls</h1>
+        <h1>Calls Information </h1>
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -54,7 +54,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach ($call as $value=>$data)
+                        @foreach ($call as $data)
                             <tr>
                                 <td>
                                     <a href="{{route('call.update',$data->id)}}" data-id="{{$data->id}}" data-date="{{$data->date}}" data-callOperator="{{$data->callOperator}}" 
@@ -119,7 +119,7 @@
                                                 <div class="col-9">
                                                     <div class="row">
                                                         <div class="col-12">
-                                                            <input type='text' name="date" class='txtDate' placeholder="mm/dd/yy"/>
+                                                            <input type='text' name="date" class='startdate' placeholder="mm/dd/yy"/>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -151,7 +151,7 @@
       <div class="modal fade bd-edit-modal-lg" id="editCall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <form action="{{route('call.update',$data->id)}}" method="POST" id="formEditCall">
+                        <form action="" method="POST" id="formEditCall">
                         <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">New call<i class='material-icons ml-3 text-success'>call</i></h5>
                                   </div>
