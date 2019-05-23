@@ -461,42 +461,85 @@ function feb(){
 //end select option
 
 //Piechart script
-  var pie = document.getElementById('pieChart').getContext('2d');
-  var pieChart = new Chart(pie, {
-      type: 'pie',
-      data: {
-          labels: ['Completed', 'Late',],
-          datasets: [{
-              label: 'Payment',
-              data: [0.8, 0.2],
-              backgroundColor: [
-                  'rgba(255, 99, 132, 0.7)',
-                  'rgba(54, 162, 235, 0.7)'
-                  
-              ],
-              borderColor: [
-                  'rgba(255, 99, 132, 1)',
-                  'rgba(54, 162, 235, 1)'
-                  
-              ],
-              borderWidth: 0.5
-          }]
-      }
-  });
 
 
 
-  ////Switch data with select option
+////Switch data with select option
 function clientLate(){
   var num = document.getElementById('numClientLate').value;
   document.getElementById('num').innerHTML=(num);
 }
+
+
+
+function paymentChange(){
+  paymentOption();
+}
+paymentOption();
+function paymentOption(id){
+  var id = $('#pieOption option:selected').val(); 
+  var url = "{{url('paymentOption')}}";
+  //alert(url);
+  $.ajax({
+    type: "POST",
+    url: url,
+    data: {_token: "{{csrf_token()}}",id:id},
+    success: function(json) {
+      console.log(json);
+      var pie = document.getElementById('pieChart').getContext('2d');
+      var amounts =[];
+      var month =[];
+      for(var i=0;i<json['amount'].length; i++){
+        amounts.push(json.amount[i].amount);
+        month.push(json.amount[i].month);
+      }
+      var pieChart = new Chart(pie, {
+        type: 'pie',
+        data: {
+          labels: ['Completed', 'Late',],
+          datasets: [{
+            label: 'Payment',
+            data:amounts,
+                    backgroundColor: [
+                     'rgba(255, 99, 132, 0.7)',
+                      'rgba(54, 162, 235, 0.7)'
+                      
+                    ],
+                    borderColor: [
+                      'rgba(255, 99, 132, 1)',
+                      'rgba(54, 162, 235, 1)'
+                      
+                    ],
+                    borderWidth: 0.5
+                  }]
+                }
+              });
+            },
+            error: function() {
+              alert("error");
+            }
+            
+      });
+}
+
+
+
+
   </script>
   <script>
     $(document).ready(function(){
       $('#dashboard').click(function(
         $('a#dashboard p span#dash').html('<span class="material-icons ml-5" id="dash">arrow_drop_up</span>');
       ));
+
+      $('#pieOption').change(function(){
+        console.log('working');
+    });
+    // function setupPieChart(){
+    //     var id = $('#pieOption option:selected').val();   
+    //     alert(id);  
+    // }
+
     });
   </script>
 </html>

@@ -102,29 +102,12 @@ class paymentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $billStatus = Bill::find($id);
-        $billStatus->update($request->billStatus_id);
+        $bills = Bill::find($id);
+        $billStatus= BillStatus::all();
+        $bills->update($request->all());
         return  redirect('/payment');
     }
 
-    public function exportPDF(){
-        \Response::macro('attachment', function ($content) {
-
-            $rand = mt_rand(11111, 99999);
-
-            $filename = 'download-' . "{$rand}" . '.pdf';
-
-            $headers = [
-                'Content-type'        => 'application/pdf',
-                'Content-Disposition' => 'attachment; filename="' . $filename .
-                    '"',
-                'Content-Transfer-Encoding' => 'Binary"',
-            ];
-
-            return \Response::make($content, 200, $headers);
-
-        });
-    }
     /**
      * Remove the specified resource from storage.
      *

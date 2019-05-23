@@ -21,6 +21,13 @@ class ChartController extends Controller
         return view('pages.chart',compact('bill'));
     }
 
+
+    public function payment(Request $request){
+        $amountBill = Bill::all();
+        
+        $json['amount'] = $amountBill;
+        return response()->json($json);
+    }
     /**
      * Show the form for creating a new resource.
      *

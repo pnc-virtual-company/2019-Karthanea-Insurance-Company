@@ -24,17 +24,10 @@
                         <div class="row">
 
                             <div class="col-4">
-                                <select id="pieOption" value='DataSet' class="form-control" onChange="switchPieData();">
+                                <select id="pieOption"  class="form-control" onchange="paymentChange();">
                                     @foreach ($bill as $item)
-                                
-                                @for ($i = 0; $i <1; $i++)
-                                @if(date('Y', strtotime($item->month))==date('Y', strtotime($item->month)))
-                                <option value="{{$item->id}}">{{date('M,Y', strtotime($item->month))}}</option>
-                                @endif
-                                @endfor
-                                       
-                                       
-                                        @endforeach
+                                    <option value="{{$item->id}}">{{date('M,Y', strtotime($item->month))}}</option>
+                                    @endforeach
 
                                 </select>    
                             </div>
