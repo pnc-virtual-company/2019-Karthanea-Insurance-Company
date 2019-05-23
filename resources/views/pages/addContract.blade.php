@@ -36,7 +36,6 @@
 								<th>Start</th>
 								<th>End</th>
 								<th>Monthly bill</th>
-								{{-- <th>Due Date</th> --}}
 								<th>Bill</th>
 							</tr>
 						</thead>
@@ -81,15 +80,14 @@
 										<div class="col-1">
 											<a href="{{ url('pdf') }}" ><i class="material-icons text-success">description</i></a>
 										</div>
-										
 									</div>
-									
 								</td>
-								
 								<td class="status">{{$item->contractStatus->status}}</td>
 								<td class="startdate">{{$item->startdate}}</td>
 								<td class="enddate">{{$item->enddate}}</td>
+
 								<td class="monthlyduedate"> {{$item->monthlyduedate}}th</td>
+
 								<td>
 									<a href="#" class="text-center">$</a>
 								</td>
