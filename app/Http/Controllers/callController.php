@@ -78,9 +78,11 @@ class callController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $client = Client::findOrFail($id);
-        // $client = Call::findOrFail($id);
-        $client->update($request->all());
+        // $client = Client::findOrFail($id);
+        // $client->update($request->all());
+        
+        $call = Call::findOrFail($id);
+        $call->update($request->all());
         return  redirect('/call');
     }
     /**

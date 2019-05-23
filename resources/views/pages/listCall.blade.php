@@ -126,7 +126,9 @@
       <div class="modal fade bd-edit-modal-lg" id="editCall" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <form action="{{route('call.update',$item->id)}}" method="POST" id="formEditCall">
+                        <form action="" method="POST" id="formEditCall">
+                            @csrf
+                            @method('PATCH')
                         <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">New call<i class='material-icons ml-3 text-success'>call</i></h5>
                                   </div>
@@ -233,6 +235,35 @@
         <script src="{{asset('js/app.js')}}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script>
+        function showCallData(id){
+            var url = "{{ url('call/showCallData') }}";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {_token: "{{csrf_token()}}",id:id},
+                    // show call table of contract
+                    success:function(data){
+                    
+                    var callTable = '<table id="myTable2" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Date</th> <th>Call Operator</th> <th>Duration</th> <th>Comments</th> </tr> </thead> <tbody>';
+                    for(var i = 0; i <data['call'].length; i++) {
+                        if(data.call[i].client_id ==id){
+                            callTable +='<tr><td><a href="#" data-id="'+data.call[i].id+'" data-date="'+data.call[i].date+'" data-cOperate="'+data.call[i].callOperator+'" data-duration="'+data.call[i].duration+'" data-comments="'+data.call[i].comments+'" data-client_id="'+id+'" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>' +data.call[i].id +'</td><td>'
+                                                    +data.call[i].date+'</td><td>'
+                                                    +data.call[i].callOperator+"</td><td>"
+                                                    +data.call[i].duration+"</td><td>"
+                                                    +data.call[i].comments+"</td>"
+                        }
+                    }
+                    callTable +='</tbody></table>';
+                    $("#tableCall").html(callTable);
+                },
+                error:function(){
+                    alert('error');
+                },
+            });
+        }
+    </script>
+        <script>
        $('#editClientActive').on('show.bs.modal',function (event){
             var button = $(event.relatedTarget)
             var firstname = button.data('firstname')
@@ -243,7 +274,7 @@
             var modal = $(this)
             modal.find('#firstname').attr('value',firstname)
             modal.find('#lastname').attr('value',lastname)
-             var url ="{{url('/call')}}/"+ id;
+             var url ="{{url('/client')}}/"+ id;
             $('#editClientList').attr('action',url);
             });
 
@@ -272,33 +303,5 @@
             });
         </script>
 
-    <script>
-    function showCallData(id){
-        var url = "{{ url('call/showCallData') }}";
-        $.ajax({
-            type: "POST",
-            url: url,
-            data: {_token: "{{csrf_token()}}",id:id},
-                // show call table of contract
-                success:function(data){
-                   
-                var callTable = '<table id="myTable2" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Date</th> <th>Call Operator</th> <th>Duration</th> <th>Comments</th> </tr> </thead> <tbody>';
-                for(var i = 0; i <data['call'].length; i++) {
-                    if(data.call[i].client_id ==id){
-                        callTable +='<tr><td><a href="#" data-id="'+data.call[i].id+'" data-date="'+data.call[i].date+'" data-callOperator="'+data.call[i].callOperator+'" data-duration="'+data.call[i].duration+'" data-comments="'+data.call[i].comments+'" data-client_id="'+id+'" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>' +data.call[i].id +'</td><td>'
-                                                +data.call[i].date+'</td><td>'
-                                                +data.call[i].callOperator+"</td><td>"
-                                                +data.call[i].duration+"</td><td>"
-                                                +data.call[i].comments+"</td>"
-                    }
-                }
-                callTable +='</tbody></table>';
-                $("#tableCall").html(callTable);
-            },
-            error:function(){
-                alert('error');
-            },
-        });
-    }
-    </script>
+    
 @endsection 

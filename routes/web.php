@@ -99,7 +99,6 @@ Route::resource('updateClient', 'updateClientPayment');
 Route::resource('updateContract', 'updateContractPayment');
 Route::resource('chart', 'ChartPaymentController');
 Route::post('/uploadprofile', 'ProfileController@upload');
-
 //export pdf file 
 Route::get('/note','NotesController@index');
 Route::get('/pdf','NotesController@pdf');
