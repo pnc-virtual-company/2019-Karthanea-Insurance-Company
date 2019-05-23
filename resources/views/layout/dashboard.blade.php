@@ -82,7 +82,7 @@
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
                     <li class="list-group-item collapsed">
-                      <a href="{{url('/call')}}">
+                      <a href="{{url('/userCall')}}">
                         <span class="text-white">
                           <i class="material-icons text-white">perm_phone_msg</i>
                           User Call

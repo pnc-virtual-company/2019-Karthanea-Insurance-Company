@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Bill;
 class ChartController extends Controller
 {
     /**
@@ -16,7 +16,9 @@ class ChartController extends Controller
     }
     public function index()
     {
-        return view('pages.chart');
+        $bill= Bill::all();
+       // dd($bill);
+        return view('pages.chart',compact('bill'));
     }
 
     /**
@@ -82,6 +84,6 @@ class ChartController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
     }
 }

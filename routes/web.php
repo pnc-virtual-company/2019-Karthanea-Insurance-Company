@@ -96,7 +96,7 @@ Route::resource('clientDisable', 'disableClientActiveController');
 Route::resource('clientUnable', 'unableClientController');
 Route::resource('updateClient', 'updateClientPayment');
 Route::resource('updateContract', 'updateContractPayment');
-Route::resource('chart', 'ChartPaymentController');
+Route::resource('chart', 'ChartController');
 Route::post('/uploadprofile', 'ProfileController@upload');
 
 //export pdf file 

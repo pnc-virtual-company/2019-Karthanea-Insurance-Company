@@ -25,12 +25,16 @@
 
                             <div class="col-4">
                                 <select id="pieOption" value='DataSet' class="form-control" onChange="switchPieData();">
-                                   
-                                   
-                                    <option value="{{$item->id}}">{{}}</option>
-                                   
-                                    @endforeach
-                                   
+                                    @foreach ($bill as $item)
+                                
+                                @for ($i = 0; $i <1; $i++)
+                                @if(date('Y', strtotime($item->month))==date('Y', strtotime($item->month)))
+                                <option value="{{$item->id}}">{{date('M,Y', strtotime($item->month))}}</option>
+                                @endif
+                                @endfor
+                                       
+                                       
+                                        @endforeach
 
                                 </select>    
                             </div>
@@ -62,7 +66,9 @@
                             <div class="col-6">
 
                                 <select id="numClientLate" value='DataSet' class="form-control" onChange="clientLate();">
+                                 
                                     @foreach ($bill as $item)
+                                
                                     <option value="{{$item->id}}">{{$item->month}}</option>
                                     @endforeach
                                    
