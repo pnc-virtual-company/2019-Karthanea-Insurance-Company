@@ -13,15 +13,16 @@ class PaymentPdfController extends Controller
     {
         $data['note'] = \App\Bill::paginate(10);
         
-        return view('pages.paymentList',response()->json($data));
+        return view('pages.paymentList',$data);
     }
  
     public function pdf(){
     
      $data['note'] =  \App\Bill::get();
- 
-     $pdf = PDF::loadView('pages.payment_pdf', $data);
+
+     $pdf = PDF::loadView('pages.payment_pdf',$data);
    
      return $pdf->download('paymentlist.pdf');
     }
+   
 }

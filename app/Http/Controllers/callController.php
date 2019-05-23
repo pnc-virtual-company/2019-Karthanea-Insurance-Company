@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
 use App\Client;
 use App\Call;
@@ -22,7 +20,6 @@ class callController extends Controller
         return view('pages.listCall',compact('client'),compact('call'));
         
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -32,7 +29,6 @@ class callController extends Controller
     {
         //
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -44,7 +40,6 @@ class callController extends Controller
         $client = Call::create($request->all());
         return redirect('/call');
     }
-
     /**
      * Display the specified resource.
      *
@@ -56,6 +51,14 @@ class callController extends Controller
         //
     }
 
+    public function showCallData(Request $request){
+
+        $userCall = Call::all();
+
+        $data['call'] = $userCall;
+
+        return response()->json($data);
+    }
     /**
      * Show the form for editing the specified resource.
      *
@@ -66,7 +69,6 @@ class callController extends Controller
     {
         //
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -76,11 +78,11 @@ class callController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $client = Call::findOrFail($id);//seect * from Post where id=$id
+        $client = Client::findOrFail($id);
+        // $client = Call::findOrFail($id);
         $client->update($request->all());
         return  redirect('/call');
     }
-
     /**
      * Remove the specified resource from storage.
      *
