@@ -22,7 +22,7 @@
 		</div>
 	</div>
 	<div class="container-fluid">
-		<h1>Information Of Contract</h1>
+		<h1>Contracts Information </h1>
 		<div class="card">
 			<div class="card-body">
 				<div class="table-responsive">
@@ -85,7 +85,9 @@
 								<td class="status">{{$item->contractStatus->status}}</td>
 								<td class="startdate">{{$item->startdate}}</td>
 								<td class="enddate">{{$item->enddate}}</td>
+
 								<td class="monthlyduedate"> {{$item->monthlyduedate}}th</td>
+
 								<td>
 									<a href="#" class="text-center">$</a>
 								</td>
@@ -348,7 +350,7 @@
 								  </body>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> --}}
 <script> 
 $('#editContract').on('show.bs.modal',function(event){
     var button = $(event.relatedTarget)

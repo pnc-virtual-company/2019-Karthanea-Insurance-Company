@@ -6,7 +6,7 @@
         <div class="col-2"></div>
         <div class="col-8">
             <div class="card shadow-sm">
-                <div class="card-header bg-secondary text-white"><h4> View User Profile</h4></div>
+                <div class="card-header bg-secondary text-white"><h4> Profile</h4></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 col-sm-12 border-right text-center border-bottom">
@@ -17,7 +17,7 @@
                             @else
                                 <img src="storage/avatar/avatar.jpg" class="img-circle2">
                             @endif
-                            <a href="#"  data-toggle="modal" data-target="#upload"><h5>Choose profile</h5>  </a>   
+                            <a href="#"  data-toggle="modal" data-target="#upload"><h5>Update Picture</h5>  </a>   
                         </div>
                         <div class="col-md-8 col-sm-12 pt-4">
                             <div class="row">
@@ -58,7 +58,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Choose Your Profile</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Update Picture</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>

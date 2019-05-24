@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="container mt-4">
-        <h1>Information Of Calls</h1>
+        <h1>Calls Information </h1>
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -43,8 +43,10 @@
                         </table>
                 </div>
                 <div class="table-responsive">
+
                 <div id="tableCall"></div>
                     
+
                 </div>
                     <div>
                     </div>
@@ -127,8 +129,10 @@
             <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <form action="" method="POST" id="formEditCall">
+
                             @csrf
                             @method('PATCH')
+
                         <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">New call<i class='material-icons ml-3 text-success'>call</i></h5>
                                   </div>

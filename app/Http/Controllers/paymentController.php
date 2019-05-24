@@ -26,7 +26,9 @@ class paymentController extends Controller
     public function index()
     {
         $contract = Contract::all();
+
         $billStatus = Bill::all();
+
         $client = Client::where('status',1)
                 ->get();
 
@@ -91,6 +93,7 @@ class paymentController extends Controller
     {
         $billStatus = Bill::find($id);
        return view('pages.paymentList',compact('billStatus'));
+
     }
 
     /**
@@ -108,6 +111,24 @@ class paymentController extends Controller
         return  redirect('/payment');
     }
 
+    public function exportPDF(){
+        \Response::macro('attachment', function ($content) {
+
+            $rand = mt_rand(11111, 99999);
+
+            $filename = 'download-' . "{$rand}" . '.pdf';
+
+            $headers = [
+                'Content-type'        => 'application/pdf',
+                'Content-Disposition' => 'attachment; filename="' . $filename .
+                    '"',
+                'Content-Transfer-Encoding' => 'Binary"',
+            ];
+
+            return \Response::make($content, 200, $headers);
+
+        });
+    }
     /**
      * Remove the specified resource from storage.
      *
