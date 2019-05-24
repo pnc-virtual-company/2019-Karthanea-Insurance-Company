@@ -227,11 +227,9 @@
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
-           
               </div>
             </div>
           </div>
-
         <script src="{{asset('js/app.js')}}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script>
@@ -241,9 +239,7 @@
                 type: "POST",
                 url: url,
                 data: {_token: "{{csrf_token()}}",id:id},
-                    // show call table of contract
                     success:function(data){
-                    
                     var callTable = '<table id="myTable2" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Date</th> <th>Call Operator</th> <th>Duration</th> <th>Comments</th> </tr> </thead> <tbody>';
                     for(var i = 0; i <data['call'].length; i++) {
                         if(data.call[i].client_id ==id){
@@ -274,12 +270,12 @@
             var modal = $(this)
             modal.find('#firstname').attr('value',firstname)
             modal.find('#lastname').attr('value',lastname)
-             var url ="{{url('/client')}}/"+ id;
+             var url ="{{url('/call')}}/"+ id;
             $('#editClientList').attr('action',url);
             });
 
             $('#editCall').on('show.bs.modal',function (event){
-                console.log('edit');  
+            console.log('edit');  
             var button = $(event.relatedTarget)
             var date = button.data('date')
             console.log(date)
