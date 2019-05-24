@@ -26,11 +26,13 @@ class paymentController extends Controller
     public function index()
     {
         $contract = Contract::all();
-        $bills = Bill::all();
+
+        $billStatus = Bill::all();
+
         $client = Client::where('status',1)
                 ->get();
 
-        return view("pages.paymentList",compact('client','contract','billStatus','bills'));
+        return view("pages.paymentList",compact('client','contract','billStatus'));
     }
 
     /**
@@ -89,8 +91,9 @@ class paymentController extends Controller
      */
     public function edit($id)
     {
-        $statusBill = BillStatus::all();
-       return view('pages.paymentList',compact('statusBill'));
+        $billStatus = Bill::find($id);
+       return view('pages.paymentList',compact('billStatus'));
+
     }
 
     /**

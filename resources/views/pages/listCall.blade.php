@@ -26,14 +26,14 @@
                             @if ($item->status=='1')
                                 <tr>
                                     <td>
-                                    <a href="{{route('call.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" data-address="{{$item->address}}" data-phonenumber="{{$item->phonenumber}}" data-email="{{$item->email}}"><i class="material-icons text-success">edit</i></a>
+                                    <a href="{{route('call.update',$item->id)}}" data-toggle="modal"  data-target="#editClientActive" data-id="{{$item->id}}" data-firstname="{{$item->firstname}}" data-lastname="{{$item->lastname}}" ><i class="material-icons text-success">edit</i></a>
                                     <a href="{{route('client.update',$item->id)}}" data-id="{{$item->id}}" data-toggle="modal" data-target="#disableClient">
                                         <input type="checkbox" name="disable[]" id="disable">
                                     </a>
                                         {{$item->id}}
                                     </td>
                                     <td>{{$item->firstname}} {{$item->lastname}} </td>
-                                    <td ><a class="toggleCallHistory" href="#"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
+                                    <td ><a class="toggleCallHistory" href="#" onclick="showCallData({{$item->id}})"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
                                     <td><i class="material-icons text-primary text-center">call</i></td>
                                 </tr>
                              @endif
@@ -43,33 +43,10 @@
                         </table>
                 </div>
                 <div class="table-responsive">
-                    <table id="myTable2" class="table table-striped table-bordered table-hover collapse">
-                        <thead class="bg-dark text-white">
-                            <tr>
-                                <th>ID</th>
-                                <th>Date</th>
-                                <th>Call Operator</th>
-                                <th>Duration</th>
-                                <th>Comments</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($call as $data)
-                            <tr>
-                                <td>
-                                    <a href="{{route('call.update',$data->id)}}" data-id="{{$data->id}}" data-date="{{$data->date}}" data-callOperator="{{$data->callOperator}}" 
-                                    data-duration="{{$data->duration}}" data-comments="{{$data->comments}}" data-client_id="{{$data->client_id}}" 
-                                    data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                    {{$data->id}}
-                                </td>
-                                <td>{{$data->date}}</td>
-                                <td>{{$data->callOperator}}</td>
-                                <td>{{$data->duration}}</td>
-                                <td>{{$data->comments}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+
+                <div id="tableCall"></div>
+                    
+
                 </div>
                     <div>
                     </div>
@@ -152,6 +129,10 @@
             <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <form action="" method="POST" id="formEditCall">
+
+                            @csrf
+                            @method('PATCH')
+
                         <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">New call<i class='material-icons ml-3 text-success'>call</i></h5>
                                   </div>
@@ -169,11 +150,11 @@
                                                     <div class="row">
                                                         <label for="callOperator" >Call Operator</label>
                                                     <div class="col-4">
-                                                        <input type="string" class="form-control" name="callOperator" id="callOperator" value="">
+                                                        <input type="text" class="form-control" name="callOperator" id="callOperator" value="">
                                                     </div> 
                                                         <label for="" >Duration</label>
                                                     <div class="col-4">
-                                                        <input type="text" class="form-control"name="duration" id="duration" value="" >
+                                                        <input type="text" class="form-control" name="duration" id="duration" value="" >
                                                     </div>    
                                                 </div>
                                             </div>
@@ -187,7 +168,7 @@
                                                         <div class="col-9">
                                                         <div class="row">
                                                             <div class="col-12">
-                                                                <input type='text' name="date" id="date" class='txtDate' placeholder="mm/dd/yy"  />
+                                                                <input type='text' name="date" id="date" class='startdate' placeholder="mm/dd/yy"  />
                                                             </div>
                                                         </div>
                                                     </div>
@@ -199,7 +180,7 @@
                                             <div class="row">
                                                  <label for="">Comments</label>
                                                 <div class="col-10">
-                                            <textarea type="text" cols="50" id="comments" class="form-control"></textarea>
+                                            <textarea type="text" cols="50" id="comments" name="comments" class="form-control"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -218,12 +199,12 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">Edit New Client</h5>
+                  <h5 class="modal-title" id="exampleModalLabel">Edit New call</h5>
                 </div>
                 <form action="" method="POST" id="editClientList">
                     @csrf
                     @method('PATCH')
-                <div class="modal-body">
+                    <div class="modal-body">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-2">
@@ -253,23 +234,52 @@
               </div>
             </div>
           </div>
-          <script src="{{asset('js/app.js')}}"></script>
-          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-          <script>
+        <script src="{{asset('js/app.js')}}"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script>
+        function showCallData(id){
+            var url = "{{ url('call/showCallData') }}";
+            $.ajax({
+                type: "POST",
+                url: url,
+                data: {_token: "{{csrf_token()}}",id:id},
+                    success:function(data){
+                    var callTable = '<table id="myTable2" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Date</th> <th>Call Operator</th> <th>Duration</th> <th>Comments</th> </tr> </thead> <tbody>';
+                    for(var i = 0; i <data['call'].length; i++) {
+                        if(data.call[i].client_id ==id){
+                            callTable +='<tr><td><a href="#" data-id="'+data.call[i].id+'" data-date="'+data.call[i].date+'" data-cOperate="'+data.call[i].callOperator+'" data-duration="'+data.call[i].duration+'" data-comments="'+data.call[i].comments+'" data-client_id="'+id+'" data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>' +data.call[i].id +'</td><td>'
+                                                    +data.call[i].date+'</td><td>'
+                                                    +data.call[i].callOperator+"</td><td>"
+                                                    +data.call[i].duration+"</td><td>"
+                                                    +data.call[i].comments+"</td>"
+                        }
+                    }
+                    callTable +='</tbody></table>';
+                    $("#tableCall").html(callTable);
+                },
+                error:function(){
+                    alert('error');
+                },
+            });
+        }
+    </script>
+        <script>
        $('#editClientActive').on('show.bs.modal',function (event){
             var button = $(event.relatedTarget)
             var firstname = button.data('firstname')
             var lastname = button.data('lastname')  
             var id = button.data('id')
             console.log(id)
+
             var modal = $(this)
             modal.find('#firstname').attr('value',firstname)
             modal.find('#lastname').attr('value',lastname)
-            var url ="{{url('/call')}}/"+ id;
+             var url ="{{url('/call')}}/"+ id;
             $('#editClientList').attr('action',url);
             });
 
             $('#editCall').on('show.bs.modal',function (event){
+            console.log('edit');  
             var button = $(event.relatedTarget)
             var date = button.data('date')
             console.log(date)
@@ -286,10 +296,12 @@
             modal.find('#date').attr('value',date)
             modal.find('#callOperator').attr('value',callOperator)
             modal.find('#duration').attr('value',duration)
-            modal.find('#comments').attr('value',comments)
+            modal.find('#comments').text(comments)
             modal.find('#client_id').attr('value',client_id)
             var url ="{{url('/call')}}/"+ id;
             $('#formEditCall').attr('action',url);
             });
         </script>
+
+    
 @endsection 

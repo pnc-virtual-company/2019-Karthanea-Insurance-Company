@@ -72,58 +72,29 @@
 <!-- Modal Edit contract type-->
 <div class="modal fade" id="editContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
+          <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                </div>
-                                        <form action="" id="editBillStatus" method="POST">
-                                                @csrf
-                                                @method('PATCH')
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col-3">
-                                    <label for="">Bill Status:</label>
-                                </div>
-                                <div class="col-9">
-                                    <select class="custom-select" name="billStatus_id" id="billStatus_id">
-                                        <option value="1">Unpaid</option>
-                                        <option value="2">Paid</option>
-                                     </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn text-white bg-primary">Save</button>
-                            <button type="button" class="btn text-white bg-danger" data-dismiss="modal">No</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-          <div class="modal-content">
-                <form action="" id="editBillStatus">
-                    @csrf
-                    @method('PATCH')
-                    <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+
                   </div>
+                    <form action="" id="editBillStatus" method="POST">
+                            @csrf
+                            @method('PATCH')
                   <div class="modal-body">
                       <div class="row">
                           <div class="col-3">
                               <label for="">Bill Status:</label>
                           </div>
                           <div class="col-9">
-                              <select class="custom-select" name="billStatus_id" id="billStatus_id">
 
-                                <option value="Unpaid" selected>Unpaid</option>
-                                <option value="Paid">Paid</option>
+                                <select class="custom-select" name="billStatus_id" id="billStatus_id">
+                                    <option value="1">Unpaid</option>
+                                    <option value="2">Paid</option>
+                                </select>
 
-                              </select>
                           </div>
                       </div>
                     </div>
@@ -132,8 +103,10 @@
                         <button type="button" class="btn text-white bg-danger" data-dismiss="modal">No</button>
                     </div>
               </form>
-          </div>
-        </div>
+       </div>
+   </div>
+</div>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="{{asset('js/table.js')}}"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
@@ -186,6 +159,7 @@
             data: {_token: "{{csrf_token()}}",id:id},
                 // show bill table of contract
                 success:function(json){
+
                 var billTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <json['bills'].length; i++) {
                     for(var k = 0; k <json['states'].length; k++) {
@@ -198,7 +172,7 @@
                         for(var t = startdate; t<= enddate; t++){
                             if(json.bills[i].billStatus_id == json.states[k].id && json.bills[i].contract_id == id){
                                 billTable +='<tr><td>' + getMonthBill +'</td><td>'
-                                                    +json.bills[i].amount+'</td><td><a href="#"  class="getBillId" data-id="'+json.bills[i].id+'" data-bsid="'+json.bills[i].billStatus_id+'" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
+                                                    +json.bills[i].amount+'</td><td><a href="#" id="getBillId" data-id="'+json.bills[i].id+'" data-billStatus_id="'+json.bills[i].billStatus_id+'" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
                                                     +json.states[k].status+"</td><td>"
                                                     +json.bills[i].duedate+"</td>"
 
