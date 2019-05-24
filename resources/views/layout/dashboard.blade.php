@@ -82,7 +82,7 @@
                   </a>
                   <ul class="collapse list-unstyled " id="submenu">
                     <li class="list-group-item collapsed">
-                      <a href="{{url('/calluser')}}">
+                      <a href="{{url('/userCall')}}">
                         <span class="text-white">
                           <i class="material-icons text-white">perm_phone_msg</i>
                           User Call
@@ -98,7 +98,7 @@
                         </a>
                     </li>
                     <li class="list-group-item collapsed">
-                      <a href="{{url('/chart')}}">
+                      <a href="{{url('/testBill')}}">
                         <span class="text-white">
                           <i class="material-icons text-white">pie_chart</i>
                           Occupency
@@ -246,7 +246,7 @@
 
 
   {{-- modal error --}}
-  <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script>
+  {{-- <script src="{{asset('js/core/bootstrap-material-design.min.js')}}"></script> --}}
 
   <script src="https://unpkg.com/default-passive-events"></script>
   <script src="{{asset('js/plugins/perfect-scrollbar.jquery.min.js')}}"></script>
@@ -264,26 +264,6 @@
   <script src="{{asset('demo/demo.js')}}"></script>
   <script>
     //fade Bill
-    $(document).ready(function(){
-        $(".toggleBill").click(function(){
-          $("#myTabless").fadeToggle("slow");
-      });
-    });
-
-    //fade payment
-    $(document).ready(function(){
-      $(".togglePayment").click(function(){
-        $("#table2").fadeToggle("slow");
-      });
-    });
-    
-    //fade table call
-    $(document).ready(function(){
-      $(".toggleCallHistory").click(function(){
-        $("#myTable2").fadeToggle("slow");
-      });
-    });
-
     $(document).ready(function() {
       md.initDashboardPageCharts();
       $('#example').DataTable();                
@@ -305,14 +285,12 @@
       $('#contractType').DataTable();  
       
     });
-
 </script>
 {{-- Link datepicker --}}
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <script>
   
    $(document).ready(function() {
-
 $(".startdate").datepicker({
     showOn: 'button',
     buttonText: 'Show Date',
@@ -328,7 +306,6 @@ $(".startdate").datepicker({
             $(".enddate").datepicker("option", "minDate", dt);
         }
      
-
      
 });
 $(".enddate").datepicker({
@@ -350,7 +327,6 @@ $(".enddate").datepicker({
 $(".ui-datepicker-trigger").mouseover(function() {
     $(this).css('cursor', 'pointer');
 });
-
 });
     </script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
@@ -364,7 +340,54 @@ $(".ui-datepicker-trigger").mouseover(function() {
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 </body>
 <script>
-  //barChart
+  
+        var line = document.getElementById('line').getContext('2d');
+        var myChart = new Chart(line, {
+      type: 'line',
+      data: {
+          labels: response.months,
+          datasets: [{
+              label: 'Average of call per month for 2019 (Hours Per Month)',
+              data: response.post_count_data,
+              backgroundColor: [
+                  'rgba(255, 99, 132, 0.7)',
+                  'rgba(54, 162, 235, 0.7)',
+                  'rgba(255, 206, 86, 0.2)',
+                  'rgba(75, 192, 192, 0.2)',
+                  'rgba(153, 102, 255, 0.2)',
+                  'rgba(255, 159, 64, 0.2)'
+              ],
+              borderColor: [
+                  'rgba(255, 99, 132, 1)',
+                  'rgba(54, 162, 235, 1)',
+                  'rgba(255, 206, 86, 1)',
+                  'rgba(75, 192, 192, 1)',
+                  'rgba(153, 102, 255, 1)',
+                  'rgba(255, 159, 64, 1)'
+              ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                    max:response.max,
+                    min:0,
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+  });
+  
+      }
+
+
+    }
+  })
+
+  // barChart
   var line = document.getElementById('line').getContext('2d');
   var myChart = new Chart(line, {
       type: 'line',
@@ -442,16 +465,12 @@ $(".ui-datepicker-trigger").mouseover(function() {
           }
       }
   });
-
-
-
 //PieChart (Persontage of customer Late payment and completion )
   
 ////Switch data with select option
 function switchPieData(){
   var e = document.getElementById("pieOption");
   var optionValue = e.options[e.selectedIndex].value;
-
   if (optionValue == "jan"){
     jan(); 
   }else if(optionValue == "feb"){
@@ -460,26 +479,22 @@ function switchPieData(){
     mar();
   }
 }
-
 function jan(){
   pieChart.data.datasets[0].data[0]=0.8;
   pieChart.data.datasets[0].data[1]=0.1;
   pieChart.update();
 }
-
 function mar(){
   pieChart.data.datasets[0].data[0]=0.6;
   pieChart.data.datasets[0].data[1]=0.4;
   pieChart.update();
 }
-
 function feb(){
   pieChart.data.datasets[0].data[0]=0.3;
   pieChart.data.datasets[0].data[1]=0.7;
   pieChart.update();
 }
 //end select option
-
 //Piechart script
   var pie = document.getElementById('pieChart').getContext('2d');
   var pieChart = new Chart(pie, {
@@ -503,9 +518,6 @@ function feb(){
           }]
       }
   });
-
-
-
   ////Switch data with select option
 function clientLate(){
   var num = document.getElementById('numClientLate').value;

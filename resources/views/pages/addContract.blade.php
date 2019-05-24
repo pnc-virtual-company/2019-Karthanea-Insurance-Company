@@ -21,7 +21,7 @@
 		</div>
 	</div>
 	<div class="container-fluid">
-		<h1>Information Of Contract</h1>
+		<h1>Contracts Information </h1>
 		<div class="card">
 			<div class="card-body">
 				<div class="table-responsive">

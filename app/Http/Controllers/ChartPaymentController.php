@@ -14,10 +14,10 @@ class ChartPaymentController extends Controller
     public function index()
     {
       $bill = Bill::all();
-      //dd($bill);
-       return view('pages.chart',compact('bill'));
-    }
+        return view('pages.chart',compact('bill'));
 
+   
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -83,4 +83,13 @@ class ChartPaymentController extends Controller
     {
         //
     }
+    public function showData(Request $request)
+    {
+   
+        $bill = Bill::all();
+        $data['bills'] = $bill;
+        return response()->json($data);
+       
+    }
+
 }

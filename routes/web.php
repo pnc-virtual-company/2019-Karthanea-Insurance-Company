@@ -103,4 +103,6 @@ Route::get('/note','NotesController@index');
 Route::get('/admin/addContract',function(){
     return view('pages.addContract');
 });
+Route::get('/testBill','testBillController@getAvg');
+Route::get('/duration','testBillController@getAvg_duration');
  
