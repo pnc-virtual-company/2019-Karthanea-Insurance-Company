@@ -67,7 +67,6 @@ Route::get('examples', 'ExamplesController@index')->name('examples');
 =============================================================================*/
 
 Route::get('/openNewCall','PageController@OpenNewCall');
-Route::resource('/home','PageController@index');
 
 Route::resource('/contracttype','contracttypeController');
 Route::resource('/userCall','UserCallController');
@@ -76,7 +75,9 @@ Route::get('/location','PageController@location');
 Route::resource('/client','ClientController');
 
 // Route::get('/userCall','UserCallController@index');
-Route::resource('/contract','ContractController');
+
+Route::resource('contract','ContractController');
+
 
 Route::resource('/clientAchive','clientAchiveController');
 
@@ -87,10 +88,11 @@ Route::post('payment/showBill','paymentController@showBill');
 Route::post('payment/addData','paymentController@addData');
 
 Route::resource('/call','callController');
+ Route::post('payment/updateStatus','paymentController@updateStatus');
+
 Route::post('call/showCallData','callController@showCallData');
 
 Route::get('/calendar','CalendarController@index');
-// Route::get('/chart','ChartController@index'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
@@ -99,8 +101,12 @@ Route::resource('clientDisable', 'disableClientActiveController');
 Route::resource('clientUnable', 'unableClientController');
 Route::resource('updateClient', 'updateClientPayment');
 Route::resource('updateContract', 'updateContractPayment');
-Route::resource('chart', 'ChartPaymentController');
+
+Route::get('chart', 'ChartController@index');
+Route::post('/paymentOption','ChartController@payment');
+
 Route::post('/uploadprofile', 'ProfileController@upload');
+
 
 //export pdf file 
 Route::get('/note','NotesController@index');
@@ -108,8 +114,8 @@ Route::get('/pdf','NotesController@pdf');
 Route::get('/notepayment','PaymentPdfController@index');
 Route::get('/paymentpdf','PaymentPdfController@pdf');
  //Route::get('/pdf','NotesController@pdf');
-Route::get('/admin/addContract',function(){
-    return view('pages.addContract');
-});
+// Route::get('/admin/addContract',function(){
+//     return view('pages.addContract');
+// });
 //Route::get('/download/{id?}', 'PaymentPdfController@download')->name('Documento.download');
  

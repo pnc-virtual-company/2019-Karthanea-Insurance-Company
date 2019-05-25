@@ -73,16 +73,17 @@
 <div class="modal fade" id="editContractType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Update Bill Status</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
                     </button>
 
-                  </div>
-                    <form action="" id="editBillStatus" method="POST">
-                            @csrf
-                            @method('PATCH')
+                </div>
+                <form action="" id="editBillStatus" method="POST">
+                    @csrf
+                    @method('PATCH')
+
                   <div class="modal-body">
                       <div class="row">
                           <div class="col-3">
@@ -90,10 +91,10 @@
                           </div>
                           <div class="col-9">
 
-                                <select class="custom-select" name="billStatus_id" id="billStatus_id">
-                                    <option value="1">Unpaid</option>
-                                    <option value="2">Paid</option>
-                                </select>
+                              <select class="custom-select" name="billStatus_id" id="billStatus_id">
+                                <option value="1">Unpaid</option>
+                                <option value="2">Paid</option>
+                              </select>
 
                           </div>
                       </div>
@@ -103,16 +104,17 @@
                         <button type="button" class="btn text-white bg-danger" data-dismiss="modal">No</button>
                     </div>
               </form>
-       </div>
-   </div>
-</div>
+
+          </div>
+        </div>
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="{{asset('js/table.js')}}"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
+{{-- <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>       
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-<script src="http://www.datejs.com/build/date.js" type="text/javascript"></script>
+<script src="http://www.datejs.com/build/date.js" type="text/javascript"></script> --}}
 <script>
     console.log('show')
     function clientDetail(id){
@@ -123,7 +125,7 @@
             data: {_token: "{{csrf_token()}}",id:id},
 
             success:function(data){
-                var clientContractTable = '<table id="myTable2" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
+                var clientContractTable = '<table id="myTabless" class="table table-striped table-bordered table-hover "> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Contract type</th> <th>Status</th> <th>Start</th> <th>End</th> <th>Monthly bill</th> <th>Bills</th> </tr> </thead> <tbody>';
                 for(var i = 0; i <data['contracts'].length; i++) {
                     for(var j = 0; j<data['type'].length;j++){
                         for(var k = 0; k<data['status'].length;k++){
@@ -160,7 +162,9 @@
                 // show bill table of contract
                 success:function(json){
 
-                var billTable = '<table id="myTables" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
+                   
+                var billTable = '<table id="myTable2" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
+
                 for(var i = 0; i <json['bills'].length; i++) {
                     for(var k = 0; k <json['states'].length; k++) {
                         var monthbill = new Date(json.bills[i].month);
@@ -181,7 +185,6 @@
                             }
                         }
                     }
-                    // alert(json.bills[i].id);
                 }
                 billTable +='</tbody></table>';
                 $("#showBill").html(billTable);

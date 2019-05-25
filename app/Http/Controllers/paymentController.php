@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Collection;
 use Illuminate\Http\Request;
 use \App\Client;
 use \App\Bill;
@@ -30,6 +30,7 @@ class paymentController extends Controller
         $billStatus = Bill::all();
 
         $client = Client::where('status',1)
+                ->orderBy('id','DESC')
                 ->get();
 
         return view("pages.paymentList",compact('client','contract','billStatus'));

@@ -15,7 +15,7 @@
                  <tr>
                     <td>{{$value->id}} </td>
 
-                    <td>{{$value->month}}</td>
+                    <td>{{date('M,Y', strtotime($value->month))}}</td>
 
                     <td>{{$value->amount}}</td>
                     <td>{{$value->billStatus->status}}   
