@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Call;
+use App\Client;
 class UserCallController extends Controller
 {
     /**
@@ -13,7 +14,9 @@ class UserCallController extends Controller
      */
     public function index()
     {
-        return view('pages.userCall');
+        $client = Client::all();
+        $call = Call::all();
+        return view('pages.userCall',compact('client','call'));
     }
 
     /**

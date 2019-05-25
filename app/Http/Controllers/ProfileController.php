@@ -37,9 +37,6 @@ class ProfileController extends Controller
            
         }
         return back()
-                ->with('success','You have successfully upload image.');
-
-        
-        
+            ->with('success','You have successfully upload image.');
     }
 }

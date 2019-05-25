@@ -21,51 +21,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="disable" id="disable">
-                                    1
-                                </td>
-                                <td>Mona</td>
-                                <td>
-                                    <a href="#">
-                                        <i class="material-icons">insert_drive_file</i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="#"><i class="material-icons">call</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="disable" id="disable">
-                                    2
-                                </td>
-                                <td>Sith</td>
-                                <td>
-                                    <a href="#">
-                                        <i class="material-icons">insert_drive_file</i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="#"><i class="material-icons">call</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="checkbox" name="disable" id="disable">
-                                    3
-                                </td>
-                                <td>Sona</td>
-                                <td>
-                                    <a href="#">
-                                        <i class="material-icons">insert_drive_file</i>
-                                    </a>
-                                </td>
-                                <td>
-                                    <a href="#"><i class="material-icons">call</i></a>
-                                </td>
-                            </tr>
+                            @foreach ($client as $value=>$item)
+                            @if ($item->status=='1')
+                                <tr>
+                                    <td>
+                                        {{$item->id}}
+                                    </td>
+                                    <td>{{$item->firstname}} {{$item->lastname}} </td>
+                                    <td ><a class="toggleCallHistory" href="#" onclick="showCallData({{$item->id}})"><i class="material-icons text-info ml-5">insert_drive_file</i></a></td>
+                                    <td><i class="material-icons text-primary text-center">call</i></td>
+                                </tr>
+                             @endif
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

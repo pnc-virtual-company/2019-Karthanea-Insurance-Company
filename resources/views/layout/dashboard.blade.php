@@ -135,7 +135,7 @@
                   <a href="{{url('/clientAchive')}}">
                     <span class="text-white">
                       <i class="material-icons text-white">people</i>
-                      Archieve Clients
+                      Archived Clients
                     </span>
                   </a>
                 </li>
@@ -344,7 +344,7 @@ $(".ui-datepicker-trigger").mouseover(function() {
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 </body>
 <script>
-  //barChart
+  barChart
   var line = document.getElementById('line').getContext('2d');
   var myChart = new Chart(line, {
       type: 'line',
@@ -384,7 +384,7 @@ $(".ui-datepicker-trigger").mouseover(function() {
   });
   
   
-  //barChart
+  barChart
   var bar = document.getElementById('myChart').getContext('2d');
   var myChart = new Chart(bar, {
       type: 'bar',
@@ -469,13 +469,17 @@ function clientLate(){
   var num = document.getElementById('numClientLate').value;
   document.getElementById('num').innerHTML=(num);
 }
+function clientComplete(){
+  var Persontage = document.getElementById('CompletePay').value;
+  document.getElementById('paymentBill').innerHTML=(Persontage);
+}
 
 
 
 function paymentChange(){
   paymentOption();
 }
-paymentOption();
+//paymentOption();
 function paymentOption(id){
   var id = $('#pieOption option:selected').val(); 
   var url = "{{url('paymentOption')}}";
@@ -498,7 +502,7 @@ function paymentOption(id){
         data: {
           labels: ['Completed', 'Late',],
           datasets: [{
-            label: 'Payment',
+            label:month,
             data:amounts,
                     backgroundColor: [
                      'rgba(255, 99, 132, 0.7)',

@@ -85,11 +85,10 @@ Route::post('payment/showData','paymentController@showData');
 Route::post('payment/showBill','paymentController@showBill');
 Route::post('payment/addData','paymentController@addData');
 Route::resource('/call','callController');
-// Route::post('payment/updateStatus','paymentController@updateStatus');
+ Route::post('payment/updateStatus','paymentController@updateStatus');
 
 Route::post('call/showCallData','callController@showCallData');
 Route::get('/calendar','CalendarController@index');
-// Route::get('/chart','ChartController@index'); 
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('profile', 'ProfileController');
@@ -98,9 +97,8 @@ Route::resource('clientDisable', 'disableClientActiveController');
 Route::resource('clientUnable', 'unableClientController');
 Route::resource('updateClient', 'updateClientPayment');
 Route::resource('updateContract', 'updateContractPayment');
-Route::resource('chart', 'ChartController');
+Route::get('chart', 'ChartController@index');
 Route::post('/paymentOption','ChartController@payment');
-Route::post('/uploadprofile', 'ProfileController@upload');
 //export pdf file 
 Route::get('/note','NotesController@index');
 Route::get('/pdf','NotesController@pdf');

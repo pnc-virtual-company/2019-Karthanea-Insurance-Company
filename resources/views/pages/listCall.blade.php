@@ -8,7 +8,7 @@
         </div>
     </div>
     <div class="container mt-4">
-        <h1>Calls Information </h1>
+        <h1>Information Of Calls</h1>
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
@@ -43,33 +43,8 @@
                         </table>
                 </div>
                 <div class="table-responsive">
-                    <table id="myTable2" class="table table-striped table-bordered table-hover collapse">
-                        <thead class="bg-dark text-white">
-                            <tr>
-                                <th>ID</th>
-                                <th>Date</th>
-                                <th>Call Operator</th>
-                                <th>Duration</th>
-                                <th>Comments</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        @foreach ($call as $data)
-                            <tr>
-                                <td>
-                                    <a href="{{route('call.update',$data->id)}}" data-id="{{$data->id}}" data-date="{{$data->date}}" data-callOperator="{{$data->callOperator}}" 
-                                    data-duration="{{$data->duration}}" data-comments="{{$data->comments}}" data-client_id="{{$data->client_id}}" 
-                                    data-toggle="modal" data-target=".bd-edit-modal-lg"><i class="material-icons text-success">create</i></a>
-                                    {{$data->id}}
-                                </td>
-                                <td>{{$data->date}}</td>
-                                <td>{{$data->callOperator}}</td>
-                                <td>{{$data->duration}}</td>
-                                <td>{{$data->comments}}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                <div id="tableCall"></div>
+                    
                 </div>
                     <div>
                     </div>
@@ -152,6 +127,8 @@
             <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <form action="" method="POST" id="formEditCall">
+                            @csrf
+                            @method('PATCH')
                         <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLabel">New call<i class='material-icons ml-3 text-success'>call</i></h5>
                                   </div>
@@ -250,11 +227,9 @@
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                 </div>
             </form>
-           
               </div>
             </div>
           </div>
-
         <script src="{{asset('js/app.js')}}"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
         <script>
@@ -264,9 +239,7 @@
                 type: "POST",
                 url: url,
                 data: {_token: "{{csrf_token()}}",id:id},
-                    // show call table of contract
                     success:function(data){
-                    
                     var callTable = '<table id="myTable2" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>ID</th> <th>Date</th> <th>Call Operator</th> <th>Duration</th> <th>Comments</th> </tr> </thead> <tbody>';
                     for(var i = 0; i <data['call'].length; i++) {
                         if(data.call[i].client_id ==id){
@@ -297,12 +270,12 @@
             var modal = $(this)
             modal.find('#firstname').attr('value',firstname)
             modal.find('#lastname').attr('value',lastname)
-             var url ="{{url('/client')}}/"+ id;
+             var url ="{{url('/call')}}/"+ id;
             $('#editClientList').attr('action',url);
             });
 
             $('#editCall').on('show.bs.modal',function (event){
-                console.log('edit');  
+            console.log('edit');  
             var button = $(event.relatedTarget)
             var date = button.data('date')
             console.log(date)
