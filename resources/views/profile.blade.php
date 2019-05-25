@@ -6,7 +6,9 @@
         <div class="col-2"></div>
         <div class="col-8">
             <div class="card shadow-sm">
+
                 <div class="card-header bg-secondary text-white"><h4> Update Picture </h4></div>
+
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-4 col-sm-12 border-right text-center border-bottom">
@@ -17,7 +19,9 @@
                             @else
                                 <img src="storage/avatar/avatar.jpg" class="img-circle2">
                             @endif
+
                             <a href="#"  data-toggle="modal" data-target="#upload"><h5>Update Image</h5>  </a>   
+
                         </div>
                         <div class="col-md-8 col-sm-12 pt-4">
                             <div class="row">

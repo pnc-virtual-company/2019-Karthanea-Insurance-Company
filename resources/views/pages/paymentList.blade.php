@@ -78,20 +78,24 @@
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
+
                 </div>
                 <form action="" id="editBillStatus" method="POST">
                     @csrf
                     @method('PATCH')
+
                   <div class="modal-body">
                       <div class="row">
                           <div class="col-3">
                               <label for="">Bill Status:</label>
                           </div>
                           <div class="col-9">
+
                               <select class="custom-select" name="billStatus_id" id="billStatus_id">
                                 <option value="1">Unpaid</option>
                                 <option value="2">Paid</option>
                               </select>
+
                           </div>
                       </div>
                     </div>
@@ -100,8 +104,10 @@
                         <button type="button" class="btn text-white bg-danger" data-dismiss="modal">No</button>
                     </div>
               </form>
+
           </div>
         </div>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="{{asset('js/table.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
@@ -155,8 +161,10 @@
             data: {_token: "{{csrf_token()}}",id:id},
                 // show bill table of contract
                 success:function(json){
+
                    
                 var billTable = '<table id="myTable2" class="table table-striped table-bordered table-hover"> <thead class="bg-dark text-white"> <tr> <th>Month</th> <th>Amount</th> <th>Status</th> <th>Due date</th> <th>Bill</th> </tr> </thead> <tbody>';
+
                 for(var i = 0; i <json['bills'].length; i++) {
                     for(var k = 0; k <json['states'].length; k++) {
                         var monthbill = new Date(json.bills[i].month);
@@ -171,7 +179,9 @@
                                                     +json.bills[i].amount+'</td><td><a href="#" id="getBillId" data-id="'+json.bills[i].id+'" data-billStatus_id="'+json.bills[i].billStatus_id+'" data-toggle="modal" data-target="#editContractType"><i class="material-icons text-success ml-3 mr-5">create</i></a>'
                                                     +json.states[k].status+"</td><td>"
                                                     +json.bills[i].duedate+"</td>"
+
                                                     +'<td> <a href="{{'paymentpdf'}}" id="js-download" class="exportPDF"><i class="material-icons text-success ml-5 ">description</i></a></td></tr>';
+
                             }
                         }
                     }
@@ -184,6 +194,7 @@
             },
         });
     }
+
 
 </script>
 <script src="{{asset('js/app.js')}}"></script>
